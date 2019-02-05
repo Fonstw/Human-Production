@@ -5,30 +5,30 @@ using UnityEngine;
 public class PlaceBuildings : MonoBehaviour {
 
 	public GameObject[] toSpawn;
-	private GameObject current;
+	private GameObject current = null;
 
-    void Start()
+    void Update()
     {
-        current = toSpawn[0];
-    }
-
-    void Update(){
-		if(ShouldClick() && Input.GetMouseButtonDown(0)){
+		if (ShouldClick() && Input.GetMouseButtonDown(0) && current != null)
+        {
 			RaycastHit hit;
 			Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 			Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-			if(Physics.Raycast(ray, out hit)){
+
+            if (Physics.Raycast(ray, out hit))
+            {
 				current = Instantiate(current,transform.position,current.transform.rotation);
 				current.transform.position = hit.point;
 				current.transform.position = new Vector3(current.transform.position.x, current.transform.position.y + current.transform.localScale.y/2, current.transform.position.z);
-				Debug.Log("hit ground");
+                //Debug.Log("hit ground");
 			}
 
-			Debug.Log(position);
+			//Debug.Log(position);
 		}
 	}
 
-	public void ChangeSpawnable(int id){
+	public void ChangeSpawnable(int id)
+    {
 		current = toSpawn[id];
 	}
 
