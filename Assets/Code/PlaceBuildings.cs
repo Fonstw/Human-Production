@@ -13,7 +13,7 @@ public class PlaceBuildings : MonoBehaviour {
     }
 
     void Update(){
-		if(Input.GetMouseButtonDown(0)){
+		if(ShouldClick() && Input.GetMouseButtonDown(0)){
 			RaycastHit hit;
 			Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 			Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
@@ -31,4 +31,14 @@ public class PlaceBuildings : MonoBehaviour {
 	public void ChangeSpawnable(int id){
 		current = toSpawn[id];
 	}
+
+    private bool ShouldClick()
+    {
+        // reference size for scalable UI is 768 pixels
+        // in which case the button bar will be 150 pixels
+        // now scale along with actual screen height
+        float treshold = Screen.height/768f * 150f;
+
+        return Input.mousePosition.y > treshold;
+    }
 }
