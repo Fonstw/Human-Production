@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlaceBuildings : MonoBehaviour {
 
-	public GameObject block;
-	public GameObject ball;
+	public GameObject[] toSpawn;
 	private GameObject current;
 
-	void Update(){
+    void Start()
+    {
+        current = toSpawn[0];
+    }
+
+    void Update(){
 		if(Input.GetMouseButtonDown(0)){
 			RaycastHit hit;
 			Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
@@ -24,11 +28,7 @@ public class PlaceBuildings : MonoBehaviour {
 		}
 	}
 
-	public void ChangeToBall(){
-		current = ball;
-	}
-
-	public void ChangeToBlock(){
-		current = block;
+	public void ChangeSpawnable(int id){
+		current = toSpawn[id];
 	}
 }
