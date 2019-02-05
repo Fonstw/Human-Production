@@ -74,7 +74,7 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    private bool ChangeCurrentComputingPower(float amount)
+    public bool ChangeCurrentComputingPower(float amount)
     {
         if (currentComputing + amount > computingTreshold)
         {
@@ -88,7 +88,8 @@ public class ResourceManager : MonoBehaviour
         else
             return false;
     }
-    private bool ChangeComputingPowerTreshold(float amount)
+
+    public bool ChangeComputingPowerTreshold(float amount)
     {
         computingTreshold += amount;
 
