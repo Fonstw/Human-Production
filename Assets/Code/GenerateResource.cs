@@ -18,9 +18,9 @@ public class GenerateResource : MonoBehaviour
         if (resourceType == 1)   // computing
             currentTimer = Time.time;
         if (resourceType == 2)   // power
-            gameManager.AdjustPower(generatesAmount);
+            gameManager.AdjustCurrentPower(generatesAmount);
         else if (resourceType == 3)   // food
-            gameManager.AdjustFood(generatesAmount);
+            gameManager.AdjustCurrentFood(generatesAmount);
     }
 
     // Update is called once per frame

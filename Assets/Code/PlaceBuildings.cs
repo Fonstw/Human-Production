@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlaceBuildings : MonoBehaviour {
 
 	public GameObject[] toSpawn;
-    public float[] costs;
+    public float[] coinCosts;
+    public float[] powerCosts;
+    public float[] foodCosts;
 	private int current = 0;
     private ResourceManager resourceManager;
 
@@ -18,7 +20,8 @@ public class PlaceBuildings : MonoBehaviour {
     {
         if (ShouldClick() && Input.GetMouseButtonDown(0))
         {
-            if (resourceManager.Pay(costs[current]))
+            // pay up
+            if (resourceManager.Pay(coinCosts[current]) && resourceManager.AdjustPowerTreshold(powerCosts[current]) && resourceManager.AdjustFoodTreshold(foodCosts[current]))
             {
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);

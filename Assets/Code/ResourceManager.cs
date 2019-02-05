@@ -11,7 +11,7 @@ public class ResourceManager : MonoBehaviour
     public Text currentComputingText;
     public Text computingTresholdText;
 
-    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingTreshold;
+    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed;
     private Vector2 powerSize, foodSize;
 
     // Start is called before the first frame update
@@ -44,14 +44,30 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    public bool AdjustPower(float amount)
+    public bool AdjustCurrentPower(float amount)
     {
-        if (currentPower < powerTreshold + amount)
+        if (currentPower + amount > powerTreshold)
+        {
+            currentPower += amount;
+
+            // update bar
+            if (currentPower > 0)
+                powerBar.sizeDelta = new Vector2(powerSize.x * (currentPower - powerTreshold) / currentPower, powerSize.y);
+
+            return true;
+        }
+        else
+            return false;
+    }
+    public bool AdjustPowerTreshold(float amount)
+    {
+        if (currentPower >= powerTreshold + amount)
         {
             powerTreshold += amount;
 
             // update bar
-            powerBar.sizeDelta = new Vector2(powerSize.x * currentPower/powerTreshold, powerSize.y);
+            if (currentPower > 0)
+                powerBar.sizeDelta = new Vector2(powerSize.x * (currentPower - powerTreshold) / currentPower, powerSize.y);
 
             return true;
         }
@@ -59,14 +75,34 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    public bool AdjustFood(float amount)
+    public bool AdjustCurrentFood(float amount)
     {
-        if (currentFood < foodTreshold + amount)
+        if (currentFood + amount > foodTreshold)
+        {
+            currentFood += amount;
+
+            //print("Current food: " + currentFood);
+
+            // update bar
+            if (currentFood > 0)
+                foodBar.sizeDelta = new Vector2(foodSize.x * (currentFood - foodTreshold) / currentFood, foodSize.y);
+
+            return true;
+        }
+        else
+            return false;
+    }
+    public bool AdjustFoodTreshold(float amount)
+    {
+        if (currentFood >= foodTreshold + amount)
         {
             foodTreshold += amount;
 
+            //print("Food treshold: " + foodTreshold);
+
             // update bar
-            foodBar.sizeDelta = new Vector2(foodSize.x * currentFood / foodTreshold, foodSize.y);
+            if (currentFood > 0)
+                foodBar.sizeDelta = new Vector2(foodSize.x * (currentFood - foodTreshold) / currentFood, foodSize.y);
 
             return true;
         }
@@ -74,9 +110,9 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    public bool ChangeCurrentComputingPower(float amount)
+    public bool ChangeCurrentComputing(float amount)
     {
-        if (currentComputing + amount > computingTreshold)
+        if (currentComputing + amount > computingNeed)
         {
             currentComputing += amount;
             
@@ -88,16 +124,15 @@ public class ResourceManager : MonoBehaviour
         else
             return false;
     }
-
-    public bool ChangeComputingPowerTreshold(float amount)
+    public bool ChangeComputingNeed(float amount)
     {
-        computingTreshold += amount;
+        computingNeed += amount;
 
         // update text
         computingTresholdText.text = currentComputing.ToString();
 
         // kill player
-        if (computingTreshold > currentComputing)
+        if (computingNeed > currentComputing)
         {
             #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;

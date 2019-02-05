@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03200dea8cd2b484aa140d7c0643f1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerCost: 10
+  foodCost: 2
   resourceType: 1
   generatesAmount: 2
-  gameManager: {fileID: 0}
 --- !u!1 &5830543566886020111
 GameObject:
   m_ObjectHideFlags: 0

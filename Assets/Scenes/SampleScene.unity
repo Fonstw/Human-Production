@@ -147,7 +147,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 100, y: 20}
+  m_SizeDelta: {x: 200, y: 20}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &13501453
 MonoBehaviour:
@@ -355,10 +355,18 @@ MonoBehaviour:
   - {fileID: 1916144813056286659, guid: f17e07f2661d22d45bc13f8a70333c87, type: 3}
   - {fileID: 1147358043118231359, guid: 1d9ccde5c1d11b1478a86651b3aeaefa, type: 3}
   - {fileID: 6914714180670875072, guid: 8fc928a8107e7804e8484843d0384bc8, type: 3}
-  costs:
+  coinCosts:
   - 0
   - 200
   - 100
+  powerCosts:
+  - 10
+  - 0
+  - 50
+  foodCosts:
+  - 2
+  - 0
+  - 0
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,7 +1488,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 100, y: 20}
+  m_SizeDelta: {x: 200, y: 20}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1571288656
 MonoBehaviour:
