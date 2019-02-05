@@ -5,31 +5,42 @@ using UnityEngine;
 public class PlaceBuildings : MonoBehaviour {
 
 	public GameObject[] toSpawn;
-	private GameObject current = null;
+    public float[] costs;
+	private int current = 0;
+    private ResourceManager resourceManager;
+
+    void Start()
+    {
+        resourceManager = GetComponent<ResourceManager>();
+    }
 
     void Update()
     {
-		if (ShouldClick() && Input.GetMouseButtonDown(0) && current != null)
+        if (ShouldClick() && Input.GetMouseButtonDown(0))
         {
-			RaycastHit hit;
-			Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-			Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
+            if (resourceManager.Pay(costs[current]))
             {
-				current = Instantiate(current,transform.position,current.transform.rotation);
-				current.transform.position = hit.point;
-				current.transform.position = new Vector3(current.transform.position.x, current.transform.position.y + current.transform.localScale.y/2, current.transform.position.z);
-                //Debug.Log("hit ground");
-			}
+                RaycastHit hit;
+                Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+                Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 
-			//Debug.Log(position);
-		}
+                if (Physics.Raycast(ray, out hit))
+                {
+                    toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
+                    toSpawn[current].transform.position = hit.point;
+                    toSpawn[current].transform.position = new Vector3(toSpawn[current].transform.position.x, toSpawn[current].transform.position.y + toSpawn[current].transform.localScale.y / 2, toSpawn[current].transform.position.z);
+                    //Debug.Log("hit ground");
+                }
+
+                //Debug.Log(position);
+            }
+        }
 	}
 
 	public void ChangeSpawnable(int id)
     {
-		current = toSpawn[id];
+        if (id >= 0 && id < toSpawn.Length)
+            current = id;
 	}
 
     private bool ShouldClick()

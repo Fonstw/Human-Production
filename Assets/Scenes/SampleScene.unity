@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -354,6 +355,27 @@ MonoBehaviour:
   - {fileID: 1916144813056286659, guid: f17e07f2661d22d45bc13f8a70333c87, type: 3}
   - {fileID: 1147358043118231359, guid: 1d9ccde5c1d11b1478a86651b3aeaefa, type: 3}
   - {fileID: 6914714180670875072, guid: 8fc928a8107e7804e8484843d0384bc8, type: 3}
+  costs:
+  - 0
+  - 200
+  - 100
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554e40e17caedff4fa7cf6fe37a10286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 1011841410}
+  powerBar: {fileID: 1571288655}
+  foodBar: {fileID: 13501452}
+  currentComputingText: {fileID: 1599656787}
+  computingTresholdText: {fileID: 794400307}
 --- !u!1 &553333080
 GameObject:
   m_ObjectHideFlags: 0
@@ -920,7 +942,6 @@ GameObject:
   - component: {fileID: 963376046}
   - component: {fileID: 963376048}
   - component: {fileID: 963376047}
-  - component: {fileID: 963376049}
   m_Layer: 5
   m_Name: Power
   m_TagString: Untagged
@@ -985,19 +1006,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963376045}
   m_CullTransparentMesh: 0
---- !u!114 &963376049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963376045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a9414102d9a1f47983ef7e398b5653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myBar: {fileID: 1571288655}
 --- !u!1 &1011841408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1076,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '$: 1000'
+  m_Text: $ 1000
 --- !u!222 &1011841411
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1294,7 +1302,6 @@ GameObject:
   - component: {fileID: 1377153193}
   - component: {fileID: 1377153195}
   - component: {fileID: 1377153194}
-  - component: {fileID: 1377153196}
   m_Layer: 5
   m_Name: Food
   m_TagString: Untagged
@@ -1359,19 +1366,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377153192}
   m_CullTransparentMesh: 0
---- !u!114 &1377153196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1377153192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a9414102d9a1f47983ef7e398b5653, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myBar: {fileID: 13501452}
 --- !u!1 &1492562460
 GameObject:
   m_ObjectHideFlags: 0
