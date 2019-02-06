@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
-  generatesAmount: 2
+  generatesAmount: 20
 --- !u!1001 &8867477063244920226
 PrefabInstance:
   m_ObjectHideFlags: 0

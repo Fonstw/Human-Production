@@ -13,10 +13,10 @@ public class ResourceManager : MonoBehaviour
     public RectTransform timerBar;
     public Text timerText;
 
-    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed;
+    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease;
     private Vector2 powerSize, foodSize, timerSize;
 
-    private float needTimer;
+    private float needTimer, currentTime, timeAdd, increaseAdd;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +24,22 @@ public class ResourceManager : MonoBehaviour
         coin = 1000;
 
         powerSize = powerBar.sizeDelta;
+        powerBar.sizeDelta = new Vector2(0, powerSize.y);
         foodSize = foodBar.sizeDelta;
+        foodBar.sizeDelta = new Vector2(0, foodSize.y);
+
         timerSize = timerBar.sizeDelta;
+
+        computingIncrease = 100;
+        needTimer = 9;
+
+        timerText.text = "+" + computingIncrease;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        HandleTime();
     }
 
     public bool CanPay(float cAmount, float ptAmount, float ftAmount)
@@ -152,5 +160,24 @@ public class ResourceManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void HandleTime()
+    {
+        currentTime += Time.deltaTime;
+
+        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
+
+        if (currentTime >= needTimer)
+        {
+            currentTime = 0;
+            timeAdd += 3;
+            needTimer += timeAdd;
+
+            ChangeComputingNeed(computingIncrease);
+            increaseAdd += 100;
+            computingIncrease += increaseAdd;
+            timerText.text = "+" + computingIncrease;
+        }
     }
 }

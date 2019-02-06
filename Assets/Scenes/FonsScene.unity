@@ -393,13 +393,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 106
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +90
+  m_Text: +1.000
 --- !u!222 &298603864
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -539,8 +539,8 @@ MonoBehaviour:
   foodBar: {fileID: 13501452}
   currentComputingText: {fileID: 1599656787}
   computingTresholdText: {fileID: 794400307}
-  timerBar: {fileID: 0}
-  timerText: {fileID: 0}
+  timerBar: {fileID: 8688097}
+  timerText: {fileID: 298603863}
 --- !u!82 &534669908
 AudioSource:
   m_ObjectHideFlags: 0
