@@ -16,7 +16,7 @@ public class GenerateResource : MonoBehaviour
         gameManager = FindObjectOfType<ResourceManager>();
 
         if (resourceType == 1)   // computing
-            currentTimer = Time.time;
+            gameManager.ChangeCurrentComputing(generatesAmount);
         if (resourceType == 2)   // power
             gameManager.AdjustCurrentPower(generatesAmount);
         else if (resourceType == 3)   // food
@@ -26,14 +26,6 @@ public class GenerateResource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (resourceType == 1)   // computing
-        {
-            if (Time.time > currentTimer)
-            {
-                // produce AMOUNT per second 1 coin
-                currentTimer += 1f / generatesAmount;
-                gameManager.Pay(-1);
-            }
-        }
+
     }
 }

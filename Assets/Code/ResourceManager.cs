@@ -13,10 +13,12 @@ public class ResourceManager : MonoBehaviour
     public RectTransform timerBar;
     public Text timerText;
 
-    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed;
+    public bool running = false;
+
+    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease, moneyTimer;
     private Vector2 powerSize, foodSize, timerSize;
 
-    private float needTimer;
+    private float needTimer, currentTime, timeAdd, increaseAdd;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +26,26 @@ public class ResourceManager : MonoBehaviour
         coin = 1000;
 
         powerSize = powerBar.sizeDelta;
+        powerBar.sizeDelta = new Vector2(0, powerSize.y);
         foodSize = foodBar.sizeDelta;
+        foodBar.sizeDelta = new Vector2(0, foodSize.y);
+
         timerSize = timerBar.sizeDelta;
+
+        computingIncrease = 50;
+        needTimer = 12;
+
+        timerText.text = "+" + computingIncrease;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (running)
+        {
+            HandleTime();
+            HandleMoney();
+        }
     }
 
     public bool CanPay(float cAmount, float ptAmount, float ftAmount)
@@ -152,5 +166,35 @@ public class ResourceManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void HandleTime()
+    {
+        currentTime += Time.deltaTime;
+
+        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
+
+        if (currentTime >= needTimer)
+        {
+            currentTime = 0;
+            timeAdd += 3;
+            needTimer += timeAdd;
+
+            ChangeComputingNeed(computingIncrease);
+            increaseAdd += 50;
+            computingIncrease += increaseAdd;
+            timerText.text = "+" + computingIncrease;
+
+            timerBar.GetComponent<AudioSource>().Play();
+        }
+    }
+
+    private void HandleMoney()
+    {
+        if (Time.time >= moneyTimer)
+        {
+            moneyTimer = Time.time + 2;
+            Pay(-(currentComputing - computingNeed));
+        }
     }
 }

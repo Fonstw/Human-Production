@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4040116105811368762}
   - component: {fileID: 922806526183297565}
+  - component: {fileID: 3809998604963474537}
   m_Layer: 10
   m_Name: Pod
   m_TagString: Untagged
@@ -46,50 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 1
   generatesAmount: 2
---- !u!1 &7586184348175041131
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9070975702562810613}
-  - component: {fileID: 8846307510580494106}
-  m_Layer: 10
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9070975702562810613
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586184348175041131}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.24, y: -3.46, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8867477063245049632}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8846307510580494106
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7586184348175041131}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2, z: 7}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8867477063244920226
 PrefabInstance:
   m_ObjectHideFlags: 0
