@@ -10,9 +10,13 @@ public class ResourceManager : MonoBehaviour
     public RectTransform foodBar;
     public Text currentComputingText;
     public Text computingTresholdText;
+    public RectTransform timerBar;
+    public Text timerText;
 
     private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed;
-    private Vector2 powerSize, foodSize;
+    private Vector2 powerSize, foodSize, timerSize;
+
+    private float needTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,7 @@ public class ResourceManager : MonoBehaviour
 
         powerSize = powerBar.sizeDelta;
         foodSize = foodBar.sizeDelta;
+        timerSize = timerBar.sizeDelta;
     }
 
     // Update is called once per frame
