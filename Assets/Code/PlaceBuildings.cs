@@ -21,8 +21,12 @@ public class PlaceBuildings : MonoBehaviour {
         if (ShouldClick() && Input.GetMouseButtonDown(0))
         {
             // pay up
-            if (resourceManager.Pay(coinCosts[current]) && resourceManager.AdjustPowerTreshold(powerCosts[current]) && resourceManager.AdjustFoodTreshold(foodCosts[current]))
+            if (resourceManager.CanPay(coinCosts[current], powerCosts[current], foodCosts[current]))
             {
+                resourceManager.Pay(coinCosts[current]);
+                resourceManager.AdjustPowerTreshold(powerCosts[current]);
+                resourceManager.AdjustFoodTreshold(foodCosts[current]);
+
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);

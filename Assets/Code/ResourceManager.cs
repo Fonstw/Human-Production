@@ -29,6 +29,11 @@ public class ResourceManager : MonoBehaviour
         
     }
 
+    public bool CanPay(float cAmount, float ptAmount, float ftAmount)
+    {
+        return coin >= cAmount && currentPower >= powerTreshold + ptAmount && currentFood >= foodTreshold + ftAmount;
+    }
+
     public bool Pay(float amount)
     {
         if (coin >= amount)
