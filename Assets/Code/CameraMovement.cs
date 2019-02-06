@@ -1,4 +1,4 @@
-﻿/* ====================================
+/* ====================================
  * Credit goes to puppeteer from the Unity Forums
  * Source: https://forum.unity.com/threads/rts-camera-script.72045/
  * ==================================== */
@@ -11,10 +11,6 @@ public class CameraMovement : MonoBehaviour
 {
     public float ScrollSpeed = 15;
     public float ScrollEdge = .01f;
-
-    private int HorizontalScroll = 1;
-    private int VerticalScroll = 1;
-    private int DiagonalScroll = 1;
 
     float PanSpeed = 10;
 
