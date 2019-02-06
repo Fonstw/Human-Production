@@ -90,8 +90,7 @@ GameObject:
   - component: {fileID: 4036544799436833882}
   - component: {fileID: 2142517396857878108}
   - component: {fileID: 6588547352499302838}
-  - component: {fileID: 3104802483829471216}
-  - component: {fileID: 1691022137561817925}
+  - component: {fileID: 5301345356801193366}
   m_Layer: 9
   m_Name: Food_Farm
   m_TagString: Untagged
@@ -186,3 +185,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 3
   generatesAmount: 10
+--- !u!114 &5301345356801193366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6914714180670875072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c900948dc766348a7c1d68f8aff29a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 20
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
+  visibleTargets: []
+  grass: {fileID: 6414065324509333307}
+  tube: {fileID: 1581642507357566, guid: 7faddae79f3ee22438d64ce2499b6927, type: 3}
+  foodResource: {fileID: 1086856085148608, guid: 542d9dbefd94a1e40bc9d74317d6fe31,
+    type: 3}
+  tubes: []
+  food: []
