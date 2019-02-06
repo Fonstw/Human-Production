@@ -184,6 +184,8 @@ public class ResourceManager : MonoBehaviour
             increaseAdd += 50;
             computingIncrease += increaseAdd;
             timerText.text = "+" + computingIncrease;
+
+            timerBar.GetComponent<AudioSource>().Play();
         }
     }
 
