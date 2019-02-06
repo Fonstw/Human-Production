@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour
     public float ScrollSpeed = 15;
     public float ScrollEdge = .01f;
 
-    float PanSpeed = 10;
+    public float PanSpeed = 50;
 
     public Vector2 ZoomRange = new Vector2(-5, 5);
     public float CurrentZoom = 0;
@@ -40,8 +40,8 @@ public class CameraMovement : MonoBehaviour
         //PAN
         if (Input.GetKey("mouse 2"))
         {
-            transform.Translate(Vector3.right * Time.deltaTime * PanSpeed * (Input.mousePosition.x - Screen.width * .5f) / (Screen.width * .5f), Space.World);
-            transform.Translate(Vector3.forward * Time.deltaTime * PanSpeed * (Input.mousePosition.y - Screen.height * .5f) / (Screen.height * .5f), Space.World);
+            transform.Translate(Vector3.right * Time.deltaTime * PanSpeed * (Input.mousePosition.x - Screen.width * .5f) / (Screen.width * .5f));
+            transform.Translate(Vector3.forward * Time.deltaTime * PanSpeed * (Input.mousePosition.y - Screen.height * .5f) / (Screen.height * .5f));
         }
         else
         {
