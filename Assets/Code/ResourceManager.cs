@@ -13,6 +13,8 @@ public class ResourceManager : MonoBehaviour
     public RectTransform timerBar;
     public Text timerText;
 
+    public bool running = false;
+
     private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease, moneyTimer;
     private Vector2 powerSize, foodSize, timerSize;
 
@@ -30,8 +32,8 @@ public class ResourceManager : MonoBehaviour
 
         timerSize = timerBar.sizeDelta;
 
-        computingIncrease = 100;
-        needTimer = 9;
+        computingIncrease = 50;
+        needTimer = 12;
 
         timerText.text = "+" + computingIncrease;
     }
@@ -39,8 +41,11 @@ public class ResourceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleTime();
-        HandleMoney();
+        if (running)
+        {
+            HandleTime();
+            HandleMoney();
+        }
     }
 
     public bool CanPay(float cAmount, float ptAmount, float ftAmount)
@@ -176,7 +181,7 @@ public class ResourceManager : MonoBehaviour
             needTimer += timeAdd;
 
             ChangeComputingNeed(computingIncrease);
-            increaseAdd += 100;
+            increaseAdd += 50;
             computingIncrease += increaseAdd;
             timerText.text = "+" + computingIncrease;
         }
