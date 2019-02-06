@@ -41,22 +41,14 @@ public class CameraMovement : MonoBehaviour
         else
         {
             if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge))
-            {
                 transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed, Space.World);
-            }
             else if (Input.GetKey("a") || Input.mousePosition.x <= Screen.width * ScrollEdge)
-            {
                 transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed, Space.World);
-            }
 
             if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge))
-            {
                 transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed, Space.World);
-            }
             else if (Input.GetKey("s") || Input.mousePosition.y <= Screen.height * ScrollEdge)
-            {
                 transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed, Space.World);
-            }
         }
 
         //ZOOM IN/OUT
