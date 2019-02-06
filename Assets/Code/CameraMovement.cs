@@ -22,42 +22,59 @@ public class CameraMovement : MonoBehaviour
     private Vector3 InitPos;
     private Vector3 InitRotation;
 
+    public float cameraTurnSpeed = .1f;
+    private float oldMousePosition;
+
 
 
     void Start()
     {
         InitPos = transform.position;
         InitRotation = transform.eulerAngles;
+
+        oldMousePosition = Input.mousePosition.x;
     }
 
     void Update()
     {
         //PAN
-        if (Input.GetKey("mouse 2"))
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * PanSpeed * (Input.mousePosition.x - Screen.width * .5f) / (Screen.width * .5f), Space.World);
-            transform.Translate(Vector3.forward * Time.deltaTime * PanSpeed * (Input.mousePosition.y - Screen.height * .5f) / (Screen.height * .5f), Space.World);
-        }
-        else
+        //if (Input.GetKey("mouse 2"))
+        //{
+        //    transform.Translate(Vector3.right * Time.deltaTime * PanSpeed * (Input.mousePosition.x - Screen.width * .5f) / (Screen.width * .5f), Space.World);
+        //    transform.Translate(Vector3.forward * Time.deltaTime * PanSpeed * (Input.mousePosition.y - Screen.height * .5f) / (Screen.height * .5f), Space.World);
+        //}
+        //else
         {
             if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge))
-                transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed, Space.World);
+                transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed);
             else if (Input.GetKey("a") || Input.mousePosition.x <= Screen.width * ScrollEdge)
-                transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed, Space.World);
+                transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed);
 
             if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge))
-                transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed, Space.World);
+                transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed);
             else if (Input.GetKey("s") || Input.mousePosition.y <= Screen.height * ScrollEdge)
-                transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed, Space.World);
+                transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed);
         }
 
         //ZOOM IN/OUT
 
-        CurrentZoom -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 1000 * ZoomZpeed;
+        //CurrentZoom -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 1000 * ZoomZpeed;
 
-        CurrentZoom = Mathf.Clamp(CurrentZoom, ZoomRange.x, ZoomRange.y);
+        //CurrentZoom = Mathf.Clamp(CurrentZoom, ZoomRange.x, ZoomRange.y);
 
-        transform.position = new Vector3(transform.position.x, transform.position.y - (transform.position.y - (InitPos.y + CurrentZoom)) * .1f, transform.position.z);
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x - (transform.eulerAngles.x - (InitRotation.x + CurrentZoom * ZoomRotation)) * .1f, transform.eulerAngles.y, transform.eulerAngles.z);
+        //transform.position = new Vector3(transform.position.x, transform.position.y - (transform.position.y - (InitPos.y + CurrentZoom)) * .1f, transform.position.z);
+        //transform.eulerAngles = new Vector3(transform.eulerAngles.x - (transform.eulerAngles.x - (InitRotation.x + CurrentZoom * ZoomRotation)) * .1f, transform.eulerAngles.y, transform.eulerAngles.z);
+
+        // Turn camera, added by me
+        if (Input.GetMouseButton(1))
+        {
+            float difference = Input.mousePosition.x - oldMousePosition;
+
+            transform.eulerAngles -= new Vector3(0, -difference * cameraTurnSpeed, 0);
+
+            oldMousePosition = Input.mousePosition.x;
+        }
+        else
+            oldMousePosition = Input.mousePosition.x;
     }
 }

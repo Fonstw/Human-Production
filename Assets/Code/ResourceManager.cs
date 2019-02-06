@@ -33,7 +33,7 @@ public class ResourceManager : MonoBehaviour
         timerSize = timerBar.sizeDelta;
 
         computingIncrease = 50;
-        needTimer = 12;
+        needTimer = 60;
 
         timerText.text = "+" + computingIncrease;
     }
@@ -43,7 +43,7 @@ public class ResourceManager : MonoBehaviour
     {
         if (running)
         {
-            HandleTime();
+            //HandleTime();
             HandleMoney();
         }
     }
@@ -177,7 +177,7 @@ public class ResourceManager : MonoBehaviour
         if (currentTime >= needTimer)
         {
             currentTime = 0;
-            timeAdd += 3;
+            //timeAdd += 3;
             needTimer += timeAdd;
 
             ChangeComputingNeed(computingIncrease);

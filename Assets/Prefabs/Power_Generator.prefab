@@ -84,9 +84,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 13c4650a91fd87a449b4a55d8e1e3234, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -207,10 +207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2884667745466646809}
     m_Modifications:
-    - target: {fileID: 100004, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
-      propertyPath: m_Name
-      value: Obj_PowerPlant
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -254,6 +250,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
+      propertyPath: m_Name
+      value: Obj_PowerPlant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
