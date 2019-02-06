@@ -8,6 +8,8 @@ public class PlaceBuildings : MonoBehaviour {
     public float[] coinCosts;
     public float[] powerCosts;
     public float[] foodCosts;
+    public Texture2D[] cursors;
+
 	private int current = 0;
     private ResourceManager resourceManager;
 
@@ -47,7 +49,11 @@ public class PlaceBuildings : MonoBehaviour {
 	public void ChangeSpawnable(int id)
     {
         if (id >= 0 && id < toSpawn.Length)
+        {
             current = id;
+
+            Cursor.SetCursor(cursors[id], Vector2.zero, CursorMode.Auto);
+        }
 	}
 
     private bool ShouldClick()

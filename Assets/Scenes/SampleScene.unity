@@ -671,6 +671,10 @@ MonoBehaviour:
   - 2
   - 0
   - 0
+  cursors:
+  - {fileID: 2800000, guid: cb8b3f8c9f8c18b40aacdc1601810302, type: 3}
+  - {fileID: 2800000, guid: acabf631ccd3b0546bee92777be92d7a, type: 3}
+  - {fileID: 2800000, guid: b5ba30267c1604f4d9ffbd98f06417b6, type: 3}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
