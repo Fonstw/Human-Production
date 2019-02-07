@@ -8,6 +8,7 @@ public class PlaceBuildings : MonoBehaviour {
     public GameObject[] toSpawn;
     public float[] powerCosts;
     public float[] foodCosts;
+    public float[] spawnOffsets;
     public Texture2D[] cursors;
     public Transform mouseTarget;
     public CustomGrid gridSystem;
@@ -75,7 +76,7 @@ public class PlaceBuildings : MonoBehaviour {
                         resourceManager.AdjustFoodTreshold(foodCosts[current]);
 
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
-                        yPos = -toSpawn[current].transform.localScale.y*2;
+                        yPos = -toSpawn[current].transform.localScale.y*2 - spawnOffsets[current];
                         toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
                         StartCoroutine(BuildBuidling(toSpawn[current]));
                         building = true;
@@ -118,7 +119,6 @@ public class PlaceBuildings : MonoBehaviour {
 
     IEnumerator BuildBuidling(GameObject Building)
     {
-        
         yield return new WaitForSeconds(0.1f);
         yPos += 0.1f;
         Building.transform.position = new Vector3(Building.transform.position.x, yPos, Building.transform.position.z);
