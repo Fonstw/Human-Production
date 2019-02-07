@@ -180,7 +180,7 @@ public class ResourceManager : MonoBehaviour
         computingInfo.args[0] = computingNeed;
 
         // update text
-        computingTresholdText.text = currentComputing.ToString();
+        computingTresholdText.text = computingNeed.ToString();
 
         // kill player
         if (computingNeed > currentComputing)
