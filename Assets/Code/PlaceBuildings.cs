@@ -19,6 +19,8 @@ public class PlaceBuildings : MonoBehaviour {
     private GameObject test;
     private Collider[] inTheWay;
     public LayerMask noFloorLayer;
+    private float yPos;
+    private bool building;
 
     void Start()
     {
@@ -47,7 +49,7 @@ public class PlaceBuildings : MonoBehaviour {
                     gridSystem.structure = test;
                 }
                 if(test != null) { 
-                    inTheWay = Physics.OverlapBox(test.transform.position, new Vector3(gridSystem.gridSize / 2, 10, gridSystem.gridSize / 2), mouseTarget.rotation, noFloorLayer);
+                    inTheWay = Physics.OverlapBox(test.transform.position, new Vector3(gridSystem.gridSize / 4, 10, gridSystem.gridSize / 4), mouseTarget.rotation, noFloorLayer);
                 }
 
                 if(currentHolder != current){
@@ -73,8 +75,13 @@ public class PlaceBuildings : MonoBehaviour {
                 {
                     if(hit.transform.tag == "Ground"){
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
-                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, toSpawn[current].transform.localScale.y/2, test.transform.position.z);
+                        yPos = -toSpawn[current].transform.localScale.y*2;
+                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
+                        StartCoroutine(BuildBuidling(toSpawn[current]));
+                        building = true;
                     }
+
+                    //toSpawn[current].transform.localScale.y/2
                     //Debug.Log("hit ground");
                 }
 
@@ -99,9 +106,31 @@ public class PlaceBuildings : MonoBehaviour {
         // reference size for scalable UI is 768 pixels
         // in which case the button bar will be 150 pixels
         // now scale along with actual screen height
+        if (building) {
+            return false;
+        }
+
         float treshold = Screen.height/768f * 150f;
 
         return Input.mousePosition.y > treshold;
 
     }
+
+    IEnumerator BuildBuidling(GameObject Building)
+    {
+        
+        yield return new WaitForSeconds(0.1f);
+        yPos += 0.1f;
+        Building.transform.position = new Vector3(Building.transform.position.x, yPos, Building.transform.position.z);
+        if(yPos >= Building.transform.localScale.y / 2)
+        {
+            Debug.Log("Done");
+            building = false;
+        } else
+        {
+            StartCoroutine(BuildBuidling(Building));
+            building = true;
+        }
+    }
+
 }
