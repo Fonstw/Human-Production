@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlaceBuildings : MonoBehaviour {
 
-	public GameObject[] toSpawn;
+    public GameObject[] testSpawns;
+    public GameObject[] toSpawn;
     public float[] coinCosts;
     public float[] powerCosts;
     public float[] foodCosts;
@@ -30,9 +31,9 @@ public class PlaceBuildings : MonoBehaviour {
         if (Physics.Raycast(ray2, out hit2)){
             if(hit2.transform.tag == "Ground"){
                 mouseTarget.transform.position = new Vector3(hit2.point.x, mouseTarget.transform.position.y, hit2.point.z);
-                if (mouseTarget.childCount <= 0){
+                if (mouseTarget.childCount <= 0 && current >= 0){
                     currentHolder = current;
-                    test = Instantiate(toSpawn[current], mouseTarget.transform.position, toSpawn[current].transform.rotation);
+                    test = Instantiate(testSpawns[current], mouseTarget.transform.position, testSpawns[current].transform.rotation);
                     if (test.GetComponent<Collider>())
                     {
                         test.GetComponent<Collider>().enabled = false;

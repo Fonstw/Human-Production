@@ -31,7 +31,6 @@ public class FadeOut : MonoBehaviour
             if (currentTime > 0)
             {
                 currentTime -= Time.deltaTime;
-                print(currentTime + " time left.");
             }
             else
             {

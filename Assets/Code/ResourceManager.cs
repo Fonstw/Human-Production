@@ -58,6 +58,8 @@ public class ResourceManager : MonoBehaviour
     {
         if (currentPower < powerTreshold + ptAmount)
         {
+            timerBar.GetComponent<AudioSource>().Play();
+
             errorMessage.GetComponent<Text>().text = "Need more Power!";
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
@@ -65,6 +67,8 @@ public class ResourceManager : MonoBehaviour
         }
         else if (currentFood < foodTreshold + ftAmount)
         {
+            timerBar.GetComponent<AudioSource>().Play();
+
             errorMessage.GetComponent<Text>().text = "Need more Food!";
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
@@ -214,7 +218,7 @@ public class ResourceManager : MonoBehaviour
             timeInfo.args[0] = computingIncrease;
             timerText.text = "+" + computingIncrease;
 
-            timerBar.GetComponent<AudioSource>().Play();
+            //timerBar.GetComponent<AudioSource>().Play();
         }
     }
 

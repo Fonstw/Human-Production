@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -702,10 +702,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c9fb1b81c00ac4591e595739c9bbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testSpawns:
+  - {fileID: 1916144813056286659, guid: 5d551835b66b5744ba7feadc8957699e, type: 3}
+  - {fileID: 1147358043118231359, guid: bf2abc05659e1e94a8db2bc62cc62435, type: 3}
+  - {fileID: 1594997893443875125, guid: 772e5ee21f37dce48946de42a018472a, type: 3}
   toSpawn:
   - {fileID: 1916144813056286659, guid: f17e07f2661d22d45bc13f8a70333c87, type: 3}
   - {fileID: 1147358043118231359, guid: 1d9ccde5c1d11b1478a86651b3aeaefa, type: 3}
-  - {fileID: 6914714180670875072, guid: 8fc928a8107e7804e8484843d0384bc8, type: 3}
+  - {fileID: 1594997893443875125, guid: 0e649efdc790c1c418de349a14fdb9bd, type: 3}
   coinCosts:
   - 0
   - 0
@@ -1747,7 +1751,7 @@ GameObject:
   - component: {fileID: 1044180592}
   - component: {fileID: 1044180594}
   - component: {fileID: 1044180593}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2250,7 +2254,7 @@ GameObject:
   - component: {fileID: 1388510090}
   - component: {fileID: 1388510089}
   - component: {fileID: 1388510088}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
