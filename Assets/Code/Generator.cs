@@ -44,7 +44,7 @@ public class Generator : MonoBehaviour {
 		return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0,Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
 	}
 
-	void Update(){
+	void LateUpdate(){
 		if(particles.Count != visibleTargets.Count){
 			//Debug.Log("oof2");
 			for(int i = 0; i < particles.Count; i++){
@@ -72,6 +72,7 @@ public class Generator : MonoBehaviour {
 				}
 
 				if(particles[f].GetComponent<Electricity>().go){
+					Debug.Log("Particle : " + particles[f] + " is going to target : " + visibleTargets[f]);
 					particles[f].transform.position = Vector3.MoveTowards(particles[f].transform.position, visibleTargets[f].position, Time.deltaTime * electricSpeed);
 				} else {
 					particles[f].transform.position = Vector3.MoveTowards(particles[f].transform.position, transform.position, Time.deltaTime * electricSpeed);
