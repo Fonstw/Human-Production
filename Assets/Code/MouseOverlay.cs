@@ -10,7 +10,7 @@ public class MouseOverlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class MouseOverlay : MonoBehaviour
         FollowMouse();
     }
 
-    private void FollowMouse()
+    public void FollowMouse()
     {
         transform.position = Input.mousePosition + offset;
     }
