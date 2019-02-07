@@ -106,9 +106,10 @@ public class PlaceBuildings : MonoBehaviour {
             return false;
         }
 
-        float treshold = Screen.height/768f * 150f;
-
-        return Input.mousePosition.y > treshold;
+        float tresholdX = Screen.width - Screen.width / 1366f * 240f;
+        float tresholdY = Screen.height / 768f * 340f;
+        
+        return Input.mousePosition.x < tresholdX || Input.mousePosition.y > tresholdY; ;
 
     }
 
