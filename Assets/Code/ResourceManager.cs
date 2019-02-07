@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-    //public Text coinText;
-    public RectTransform powerBar;
-    public RectTransform foodBar;
+    public Text powerText;
+    public Text foodText;
     public Text currentComputingText;
     public Text computingTresholdText;
     public RectTransform timerBar;
@@ -21,20 +20,14 @@ public class ResourceManager : MonoBehaviour
     public bool running = false;
 
     private float /*coin,*/ currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease, moneyTimer;
-    private Vector2 powerSize, foodSize, timerSize;
+    private Vector2 timerSize;
+    private AudioSource progress;
 
-    private float needTimer, currentTime, timeAdd, increaseAdd;
+    private float needTimer, currentTime, /*timeAdd,*/ increaseAdd;
 
     // Start is called before the first frame update
     void Start()
     {
-        //coin = 1000;
-
-        powerSize = powerBar.sizeDelta;
-        powerBar.sizeDelta = new Vector2(0, powerSize.y);
-        foodSize = foodBar.sizeDelta;
-        foodBar.sizeDelta = new Vector2(0, foodSize.y);
-
         timerSize = timerBar.sizeDelta;
 
         computingIncrease = 50;
@@ -42,6 +35,8 @@ public class ResourceManager : MonoBehaviour
         needTimer = 60;
 
         timerText.text = "+" + computingIncrease;
+
+        progress = GetComponents<AudioSource>()[1];
     }
 
     // Update is called once per frame
@@ -54,7 +49,7 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    public bool CanPay(float cAmount, float ptAmount, float ftAmount)
+    public bool CanPay(float ptAmount, float ftAmount)
     {
         if (currentPower < powerTreshold + ptAmount)
         {
@@ -78,21 +73,6 @@ public class ResourceManager : MonoBehaviour
             return true;
     }
 
-    public bool Pay(float amount)
-    {
-        //    if (coin >= amount)
-        //    {
-        //        coin -= amount;
-
-        //        // update text
-        //        coinText.text = "$ " + coin;
-
-                return true;
-        //    }
-        //    else
-        //        return false;
-    }
-
     public bool AdjustCurrentPower(float amount)
     {
         if (currentPower + amount > powerTreshold)
@@ -100,9 +80,7 @@ public class ResourceManager : MonoBehaviour
             currentPower += amount;
             powerInfo.args[1] = currentPower;
 
-            // update bar
-            if (currentPower > 0)
-                powerBar.sizeDelta = new Vector2(powerSize.x * (currentPower - powerTreshold) / currentPower, powerSize.y);
+            UpdatePowerText();
 
             return true;
         }
@@ -116,14 +94,16 @@ public class ResourceManager : MonoBehaviour
             powerTreshold += amount;
             powerInfo.args[0] = powerTreshold;
 
-            // update bar
-            if (currentPower > 0)
-                powerBar.sizeDelta = new Vector2(powerSize.x * (currentPower - powerTreshold) / currentPower, powerSize.y);
+            UpdatePowerText();
 
             return true;
         }
         else
             return false;
+    }
+    private void UpdatePowerText()
+    {
+        powerText.text = powerTreshold + " / " + currentPower;
     }
 
     public bool AdjustCurrentFood(float amount)
@@ -133,11 +113,7 @@ public class ResourceManager : MonoBehaviour
             currentFood += amount;
             foodInfo.args[1] = currentFood;
 
-            //print("Current food: " + currentFood);
-
-            // update bar
-            if (currentFood > 0)
-                foodBar.sizeDelta = new Vector2(foodSize.x * (currentFood - foodTreshold) / currentFood, foodSize.y);
+            UpdateFoodText();
 
             return true;
         }
@@ -151,16 +127,16 @@ public class ResourceManager : MonoBehaviour
             foodTreshold += amount;
             foodInfo.args[0] = foodTreshold;
 
-            //print("Food treshold: " + foodTreshold);
-
-            // update bar
-            if (currentFood > 0)
-                foodBar.sizeDelta = new Vector2(foodSize.x * (currentFood - foodTreshold) / currentFood, foodSize.y);
+            UpdateFoodText();
 
             return true;
         }
         else
             return false;
+    }
+    private void UpdateFoodText()
+    {
+        foodText.text = foodTreshold + " / " + currentFood;
     }
 
     public bool ChangeCurrentComputing(float amount)
@@ -210,7 +186,7 @@ public class ResourceManager : MonoBehaviour
         {
             currentTime = 0;
             //timeAdd += 3;
-            needTimer += timeAdd;
+            //needTimer += timeAdd;
 
             ChangeComputingNeed(computingIncrease);
             increaseAdd += 50;
@@ -218,16 +194,16 @@ public class ResourceManager : MonoBehaviour
             timeInfo.args[0] = computingIncrease;
             timerText.text = "+" + computingIncrease;
 
-            //timerBar.GetComponent<AudioSource>().Play();
+            progress.Play();
         }
     }
 
-    private void HandleMoney()
-    {
-        if (Time.time >= moneyTimer)
-        {
-            moneyTimer = Time.time + 2;
-            Pay(-(currentComputing - computingNeed));
-        }
-    }
+    //private void HandleMoney()
+    //{
+    //    if (Time.time >= moneyTimer)
+    //    {
+    //        moneyTimer = Time.time + 2;
+    //        Pay(-(currentComputing - computingNeed));
+    //    }
+    //}
 }

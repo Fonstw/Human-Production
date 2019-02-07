@@ -6,7 +6,6 @@ public class PlaceBuildings : MonoBehaviour {
 
     public GameObject[] testSpawns;
     public GameObject[] toSpawn;
-    public float[] coinCosts;
     public float[] powerCosts;
     public float[] foodCosts;
     public Texture2D[] cursors;
@@ -56,9 +55,8 @@ public class PlaceBuildings : MonoBehaviour {
         if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0)
         {
             // pay up
-            if (resourceManager.CanPay(coinCosts[current], powerCosts[current], foodCosts[current]))
+            if (resourceManager.CanPay(powerCosts[current], foodCosts[current]))
             {
-                resourceManager.Pay(coinCosts[current]);
                 resourceManager.AdjustPowerTreshold(powerCosts[current]);
                 resourceManager.AdjustFoodTreshold(foodCosts[current]);
 
