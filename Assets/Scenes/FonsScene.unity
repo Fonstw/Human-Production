@@ -802,10 +802,6 @@ MonoBehaviour:
   - -1
   - 0
   - 2
-  cursors:
-  - {fileID: 2800000, guid: cb8b3f8c9f8c18b40aacdc1601810302, type: 3}
-  - {fileID: 2800000, guid: acabf631ccd3b0546bee92777be92d7a, type: 3}
-  - {fileID: 2800000, guid: b5ba30267c1604f4d9ffbd98f06417b6, type: 3}
   mouseTarget: {fileID: 423296641}
   gridSystem: {fileID: 250247401}
   noFloorLayer:
@@ -1154,7 +1150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2cf52c081f0b3f64984a3874e2d46dc2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
