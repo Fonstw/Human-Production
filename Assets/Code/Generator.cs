@@ -72,7 +72,7 @@ public class Generator : MonoBehaviour {
 				}
 
 				if(particles[f].GetComponent<Electricity>().go){
-					Debug.Log("Particle : " + particles[f] + " is going to target : " + visibleTargets[f]);
+					//Debug.Log("Particle : " + particles[f] + " is going to target : " + visibleTargets[f]);
 					particles[f].transform.position = Vector3.MoveTowards(particles[f].transform.position, visibleTargets[f].position, Time.deltaTime * electricSpeed);
 				} else {
 					particles[f].transform.position = Vector3.MoveTowards(particles[f].transform.position, transform.position, Time.deltaTime * electricSpeed);
