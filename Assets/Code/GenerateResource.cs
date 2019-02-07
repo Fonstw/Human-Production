@@ -6,26 +6,40 @@ public class GenerateResource : MonoBehaviour
 {
     public int resourceType;   // 1=computing, 2=power, 3=food
     public int generatesAmount;
-    private ResourceManager gameManager;
+    public float buildingTime;
 
-    private float currentTimer;
+    private ResourceManager gameManager;
+    private AudioSource buildSound;
+    private float ownTimer;
+    private bool workDone = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = FindObjectOfType<ResourceManager>();
+        ownTimer = Time.time + buildingTime;
 
+        gameManager = FindObjectOfType<ResourceManager>();
+        buildSound = GetComponents<AudioSource>()[1];   // get 2nd sound which should be the finished-with-construction sound
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!workDone && Time.time > ownTimer)
+            WorkIt();
+
+    }
+
+    private void WorkIt()
+    {
         if (resourceType == 1)   // computing
             gameManager.ChangeCurrentComputing(generatesAmount);
         if (resourceType == 2)   // power
             gameManager.AdjustCurrentPower(generatesAmount);
         else if (resourceType == 3)   // food
             gameManager.AdjustCurrentFood(generatesAmount);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-
+        workDone = true;
+        buildSound.Play();
     }
 }

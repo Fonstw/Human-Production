@@ -50,16 +50,16 @@ public class Farm : MonoBehaviour {
 
 	void Update(){
 		if(tubes.Count != visibleTargets.Count){
-			Debug.Log("oof2");
+			//Debug.Log("oof2");
 			for(int i = 0; i < tubes.Count; i++){
-				Debug.Log("oof3");
+				//Debug.Log("oof3");
 				Destroy(tubes[i]);
 				Destroy(food[i]);
 			}
 			tubes.Clear();
 			food.Clear();
 			foreach(Transform visibleTarget in visibleTargets){
-				Debug.Log("oof4");
+				//Debug.Log("oof4");
 				tubes.Add(Instantiate(tube,transform.position,tube.transform.rotation));
 				food.Add(Instantiate(foodResource, transform.position, foodResource.transform.rotation));
 			}
@@ -67,7 +67,7 @@ public class Farm : MonoBehaviour {
 		if(visibleTargets.Count > 0){
 			for(int f = 0; f < tubes.Count; f++){
 				if(tubes.Count != visibleTargets.Count){
-					Debug.Log("oof");
+					//Debug.Log("oof");
 					break;
 				}
 
