@@ -7,23 +7,44 @@ ModelImporter:
     100002: InnerLeaves
     100004: //RootNode
     100006: Orb
+    100008: Base
+    100010: Base.003
+    100012: Cube
+    100014: Mirror_Plane
     400000: Base.002
     400002: InnerLeaves
     400004: //RootNode
     400006: Orb
+    400008: Base
+    400010: Base.003
+    400012: Cube
+    400014: Mirror_Plane
     2100000: PowerOrb
     2100002: Metal_Dark
     2100004: LeafInside
     2100006: Metal
+    2100008: No Name
     2300000: Base.002
     2300002: InnerLeaves
     2300004: Orb
+    2300006: Base
+    2300008: Base.003
+    2300010: Cube
+    2300012: Mirror_Plane
     3300000: Base.002
     3300002: InnerLeaves
     3300004: Orb
+    3300006: Base
+    3300008: Base.003
+    3300010: Cube
+    3300012: Mirror_Plane
     4300000: Orb
     4300002: InnerLeaves
     4300004: Base.002
+    4300006: Base
+    4300008: Mirror_Plane
+    4300010: Base.003
+    4300012: Cube
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -116,6 +137,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
