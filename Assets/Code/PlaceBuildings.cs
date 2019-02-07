@@ -9,7 +9,6 @@ public class PlaceBuildings : MonoBehaviour {
     public float[] powerCosts;
     public float[] foodCosts;
     public float[] spawnOffsets;
-    public Texture2D[] cursors;
     public Transform mouseTarget;
     public CustomGrid gridSystem;
 
@@ -94,11 +93,7 @@ public class PlaceBuildings : MonoBehaviour {
 	public void ChangeSpawnable(int id)
     {
         if (id >= 0 && id < toSpawn.Length)
-        {
             current = id;
-
-            Cursor.SetCursor(cursors[id], Vector2.zero, CursorMode.Auto);
-        }
 	}
 
     private bool ShouldClick()
