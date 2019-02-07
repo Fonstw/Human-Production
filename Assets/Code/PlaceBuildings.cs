@@ -9,9 +9,14 @@ public class PlaceBuildings : MonoBehaviour {
     public float[] powerCosts;
     public float[] foodCosts;
     public Texture2D[] cursors;
+    public Transform mouseTarget;
+    public CustomGrid gridSystem;
 
 	private int current = -1;
+    private int currentHolder = 0;
     private ResourceManager resourceManager;
+
+    private GameObject test;
 
     void Start()
     {
@@ -20,6 +25,33 @@ public class PlaceBuildings : MonoBehaviour {
 
     void Update()
     {
+        RaycastHit hit2;
+        Ray ray2 = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray2, out hit2)){
+            if(hit2.transform.tag == "Ground"){
+                mouseTarget.transform.position = new Vector3(hit2.point.x, mouseTarget.transform.position.y, hit2.point.z);
+                if (mouseTarget.childCount <= 0){
+                    currentHolder = current;
+                    test = Instantiate(toSpawn[current], mouseTarget.transform.position, toSpawn[current].transform.rotation);
+                    if (test.GetComponent<Collider>())
+                    {
+                        test.GetComponent<Collider>().enabled = false;
+                    }
+                    if (test.GetComponentInChildren<Collider>())
+                    {
+                        test.GetComponentInChildren<Collider>().enabled = false;
+                    }
+                    test.transform.parent = mouseTarget;
+                    gridSystem.structure = test;
+                }
+
+                if(currentHolder != current){
+                    //Debug.Log("Yes");
+                    Destroy(test);
+                }
+            }
+        }
+
         if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0)
         {
             // pay up
@@ -35,9 +67,10 @@ public class PlaceBuildings : MonoBehaviour {
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
-                    toSpawn[current].transform.position = hit.point;
-                    toSpawn[current].transform.position = new Vector3(toSpawn[current].transform.position.x, toSpawn[current].transform.position.y + toSpawn[current].transform.localScale.y / 2, toSpawn[current].transform.position.z);
+                    if(hit.transform.tag == "Ground"){
+                        toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
+                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, toSpawn[current].transform.localScale.y/2, test.transform.position.z);
+                    }
                     //Debug.Log("hit ground");
                 }
 

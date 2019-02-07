@@ -48,7 +48,7 @@ public class Farm : MonoBehaviour {
 		return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad),0,Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
 	}
 
-	void Update(){
+	void LateUpdate(){
 		if(tubes.Count != visibleTargets.Count){
 			//Debug.Log("oof2");
 			for(int i = 0; i < tubes.Count; i++){
