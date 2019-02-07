@@ -17,6 +17,8 @@ public class PlaceBuildings : MonoBehaviour {
     private ResourceManager resourceManager;
 
     private GameObject test;
+    private Collider[] inTheWay;
+    public LayerMask noFloorLayer;
 
     void Start()
     {
@@ -44,6 +46,9 @@ public class PlaceBuildings : MonoBehaviour {
                     test.transform.parent = mouseTarget;
                     gridSystem.structure = test;
                 }
+                if(test != null) { 
+                    inTheWay = Physics.OverlapBox(test.transform.position, new Vector3(gridSystem.gridSize / 2, 10, gridSystem.gridSize / 2), mouseTarget.rotation, noFloorLayer);
+                }
 
                 if(currentHolder != current){
                     //Debug.Log("Yes");
@@ -52,7 +57,7 @@ public class PlaceBuildings : MonoBehaviour {
             }
         }
 
-        if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0)
+        if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0)
         {
             // pay up
             if (resourceManager.CanPay(powerCosts[current], foodCosts[current]))
@@ -90,11 +95,13 @@ public class PlaceBuildings : MonoBehaviour {
 
     private bool ShouldClick()
     {
+
         // reference size for scalable UI is 768 pixels
         // in which case the button bar will be 150 pixels
         // now scale along with actual screen height
         float treshold = Screen.height/768f * 150f;
 
         return Input.mousePosition.y > treshold;
+
     }
 }
