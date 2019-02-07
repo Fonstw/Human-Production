@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 3
   generatesAmount: 10
-  buildingTime: 6
+  buildingTime: 5
 --- !u!114 &5301345356801193366
 MonoBehaviour:
   m_ObjectHideFlags: 0

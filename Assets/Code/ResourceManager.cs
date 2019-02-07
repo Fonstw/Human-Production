@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-    public Text coinText;
+    //public Text coinText;
     public RectTransform powerBar;
     public RectTransform foodBar;
     public Text currentComputingText;
     public Text computingTresholdText;
     public RectTransform timerBar;
     public Text timerText;
+    public OverlayInfo computingInfo;
+    public OverlayInfo timeInfo;
+    public OverlayInfo powerInfo;
+    public OverlayInfo foodInfo;
 
     public bool running = false;
 
-    private float coin, currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease, moneyTimer;
+    private float /*coin,*/ currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease, moneyTimer;
     private Vector2 powerSize, foodSize, timerSize;
 
     private float needTimer, currentTime, timeAdd, increaseAdd;
@@ -23,7 +27,7 @@ public class ResourceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coin = 1000;
+        //coin = 1000;
 
         powerSize = powerBar.sizeDelta;
         powerBar.sizeDelta = new Vector2(0, powerSize.y);
@@ -33,6 +37,7 @@ public class ResourceManager : MonoBehaviour
         timerSize = timerBar.sizeDelta;
 
         computingIncrease = 50;
+        timeInfo.args[0] = computingIncrease;
         needTimer = 60;
 
         timerText.text = "+" + computingIncrease;
@@ -43,29 +48,29 @@ public class ResourceManager : MonoBehaviour
     {
         if (running)
         {
-            //HandleTime();
-            HandleMoney();
+            HandleTime();
+            //HandleMoney();
         }
     }
 
     public bool CanPay(float cAmount, float ptAmount, float ftAmount)
     {
-        return coin >= cAmount && currentPower >= powerTreshold + ptAmount && currentFood >= foodTreshold + ftAmount;
+        return /*coin >= cAmount &&*/ currentPower >= powerTreshold + ptAmount && currentFood >= foodTreshold + ftAmount;
     }
 
     public bool Pay(float amount)
     {
-        if (coin >= amount)
-        {
-            coin -= amount;
+        //    if (coin >= amount)
+        //    {
+        //        coin -= amount;
 
-            // update text
-            coinText.text = "$ " + coin;
+        //        // update text
+        //        coinText.text = "$ " + coin;
 
-            return true;
-        }
-        else
-            return false;
+                return true;
+        //    }
+        //    else
+        //        return false;
     }
 
     public bool AdjustCurrentPower(float amount)
@@ -73,6 +78,7 @@ public class ResourceManager : MonoBehaviour
         if (currentPower + amount > powerTreshold)
         {
             currentPower += amount;
+            powerInfo.args[1] = currentPower;
 
             // update bar
             if (currentPower > 0)
@@ -88,6 +94,7 @@ public class ResourceManager : MonoBehaviour
         if (currentPower >= powerTreshold + amount)
         {
             powerTreshold += amount;
+            powerInfo.args[0] = powerTreshold;
 
             // update bar
             if (currentPower > 0)
@@ -104,6 +111,7 @@ public class ResourceManager : MonoBehaviour
         if (currentFood + amount > foodTreshold)
         {
             currentFood += amount;
+            foodInfo.args[1] = currentFood;
 
             //print("Current food: " + currentFood);
 
@@ -121,6 +129,7 @@ public class ResourceManager : MonoBehaviour
         if (currentFood >= foodTreshold + amount)
         {
             foodTreshold += amount;
+            foodInfo.args[0] = foodTreshold;
 
             //print("Food treshold: " + foodTreshold);
 
@@ -139,6 +148,7 @@ public class ResourceManager : MonoBehaviour
         if (currentComputing + amount > computingNeed)
         {
             currentComputing += amount;
+            computingInfo.args[1] = currentComputing;
             
             // update text
             currentComputingText.text = currentComputing.ToString();
@@ -151,6 +161,7 @@ public class ResourceManager : MonoBehaviour
     public bool ChangeComputingNeed(float amount)
     {
         computingNeed += amount;
+        computingInfo.args[0] = computingNeed;
 
         // update text
         computingTresholdText.text = currentComputing.ToString();
@@ -171,6 +182,7 @@ public class ResourceManager : MonoBehaviour
     private void HandleTime()
     {
         currentTime += Time.deltaTime;
+        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
 
         timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
 
@@ -183,6 +195,7 @@ public class ResourceManager : MonoBehaviour
             ChangeComputingNeed(computingIncrease);
             increaseAdd += 50;
             computingIncrease += increaseAdd;
+            timeInfo.args[0] = computingIncrease;
             timerText.text = "+" + computingIncrease;
 
             timerBar.GetComponent<AudioSource>().Play();

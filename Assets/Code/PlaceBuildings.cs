@@ -8,7 +8,6 @@ public class PlaceBuildings : MonoBehaviour {
     public float[] coinCosts;
     public float[] powerCosts;
     public float[] foodCosts;
-    public float[] buildTimes;
     public Texture2D[] cursors;
 
 	private int current = 0;

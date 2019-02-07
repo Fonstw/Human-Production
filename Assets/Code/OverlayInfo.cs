@@ -10,6 +10,8 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public string tooltipText;
     public bool topHalfOfTheScreen;
 
+    public float[] args;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +29,12 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         overlay.SetActive(true);
         overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
 
-        overlay.GetComponentInChildren<Text>().text = tooltipText.Replace("<br>", "\n");
+        string displayText = tooltipText.Replace("<br>", "\n");
+
+        for (int r = 0; r < args.Length; r++)
+            displayText = displayText.Replace("{"+r+"}", args[r].ToString());
+
+        overlay.GetComponentInChildren<Text>().text = displayText;
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
