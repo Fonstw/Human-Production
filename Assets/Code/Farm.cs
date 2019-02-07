@@ -85,6 +85,6 @@ public class Farm : MonoBehaviour {
 			}
 		}
 
-		grass.transform.localScale = new Vector3((viewRadius*2)/transform.localScale.x,grass.transform.localScale.y,(viewRadius*2)/transform.localScale.z);
+		grass.transform.localScale = new Vector3((viewRadius*2),grass.transform.localScale.y,(viewRadius*2));
 	}
 }
