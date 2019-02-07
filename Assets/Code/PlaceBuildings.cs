@@ -64,9 +64,6 @@ public class PlaceBuildings : MonoBehaviour {
             // pay up
             if (resourceManager.CanPay(powerCosts[current], foodCosts[current]))
             {
-                resourceManager.AdjustPowerTreshold(powerCosts[current]);
-                resourceManager.AdjustFoodTreshold(foodCosts[current]);
-
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
@@ -74,6 +71,9 @@ public class PlaceBuildings : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit))
                 {
                     if(hit.transform.tag == "Ground"){
+                        resourceManager.AdjustPowerTreshold(powerCosts[current]);
+                        resourceManager.AdjustFoodTreshold(foodCosts[current]);
+
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
                         yPos = -toSpawn[current].transform.localScale.y*2;
                         toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
