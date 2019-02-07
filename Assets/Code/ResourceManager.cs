@@ -16,6 +16,7 @@ public class ResourceManager : MonoBehaviour
     public OverlayInfo timeInfo;
     public OverlayInfo powerInfo;
     public OverlayInfo foodInfo;
+    public GameObject errorMessage;
 
     public bool running = false;
 
@@ -55,7 +56,22 @@ public class ResourceManager : MonoBehaviour
 
     public bool CanPay(float cAmount, float ptAmount, float ftAmount)
     {
-        return /*coin >= cAmount &&*/ currentPower >= powerTreshold + ptAmount && currentFood >= foodTreshold + ftAmount;
+        if (currentPower < powerTreshold + ptAmount)
+        {
+            errorMessage.GetComponent<Text>().text = "Need more Power!";
+            errorMessage.GetComponent<FadeOut>().FadeNow();
+
+            return false;
+        }
+        else if (currentFood < foodTreshold + ftAmount)
+        {
+            errorMessage.GetComponent<Text>().text = "Need more Food!";
+            errorMessage.GetComponent<FadeOut>().FadeNow();
+
+            return false;
+        }
+        else
+            return true;
     }
 
     public bool Pay(float amount)

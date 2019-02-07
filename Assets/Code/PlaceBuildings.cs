@@ -10,7 +10,7 @@ public class PlaceBuildings : MonoBehaviour {
     public float[] foodCosts;
     public Texture2D[] cursors;
 
-	private int current = 0;
+	private int current = -1;
     private ResourceManager resourceManager;
 
     void Start()
@@ -20,7 +20,7 @@ public class PlaceBuildings : MonoBehaviour {
 
     void Update()
     {
-        if (ShouldClick() && Input.GetMouseButtonDown(0))
+        if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0)
         {
             // pay up
             if (resourceManager.CanPay(coinCosts[current], powerCosts[current], foodCosts[current]))
