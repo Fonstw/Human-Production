@@ -119,7 +119,7 @@ public class PlaceBuildings : MonoBehaviour {
         Building.transform.position = new Vector3(Building.transform.position.x, yPos, Building.transform.position.z);
         if(yPos >= Building.transform.localScale.y / 2)
         {
-            Debug.Log("Done");
+            //Debug.Log("Done");
             building = false;
         } else
         {
