@@ -11,6 +11,10 @@ public class ResourceManager : MonoBehaviour
     public Text computingTresholdText;
     public RectTransform timerBar;
     public Text timerText;
+    public OverlayInfo computingInfo;
+    public OverlayInfo timeInfo;
+    public OverlayInfo powerInfo;
+    public OverlayInfo foodInfo;
     public GameObject errorMessage;
 
     public bool running = false;
@@ -27,6 +31,7 @@ public class ResourceManager : MonoBehaviour
         timerSize = timerBar.sizeDelta;
 
         computingIncrease = 50;
+        timeInfo.args[0] = computingIncrease;
         needTimer = 60;
 
         timerText.text = "+" + computingIncrease;
@@ -73,6 +78,7 @@ public class ResourceManager : MonoBehaviour
         if (currentPower + amount > powerTreshold)
         {
             currentPower += amount;
+            powerInfo.args[1] = currentPower;
 
             UpdatePowerText();
 
@@ -86,6 +92,7 @@ public class ResourceManager : MonoBehaviour
         if (currentPower >= powerTreshold + amount)
         {
             powerTreshold += amount;
+            powerInfo.args[0] = powerTreshold;
 
             UpdatePowerText();
 
@@ -104,6 +111,7 @@ public class ResourceManager : MonoBehaviour
         if (currentFood + amount > foodTreshold)
         {
             currentFood += amount;
+            foodInfo.args[1] = currentFood;
 
             UpdateFoodText();
 
@@ -117,6 +125,7 @@ public class ResourceManager : MonoBehaviour
         if (currentFood >= foodTreshold + amount)
         {
             foodTreshold += amount;
+            foodInfo.args[0] = foodTreshold;
 
             UpdateFoodText();
 
@@ -135,7 +144,8 @@ public class ResourceManager : MonoBehaviour
         if (currentComputing + amount > computingNeed)
         {
             currentComputing += amount;
-            
+            computingInfo.args[1] = currentComputing;
+
             // update text
             currentComputingText.text = currentComputing.ToString();
 
@@ -149,6 +159,7 @@ public class ResourceManager : MonoBehaviour
     public bool ChangeComputingNeed(float amount)
     {
         computingNeed += amount;
+        computingInfo.args[0] = computingNeed;
 
         // update text
         computingTresholdText.text = computingNeed.ToString();
@@ -178,6 +189,7 @@ public class ResourceManager : MonoBehaviour
     private void HandleTime()
     {
         currentTime += Time.deltaTime;
+        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
 
         timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
 
@@ -190,6 +202,7 @@ public class ResourceManager : MonoBehaviour
             ChangeComputingNeed(computingIncrease);
             increaseAdd += 50;
             computingIncrease += increaseAdd;
+            timeInfo.args[0] = computingIncrease;
             timerText.text = "+" + computingIncrease;
 
             progress.Play();

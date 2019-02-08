@@ -899,6 +899,10 @@ MonoBehaviour:
   computingTresholdText: {fileID: 794400307}
   timerBar: {fileID: 8688097}
   timerText: {fileID: 298603863}
+  computingInfo: {fileID: 994708880}
+  timeInfo: {fileID: 1585492439}
+  powerInfo: {fileID: 963376049}
+  foodInfo: {fileID: 1377153196}
   errorMessage: {fileID: 846739310}
   running: 1
 --- !u!82 &534669908
@@ -1731,6 +1735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 12, z: 0}
+  infoNotError: 0
 --- !u!114 &846739313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2130,17 +2135,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963376045}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61bac0fe6256357479445c6f6910df3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 1388510086}
-  tooltipText: '//=== POWER ===//<br><br>Using: {0}<br><br>Producing: {1}'
-  time: 
-  power: 0
-  food: 0
-  computing: 0
+  tooltipText: 'Using: {0}<br><br>Producing: {1}'
+  time: -1
+  power: -1
+  food: -1
+  computing: -1
   topHalfOfTheScreen: 1
   args:
   - 0
@@ -2193,17 +2198,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994708878}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61bac0fe6256357479445c6f6910df3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 1388510086}
-  tooltipText: '//=== FOOD ===//<br><br>Using: {0}<br><br>Producing: {1}'
-  time: 
-  power: 0
-  food: 0
-  computing: 0
+  tooltipText: 'Computing: {1}<br><br>Fired under: {0}'
+  time: -1
+  power: -1
+  food: -1
+  computing: -1
   topHalfOfTheScreen: 1
   args:
   - 0
@@ -2863,17 +2868,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377153192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61bac0fe6256357479445c6f6910df3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 1388510086}
-  tooltipText: '//=== FOOD ===//<br><br>Using: {0}<br><br>Producing: {1}'
-  time: 
-  power: 0
-  food: 0
-  computing: 0
+  tooltipText: 'Using: {0}<br><br>Producing: {1}'
+  time: -1
+  power: -1
+  food: -1
+  computing: -1
   topHalfOfTheScreen: 1
   args:
   - 0
@@ -2938,6 +2943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: -12, y: 12, z: 0}
+  infoNotError: 1
 --- !u!114 &1388510089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3281,18 +3287,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1585492435}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61bac0fe6256357479445c6f6910df3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 1388510086}
-  tooltipText: //=== INCREASEMENT ===//<br><br>You'll need to compute {0} more in
-    0:{1}!
-  time: 
-  power: 0
-  food: 0
-  computing: 0
+  tooltipText: You'll need to compute {0} more in 0:{1}!
+  time: -1
+  power: -1
+  food: -1
+  computing: -1
   topHalfOfTheScreen: 1
   args:
   - 0

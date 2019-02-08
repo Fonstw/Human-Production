@@ -36,12 +36,14 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
         overlay.GetComponent<MouseOverlay>().FollowMouse();
 
+        string displayText = tooltipText.Replace("<br>", "\n");
+
         for (int r = 0; r < args.Length; r++)
-            tooltipText = tooltipText.Replace("{"+r+"}", args[r].ToString());
+            displayText = displayText.Replace("{"+r+"}", args[r].ToString());
 
         Text[] texts = overlay.GetComponentsInChildren<Text>();
 
-        texts[0].text = tooltipText;
+        texts[0].text = displayText;
         texts[1].text = time;
         texts[2].text = power.ToString();
         texts[3].text = food.ToString();
