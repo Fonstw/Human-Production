@@ -3398,7 +3398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 1388510086}
-  tooltipText: You'll need to compute {0} more in 0:{1}!
+  tooltipText: You need to compute the amount in 0:{1}!
   time: -1
   power: -1
   food: -1
