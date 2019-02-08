@@ -10,7 +10,6 @@ public class ResourceManager : MonoBehaviour
     public Text currentComputingText;
     public Text computingTresholdText;
     public RectTransform timerBar;
-    public Text timerText;
     public OverlayInfo computingInfo;
     public OverlayInfo timeInfo;
     public OverlayInfo powerInfo;
@@ -31,10 +30,10 @@ public class ResourceManager : MonoBehaviour
         timerSize = timerBar.sizeDelta;
 
         computingIncrease = 50;
-        timeInfo.args[0] = computingIncrease;
+        computingInfo.args[0] = computingIncrease;
         needTimer = 60;
 
-        timerText.text = "+" + computingIncrease;
+        computingTresholdText.text = computingIncrease.ToString();
 
         progress = GetComponents<AudioSource>()[1];
     }
@@ -159,10 +158,10 @@ public class ResourceManager : MonoBehaviour
     public bool ChangeComputingNeed(float amount)
     {
         computingNeed += amount;
-        computingInfo.args[0] = computingNeed;
+        computingInfo.args[0] = computingNeed + computingIncrease;
 
         // update text
-        computingTresholdText.text = computingNeed.ToString();
+        computingTresholdText.text = computingInfo.args[0].ToString();
 
         UpdateTextColour();
 
@@ -199,11 +198,10 @@ public class ResourceManager : MonoBehaviour
             //timeAdd += 3;
             //needTimer += timeAdd;
 
-            ChangeComputingNeed(computingIncrease);
             increaseAdd += 50;
-            computingIncrease += increaseAdd;
-            timeInfo.args[0] = computingIncrease;
-            timerText.text = "+" + computingIncrease;
+            //computingIncrease += increaseAdd;
+
+            ChangeComputingNeed(computingIncrease);
 
             progress.Play();
         }
