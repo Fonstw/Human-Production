@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -198,10 +198,10 @@ public class ResourceManager : MonoBehaviour
             //timeAdd += 3;
             //needTimer += timeAdd;
 
-            increaseAdd += 50;
-            //computingIncrease += increaseAdd;
-
             ChangeComputingNeed(computingIncrease);
+
+            increaseAdd += 50;
+            computingIncrease += increaseAdd;
 
             progress.Play();
         }

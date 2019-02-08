@@ -819,7 +819,6 @@ MonoBehaviour:
   currentComputingText: {fileID: 1599656787}
   computingTresholdText: {fileID: 794400307}
   timerBar: {fileID: 8688097}
-  timerText: {fileID: 0}
   computingInfo: {fileID: 994708880}
   timeInfo: {fileID: 1585492439}
   powerInfo: {fileID: 963376049}
