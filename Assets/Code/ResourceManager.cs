@@ -18,7 +18,7 @@ public class ResourceManager : MonoBehaviour
 
     public bool running = false;
 
-    private float /*coin,*/ currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, computingIncrease, moneyTimer;
+    private float /*coin,*/ currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, moneyTimer;
     private Vector2 timerSize;
     private AudioSource progress;
 
@@ -29,11 +29,11 @@ public class ResourceManager : MonoBehaviour
     {
         timerSize = timerBar.sizeDelta;
 
-        computingIncrease = 50;
-        computingInfo.args[0] = computingIncrease;
+        increaseAdd = 50;
+        computingInfo.args[0] = computingNeed + increaseAdd;
         needTimer = 60;
 
-        computingTresholdText.text = computingIncrease.ToString();
+        computingTresholdText.text = computingInfo.args[0].ToString();
 
         progress = GetComponents<AudioSource>()[1];
     }
@@ -102,7 +102,7 @@ public class ResourceManager : MonoBehaviour
     }
     private void UpdatePowerText()
     {
-        powerText.text = powerTreshold + " / " + currentPower;
+        powerText.text = (currentPower - powerTreshold).ToString();
     }
 
     public bool AdjustCurrentFood(float amount)
@@ -135,7 +135,7 @@ public class ResourceManager : MonoBehaviour
     }
     private void UpdateFoodText()
     {
-        foodText.text = foodTreshold + " / " + currentFood;
+        foodText.text = (currentFood - foodTreshold).ToString();
     }
 
     public bool ChangeCurrentComputing(float amount)
@@ -157,8 +157,11 @@ public class ResourceManager : MonoBehaviour
     }
     public bool ChangeComputingNeed(float amount)
     {
+        print("Needed: " + computingNeed);
         computingNeed += amount;
-        computingInfo.args[0] = computingNeed + computingIncrease;
+        computingInfo.args[0] = computingNeed + increaseAdd;
+        print("Now need: " + computingNeed);
+        print("Will die under: " + (computingNeed + increaseAdd));
 
         // update text
         computingTresholdText.text = computingInfo.args[0].ToString();
@@ -179,7 +182,7 @@ public class ResourceManager : MonoBehaviour
     }
     private void UpdateTextColour()
     {
-        if (computingNeed + computingIncrease > currentComputing)
+        if (computingNeed + increaseAdd > currentComputing)
             computingTresholdText.color = new Color(1, .5f, .5f);
         else
             computingTresholdText.color = new Color(.5f, 1, .5f);
@@ -197,11 +200,9 @@ public class ResourceManager : MonoBehaviour
             currentTime = 0;
             //timeAdd += 3;
             //needTimer += timeAdd;
-
-            ChangeComputingNeed(computingIncrease);
-
+            
+            ChangeComputingNeed(increaseAdd);
             increaseAdd += 50;
-            computingIncrease += increaseAdd;
 
             progress.Play();
         }
