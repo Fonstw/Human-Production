@@ -18,23 +18,24 @@ public class ResourceManager : MonoBehaviour
 
     public bool running = false;
 
-    private float /*coin,*/ currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, moneyTimer;
+    private float currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, round=1;
     private Vector2 timerSize;
     private AudioSource progress;
 
-    private float needTimer, currentTime, /*timeAdd,*/ increaseAdd;
+    private float needTimer=60, currentTime/*, timeAdd*/;
 
     // Start is called before the first frame update
     void Start()
     {
         timerSize = timerBar.sizeDelta;
 
-        increaseAdd = 50;
-        computingInfo.args[0] = computingNeed + increaseAdd;
-        needTimer = 60;
+        SetComputingNeed(NextRequirement());
 
-        computingTresholdText.text = computingInfo.args[0].ToString();
+        computingInfo.args[0] = computingNeed;
 
+        computingTresholdText.text = computingNeed.ToString();
+
+        // Get the 2nd audio source; the first one should be the BGM
         progress = GetComponents<AudioSource>()[1];
     }
 
@@ -42,10 +43,13 @@ public class ResourceManager : MonoBehaviour
     void Update()
     {
         if (running)
-        {
             HandleTime();
-            //HandleMoney();
-        }
+    }
+
+    private float NextRequirement()
+    {
+        // triangle formula in steps of 50; e.g.: 50, 150, 300, 500...
+        return (Mathf.Pow(round, 2) + round) * 25f;
     }
 
     public bool CanPay(float ptAmount, float ftAmount)
@@ -72,6 +76,7 @@ public class ResourceManager : MonoBehaviour
             return true;
     }
 
+    // =============== CHANGE PARAMETERS =================== \\
     public bool AdjustCurrentPower(float amount)
     {
         if (currentPower + amount > powerTreshold)
@@ -140,7 +145,7 @@ public class ResourceManager : MonoBehaviour
 
     public bool ChangeCurrentComputing(float amount)
     {
-        if (currentComputing + amount > computingNeed)
+        if (currentComputing + amount > computingNeed || amount > 0)
         {
             currentComputing += amount;
             computingInfo.args[1] = currentComputing;
@@ -155,36 +160,24 @@ public class ResourceManager : MonoBehaviour
         else
             return false;
     }
-    public bool ChangeComputingNeed(float amount)
+    public void SetComputingNeed(float amount)
     {
-        print("Needed: " + computingNeed);
-        computingNeed += amount;
-        computingInfo.args[0] = computingNeed + increaseAdd;
-        print("Now need: " + computingNeed);
-        print("Will die under: " + (computingNeed + increaseAdd));
+        computingNeed = amount;
+        computingInfo.args[0] = computingNeed;
 
         // update text
-        computingTresholdText.text = computingInfo.args[0].ToString();
+        computingTresholdText.text = computingNeed.ToString();
 
         UpdateTextColour();
-
-        // kill player
-        if (computingNeed > currentComputing)
-        {
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
-        }
-
-        return true;
     }
     private void UpdateTextColour()
     {
-        if (computingNeed + increaseAdd > currentComputing)
+        // if under treshold
+        if (currentComputing < computingNeed)
+            // make red
             computingTresholdText.color = new Color(1, .5f, .5f);
-        else
+        else   // if same as or above treshold
+            // make green
             computingTresholdText.color = new Color(.5f, 1, .5f);
     }
 
@@ -197,23 +190,30 @@ public class ResourceManager : MonoBehaviour
 
         if (currentTime >= needTimer)
         {
+            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
+            PerformRequirement();
+
             currentTime = 0;
             //timeAdd += 3;
             //needTimer += timeAdd;
-            
-            ChangeComputingNeed(increaseAdd);
-            increaseAdd += 50;
+
+            // 'next round'
+            round++;
+            SetComputingNeed(NextRequirement());
 
             progress.Play();
         }
     }
 
-    //private void HandleMoney()
-    //{
-    //    if (Time.time >= moneyTimer)
-    //    {
-    //        moneyTimer = Time.time + 2;
-    //        Pay(-(currentComputing - computingNeed));
-    //    }
-    //}
+    private void PerformRequirement()
+    {
+        if (currentComputing < computingNeed)
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
+    }
 }
