@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: FMOD\setupProject\setupProject.fspro
-  SourceProjectPathUnformatted: FMOD\setupProject\setupProject.fspro
-  SourceBankPathUnformatted: FMOD\setupProject\Build
+  sourceProjectPath: FMOD\lifestock\lifestock.fspro
+  SourceProjectPathUnformatted: FMOD\lifestock\lifestock.fspro
+  SourceBankPathUnformatted: FMOD\lifestock\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
@@ -60,5 +60,6 @@ MonoBehaviour:
     Value: 32
   Plugins: []
   MasterBanks:
+  - Master Bank
   - Master Bank
   Banks: []
