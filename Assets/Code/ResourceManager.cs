@@ -24,11 +24,6 @@ public class ResourceManager : MonoBehaviour
 
     private float needTimer=60, currentTime/*, timeAdd*/;
 
-    [FMODUnity.EventRef]
-    public string backgroundMusic = "event:/Music";
-    public FMOD.Studio.EventInstance audioMusic;
-    public FMOD.Studio.ParameterInstance musicStart, musicTech;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -39,15 +34,6 @@ public class ResourceManager : MonoBehaviour
         computingInfo.args[0] = computingNeed;
 
         computingTresholdText.text = computingNeed.ToString();
-
-        // Get the 2nd audio source; the first one should be the BGM
-        //progress = GetComponents<AudioSource>()[1];
-
-        audioMusic = FMODUnity.RuntimeManager.CreateInstance(backgroundMusic);
-        audioMusic.getParameter("start", out musicStart);
-        audioMusic.getParameter("Techside", out musicTech);
-        musicStart.setValue(100);
-        audioMusic.start();
     }
 
     // Update is called once per frame
@@ -55,14 +41,6 @@ public class ResourceManager : MonoBehaviour
     {
         if (running)
             HandleTime();
-
-        if (Input.mouseScrollDelta.y != 0)
-        {
-            musicTech.getValue(out float curValue);
-
-            print("Changing Techside to: " + (curValue + Input.mouseScrollDelta.y));
-            musicTech.setValue(curValue + Input.mouseScrollDelta.y);
-        }
     }
 
     private float NextRequirement()
