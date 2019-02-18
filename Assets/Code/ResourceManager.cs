@@ -58,6 +58,8 @@ public class ResourceManager : MonoBehaviour
             errorMessage.GetComponent<Text>().text = "Need more Power!";
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
+
             return false;
         }
         else if (currentFood < foodTreshold + ftAmount)

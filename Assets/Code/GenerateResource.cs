@@ -7,9 +7,10 @@ public class GenerateResource : MonoBehaviour
     public int resourceType;   // 1=computing, 2=power, 3=food
     public int generatesAmount;
     public float buildingTime;
+    public string finishSound = "event:/FILEPATH";
 
     private ResourceManager gameManager;
-    private AudioSource buildSound;
+    private string placeSound = "event:/object_build";
     private float ownTimer;
     private bool workDone = false;
 
@@ -19,7 +20,7 @@ public class GenerateResource : MonoBehaviour
         ownTimer = Time.time + buildingTime;
 
         gameManager = FindObjectOfType<ResourceManager>();
-        buildSound = GetComponents<AudioSource>()[1];   // get 2nd sound which should be the finished-with-construction sound
+        FMODUnity.RuntimeManager.PlayOneShot(placeSound);
     }
 
     // Update is called once per frame
@@ -40,6 +41,6 @@ public class GenerateResource : MonoBehaviour
             gameManager.AdjustCurrentFood(generatesAmount);
 
         workDone = true;
-        buildSound.Play();
+        FMODUnity.RuntimeManager.PlayOneShot(finishSound);
     }
 }
