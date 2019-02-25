@@ -316,7 +316,7 @@ RectTransform:
   - {fileID: 338866666}
   - {fileID: 2137160174}
   m_Father: {fileID: 600695166}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f73eec9df19347904490ac5e030aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 251093846}
+  clickPath: event:/NAMEHERE
 --- !u!82 &251093846
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1063,7 +1063,7 @@ GameObject:
   - component: {fileID: 266715604}
   - component: {fileID: 266715603}
   m_Layer: 5
-  m_Name: SAMETO
+  m_Name: "\u30B5\u30E1\u30C8"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1083,7 +1083,7 @@ RectTransform:
   - {fileID: 1300448491}
   - {fileID: 103651393}
   m_Father: {fileID: 1244985423}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1485,7 +1485,7 @@ RectTransform:
   m_Children:
   - {fileID: 1877909510}
   m_Father: {fileID: 1244985423}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2381,9 +2381,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000048, y: 1.0000048, z: 1.0000048}
   m_Children:
+  - {fileID: 873560142}
   - {fileID: 1582526459}
   - {fileID: 89892983}
-  - {fileID: 873560142}
   m_Father: {fileID: 1518760340}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2562,7 +2562,7 @@ RectTransform:
   - {fileID: 377624949}
   - {fileID: 1995198185}
   m_Father: {fileID: 1244985423}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3330,7 +3330,7 @@ RectTransform:
   m_Children:
   - {fileID: 816474362}
   m_Father: {fileID: 600695166}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3622,7 +3622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9f73eec9df19347904490ac5e030aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickSound: {fileID: 961938063}
+  clickPath: event:/NAMEHERE
 --- !u!82 &961938063
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4336,9 +4336,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 457202603}
   - {fileID: 630273132}
   - {fileID: 266715602}
-  - {fileID: 457202603}
   m_Father: {fileID: 1518760340}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5482,7 +5482,7 @@ RectTransform:
   - {fileID: 1039206667}
   - {fileID: 1549735970}
   m_Father: {fileID: 600695166}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
