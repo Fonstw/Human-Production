@@ -20,6 +20,9 @@ public class PlaceBuildings : MonoBehaviour {
     private GameObject test;
     private Collider[] inTheWay;
     public LayerMask noFloorLayer;
+    public LayerMask waterLayer;
+    public LayerMask mineralLayer;
+    public LayerMask noMineralLayer;
     private float yPos;
     private bool building;
 
@@ -32,7 +35,7 @@ public class PlaceBuildings : MonoBehaviour {
     {
         RaycastHit hit2;
         Ray ray2 = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray2, out hit2)){
+        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, noMineralLayer)){
             if(hit2.transform.tag == "Ground"){
                 mouseTarget.transform.position = new Vector3(hit2.point.x, mouseTarget.transform.position.y, hit2.point.z);
                 if (mouseTarget.childCount <= 0 && current >= 0){
@@ -69,7 +72,7 @@ public class PlaceBuildings : MonoBehaviour {
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
 
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, noMineralLayer))
                 {
                     if(hit.transform.tag == "Ground"){
                         resourceManager.AdjustPowerTreshold(powerCosts[current]);
@@ -103,7 +106,19 @@ public class PlaceBuildings : MonoBehaviour {
 
     private bool ShouldClick()
     {
+        if(current == 1){
+            Collider[] visibles = Physics.OverlapSphere(test.transform.position, 10, waterLayer);
+            if(visibles.Length <= 0){
+                return false;
+            }
+        }
 
+        if(current == 3){
+            Collider[] visibles = Physics.OverlapSphere(test.transform.position, 4, mineralLayer);
+            if(visibles.Length <= 0){
+                return false;
+            }
+        }
         // reference size for scalable UI is 768 pixels
         // in which case the button bar will be 150 pixels
         // now scale along with actual screen height
