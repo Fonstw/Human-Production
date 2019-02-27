@@ -1,48 +1,65 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillManager : MonoBehaviour
 {
+    // buttons from the skill tree
+    public Button[] skillButtons;
+    
+    private SkillClass[] skills;   // the SkillClass component (.cs script) on each button
     // serialized so it can be set from the editor
-    [SerializeField] private SkillClass[] skills;
-    private int[] researching;   // [0]=biologist, [1]=engineer, etc. Means which skill-ID is being researched by each type
+    [SerializeField] private int[] researching;   // [0]=biologist, [1]=engineer, etc. Means which skill-ID is being researched by each type
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // we'll have as many skills as there are buttons for it (hopefully)
+        skills = new SkillClass[skillButtons.Length];
+
+        // now actually copy those classes for easy access
+        for (int s = 0; s < skillButtons.Length; s++)
+        {
+            skills[s] = skillButtons[s].GetComponent<SkillClass>();
+
+            // if the skill has not yet been unlocked
+            if (skills[s].state == 0)
+                // make the button in question un-clickable
+                skillButtons[s].interactable = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (int skill in researching)
+        foreach (int r in researching)
         {
-            // research skill
-            if (skills[skill].Research(1000f / 60f * Time.deltaTime))
+            // if researching AT ALL (-1 = not researching)
+            if (r >= 0)
             {
-                // you get here if it's done!
+                // put research into skill
+                if (skills[r].Research(2000f /*/ 60f*/ * Time.deltaTime))
+                {   // you only get here if the skill's done!
 
+                    // make the button of the just-researched skill un-clickable again...
+                    skillButtons[r].interactable = false;
+
+                    // foreach locked skill the researched one should unlock
+                    foreach (int u in skills[r].unlocks)
+                    {
+                        // make its button clickable again!
+                        skillButtons[u].interactable = true;
+                    }
+                }
             }
-
         }
     }
 
-    public bool UnlockSkill(int i)
+    public void ResearchSkill(int i)
     {
-        // if skill has already been unlocked...
-        if (skills[i].active)
-            return false;
-        else   // so the skill hasn't been unlocked yet...
-        {
-            // put the right PodHeads into this skill (by ID)
-            // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
-            researching[(int)skills[i].requirement[0]] = i;
-
-
-
-            return true;
-        }
+        // put the right PodHeads into this skill (by ID)
+        // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
+        researching[(int)skills[i].requirement[0]] = i;
     }
 }
