@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03200dea8cd2b484aa140d7c0643f1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundTypes:
+    serializedVersion: 2
+    m_Bits: 16384
   resourceType: 3
   generatesAmount: 20
   buildingTime: 2
