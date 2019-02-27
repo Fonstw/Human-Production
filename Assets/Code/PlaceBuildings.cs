@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlaceBuildings : MonoBehaviour {
-
+    [HideInInspector]
+    public List<GameObject> placedBuildings = new List<GameObject>();
     public GameObject[] testSpawns;
     public GameObject[] toSpawn;
     public float[] powerCosts;
@@ -75,6 +76,10 @@ public class PlaceBuildings : MonoBehaviour {
                         resourceManager.AdjustFoodTreshold(foodCosts[current]);
 
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
+
+                        //Add building to list for easy check
+                        placedBuildings.Add(toSpawn[current].gameObject);
+
                         yPos = -toSpawn[current].transform.localScale.y*2 - spawnOffsets[current];
                         toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
                         StartCoroutine(BuildBuidling(toSpawn[current]));
@@ -129,4 +134,69 @@ public class PlaceBuildings : MonoBehaviour {
         }
     }
 
+
+    public void TechTree(int item){
+        switch (item){
+            //Human Intervention
+            case 0:
+            StartCoroutine(WaitForUpgrade(item,30));
+            break;
+            //What the People want
+            case 1:
+            StartCoroutine(WaitForUpgrade(item,90));
+            break;
+            //Some are more equal than others
+            case 2:
+            StartCoroutine(WaitForUpgrade(item,120));
+            break;
+
+            //Mineral Combustion Plants
+            case 3:
+            StartCoroutine(WaitForUpgrade(item,25));
+            break;
+            //Carbon Power Plants
+            case 4:
+            StartCoroutine(WaitForUpgrade(item,75));
+            break;
+            //Ground
+            case 5:
+            StartCoroutine(WaitForUpgrade(item,150));
+            break;
+        }
+    }
+
+    IEnumerator WaitForUpgrade(int item, int seconds){
+        yield return new WaitForSeconds(seconds);
+        TechTreeActive(item);
+    }
+
+    private void TechTreeActive(int item){
+        switch (item){
+            //Human Intervention
+            case 0:
+            Debug.Log("Human Intervention Update");
+            break;
+            //What the People want
+            case 1:
+            Debug.Log("What the People want Update");
+            break;
+            //Some are more equal than others
+            case 2:
+            Debug.Log("Some are more equal than others Update");
+            break;
+
+            //Mineral Combustion Plants
+            case 3:
+            Debug.Log("Mineral Combustion Plants Update");
+            break;
+            //Carbon Power Plants
+            case 4:
+            Debug.Log("Carbon Power Plants Update");
+            break;
+            //Ground
+            case 5:
+            Debug.Log("Ground Update");
+            break;
+        }
+    }
 }
