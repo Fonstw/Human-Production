@@ -24,8 +24,8 @@ public class ResourceManager : MonoBehaviour
 
     // resources
     private float currentPower, powerTreshold, currentFood, foodTreshold/*, round=1*/;
-    // researches; serialized so the array size can be set from the editor
-    [SerializeField] private float[] researches;
+    // how much of each can be researched per minute
+    public float[] researches;
     //private Vector2 timerSize;
     //private AudioSource progress;
 

@@ -12,6 +12,8 @@ public class SkillManager : MonoBehaviour
     // serialized so it can be set from the editor
     [SerializeField] private int[] researching;   // [0]=biologist, [1]=engineer, etc. Means which skill-ID is being researched by each type
 
+    private ResourceManager gameManager;   // to get the research-amounts from
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,9 @@ public class SkillManager : MonoBehaviour
                 // make the button in question un-clickable
                 skillButtons[s].interactable = false;
         }
+
+        // find the fist instatiated object's ResourceManager component (.cs script)
+        gameManager = FindObjectOfType<ResourceManager>();
     }
 
     // Update is called once per frame
@@ -38,9 +43,13 @@ public class SkillManager : MonoBehaviour
             // if researching AT ALL (-1 = not researching)
             if (r >= 0)
             {
-                // put research into skill
-                if (skills[r].Research(2000f /*/ 60f*/ * Time.deltaTime))
+                // put the proper amount of research into the skill
+                if (skills[r].Research(gameManager.researches[(int)skills[r].requirement[0]] /*/ 60f*/ * Time.deltaTime))
                 {   // you only get here if the skill's done!
+
+                    // stop researching this thing
+                    // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
+                    researching[(int)skills[r].requirement[0]] = -1;
 
                     // make the button of the just-researched skill un-clickable again...
                     skillButtons[r].interactable = false;
@@ -59,7 +68,7 @@ public class SkillManager : MonoBehaviour
     public void ResearchSkill(int i)
     {
         // put the right PodHeads into this skill (by ID)
-        // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
+        // again, (int) 'cos I'm stupid
         researching[(int)skills[i].requirement[0]] = i;
     }
 }
