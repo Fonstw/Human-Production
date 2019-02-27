@@ -1509,6 +1509,9 @@ ModelImporter:
     103006: Water|Plant|Dupli|998
     103008: Base.002
     103010: Orb
+    103012: Farm_Base
+    103014: Plants
+    103016: Sprinkler
     400000: Base
     400002: //RootNode
     400004: Sprinkler.001
@@ -3015,6 +3018,9 @@ ModelImporter:
     403006: Water|Plant|Dupli|998
     403008: Base.002
     403010: Orb
+    403012: Farm_Base
+    403014: Plants
+    403016: Sprinkler
     2100000: Metal_Dark
     2100002: Metal
     2100004: Water
@@ -4527,6 +4533,9 @@ ModelImporter:
     2303004: Water|Plant|Dupli|998
     2303006: Base.002
     2303008: Orb
+    2303010: Farm_Base
+    2303012: Plants
+    2303014: Sprinkler
     3300000: Base
     3300002: Sprinkler.001
     3300004: Water
@@ -6032,6 +6041,9 @@ ModelImporter:
     3303004: Water|Plant|Dupli|998
     3303006: Base.002
     3303008: Orb
+    3303010: Farm_Base
+    3303012: Plants
+    3303014: Sprinkler
     4300000: Base
     4300002: Water
     4300004: Water|Plant|Dupli|
@@ -6039,6 +6051,9 @@ ModelImporter:
     4300008: Sprinkler.001
     4300010: Base.002
     4300012: Orb
+    4300014: Farm_Base
+    4300016: Sprinkler
+    4300018: Plants
     7400000: Sprinkler.001|Cube.001Action.000
     7400002: Sprinkler.001|Cube.001Action.001
     7400004: Sprinkler.001|Cube.001Action.001 (1)
@@ -6131,6 +6146,7 @@ ModelImporter:
     globalScale: 0.7
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -6155,6 +6171,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -6169,7 +6188,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

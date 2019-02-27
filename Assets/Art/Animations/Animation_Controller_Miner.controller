@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Animation_Controller_Farm
+  m_Name: Animation_Controller_Miner
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -30,7 +30,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: "\x01"
-  m_Speed: 0.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -42,7 +42,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400002, guid: fa79f9505cb906145b0cae1fa6498d2b, type: 3}
+  m_Motion: {fileID: 7400000, guid: 2cc32419cfa13be41a8ea71b13079445, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
