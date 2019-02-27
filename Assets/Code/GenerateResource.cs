@@ -33,12 +33,12 @@ public class GenerateResource : MonoBehaviour
 
     private void WorkIt()
     {
-        if (resourceType == 1)   // computing
-            gameManager.ChangeCurrentComputing(generatesAmount);
-        if (resourceType == 2)   // power
+        if (resourceType == 1)   // power
             gameManager.AdjustCurrentPower(generatesAmount);
-        else if (resourceType == 3)   // food
+        else if (resourceType == 2)   // food
             gameManager.AdjustCurrentFood(generatesAmount);
+        else if (resourceType > 2)   // bioResearch
+        gameManager.ChangeCurrentComputing(resourceType - 3, generatesAmount);
 
         workDone = true;
         FMODUnity.RuntimeManager.PlayOneShot(finishSound);

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03200dea8cd2b484aa140d7c0643f1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: 2
+  resourceType: 1
   generatesAmount: 100
   buildingTime: 3
   finishSound: event:/Power_ready

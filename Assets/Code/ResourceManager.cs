@@ -18,29 +18,30 @@ public class ResourceManager : MonoBehaviour
 
     public bool running = false;
 
-    private float currentPower, powerTreshold, currentFood, foodTreshold, currentComputing, computingNeed, round=1;
-    private Vector2 timerSize;
+    private float currentPower, powerTreshold, currentFood, foodTreshold, round=1;
+    [SerializeField] private float[] researches;
+    //private Vector2 timerSize;
     private AudioSource progress;
 
-    private float needTimer=60, currentTime/*, timeAdd*/;
+    //private float needTimer=60, currentTime, timeAdd;
 
     // Start is called before the first frame update
     void Start()
     {
-        timerSize = timerBar.sizeDelta;
+        //timerSize = timerBar.sizeDelta;
 
-        SetComputingNeed(NextRequirement());
+        //SetComputingNeed(NextRequirement());
 
-        computingInfo.args[0] = computingNeed;
+        //computingInfo.args[0] = computingNeed;
 
-        computingTresholdText.text = computingNeed.ToString();
+        //computingTresholdText.text = computingNeed.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (running)
-            HandleTime();
+        //if (running)
+        //    HandleTime();
     }
 
     private float NextRequirement()
@@ -142,78 +143,79 @@ public class ResourceManager : MonoBehaviour
         foodText.text = (currentFood - foodTreshold).ToString();
     }
 
-    public bool ChangeCurrentComputing(float amount)
+    public bool ChangeCurrentComputing(int type, float amount)
     {
-        if (currentComputing + amount > computingNeed || amount > 0)
+        if (researches[type] + amount >= 0)
         {
-            currentComputing += amount;
-            computingInfo.args[1] = currentComputing;
+            researches[type] += amount;
+            print("Research " + type + " raised to " + researches[type]);
+            //computingInfo.args[1] = currentComputing;
 
             // update text
-            currentComputingText.text = currentComputing.ToString();
+            //currentComputingText.text = currentComputing.ToString();
 
-            UpdateTextColour();
+            //UpdateTextColour();
 
             return true;
         }
         else
             return false;
     }
-    public void SetComputingNeed(float amount)
-    {
-        computingNeed = amount;
-        computingInfo.args[0] = computingNeed;
+    //public void SetComputingNeed(float amount)
+    //{
+    //    computingNeed = amount;
+    //    computingInfo.args[0] = computingNeed;
 
-        // update text
-        computingTresholdText.text = computingNeed.ToString();
+    //    // update text
+    //    computingTresholdText.text = computingNeed.ToString();
 
-        UpdateTextColour();
-    }
-    private void UpdateTextColour()
-    {
-        // if under treshold
-        if (currentComputing < computingNeed)
-            // make red
-            computingTresholdText.color = new Color(1, .5f, .5f);
-        else   // if same as or above treshold
-            // make green
-            computingTresholdText.color = new Color(.5f, 1, .5f);
-    }
+    //    UpdateTextColour();
+    //}
+    //private void UpdateTextColour()
+    //{
+    //    // if under treshold
+    //    if (currentComputing < computingNeed)
+    //        // make red
+    //        computingTresholdText.color = new Color(1, .5f, .5f);
+    //    else   // if same as or above treshold
+    //        // make green
+    //        computingTresholdText.color = new Color(.5f, 1, .5f);
+    //}
 
-    private void HandleTime()
-    {
-        currentTime += Time.deltaTime;
-        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
+//    private void HandleTime()
+//    {
+//        currentTime += Time.deltaTime;
+//        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
 
-        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
+//        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
 
-        if (currentTime >= needTimer)
-        {
-            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
-            PerformRequirement();
+//        if (currentTime >= needTimer)
+//        {
+//            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
+//            PerformRequirement();
 
-            currentTime = 0;
-            //timeAdd += 3;
-            //needTimer += timeAdd;
+//            currentTime = 0;
+//            //timeAdd += 3;
+//            //needTimer += timeAdd;
 
-            // 'next round'
-            round++;
-            SetComputingNeed(NextRequirement());
+//            // 'next round'
+//            round++;
+//            SetComputingNeed(NextRequirement());
 
-            //progress.Play();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
-        }
-    }
+//            //progress.Play();
+//            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
+//        }
+//    }
 
-    private void PerformRequirement()
-    {
-        if (currentComputing < computingNeed)
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
-        }
-    }
+//    private void PerformRequirement()
+//    {
+//        if (currentComputing < computingNeed)
+//        {
+//#if UNITY_EDITOR
+//            UnityEditor.EditorApplication.isPlaying = false;
+//#else
+//            Application.Quit();
+//#endif
+//        }
+//    }
 }

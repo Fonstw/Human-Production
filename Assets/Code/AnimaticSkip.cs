@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class AnimaticSkip : MonoBehaviour
 {
@@ -21,5 +22,8 @@ public class AnimaticSkip : MonoBehaviour
             Debug.Log(playableDirector.time);
             playableDirector.time += clipTime - (playableDirector.time % clipTime);
         }
+
+        if (playableDirector.time > playableDirector.duration)
+            SceneManager.LoadScene(1);
     }
 }
