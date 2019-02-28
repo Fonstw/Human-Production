@@ -43,7 +43,10 @@ public class PlaceBuildings : MonoBehaviour {
                 mouseTarget.transform.position = new Vector3(hit2.point.x, mouseTarget.transform.position.y, hit2.point.z);
                 if (mouseTarget.childCount <= 0 && current >= 0){
                     currentHolder = current;
-                    test = Instantiate(testSpawns[current], mouseTarget.transform.position, testSpawns[current].transform.rotation);
+                    if (current > 3)   // alt pod
+                        test = Instantiate(testSpawns[0], mouseTarget.transform.position, testSpawns[0].transform.rotation);
+                    else
+                        test = Instantiate(testSpawns[current], mouseTarget.transform.position, testSpawns[current].transform.rotation);
                     if (test.GetComponent<Collider>())
                     {
                         test.GetComponent<Collider>().enabled = false;
@@ -68,8 +71,16 @@ public class PlaceBuildings : MonoBehaviour {
 
         if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0)
         {
+            int tempCurrent;
+
+            // alt pods
+            if (current > 3)
+                tempCurrent = 0;
+            else
+                tempCurrent = current;
+
             // pay up
-            if (resourceManager.CanPay(powerCosts[current], foodCosts[current]))
+            if (resourceManager.CanPay(powerCosts[tempCurrent], foodCosts[tempCurrent]))
             {
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
@@ -78,15 +89,15 @@ public class PlaceBuildings : MonoBehaviour {
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, noMineralLayer))
                 {
                     if(hit.transform.tag == "Ground"){
-                        resourceManager.AdjustPowerTreshold(powerCosts[current]);
-                        resourceManager.AdjustFoodTreshold(foodCosts[current]);
+                        resourceManager.AdjustPowerTreshold(powerCosts[tempCurrent]);
+                        resourceManager.AdjustFoodTreshold(foodCosts[tempCurrent]);
 
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
 
                         //Add building to list for easy check
                         placedBuildings.Add(toSpawn[current].gameObject);
 
-                        yPos = -toSpawn[current].transform.localScale.y*2 - spawnOffsets[current];
+                        yPos = -toSpawn[current].transform.localScale.y*2 - spawnOffsets[tempCurrent];
                         toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
                         StartCoroutine(BuildBuidling(toSpawn[current]));
                         building = true;

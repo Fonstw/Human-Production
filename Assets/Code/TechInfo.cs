@@ -61,5 +61,20 @@ public class TechInfo : OverlayInfo
         texts[1].text = "\n" + requireAmount + " " + requireWho;
         texts[2].text = "\n\n" + functionalDescription;
         texts[3].text = "\n\n\n\n" + flavourText;
+
+        switch (requireWho)
+        {
+            case "Biologist":
+                texts[1].color = new Color(.5f, 1, .5f);
+                break;
+
+            case "Engineer":
+                texts[1].color = new Color(1, 1, .5f);
+                break;
+            
+            default:
+                texts[1].color = Color.white;
+                break;
+        }
     }
 }

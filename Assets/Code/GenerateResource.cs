@@ -25,12 +25,6 @@ public class GenerateResource : MonoBehaviour
         gameManager = FindObjectOfType<ResourceManager>();
         // play sound when placed onto the ground
         FMODUnity.RuntimeManager.PlayOneShot(placeSound);
-
-        // ======== TEMPORARY CODE ======== \\
-        // if research...
-        if (resourceType > 2)
-            // randomly choose to be either Biologist or Engineer type
-            resourceType = 3 + Random.Range(0, 2);
     }
 
     // Update is called once per frame
