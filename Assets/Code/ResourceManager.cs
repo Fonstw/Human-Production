@@ -106,6 +106,34 @@ public class ResourceManager : MonoBehaviour
             return true;
     }
 
+    public bool CanPlaceGenerator(bool waterClose)
+    {
+        if (!waterClose)
+        {
+            errorMessage.GetComponent<Text>().text = "Place close to water";
+            errorMessage.GetComponent<FadeOut>().FadeNow();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    public bool CanPlaceMine(bool mineralClose)
+    {
+        if (!mineralClose)
+        {
+            errorMessage.GetComponent<Text>().text = "Place only on minerals";
+            errorMessage.GetComponent<FadeOut>().FadeNow();
+            return false;
+        } else
+        {
+            return true;
+        }
+    }
+
+
+
     // =============== CHANGE PARAMETERS =================== \\
     public bool AdjustCurrentPower(float amount)
     {

@@ -30,16 +30,18 @@ public class GenerateResource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if not built yet and passed the building time...
-        if (!workDone && Time.time > ownTimer)
-            WorkIt();
-
         RaycastHit hit;
-        if(Physics.Raycast(transform.position, -transform.up, out hit, 10, groundTypes)){
-            if(hit.transform.GetComponent<GroundType>()){
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 10, groundTypes))
+        {
+            if (hit.transform.GetComponent<GroundType>())
+            {
                 groundUnderneath = hit.transform.GetComponent<GroundType>().groundType;
             }
         }
+
+        // if not built yet and passed the building time...
+        if (!workDone && Time.time > ownTimer)
+            WorkIt();
     }
 
     // function to call when done building; this function gives resource to the game manager
@@ -49,11 +51,11 @@ public class GenerateResource : MonoBehaviour
             gameManager.AdjustCurrentPower(generatesAmount);
         }
         else if (resourceType == 2) {// food
-            if(groundUnderneath != GroundTypes.Grass){
-                generatesAmount =  generatesAmount/2;
+            if(groundUnderneath != GroundTypes.Grass) { 
+                gameManager.AdjustCurrentFood(generatesAmount/2);
+            } else {
+                gameManager.AdjustCurrentFood(generatesAmount);
             }
-            gameManager.AdjustCurrentFood(generatesAmount);
-            generatesAmount = generatesAmount*2;
         }
         else if (resourceType > 2){   // research
         gameManager.ChangeCurrentComputing(resourceType - 3, generatesAmount);   //3=type[0], 4=type[1], 5=type[2] etc.
