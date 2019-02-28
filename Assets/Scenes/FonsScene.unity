@@ -1073,6 +1073,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerText: {fileID: 1802664578}
   foodText: {fileID: 2097851317}
+  currentComputingText:
+  - {fileID: 4248024166294370362}
+  - {fileID: 1828036239030753471}
   powerMod: 1
   powerInfo: {fileID: 963376049}
   foodInfo: {fileID: 1377153196}
@@ -3906,7 +3909,7 @@ MonoBehaviour:
   time: 2 sec
   power: -10
   food: -2
-  computing: 20
+  computing: 1000
   topHalfOfTheScreen: 0
   args: []
 --- !u!1 &1802664577
@@ -4530,6 +4533,30 @@ RectTransform:
   m_AnchoredPosition: {x: 25, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1828036239030753471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1828036239030753471, guid: 18f319e9ea150e7429ab1c20e1b2ef64,
+    type: 3}
+  m_PrefabInstance: {fileID: 5321344854539490695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4248024166294370362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4248024166294370362, guid: 18f319e9ea150e7429ab1c20e1b2ef64,
+    type: 3}
+  m_PrefabInstance: {fileID: 5321344854539490695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5321344854539490695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4541,6 +4568,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SkillTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321344855843706201, guid: 18f319e9ea150e7429ab1c20e1b2ef64,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5321344854800193626, guid: 18f319e9ea150e7429ab1c20e1b2ef64,
         type: 3}
@@ -4687,30 +4719,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 534669906}
-    - target: {fileID: 1042819791, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
-      propertyPath: skillID
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 501518240, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
-      propertyPath: skillID
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1611617710, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
-      propertyPath: skillID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 554478520, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
-      propertyPath: skillID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 612011339, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
-      propertyPath: skillID
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1664919185, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
-      propertyPath: skillID
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
 --- !u!1 &5321344854539490696 stripped

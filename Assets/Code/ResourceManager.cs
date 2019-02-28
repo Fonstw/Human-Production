@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
-    // UI.Texts to display power and food in
+    // UI.Texts to display resources in
     public Text powerText;
     public Text foodText;
-    //public Text currentComputingText;
+    public Text[] currentComputingText;
     //public Text computingTresholdText;
     //public RectTransform timerBar;
     //public OverlayInfo computingInfo;
@@ -256,7 +256,7 @@ public class ResourceManager : MonoBehaviour
             //computingInfo.args[1] = currentComputing;
 
             // update text
-            //currentComputingText.text = currentComputing.ToString();
+            currentComputingText[type].text = (researches[type] * researchMod[type]).ToString();
 
             //UpdateTextColour();
 
