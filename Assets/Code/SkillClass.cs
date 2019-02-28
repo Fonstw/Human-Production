@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkillClass : MonoBehaviour
 {
+    public int skillID = -1;   // which skill it is, for resolving later on
     public string skillName = "Henk";   // name to show in-game
     public float[] requirement = { 0, 2000 };   // [0]=type of research, [1]=amount of research
     public string functionalDescription = "This is a dummy skill, which means that the devs haven't set the skill properly";   // tells what it does in human-language
@@ -40,6 +41,38 @@ public class SkillClass : MonoBehaviour
         // if not finished yet...
         if (state != 2)
         {
+            // play out effects
+            switch (skillID)
+            {
+                case 0:   // Un-Human intervetion
+                    FindObjectOfType<ResourceManager>().ChangeAllMods(.25f);
+                    break;
+
+                case 1:   // What The People Want
+                    FindObjectOfType<ResourceManager>().ChangeAllMods(.1f);
+                    break;
+
+                case 2:   // Some Are More Equal Than Others
+                    FindObjectOfType<ResourceManager>().researchMod[1] += .5f;
+                    break;
+
+                case 3:   // Toxium Mineral Combustion Plants
+                    FindObjectOfType<PlaceBuildings>().toxiumMineralCombustionPlants = true;
+                    break;
+
+                case 4:   // Toxium Carbonate Plants
+                    FindObjectOfType<ResourceManager>().AdjustPowerMod(.35f);
+                    break;
+
+                case 5:   // Ground
+                    print("We now know where to connect the ground, guys! The Future Is Here®");
+                    break;
+
+                default:
+                    Debug.LogError("skillID not set!");
+                    break;
+            }
+
             // finished
             state = 2;
             // and tell whoever called this function that yes, this skill has now been finished!
@@ -58,7 +91,7 @@ public class SkillClass : MonoBehaviour
             // substract that bit from it
             requirement[1] -= amount;
 
-            print((skillName) + (requirement[1]) + " left to research.");
+            print((skillName) + " has " + (requirement[1]) + " left to research.");
 
             // tell whoever called this function that no, this skill is not done yet...
             return false;

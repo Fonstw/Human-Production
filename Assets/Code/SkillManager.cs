@@ -43,13 +43,19 @@ public class SkillManager : MonoBehaviour
             // if researching AT ALL (-1 = not researching)
             if (r >= 0)
             {
-                // put the proper amount of research into the skill
-                if (skills[r].Research(gameManager.researches[(int)skills[r].requirement[0]] /*/ 60f*/ * Time.deltaTime))
+                // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
+                int i = (int)skills[r].requirement[0];
+
+                // put the proper amount of research into the skill, multiplied and all
+                // "/60f" because it's on minute-basis
+                if (skills[r].Research(gameManager.researches[i] * gameManager.researchMod[i] / 60f * Time.deltaTime))
                 {   // you only get here if the skill's done!
 
                     // stop researching this thing
-                    // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
-                    researching[(int)skills[r].requirement[0]] = -1;
+                    researching[i] = -1;
+
+                    // play out skill effects
+                    skills[r].Finish();
 
                     // make the button of the just-researched skill un-clickable again...
                     skillButtons[r].interactable = false;
@@ -57,6 +63,9 @@ public class SkillManager : MonoBehaviour
                     // foreach locked skill the researched one should unlock
                     foreach (int u in skills[r].unlocks)
                     {
+                        // tell their classes they've been unlocked
+                        skills[u].Unlock();
+
                         // make its button clickable again!
                         skillButtons[u].interactable = true;
                     }

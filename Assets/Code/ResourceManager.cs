@@ -13,6 +13,8 @@ public class ResourceManager : MonoBehaviour
     //public RectTransform timerBar;
     //public OverlayInfo computingInfo;
     //public OverlayInfo timeInfo;
+    // needed for the tech "Toxium Carbonate Power Plants"
+    public float powerMod = 1f;
 
     // OverInfo components (.cs scripts) to show a verbose info overlay on mouse hover
     public OverlayInfo powerInfo;
@@ -26,6 +28,8 @@ public class ResourceManager : MonoBehaviour
     private float currentPower, powerTreshold, currentFood, foodTreshold/*, round=1*/;
     // how much of each can be researched per minute
     public float[] researches;
+    // multiplier of how much each type researches
+    public float[] researchMod;
     //private Vector2 timerSize;
     //private AudioSource progress;
 
@@ -41,6 +45,12 @@ public class ResourceManager : MonoBehaviour
         //computingInfo.args[0] = computingNeed;
 
         //computingTresholdText.text = computingNeed.ToString();
+
+        // we're going to have a Modifier for each research type
+        researchMod = new float[researches.Length];
+        // and they're going to be ×1 by default
+        for (int m = 0; m < researches.Length; m++)
+            researchMod[m] = 1;
     }
 
     // Update is called once per frame
@@ -99,6 +109,11 @@ public class ResourceManager : MonoBehaviour
     // =============== CHANGE PARAMETERS =================== \\
     public bool AdjustCurrentPower(float amount)
     {
+        // if the amount is a positive value
+        if (amount >= 1)
+            // multiply it my the powerModifier
+            amount *= powerMod;
+
         // in case power goes down; it shouldn't "cause a blackout"
         if (currentPower + amount > powerTreshold)
         {
@@ -141,6 +156,20 @@ public class ResourceManager : MonoBehaviour
     {
         // UI.Text.text = 'how much power left'
         powerText.text = (currentPower - powerTreshold).ToString();
+    }
+    public bool AdjustPowerMod(float change)
+    {
+        // adjust all power so far
+        if (AdjustCurrentPower(currentPower * change))
+        {
+            // if that succeeds, actually change the Modifier
+            powerMod += change;
+            // and tell whoever called this function that yes, the change has been made!
+            return true;
+        }
+        else   // if that couldn't be possible
+            // tell whoever called this function that no, the change hasn't been made!
+            return false;
     }
 
     public bool AdjustCurrentFood(float amount)
@@ -210,6 +239,17 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, the research per minute couldn't go down that much...
             return false;
     }
+
+    public void ChangeMod(int id, float amount)
+    {
+        researchMod[id] += amount;
+    }
+    public void ChangeAllMods(float amount)
+    {
+        for (int m = 0; m < researchMod.Length; m++)
+            researchMod[m] += amount;
+    }
+
     //public void SetComputingNeed(float amount)
     //{
     //    computingNeed = amount;

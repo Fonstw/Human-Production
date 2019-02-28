@@ -47,7 +47,7 @@ MonoBehaviour:
   resourceType: 1
   generatesAmount: 200
   buildingTime: 3
-  finishSound: event:/FILEPATH
+  finishSound: event:/Notification
   groundTypes:
     serializedVersion: 2
     m_Bits: 16384

@@ -291,13 +291,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: -1
   skillName: Ground
   requirement:
   - 1
   - 12500
   functionalDescription: Power Plants no longer shut down from excess power demand.
+    TECH DOESN'T WORK YET
   flavourText: If you thought we would have figured out where to connect the ground
-    sooner, you were wrong.
+    sooner, you were wrong. WE STILL HAVEN'T FIGURED IT OUT, GUYS
   state: 0
   unlocks: 
 --- !u!1 &5321344854624066134
@@ -578,7 +580,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 5321344855843706201}
         m_MethodName: SetActive
@@ -747,6 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: -1
   skillName: Toxium Carbonate Power Plants
   requirement:
   - 1
@@ -1210,6 +1213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: -1
   skillName: What The People Want
   requirement:
   - 0
@@ -1591,6 +1595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: -1
   skillName: Un-human Intervention
   requirement:
   - 0
@@ -1983,6 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: -1
   skillName: Toxium Mineral Combustion Plants
   requirement:
   - 1
@@ -2177,6 +2183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillID: -1
   skillName: Some Are More Equal Than Others
   requirement:
   - 0

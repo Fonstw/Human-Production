@@ -25,6 +25,9 @@ public class PlaceBuildings : MonoBehaviour {
     public LayerMask noMineralLayer;
     private float yPos;
     private bool building;
+    
+    // required for a Tech from the Tech Tree; makes sure the Miners don't or do generate Power as well
+    public bool toxiumMineralCombustionPlants = false;
 
     void Start()
     {
@@ -87,6 +90,12 @@ public class PlaceBuildings : MonoBehaviour {
                         toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
                         StartCoroutine(BuildBuidling(toSpawn[current]));
                         building = true;
+                        
+                        // ======== TEMPORARY CODE ======== \\
+                        // if spanwed Miner and it should generate power...
+                        if (current == 3 && toxiumMineralCombustionPlants)
+                            // make sure it acutally does generate power
+                            toSpawn[current].GetComponent<GenerateResource>().enabled = true;
                     }
 
                     //toSpawn[current].transform.localScale.y/2
@@ -148,70 +157,69 @@ public class PlaceBuildings : MonoBehaviour {
             building = true;
         }
     }
+    
+    //public void TechTree(int item){
+    //    switch (item){
+    //        //Human Intervention
+    //        case 0:
+    //        StartCoroutine(WaitForUpgrade(item,30));
+    //        break;
+    //        //What the People want
+    //        case 1:
+    //        StartCoroutine(WaitForUpgrade(item,90));
+    //        break;
+    //        //Some are more equal than others
+    //        case 2:
+    //        StartCoroutine(WaitForUpgrade(item,120));
+    //        break;
 
+    //        //Mineral Combustion Plants
+    //        case 3:
+    //        StartCoroutine(WaitForUpgrade(item,25));
+    //        break;
+    //        //Carbon Power Plants
+    //        case 4:
+    //        StartCoroutine(WaitForUpgrade(item,75));
+    //        break;
+    //        //Ground
+    //        case 5:
+    //        StartCoroutine(WaitForUpgrade(item,150));
+    //        break;
+    //    }
+    //}
 
-    public void TechTree(int item){
-        switch (item){
-            //Human Intervention
-            case 0:
-            StartCoroutine(WaitForUpgrade(item,30));
-            break;
-            //What the People want
-            case 1:
-            StartCoroutine(WaitForUpgrade(item,90));
-            break;
-            //Some are more equal than others
-            case 2:
-            StartCoroutine(WaitForUpgrade(item,120));
-            break;
+    //IEnumerator WaitForUpgrade(int item, int seconds){
+    //    yield return new WaitForSeconds(seconds);
+    //    TechTreeActive(item);
+    //}
 
-            //Mineral Combustion Plants
-            case 3:
-            StartCoroutine(WaitForUpgrade(item,25));
-            break;
-            //Carbon Power Plants
-            case 4:
-            StartCoroutine(WaitForUpgrade(item,75));
-            break;
-            //Ground
-            case 5:
-            StartCoroutine(WaitForUpgrade(item,150));
-            break;
-        }
-    }
+    //private void TechTreeActive(int item){
+    //    switch (item){
+    //        //Human Intervention
+    //        case 0:
+    //        Debug.Log("Human Intervention Update");
+    //        break;
+    //        //What the People want
+    //        case 1:
+    //        Debug.Log("What the People want Update");
+    //        break;
+    //        //Some are more equal than others
+    //        case 2:
+    //        Debug.Log("Some are more equal than others Update");
+    //        break;
 
-    IEnumerator WaitForUpgrade(int item, int seconds){
-        yield return new WaitForSeconds(seconds);
-        TechTreeActive(item);
-    }
-
-    private void TechTreeActive(int item){
-        switch (item){
-            //Human Intervention
-            case 0:
-            Debug.Log("Human Intervention Update");
-            break;
-            //What the People want
-            case 1:
-            Debug.Log("What the People want Update");
-            break;
-            //Some are more equal than others
-            case 2:
-            Debug.Log("Some are more equal than others Update");
-            break;
-
-            //Mineral Combustion Plants
-            case 3:
-            Debug.Log("Mineral Combustion Plants Update");
-            break;
-            //Carbon Power Plants
-            case 4:
-            Debug.Log("Carbon Power Plants Update");
-            break;
-            //Ground
-            case 5:
-            Debug.Log("Ground Update");
-            break;
-        }
-    }
+    //        //Mineral Combustion Plants
+    //        case 3:
+    //        Debug.Log("Mineral Combustion Plants Update");
+    //        break;
+    //        //Carbon Power Plants
+    //        case 4:
+    //        Debug.Log("Carbon Power Plants Update");
+    //        break;
+    //        //Ground
+    //        case 5:
+    //        Debug.Log("Ground Update");
+    //        break;
+    //    }
+    //}
 }
