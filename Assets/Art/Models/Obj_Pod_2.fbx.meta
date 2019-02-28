@@ -7,10 +7,14 @@ ModelImporter:
     100002: Pod_Tier2_Base
     100004: Pods
     100006: Turny thing
+    100008: Pods_2
+    100010: TurnyThingy
     400000: //RootNode
     400002: Pod_Tier2_Base
     400004: Pods
     400006: Turny thing
+    400008: Pods_2
+    400010: TurnyThingy
     2100000: Glass_Glowing
     2100002: Metal
     2100004: Metal_Dark
@@ -18,14 +22,24 @@ ModelImporter:
     2300000: Pod_Tier2_Base
     2300002: Pods
     2300004: Turny thing
+    2300006: //RootNode
+    2300008: Pods_2
+    2300010: TurnyThingy
     3300000: Pod_Tier2_Base
     3300002: Pods
     3300004: Turny thing
+    3300006: //RootNode
+    3300008: Pods_2
+    3300010: TurnyThingy
     4300000: Pods
     4300002: Pod_Tier2_Base
     4300004: Turny thing
+    4300006: Base_Pod_2
+    4300008: Pods_2
+    4300010: TurnyThingy
     7400000: Scene
     9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
