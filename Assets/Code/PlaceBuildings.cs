@@ -25,7 +25,7 @@ public class PlaceBuildings : MonoBehaviour {
     public LayerMask noMineralLayer;
     private float yPos;
     private bool building;
-    
+
     // required for a Tech from the Tech Tree; makes sure the Miners don't or do generate Power as well
     public bool toxiumMineralCombustionPlants = false;
 
@@ -66,11 +66,10 @@ public class PlaceBuildings : MonoBehaviour {
             }
         }
 
-        if (ShouldClick() && Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0)
+        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0)
         {
             // pay up
-            if (resourceManager.CanPay(powerCosts[current], foodCosts[current]))
-            {
+            if (resourceManager.CanPay(powerCosts[current], foodCosts[current]) && ShouldClick()) {
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 Vector3 position = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
@@ -118,14 +117,23 @@ public class PlaceBuildings : MonoBehaviour {
         if(current == 1){
             Collider[] visibles = Physics.OverlapSphere(test.transform.position, 10, waterLayer);
             if(visibles.Length <= 0){
-                return false;
+                return resourceManager.CanPlaceGenerator(false);
+            }
+            else
+            {
+                return resourceManager.CanPlaceGenerator(true);
             }
         }
 
         if(current == 3){
             Collider[] visibles = Physics.OverlapSphere(test.transform.position, 4, mineralLayer);
-            if(visibles.Length <= 0){
-                return false;
+            if (visibles.Length <= 0)
+            {
+                return resourceManager.CanPlaceMine(false);
+            }
+            else
+            {
+                return resourceManager.CanPlaceMine(true);
             }
         }
         // reference size for scalable UI is 768 pixels

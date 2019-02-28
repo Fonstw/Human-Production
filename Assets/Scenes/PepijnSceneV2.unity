@@ -372,7 +372,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &89892982
 GameObject:
@@ -2073,6 +2073,7 @@ MonoBehaviour:
   noMineralLayer:
     serializedVersion: 2
     m_Bits: 28471
+  toxiumMineralCombustionPlants: 0
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,16 +2088,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerText: {fileID: 1802664578}
   foodText: {fileID: 2097851317}
-  currentComputingText: {fileID: 1599656787}
-  computingTresholdText: {fileID: 794400307}
-  timerBar: {fileID: 8688097}
-  computingInfo: {fileID: 994708880}
-  timeInfo: {fileID: 1585492439}
+  powerMod: 1
   powerInfo: {fileID: 963376049}
   foodInfo: {fileID: 1377153196}
   errorMessage: {fileID: 846739310}
-  running: 1
   researches: []
+  researchMod: []
 --- !u!82 &534669908
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5213,7 +5210,7 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377153192
 GameObject:
@@ -6561,7 +6558,7 @@ Transform:
   m_LocalScale: {x: 50, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1731414577
 MonoBehaviour:
@@ -7117,7 +7114,7 @@ GameObject:
   - component: {fileID: 2005724725}
   - component: {fileID: 2005724724}
   - component: {fileID: 2005724723}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GrassLand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7194,7 +7191,7 @@ Transform:
   m_LocalScale: {x: 5, y: 0.1, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2079161806
 GameObject:
