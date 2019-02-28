@@ -9,10 +9,10 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public GameObject overlay;
 
     public string tooltipText;
-    public string time;
-    public int power;
-    public int food;
-    public int computing;
+    [SerializeField] protected string time;
+    [SerializeField] protected int power;
+    [SerializeField] protected int food;
+    [SerializeField] protected int computing;
 
     public bool topHalfOfTheScreen;
 
@@ -30,7 +30,7 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         
     }
 
-    public void OnPointerEnter(PointerEventData pointerEventData)
+    virtual public void OnPointerEnter(PointerEventData pointerEventData)
     {
         overlay.SetActive(true);
         overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
