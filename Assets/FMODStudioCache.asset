@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114885980509338030}
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   EditorEvents:
   - {fileID: 114449740350519958}
   - {fileID: 114806574931516922}
@@ -34,7 +34,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 114519158948347250}
   - {fileID: 114885980509338030}
-  stringsBankWriteTime: 636861008611980560
+  stringsBankWriteTime: 636868984876716716
   cacheVersion: 3
 --- !u!114 &114032143954899138
 MonoBehaviour:
@@ -52,6 +52,22 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 100
+--- !u!114 &114038969543183088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: start
+  Min: 0
+  Max: 100
+  Default: 0
 --- !u!114 &114042251716985300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +185,7 @@ MonoBehaviour:
   Path: event:/Pod_ready
   guid: fc8b5755d5c25249865103edd6cf04ff
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -300,6 +316,22 @@ MonoBehaviour:
   - Name: Desktop
     Value: 24833664
   Exists: 1
+--- !u!114 &114290523734992104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Techside
+  Min: 0
+  Max: 100
+  Default: 100
 --- !u!114 &114322381541268532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +363,7 @@ MonoBehaviour:
   Path: event:/Food_ready
   guid: 8d855a554e0f874787a1478916e8e9a3
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -354,13 +386,13 @@ MonoBehaviour:
   Path: event:/Music
   guid: f9c92029c95dfd4c93947553348d02fe
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114766343262567026}
-  - {fileID: 114189854481914230}
+  - {fileID: 114038969543183088}
+  - {fileID: 114290523734992104}
   MinDistance: 0
   MaxDistance: 0
   Length: 248727
@@ -446,7 +478,7 @@ MonoBehaviour:
   Path: event:/object_build
   guid: 41ba7266dcbbe14c97691258555274dc
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -492,6 +524,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 726
   Exists: 0
+--- !u!114 &114522390798690816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Projects Github\LifeStock\Human-Production\FMOD\lifestock\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636868984889020235
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 24833664
+  Exists: 1
 --- !u!114 &114579408694228356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +618,7 @@ MonoBehaviour:
   Path: event:/Mouseclick
   guid: a898a01c9cf6a7489c444ce4c31deadd
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -692,7 +744,7 @@ MonoBehaviour:
   Path: event:/Power_ready
   guid: 53d164bf0cfaba458d2c6d9073e7accd
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -750,7 +802,7 @@ MonoBehaviour:
   Path: event:/Progression
   guid: ef390e56aca9034197b689df09bd135b
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -806,7 +858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\lifestock\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636861008611980560
+  lastModified: 636868984876716716
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -895,7 +947,7 @@ MonoBehaviour:
   Path: event:/Notification
   guid: acb0ade7ea592d4fa1fecbf9f4a41160
   Banks:
-  - {fileID: 114269734925698368}
+  - {fileID: 114522390798690816}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

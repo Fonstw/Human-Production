@@ -1,63 +1,37 @@
 fileFormatVersion: 2
-guid: 2cc32419cfa13be41a8ea71b13079445
+guid: 8dd9fee3c17e33146bb67c45e8639f92
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Drill
-    100002: Drill_Blades
-    100004: Empty_4
-    100006: Empty_Middle
-    100008: Frame_X
-    100010: Frame_Y
-    100012: Miner_Base
-    100014: //RootNode
-    100016: ParticleSystem
-    100018: Wire
-    100020: Wire_Path
-    400000: Drill
-    400002: Drill_Blades
-    400004: Empty_4
-    400006: Empty_Middle
-    400008: Frame_X
-    400010: Frame_Y
-    400012: Miner_Base
-    400014: //RootNode
-    400016: ParticleSystem
-    400018: Wire
-    400020: Wire_Path
-    2100000: Rubber
-    2100002: Metal_Dark
-    2100004: Metal
-    2100006: No Name
-    2100008: PowerOrb
-    2300000: Drill
-    2300002: Drill_Blades
-    2300004: Frame_X
-    2300006: Frame_Y
-    2300008: Miner_Base
-    2300010: ParticleSystem
-    2300012: Wire
-    2300014: Wire_Path
-    3300000: Drill
-    3300002: Drill_Blades
-    3300004: Frame_X
-    3300006: Frame_Y
-    3300008: Miner_Base
-    3300010: ParticleSystem
-    3300012: Wire
-    3300014: Wire_Path
-    4300000: Wire
-    4300002: Frame_Y
-    4300004: Frame_X
-    4300006: Drill
-    4300008: Drill_Blades
-    4300010: ParticleSystem
-    4300012: Miner_Base
-    4300014: Wire_Path
-    7400000: Scene.001
+    100000: //RootNode
+    100002: Pod_Tier2_Base
+    100004: Pods
+    100006: Turny thing
+    400000: //RootNode
+    400002: Pod_Tier2_Base
+    400004: Pods
+    400006: Turny thing
+    2100000: Glass_Glowing
+    2100002: Metal
+    2100004: Metal_Dark
+    2100006: PowerOrb
+    2300000: Pod_Tier2_Base
+    2300002: Pods
+    2300004: Turny thing
+    3300000: Pod_Tier2_Base
+    3300002: Pods
+    3300004: Turny thing
+    4300000: Pods
+    4300002: Pod_Tier2_Base
+    4300004: Turny thing
+    7400000: Scene
     9500000: //RootNode
-    2186277476908879412: ImportLogs
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass_Glowing
+    second: {fileID: 2100000, guid: 1be4e9e3ad53cae4b9e183a190c440a4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -71,18 +45,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: 2cf52c081f0b3f64984a3874e2d46dc2, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: PowerOrb
     second: {fileID: 2100000, guid: bd83292532b1ece4a9104cb159eb28ec, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rubber
-    second: {fileID: 2100000, guid: fce556ac22fdc254abde059c17254c67, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -111,10 +75,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Scene.001
-      takeName: Scene.001
+      name: Scene
+      takeName: Scene
       firstFrame: 1
-      lastFrame: 480
+      lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -141,7 +105,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.8
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -162,7 +126,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.008
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
