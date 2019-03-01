@@ -93,13 +93,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03200dea8cd2b484aa140d7c0643f1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundTypes:
-    serializedVersion: 2
-    m_Bits: 16384
   resourceType: 1
   generatesAmount: 100
   buildingTime: 3
   finishSound: event:/Power_ready
+  groundTypes:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &337731990599634987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +168,10 @@ PrefabInstance:
     - target: {fileID: 1552719631257096, guid: 67b87ab8367b31740b3add7b204a8fce, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552719631257096, guid: 67b87ab8367b31740b3add7b204a8fce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4669823080036862, guid: 67b87ab8367b31740b3add7b204a8fce, type: 3}
       propertyPath: m_LocalPosition.x

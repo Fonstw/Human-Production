@@ -9,12 +9,12 @@ public class GenerateResource : MonoBehaviour
     public float buildingTime;   // how long to wait until built
     public string finishSound = "event:/FILEPATH";   // sound to play when done building
     public LayerMask groundTypes;
+    public bool workDone = false;   // wether built and in effect or not
 
     private ResourceManager gameManager;   // who to give resources to
     private string placeSound = "event:/object_build";   // sound to play when placed onto the ground
     private GroundTypes groundUnderneath;
     private float ownTimer;
-    private bool workDone = false;
 
     // Start is called before the first frame update
     void Start()

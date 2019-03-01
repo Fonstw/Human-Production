@@ -51,10 +51,13 @@ public class PlaceBuildings : MonoBehaviour {
                     {
                         test.GetComponent<Collider>().enabled = false;
                     }
-                    if (test.GetComponentInChildren<Collider>())
-                    {
-                        test.GetComponentInChildren<Collider>().enabled = false;
-                    }
+                    foreach (Collider kiddo in test.GetComponentsInChildren<Collider>())
+                        kiddo.enabled = false;
+
+                    //if (test.GetComponentInChildren<Collider>())
+                    //{
+                    //    test.GetComponentInChildren<Collider>().enabled = false;
+                    //}
                     test.transform.parent = mouseTarget;
                     gridSystem.structure = test;
                 }
@@ -69,7 +72,7 @@ public class PlaceBuildings : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0)
+        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0 && ShouldClick())
         {
             int tempCurrent;
 
