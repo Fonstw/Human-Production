@@ -267,15 +267,23 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, the research per minute couldn't go down that much...
             return false;
     }
-
     public void ChangeMod(int id, float amount)
     {
         researchMod[id] += amount;
+        UpdateComputingText(id);
     }
     public void ChangeAllMods(float amount)
     {
         for (int m = 0; m < researchMod.Length; m++)
+        {
             researchMod[m] += amount;
+            UpdateComputingText(m);
+        }
+    }
+    private void UpdateComputingText(int id)
+    {
+        // UI.Text.text = how much research per minute, effectively
+        currentComputingText[id].text = (researches[id] * researchMod[id]).ToString();
     }
 
     //public void SetComputingNeed(float amount)

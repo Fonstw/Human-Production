@@ -100,9 +100,8 @@ public class PlaceBuildings : MonoBehaviour {
 
                         //Add building to list for easy check
                         placedBuildings.Add(toSpawn[current].gameObject);
-
-                        yPos = -toSpawn[current].transform.localScale.y*2 - spawnOffsets[tempCurrent];
-                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
+                        
+                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, spawnOffsets[tempCurrent], test.transform.position.z);
                         StartCoroutine(BuildBuidling(toSpawn[current]));
                         building = true;
                         
@@ -163,18 +162,24 @@ public class PlaceBuildings : MonoBehaviour {
 
     IEnumerator BuildBuidling(GameObject Building)
     {
-        yield return new WaitForSeconds(0.1f);
-        yPos += 0.1f;
-        Building.transform.position = new Vector3(Building.transform.position.x, yPos, Building.transform.position.z);
-        if(yPos >= Building.transform.localScale.y / 2)
+        // wait 1/30th of a second for smoothness
+        yield return new WaitForSeconds(1f/30f);
+        // go up by 1/30th of a Unity unit
+        Building.transform.Translate(0, 1f/30f, 0);
+        // if pretty much on the ground by now
+        if(Building.transform.position.y >= 0)
         {
-            //Debug.Log("Done");
+            // clip y position to the ground to ease my programmer-induced OCD's
+            Building.transform.position = new Vector3(Building.transform.position.x, 0, Building.transform.position.z);
+            // stop buidling yourself
             building = false;
-        } else
+        } else   // not yet on the ground?
         {
+            // well, keep at it, then!
             StartCoroutine(BuildBuidling(Building));
-            building = true;
         }
+
+        print(Building.name + " now at: " + Building.transform.position.y);
     }
     
     //public void TechTree(int item){

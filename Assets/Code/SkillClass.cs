@@ -75,6 +75,10 @@ public class SkillClass : MonoBehaviour
 
             // finished
             state = 2;
+
+            // play the sound
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
+
             // and tell whoever called this function that yes, this skill has now been finished!
             return true;
         }
@@ -91,7 +95,7 @@ public class SkillClass : MonoBehaviour
             // substract that bit from it
             requirement[1] -= amount;
 
-            print((skillName) + " has " + (requirement[1]) + " left to research.");
+            //print((skillName) + " has " + (requirement[1]) + " left to research.");
 
             // tell whoever called this function that no, this skill is not done yet...
             return false;

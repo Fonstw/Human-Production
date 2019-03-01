@@ -1115,10 +1115,10 @@ MonoBehaviour:
   - 0
   - 0
   spawnOffsets:
-  - -1
-  - 0
-  - 2
-  - 1
+  - -2
+  - -3
+  - -4
+  - -3
   mouseTarget: {fileID: 423296641}
   gridSystem: {fileID: 250247401}
   noFloorLayer:
@@ -2620,7 +2620,7 @@ Transform:
   m_GameObject: {fileID: 1097533535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -30.35, y: 0, z: -34.41}
-  m_LocalScale: {x: 13.747, y: 0.1, z: 20.255}
+  m_LocalScale: {x: 13.747, y: 0.2, z: 20.255}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -3289,7 +3289,7 @@ Transform:
   m_GameObject: {fileID: 1453244962}
   m_LocalRotation: {x: -0, y: -0.22313535, z: -0, w: 0.9747875}
   m_LocalPosition: {x: 26.8, y: 0.42, z: 12.1}
-  m_LocalScale: {x: 20.69068, y: 1, z: 89.15694}
+  m_LocalScale: {x: 20.69068, y: 0.2, z: 89.15694}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6

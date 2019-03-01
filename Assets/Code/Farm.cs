@@ -86,7 +86,7 @@ public class Farm : MonoBehaviour {
 		}
 
         // after actually built and in effect
-        if (GetComponent<GenerateResource>().workDone)
+        if (GetComponent<GenerateResource>().Built())
             // make grass great again
     		grass.transform.localScale = new Vector3((viewRadius*2),grass.transform.localScale.y,(viewRadius*2));
         else   // before in effect

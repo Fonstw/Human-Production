@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 2
   generatesAmount: 10
-  buildingTime: 5
+  buildingTime: 4
   finishSound: event:/Food_ready
   groundTypes:
     serializedVersion: 2
@@ -107,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 8375469037376376229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 0, z: 8}
+  m_LocalScale: {x: 0, y: 0.01, z: 0}
   m_Children: []
   m_Father: {fileID: 1594997893443875126}
   m_RootOrder: 0
@@ -164,6 +164,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1594997893443875126}
     m_Modifications:
+    - target: {fileID: 226547754830944328, guid: fed6e2ea99965ad459ff329100866724,
+        type: 3}
+      propertyPath: m_Name
+      value: Obj_Farm
+      objectReference: {fileID: 0}
     - target: {fileID: 4108431104764624237, guid: fed6e2ea99965ad459ff329100866724,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -233,11 +238,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 226547754830944328, guid: fed6e2ea99965ad459ff329100866724,
-        type: 3}
-      propertyPath: m_Name
-      value: Obj_Farm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed6e2ea99965ad459ff329100866724, type: 3}

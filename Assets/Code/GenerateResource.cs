@@ -9,17 +9,19 @@ public class GenerateResource : MonoBehaviour
     public float buildingTime;   // how long to wait until built
     public string finishSound = "event:/FILEPATH";   // sound to play when done building
     public LayerMask groundTypes;
-    public bool workDone = false;   // wether built and in effect or not
 
     private ResourceManager gameManager;   // who to give resources to
     private string placeSound = "event:/object_build";   // sound to play when placed onto the ground
     private GroundTypes groundUnderneath;
     private float ownTimer;
+    private bool workDone = false;   // wether built and in effect or not
 
     // Start is called before the first frame update
     void Start()
     {
-        ownTimer = Time.time + buildingTime;
+        // set your own timer to go off a set amount in the future + 1
+        // +1 because... Actually I don't know yet
+        ownTimer = Time.time + buildingTime + 1;
 
         // grab the first-instatiated object's ResourceManager compontent (.cs script)
         gameManager = FindObjectOfType<ResourceManager>();
@@ -38,6 +40,9 @@ public class GenerateResource : MonoBehaviour
                 groundUnderneath = hit.transform.GetComponent<GroundType>().groundType;
             }
         }
+
+        if (!workDone)
+            print(name + " has " + (ownTimer - Time.time) + " seconds to go.");
 
         // if not built yet and passed the building time...
         if (!workDone && Time.time > ownTimer)
@@ -65,5 +70,11 @@ public class GenerateResource : MonoBehaviour
         workDone = true;
         // play the sound that signals the player you're built
         FMODUnity.RuntimeManager.PlayOneShot(finishSound);
+    }
+
+    // so I can tell others wether I'm already in effect or not
+    public bool Built()
+    {
+        return workDone;
     }
 }
