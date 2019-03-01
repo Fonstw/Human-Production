@@ -47,7 +47,7 @@ public class TechInfo : OverlayInfo
     override public void OnPointerEnter(PointerEventData pointerEventData)
     {
         overlay.SetActive(true);
-        overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
+        //overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
         overlay.GetComponent<MouseOverlay>().FollowMouse();
 
         //string displayText = tooltipText.Replace("<br>", "\n");

@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5019608, b: 0.5019608, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5019608, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -330,8 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626b8fbdf653fba4580d2d56727de1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: -12, y: 12, z: 0}
-  infoNotError: 1
+  setOffset: {x: 24, y: -24}
 --- !u!1 &2031843218
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,7 +961,6 @@ MonoBehaviour:
   power: 0
   food: 0
   computing: 0
-  topHalfOfTheScreen: 0
   args: []
 --- !u!1 &5321344854624066134
 GameObject:
@@ -1440,7 +1438,6 @@ MonoBehaviour:
   power: 0
   food: 0
   computing: 0
-  topHalfOfTheScreen: 0
   args: []
 --- !u!1 &5321344854893672999
 GameObject:
@@ -1926,7 +1923,6 @@ MonoBehaviour:
   power: 0
   food: 0
   computing: 0
-  topHalfOfTheScreen: 0
   args: []
 --- !u!1 &5321344855095374014
 GameObject:
@@ -2329,7 +2325,6 @@ MonoBehaviour:
   power: 0
   food: 0
   computing: 0
-  topHalfOfTheScreen: 0
   args: []
 --- !u!1 &5321344855532295124
 GameObject:
@@ -2744,7 +2739,6 @@ MonoBehaviour:
   power: 0
   food: 0
   computing: 0
-  topHalfOfTheScreen: 0
   args: []
 --- !u!1 &5321344855843706201
 GameObject:
@@ -2761,7 +2755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5321344855843706200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2960,7 +2954,6 @@ MonoBehaviour:
   power: 0
   food: 0
   computing: 0
-  topHalfOfTheScreen: 0
   args: []
 --- !u!1 &5321344856115831029
 GameObject:

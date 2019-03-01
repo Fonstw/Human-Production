@@ -178,8 +178,6 @@ public class PlaceBuildings : MonoBehaviour {
             // well, keep at it, then!
             StartCoroutine(BuildBuidling(Building));
         }
-
-        print(Building.name + " now at: " + Building.transform.position.y);
     }
     
     //public void TechTree(int item){

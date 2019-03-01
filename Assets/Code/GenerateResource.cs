@@ -41,9 +41,6 @@ public class GenerateResource : MonoBehaviour
             }
         }
 
-        if (!workDone)
-            print(name + " has " + (ownTimer - Time.time) + " seconds to go.");
-
         // if not built yet and passed the building time...
         if (!workDone && Time.time > ownTimer)
             WorkIt();

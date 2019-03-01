@@ -14,7 +14,7 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] protected int food;
     [SerializeField] protected int computing;
 
-    public bool topHalfOfTheScreen;
+    //public bool topHalfOfTheScreen;
 
     public float[] args;
 
@@ -27,13 +27,13 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     virtual public void OnPointerEnter(PointerEventData pointerEventData)
     {
         overlay.SetActive(true);
-        overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
+        //overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
         overlay.GetComponent<MouseOverlay>().FollowMouse();
 
         string displayText = tooltipText.Replace("<br>", "\n");
