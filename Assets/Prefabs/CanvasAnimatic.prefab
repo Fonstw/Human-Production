@@ -266,9 +266,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Om de natuur een kans te geven de aarde te herstellen, zijn veel stukken
-    land die niet meer nodig geacht worden voor het voortbestaan van de mensheid teruggegeven
-    aan de natuur.
+  m_Text: Some land are considerd useless by humanity. This land is given back to
+    nature in an attempt to restore the planet
 --- !u!1 &2339330544039776068
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,9 +520,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Door jouw analytische rekenkracht te combineren met het onderbewustzijn
-    van de Podheads, zul jij een nieuwe weg vinden voor de mensheid om de planeet
-    te redden.
+  m_Text: Your computing power will be combined with the subconsciousness of the Podheads.
+    With these combined powers you will find a way to save humanity and the planet.
 --- !u!1 &3765408920789630028
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +679,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Om de mensheid en de planeet te redden ben jij geprogrammeerd: de Hive-mind.'
+  m_Text: This is where you come in. You are an AI tasked with finding a sollution
+    for the environmental problems.
 --- !u!1 &5365727466226429595
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Het is 2150, de mensheid leeft in grote steden.
+  m_Text: It is 2015, humanity lives in big cities.
 --- !u!1 &6637632428041296578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,8 +1007,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Grote delen van de aarde zijn in onbewoonbare staat door mens en natuur,
-    door slechte beslissingen van de mens en klimaatveranderingen.
+  m_Text: Big parts of Earth are uninhabitable for humans and nature. This is because
+    of humanity's bad decisions and climate change.
 --- !u!1 &7416775744680310684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,8 +1087,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Een innovatief bedrijf heeft het plan om mensen in pods te plaatsen, om
-    zo hun carbon footprint te verkleinen.
+  m_Text: A innovation company had a plan. To reduce the cabon foot-print of individual
+    humans, they will be placed in pods.
 --- !u!1 &7440107796017767206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -83}
+  m_AnchoredPosition: {x: 2, y: 32.0961}
   m_SizeDelta: {x: 1920, y: 1247}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3233740750701312466
@@ -1457,7 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 3939571088203293823}
-  clipTime: 5
+  clipTime: 10
 --- !u!1 &8363230866552708269
 GameObject:
   m_ObjectHideFlags: 0
