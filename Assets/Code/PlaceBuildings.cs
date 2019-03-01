@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlaceBuildings : MonoBehaviour {
     [HideInInspector]
@@ -72,7 +73,7 @@ public class PlaceBuildings : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0 && ShouldClick())
+        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0 && ShouldClick() && !EventSystem.current.IsPointerOverGameObject())
         {
             int tempCurrent;
 
@@ -151,18 +152,13 @@ public class PlaceBuildings : MonoBehaviour {
                 return resourceManager.CanPlaceMine(true);
             }
         }
-        // reference size for scalable UI is 768 pixels
-        // in which case the button bar will be 150 pixels
-        // now scale along with actual screen height
+
         if (building) {
             return false;
         }
 
-        float tresholdX = Screen.width - Screen.width / 1366f * 240f;
-        float tresholdY = Screen.height / 768f * 340f;
-        
-        return Input.mousePosition.x < tresholdX || Input.mousePosition.y > tresholdY; ;
-
+        // still here, not blocked off? Then everything is alright!
+        return true;
     }
 
     IEnumerator BuildBuidling(GameObject Building)
