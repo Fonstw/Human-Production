@@ -31,15 +31,15 @@ public class SkillClass : MonoBehaviour
 
     public bool Unlock()
     {
+        // show icon we're unlocked
+        stateIcon.sprite = stateSources[1];
+        stateIcon.color = Color.red;
+
         // if not unlocked yet...
-        if (state == 0)
+        if (state < 1)
         {
             // unlock self
             state = 1;
-
-            // show icon we're unlocked
-            stateIcon.sprite = stateSources[1];
-            stateIcon.color = Color.red;
 
             // and tell whoever called this function that yes, this skill has now been unlocked!
             return true;
@@ -50,8 +50,12 @@ public class SkillClass : MonoBehaviour
     }
     public bool Finish()
     {
+        // show icon we're finished
+        stateIcon.sprite = stateSources[3];
+        stateIcon.color = Color.green;
+
         // if not finished yet...
-        if (state != 2)
+        if (state < 2)
         {
             // play out effects
             switch (skillID)
@@ -87,10 +91,6 @@ public class SkillClass : MonoBehaviour
 
             // finish self
             state = 2;
-
-            // show icon we're finished
-            stateIcon.sprite = stateSources[3];
-            stateIcon.color = Color.green;
 
             // play the sound
             FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
