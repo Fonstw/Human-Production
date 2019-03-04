@@ -13,39 +13,40 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114885980509338030}
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
+  - {fileID: 114737991176962898}
+  - {fileID: 114465482253376488}
   EditorEvents:
-  - {fileID: 114449740350519958}
-  - {fileID: 114806574931516922}
-  - {fileID: 114325058812657934}
-  - {fileID: 114657392811675750}
-  - {fileID: 114935763570175302}
-  - {fileID: 114852206041078220}
-  - {fileID: 114335389775724574}
-  - {fileID: 114109471401615726}
+  - {fileID: 114567681007714674}
+  - {fileID: 114310009965372494}
+  - {fileID: 114856572211778602}
+  - {fileID: 114749010025319718}
+  - {fileID: 114848871305064474}
+  - {fileID: 114773968518505678}
+  - {fileID: 114283597667839528}
+  - {fileID: 114526214402792482}
   MasterBanks:
-  - {fileID: 114843087126487836}
-  - {fileID: 114723453135898388}
-  - {fileID: 114678502755386898}
-  - {fileID: 114478811717015658}
-  - {fileID: 114903519179194190}
-  - {fileID: 114239538384222186}
-  - {fileID: 114624852696455054}
+  - {fileID: 114465482253376488}
   StringsBanks:
-  - {fileID: 114519158948347250}
-  - {fileID: 114885980509338030}
-<<<<<<< Updated upstream
+  - {fileID: 114737991176962898}
   stringsBankWriteTime: 636861008611980560
-=======
-  stringsBankWriteTime: 636870613391019532
->>>>>>> Stashed changes
   cacheVersion: 3
---- !u!114 &114032143954899138
+--- !u!114 &114026550537091042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: start
+  Min: 0
+  Max: 100
+  Default: 0
+--- !u!114 &114032269475502578
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,350 +62,7 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 100
---- !u!114 &114038969543183088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114042251716985300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114048488245141174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114055297294065754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114084976819143242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114089213830880592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114107176901500006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114109471401615726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Pod_ready
-  guid: fc8b5755d5c25249865103edd6cf04ff
-  Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 5047
---- !u!114 &114115669220883332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: C:\Users\Atlas\Desktop\HKU School\Year2\GitHubFiles\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636864654443613143
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114189854481914230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114211435525016624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114239538384222186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: C:\Users\Pepijn\Desktop\Jaar2\GithubKrakenFiles\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636868648068743270
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114247252024520376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114253967031087518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114254046026394518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114269734925698368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114290523734992104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114322381541268532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114325058812657934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Food_ready
-  guid: 8d855a554e0f874787a1478916e8e9a3
-  Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 7500
---- !u!114 &114335389775724574
+--- !u!114 &114283597667839528
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,422 +77,17 @@ MonoBehaviour:
   Path: event:/Music
   guid: f9c92029c95dfd4c93947553348d02fe
   Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
+  - {fileID: 114465482253376488}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-<<<<<<< Updated upstream
-  - {fileID: 114908526648123998}
-  - {fileID: 114515585177454384}
-=======
-  - {fileID: 114253967031087518}
-  - {fileID: 114873461247571418}
->>>>>>> Stashed changes
+  - {fileID: 114026550537091042}
+  - {fileID: 114032269475502578}
   MinDistance: 0
   MaxDistance: 0
   Length: 248727
---- !u!114 &114338171616820726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114382234154598472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114408957900127178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114422258066864518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114449740350519958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/object_build
-  guid: 41ba7266dcbbe14c97691258555274dc
-  Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 5041
---- !u!114 &114478811717015658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human-Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636867052897795319
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114515585177454384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114519158948347250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: FMOD\setupProject\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636860863096704813
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 726
-  Exists: 0
---- !u!114 &114522390798690816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Projects Github\LifeStock\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636868984889020235
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114579408694228356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/progressionSound
-  guid: 43a9678f984fcc4089fc447414c7b19f
-  Banks:
-  - {fileID: 114843087126487836}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 6900
---- !u!114 &114582712887541450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: C:\Users\Pepijn\Desktop\Jaar2\GithubKrakenFiles\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636868648068743270
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114587312326788430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114624852696455054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: C:\Users\solen\Documents\ContextII\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636870613394718394
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114657392811675750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Mouseclick
-  guid: a898a01c9cf6a7489c444ce4c31deadd
-  Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 567
---- !u!114 &114659750707579286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114678502755386898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: C:\Users\Atlas\Desktop\HKU School\Year2\GitHubFiles\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636864654443613143
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114704631382632314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114723453135898388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114766343262567026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114788718908217572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114793140656343304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
---- !u!114 &114806574931516922
+--- !u!114 &114310009965372494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -849,11 +102,7 @@ MonoBehaviour:
   Path: event:/Power_ready
   guid: 53d164bf0cfaba458d2c6d9073e7accd
   Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
+  - {fileID: 114465482253376488}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -861,101 +110,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4812
---- !u!114 &114824647023174828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114843087126487836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: D:\Git\Human Production\FMOD\setupProject\Build\Desktop\Master Bank.bank
-  lastModified: 636860863096595114
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 59072
-  Exists: 0
---- !u!114 &114852206041078220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Path: event:/Progression
-  guid: ef390e56aca9034197b689df09bd135b
-  Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 6900
---- !u!114 &114863256265806068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114873461247571418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114881904541906174
+--- !u!114 &114465482253376488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -974,7 +129,53 @@ MonoBehaviour:
   - Name: Desktop
     Value: 24833664
   Exists: 1
---- !u!114 &114885980509338030
+--- !u!114 &114526214402792482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Pod_ready
+  guid: fc8b5755d5c25249865103edd6cf04ff
+  Banks:
+  - {fileID: 114465482253376488}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5047
+--- !u!114 &114567681007714674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/object_build
+  guid: 41ba7266dcbbe14c97691258555274dc
+  Banks:
+  - {fileID: 114465482253376488}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5041
+--- !u!114 &114737991176962898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -987,17 +188,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\lifestock\Build\Desktop\Master Bank.strings.bank
-<<<<<<< Updated upstream
   lastModified: 636861008611980560
-=======
-  lastModified: 636870613391019532
->>>>>>> Stashed changes
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 1004
   Exists: 1
---- !u!114 &114886357187410372
+--- !u!114 &114749010025319718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1006,14 +203,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114903519179194190
+  Path: event:/Mouseclick
+  guid: a898a01c9cf6a7489c444ce4c31deadd
+  Banks:
+  - {fileID: 114465482253376488}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 567
+--- !u!114 &114773968518505678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1022,66 +226,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: D:\Projects Github\LifeStock\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636868984889020235
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 0
---- !u!114 &114907113770904848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114908526648123998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114917051220527128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
---- !u!114 &114935763570175302
+  Path: event:/Progression
+  guid: ef390e56aca9034197b689df09bd135b
+  Banks:
+  - {fileID: 114465482253376488}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 6900
+--- !u!114 &114848871305064474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1096,11 +255,7 @@ MonoBehaviour:
   Path: event:/Notification
   guid: acb0ade7ea592d4fa1fecbf9f4a41160
   Banks:
-<<<<<<< Updated upstream
-  - {fileID: 114793140656343304}
-=======
-  - {fileID: 114624852696455054}
->>>>>>> Stashed changes
+  - {fileID: 114465482253376488}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1108,7 +263,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1020
---- !u!114 &114956206144416950
+--- !u!114 &114856572211778602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1117,26 +272,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
---- !u!114 &114992625450729446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: start
-  Min: 0
-  Max: 100
-  Default: 0
+  Path: event:/Food_ready
+  guid: 8d855a554e0f874787a1478916e8e9a3
+  Banks:
+  - {fileID: 114465482253376488}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 7500
