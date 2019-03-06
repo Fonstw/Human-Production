@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114146722169891976}
-  - {fileID: 114956399163371556}
+  - {fileID: 114570152463775898}
+  - {fileID: 114338660019545620}
   EditorEvents:
   - {fileID: 114781402678025930}
   - {fileID: 114167642831631446}
@@ -24,13 +25,16 @@ MonoBehaviour:
   - {fileID: 114935520591121340}
   - {fileID: 114705615132965622}
   - {fileID: 114262240169750970}
+  - {fileID: 114425807602736086}
+  - {fileID: 114738378433227582}
+  - {fileID: 114978629533723064}
+  - {fileID: 114895505649099302}
   MasterBanks:
   - {fileID: 114412930593469342}
   - {fileID: 114570152463775898}
-  - {fileID: 114956399163371556}
   StringsBanks:
   - {fileID: 114146722169891976}
-  stringsBankWriteTime: 636864654442673137
+  stringsBankWriteTime: 636874618845078293
   cacheVersion: 3
 --- !u!114 &114014500329400554
 MonoBehaviour:
@@ -47,7 +51,7 @@ MonoBehaviour:
   Path: event:/Notification
   guid: acb0ade7ea592d4fa1fecbf9f4a41160
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -55,6 +59,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1020
+--- !u!114 &114084105133415282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_food
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114095763322385322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +90,7 @@ MonoBehaviour:
   Path: event:/Food_ready
   guid: 8d855a554e0f874787a1478916e8e9a3
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -91,11 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\lifestock\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636864654442673137
+  lastModified: 636874618845078293
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1004
+    Value: 1252
   Exists: 1
 --- !u!114 &114167642831631446
 MonoBehaviour:
@@ -112,7 +132,7 @@ MonoBehaviour:
   Path: event:/Power_ready
   guid: 53d164bf0cfaba458d2c6d9073e7accd
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -135,7 +155,7 @@ MonoBehaviour:
   Path: event:/Pod_ready
   guid: fc8b5755d5c25249865103edd6cf04ff
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -143,6 +163,41 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5047
+--- !u!114 &114338660019545620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\SFX.bank
+  lastModified: 636874618647741832
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 752704
+  Exists: 1
+--- !u!114 &114411519359098048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: start
+  Min: 0
+  Max: 100
+  Default: 0
 --- !u!114 &114412930593469342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +218,46 @@ MonoBehaviour:
   - Name: Desktop
     Value: 24833664
   Exists: 0
+--- !u!114 &114425807602736086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Food Ambient
+  guid: 406dbfd64e75a94baef4947bc634f61e
+  Banks:
+  - {fileID: 114338660019545620}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114084105133415282}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1998
+--- !u!114 &114469246714275978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_power
+  Min: 0
+  Max: 20
+  Default: 0
 --- !u!114 &114511937880442720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +290,7 @@ MonoBehaviour:
   Min: 0
   Max: 100
   Default: 100
---- !u!114 &114547382697884324
+--- !u!114 &114530630410818548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,9 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: start
+  Name: distance_pod
   Min: 0
-  Max: 100
+  Max: 20
   Default: 0
 --- !u!114 &114561719636175128
 MonoBehaviour:
@@ -240,12 +335,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Git\Human Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636861008611910731
+  lastModified: 636874618844399196
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 24833664
-  Exists: 0
+    Value: 24502336
+  Exists: 1
+--- !u!114 &114675793373578430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Techside
+  Min: 0
+  Max: 100
+  Default: 100
 --- !u!114 &114705615132965622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,16 +372,40 @@ MonoBehaviour:
   Path: event:/Music
   guid: f9c92029c95dfd4c93947553348d02fe
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114570152463775898}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114547382697884324}
-  - {fileID: 114878695370126996}
+  - {fileID: 114411519359098048}
+  - {fileID: 114675793373578430}
   MinDistance: 0
   MaxDistance: 0
   Length: 248727
+--- !u!114 &114738378433227582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Pod Ambient
+  guid: 52b9dbb76340a846b71ee0a08315e73e
+  Banks:
+  - {fileID: 114338660019545620}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114530630410818548}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 8833
 --- !u!114 &114781402678025930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +421,7 @@ MonoBehaviour:
   Path: event:/object_build
   guid: 41ba7266dcbbe14c97691258555274dc
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -294,6 +429,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5041
+--- !u!114 &114802115256802610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_water
+  Min: 0
+  Max: 20
+  Default: 0
 --- !u!114 &114811384081619428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +476,7 @@ MonoBehaviour:
   Path: event:/Mouseclick
   guid: a898a01c9cf6a7489c444ce4c31deadd
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -333,7 +484,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 567
---- !u!114 &114878695370126996
+--- !u!114 &114895505649099302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,13 +493,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Techside
-  Min: 0
-  Max: 100
-  Default: 100
+  Path: event:/Powerplant Ambient
+  guid: d995bfb1739c974bb8e32e5bd07d239e
+  Banks:
+  - {fileID: 114338660019545620}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114469246714275978}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 6000
 --- !u!114 &114935520591121340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +523,7 @@ MonoBehaviour:
   Path: event:/Progression
   guid: ef390e56aca9034197b689df09bd135b
   Banks:
-  - {fileID: 114956399163371556}
+  - {fileID: 114338660019545620}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -372,7 +531,7 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 6900
---- !u!114 &114956399163371556
+--- !u!114 &114978629533723064
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,14 +540,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: C:\Users\Atlas\Desktop\HKU School\Year2\GitHubFiles\Human-Production\FMOD\lifestock\Build\Desktop\Master
-    Bank.bank
-  lastModified: 636864654443613143
-  LoadResult: 0
-  FileSizes:
-  - Name: Desktop
-    Value: 24833664
-  Exists: 1
+  Path: event:/River Ambient
+  guid: 8563a1efb0920e48b156a7bb7c9cd7ec
+  Banks:
+  - {fileID: 114338660019545620}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 114802115256802610}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 13500
