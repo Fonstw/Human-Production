@@ -85,6 +85,12 @@ public class Farm : MonoBehaviour {
 			}
 		}
 
-		grass.transform.localScale = new Vector3((viewRadius*2),grass.transform.localScale.y,(viewRadius*2));
-	}
+        // after actually built and in effect
+        if (GetComponent<GenerateResource>().Built())
+            // make grass great again
+    		grass.transform.localScale = new Vector3((viewRadius*2),grass.transform.localScale.y,(viewRadius*2));
+        else   // before in effect
+            // hide grass
+            grass.transform.localScale = new Vector3(0, grass.transform.localScale.y, 0);
+    }
 }

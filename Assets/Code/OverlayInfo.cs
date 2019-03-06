@@ -9,12 +9,12 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public GameObject overlay;
 
     public string tooltipText;
-    public string time;
-    public int power;
-    public int food;
-    public int computing;
+    [SerializeField] protected string time;
+    [SerializeField] protected int power;
+    [SerializeField] protected int food;
+    [SerializeField] protected int computing;
 
-    public bool topHalfOfTheScreen;
+    //public bool topHalfOfTheScreen;
 
     public float[] args;
 
@@ -27,13 +27,13 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void OnPointerEnter(PointerEventData pointerEventData)
+    virtual public void OnPointerEnter(PointerEventData pointerEventData)
     {
         overlay.SetActive(true);
-        overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
+        //overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
         overlay.GetComponent<MouseOverlay>().FollowMouse();
 
         string displayText = tooltipText.Replace("<br>", "\n");

@@ -80,9 +80,9 @@ public class Generator : MonoBehaviour {
 			}
 		}
 
-		ParticleSystem.ShapeModule psShape = GetComponentInChildren<ParticleSystem>().shape;
-		ParticleSystem.EmissionModule psEmis = GetComponentInChildren<ParticleSystem>().emission;
-		psShape.radius = viewRadius / transform.localScale.x;
-		psEmis.rateOverTime = viewRadius * 600;
+		//ParticleSystem.ShapeModule psShape = GetComponentInChildren<ParticleSystem>().shape;
+		//ParticleSystem.EmissionModule psEmis = GetComponentInChildren<ParticleSystem>().emission;
+		//psShape.radius = viewRadius / transform.localScale.x;
+		//psEmis.rateOverTime = viewRadius * 600;
 	}
 }

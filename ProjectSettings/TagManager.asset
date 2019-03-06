@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Mouse
+  - CloseToWater
   layers:
   - Default
   - TransparentFX
@@ -18,12 +20,12 @@ TagManager:
   - Obstackles
   - Humans
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mineral
+  - Water
+  - GroundType
+  - Mouse
+  - CloseToWater
+  - Previeuw
   - 
   - 
   - 
