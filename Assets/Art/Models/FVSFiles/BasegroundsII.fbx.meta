@@ -1,16 +1,14 @@
 fileFormatVersion: 2
-guid: 2d27a751cac976248a4b865612d8b91f
+guid: 7c1fccf13d1dfd449ba5e0cd923e0524
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: default
     400000: //RootNode
-    400002: default
-    2100000: defaultMat
-    2300000: default
-    3300000: default
-    4300000: default
+    2100000: GroundBase
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Plane
   externalObjects: {}
   materials:
     importMaterials: 1
