@@ -22,6 +22,7 @@ public class MouseOnGrid : MonoBehaviour
     public LayerMask previeuwLayer;
     public Transform mouseTarget;
     public bool holdingBuilding;
+    public Material ghostMat;
 
 
     private GameObject Building;
@@ -51,6 +52,19 @@ public class MouseOnGrid : MonoBehaviour
                 }
             } else {
                 HeldBuilding.transform.position = mouseTarget.transform.position;
+                switch(BuildingType){
+                    case BuildType.Energy:
+                        Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
+                        foreach(Renderer r in bGhost){
+                            if(Physics.CheckSphere(mouseTarget.transform.position, 1, previeuwLayer)){
+                                r.sharedMaterial.color = ghostMat.color;
+                            } else {
+                                r.sharedMaterial.color = Color.red;
+                            }
+                        }   
+                        
+                    break;
+                }
             }
         }
     }
@@ -61,6 +75,7 @@ public class MouseOnGrid : MonoBehaviour
         Destroy(HeldBuilding);
         // HeldBuilding.transform.position = new Vector3(x, mouseTarget.transform.position.y, y);
         // HeldBuilding.transform.parent = null;
+        BuildingType = BuildType.Null;
         Building = null;
         BuildingGhost = null;
         HeldBuilding = null;

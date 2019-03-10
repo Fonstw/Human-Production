@@ -167,6 +167,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
+    - target: {fileID: 2300006, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
+    - target: {fileID: 2300006, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
+    - target: {fileID: 2300006, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
     - target: {fileID: 2300000, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -185,18 +197,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
     - target: {fileID: 2300002, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
       propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
-    - target: {fileID: 2300006, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
-    - target: {fileID: 2300006, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
-    - target: {fileID: 2300006, guid: 8367d3037cf273a448fc4ffeb69249d6, type: 3}
-      propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 5a7dc8726a12da349a57118ea00d73e7, type: 2}
     m_RemovedComponents: []
