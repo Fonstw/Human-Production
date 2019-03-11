@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SkillManager : MonoBehaviour
@@ -13,6 +14,13 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private int[] researching;   // [0]=biologist, [1]=engineer, etc. Means which skill-ID is being researched by each type
 
     private ResourceManager gameManager;   // to get the research-amounts from
+
+    // amount of researched skills counting towards the progress
+    private int winProgress = 0;
+    // the amount of aforementioned skills needed to win
+    public int winPoint = 6;
+    // the scene name that tells the player they won
+    public string winScene = "SceneWon";
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +63,9 @@ public class SkillManager : MonoBehaviour
                     researching[i] = -1;
 
                     // play out skill effects
-                    skills[r].Finish();
+                    if (skills[r].Finish())
+                        // if it actually happened; progress 1 towards winning
+                        StartCoroutine(WinProgress(1));
 
                     // make the button of the just-researched skill un-clickable again...
                     skillButtons[r].interactable = false;
@@ -79,5 +89,16 @@ public class SkillManager : MonoBehaviour
         // put the right PodHeads into this skill (by ID)
         // again, (int) 'cos I'm stupid
         researching[(int)skills[i].requirement[0]] = i;
+    }
+
+    IEnumerator WinProgress(int add)
+    {
+        winProgress += add;
+
+        if (winProgress >= winPoint)
+        {
+            yield return new WaitForSeconds(2.6f);
+            SceneManager.LoadScene(winScene);
+        }
     }
 }

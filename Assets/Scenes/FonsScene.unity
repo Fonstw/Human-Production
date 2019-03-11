@@ -1178,6 +1178,8 @@ MonoBehaviour:
   - {fileID: 501518241}
   - {fileID: 1042819792}
   researching: ffffffffffffffff
+  winPoint: 6
+  winScene: SceneWon
 --- !u!114 &534669910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4880,6 +4882,54 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 534669906}
+    - target: {fileID: 1042819791, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042819791, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 501518240, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 501518240, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611617710, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611617710, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 554478520, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 554478520, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 612011339, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 612011339, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664919185, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664919185, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f319e9ea150e7429ab1c20e1b2ef64, type: 3}
 --- !u!1 &5321344854539490696 stripped
