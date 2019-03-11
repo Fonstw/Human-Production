@@ -2170,7 +2170,7 @@ MonoBehaviour:
   - 1
   - 6250
   - 6250
-  functionalDescription: Toxium Power Plants produce 35% more power per Toxium mineral
+  functionalDescription: Toxium Power Plants produce 25% more power per Toxium mineral
   flavourText: Not only have you found a way to make use of Toxium, but putting all
     those engineer brains to work, you made it even more efficient!
   state: 0

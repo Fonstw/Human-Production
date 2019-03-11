@@ -1180,9 +1180,9 @@ MonoBehaviour:
   - {fileID: 1147358043118231359, guid: 1d9ccde5c1d11b1478a86651b3aeaefa, type: 3}
   - {fileID: 1916144813056286659, guid: ce23026b94f0fdb418af3aad95fdc2fa, type: 3}
   powerCosts:
-  - 10
+  - 200
   - 0
-  - 10
+  - 200
   foodCosts:
   - 0
   - 0
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   overlay: {fileID: 1388510086}
   tooltipText: Power Generator (next to water)
   time: 3 sec
-  power: 35
+  power: 700
   food: 0
   computing: 0
   args: []
@@ -3311,7 +3311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1388510087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4252,7 +4252,7 @@ MonoBehaviour:
   overlay: {fileID: 1388510086}
   tooltipText: Engineer Pod
   time: 2 sec
-  power: -10
+  power: -200
   food: -2
   computing: 1000
   args: []
@@ -4390,7 +4390,7 @@ MonoBehaviour:
   overlay: {fileID: 1388510086}
   tooltipText: Biologist Pod
   time: 2 sec
-  power: -10
+  power: -200
   food: -2
   computing: 1000
   args: []

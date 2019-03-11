@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceType: 1
-  generatesAmount: 35
+  generatesAmount: 700
   buildingTime: 3
   finishSound: event:/Power_ready
   groundTypes:
