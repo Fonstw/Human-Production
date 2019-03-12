@@ -279,6 +279,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &497998306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 497998306, guid: bffdd3625875763468d5c6f82fef92e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7303302601947278821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +446,7 @@ MonoBehaviour:
   powerMod: 1
   powerInfo: {fileID: 0}
   foodInfo: {fileID: 0}
-  errorMessage: {fileID: 0}
+  errorMessage: {fileID: 497998306}
   researches:
   - 0
   - 0
@@ -1293,32 +1299,32 @@ PrefabInstance:
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}

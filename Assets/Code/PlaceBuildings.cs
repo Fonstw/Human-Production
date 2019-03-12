@@ -94,7 +94,7 @@ public class PlaceBuildings : MonoBehaviour {
                 {
                     if(hit.transform.tag == "Ground"){
                         resourceManager.AdjustPowerTreshold(powerCosts[tempCurrent]);
-                        resourceManager.AdjustFoodTreshold(foodCosts[tempCurrent]);
+                        //resourceManager.AdjustFoodTreshold(foodCosts[tempCurrent]);
 
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
 
