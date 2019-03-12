@@ -49,4 +49,9 @@ public class BGM : MonoBehaviour
         // Haven't died on me yet? Good, let it be heard!
         return true;
     }
+
+    public void StopMusic()
+    {
+        audioMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+    }
 }

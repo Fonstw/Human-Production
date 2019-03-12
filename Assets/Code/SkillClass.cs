@@ -77,7 +77,7 @@ public class SkillClass : MonoBehaviour
                     break;
 
                 case 4:   // Toxium Carbonate Plants
-                    FindObjectOfType<ResourceManager>().AdjustPowerMod(.25f);
+                    FindObjectOfType<ResourceManager>().AdjustPowerMod(.15f);
                     break;
 
                 case 5:   // Ground

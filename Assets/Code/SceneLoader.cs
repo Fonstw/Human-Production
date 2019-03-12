@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void Load(string sceneToLoad)
     {
+        GetComponent<BGM>().StopMusic();
         SceneManager.LoadScene(sceneToLoad);
     }
 }
