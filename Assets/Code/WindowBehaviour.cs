@@ -23,7 +23,12 @@ public class WindowBehaviour : MonoBehaviour
         
     }
 
-    public void MinimizeWindow()
+    public void OpenWindow()
+    {
+        // animations or stuff here
+    }
+
+    public void HideWindow()
     {
         gameObject.SetActive(false);
     }

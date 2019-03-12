@@ -119,7 +119,7 @@ public class SkillClass : MonoBehaviour
             }
 
             // show progress on bar
-            progressBarFront.rectTransform.sizeDelta = new Vector2(250 * (requirement[2]-requirement[1]) / requirement[2], 10);
+            progressBarFront.rectTransform.sizeDelta = new Vector2(280 * (requirement[2]-requirement[1]) / requirement[2], 10);
 
             // tell whoever called this function that no, this skill is not done yet...
             return false;

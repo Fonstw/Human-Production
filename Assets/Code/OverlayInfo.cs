@@ -8,27 +8,21 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     public GameObject overlay;
 
-    public string tooltipText;
-    [SerializeField] protected string time;
-    [SerializeField] protected int power;
-    [SerializeField] protected int food;
-    [SerializeField] protected int computing;
-
-    private List<Color> initialColours;
-
-    //public bool topHalfOfTheScreen;
+    public string titleText;
+    public string[] values;
+    public string bodyText;
 
     public float[] args;
+
+    private List<Color> initialColours;
 
     // Start is called before the first frame update
     void Start()
     {
         initialColours = new List<Color>();
 
-        Image[] images = overlay.GetComponentsInChildren<Image>();
-
-        foreach (Image image in images)
-            initialColours.Add(image.color);
+        foreach (Text text in overlay.GetComponentsInChildren<Text>())
+            initialColours.Add(text.color);
     }
 
     // Update is called once per frame
@@ -39,62 +33,38 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     virtual public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        // turn the overlay on
         overlay.SetActive(true);
-        //overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
-        overlay.GetComponent<MouseOverlay>().FollowMouse();
+        overlay.GetComponent<WindowBehaviour>().OpenWindow();
+        //overlay.GetComponent<MouseOverlay>().FollowMouse();
 
-        string displayText = tooltipText.Replace("<br>", "\n");
+        // parse <br> into actual working linebreaks (no, typing "\n" in the editor does not add a working linebreak)
+        bodyText = bodyText.Replace("<br>", "\n");
 
+        // parse all {x} arguments to updated values
         for (int r = 0; r < args.Length; r++)
-            displayText = displayText.Replace("{"+r+"}", args[r].ToString());
+            bodyText = bodyText.Replace("{"+r+"}", args[r].ToString());
 
         Text[] texts = overlay.GetComponentsInChildren<Text>();
         Image[] images = overlay.GetComponentsInChildren<Image>();
 
-        texts[0].text = displayText;
+        texts[0].text = titleText;
+        texts[1].text = bodyText;
 
-        if (time != "-1")
+        int id = 0;
+        foreach (string v in values)
         {
-            foreach (Text text in texts)
-                text.color = Color.white;
+            overlay.GetComponentsInChildren<Text>()[id + 2].text = v;
 
-            for (int i=0; i<images.Length; i++)
-                images[i].color = initialColours[i];
-
-            texts[1].text = time;
-            texts[2].text = power.ToString();
-            texts[3].text = food.ToString();
-            texts[4].text = computing.ToString();
-
-            if (power >= 0)
-                texts[2].color = new Color(.5f, 1, .5f);
-            else
-                texts[2].color = new Color(1, .5f, .5f);
-
-            if (food >= 0)
-                texts[3].color = new Color(.5f, 1, .5f, 0);
-            else
-                texts[3].color = new Color(1, .5f, .5f, 0);
-
-            if (computing >= 0)
-                texts[4].color = new Color(.5f, 1, .5f);
-            else
-                texts[4].color = new Color(1, .5f, .5f);
-        }
-        else   // time == "-1"
-        {
-            foreach (Text text in texts)
-                text.color = new Color(0, 0, 0, 0);
-            texts[0].color = Color.white;
-
-            foreach (Image image in images)
-                image.color = new Color(0, 0, 0, 0);
-            images[0].color = initialColours[0];
+            if (v != "")
+                overlay.GetComponentsInChildren<Text>()[id + 2].color = initialColours[id];
         }
     }
 
+    // when not hovering this thing
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        overlay.SetActive(false);
+        // hide overlay
+        overlay.GetComponent<WindowBehaviour>().HideWindow();
     }
 }
