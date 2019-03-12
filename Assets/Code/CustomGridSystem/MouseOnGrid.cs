@@ -15,6 +15,9 @@ public class MouseOnGrid : MonoBehaviour
     //Pod
     public GameObject Pod;
     public GameObject PodGhost;
+    //Mine
+    public GameObject Mine;
+    public GameObject MineGhost;
 
     [Header("Extra")]
     public BetterCustomGrid customGrid;
@@ -25,10 +28,10 @@ public class MouseOnGrid : MonoBehaviour
     public Material ghostMat;
 
 
-    private GameObject Building;
-    private GameObject BuildingGhost;
-    private BuildType BuildingType = BuildType.Null;
-    private GameObject HeldBuilding;
+    public GameObject Building;
+    public GameObject BuildingGhost;
+    public BuildType BuildingType = BuildType.Null;
+    public GameObject HeldBuilding;
     //private int current = -1;
     //private int currentHolder = 0;
     void Update()
@@ -37,7 +40,7 @@ public class MouseOnGrid : MonoBehaviour
         Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer)){
             if(hit.transform.tag == "Ground" || hit.transform.tag == "CloseToWater"){
-                mouseTarget.transform.position = new Vector3(hit.point.x, mouseTarget.transform.position.y, hit.point.z);
+                mouseTarget.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
         } else {
             mouseTarget.transform.position = new Vector3(1000, mouseTarget.transform.position.y, 1000);
@@ -52,18 +55,13 @@ public class MouseOnGrid : MonoBehaviour
                 }
             } else {
                 HeldBuilding.transform.position = mouseTarget.transform.position;
-                switch(BuildingType){
-                    case BuildType.Energy:
-                        Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
-                        foreach(Renderer r in bGhost){
-                            if(Physics.CheckSphere(mouseTarget.transform.position, 1, previeuwLayer)){
-                                r.sharedMaterial.color = ghostMat.color;
-                            } else {
-                                r.sharedMaterial.color = Color.red;
-                            }
-                        }   
-                        
-                    break;
+                Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
+                foreach(Renderer r in bGhost){
+                    if(Physics.CheckSphere(mouseTarget.transform.position, 1, previeuwLayer)){
+                        r.sharedMaterial.color = ghostMat.color;
+                    } else {
+                        r.sharedMaterial.color = Color.red;
+                    }   
                 }
             }
         }
@@ -90,6 +88,8 @@ public class MouseOnGrid : MonoBehaviour
             Building = Energy;
             BuildingGhost = EnergyGhost;
             holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
             break;
             
             //Farm
@@ -99,6 +99,8 @@ public class MouseOnGrid : MonoBehaviour
             Building = Farm;
             BuildingGhost = FarmGhost;
             holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
             break;
 
             //Pod
@@ -108,6 +110,19 @@ public class MouseOnGrid : MonoBehaviour
             Building = Pod;
             BuildingGhost = PodGhost;
             holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
+            break;
+
+            //Pod
+            case 4:
+            BuildingType = BuildType.Mine;
+            customGrid.WhereToPlace(Buildingu);
+            Building = Mine;
+            BuildingGhost = MineGhost;
+            holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
             break;
         }
     }
@@ -116,17 +131,21 @@ public class MouseOnGrid : MonoBehaviour
         if(holdingBuilding == false){
             return false;
         }
-        switch(BuildingType){
-            case BuildType.Energy:
-                if(Physics.CheckSphere(worldPoint, nodeRadius, previeuwLayer)){
-                    Debug.Log("test");
-                    return true;
-                } else {
-                    Debug.Log("Test2");
-                    return false;
-                }
-        }
 
+        Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
+                foreach(Renderer r in bGhost){
+                    if(r.sharedMaterial.color != ghostMat.color){
+                        return false;
+                    }  
+                }
+
+        if(Physics.CheckSphere(worldPoint, nodeRadius, previeuwLayer)){
+            Debug.Log("test");
+            return true;
+        } else {
+            Debug.Log("Test2");
+            return false;
+        }
         return true;
     }
 }

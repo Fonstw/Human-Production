@@ -14,6 +14,7 @@ public class BetterCustomGrid : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask closeToWaterMask;
     public LayerMask buildingMask;
+    public LayerMask ghostBuildingMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
     public GameObject previeuwObject;
@@ -57,16 +58,16 @@ public class BetterCustomGrid : MonoBehaviour
 
     void Update(){
         if(grid != null){
-            for(int x = 0; x < gridSizeX; x++){
-                for(int y = 0; y < gridSizeY; y++){
-                    Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.forward * gridWorldSize.y/2;
-                    Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-                    bool theresBuilding = (Physics.CheckSphere(worldPoint, nodeRadius, buildingMask));
-                    grid[x,y].theresBuilding = theresBuilding;
+            foreach(Node n in grid){
+                    bool theresGhost = (Physics.CheckSphere(n.worldPosition, nodeRadius, ghostBuildingMask));
+                    n.theresGhost = theresGhost;
 
-                    if((Physics.CheckSphere(grid[x,y].worldPosition, nodeRadius, mouseMask))){
-                        grid[x,y].walkable = false;
-                        if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(worldPoint, nodeRadius) && !grid[x,y].isWater && !grid[x,y].theresBuilding){
+                    bool theresBuilding = (Physics.CheckSphere(n.worldPosition, nodeRadius, buildingMask));
+                    n.theresBuilding = theresBuilding;
+
+                    if((Physics.CheckSphere(n.worldPosition, nodeRadius, mouseMask))){
+                        n.walkable = false;
+                        if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(n.worldPosition, nodeRadius) && !n.isWater && !n.theresBuilding){
                             if(previeuwObjects.Count >= 1){
                                 foreach(GameObject g in previeuwObjects){
                                     Destroy(g);
@@ -74,13 +75,12 @@ public class BetterCustomGrid : MonoBehaviour
                                 previeuwObjects.Clear();
                             }
                             previeuwObjects.Clear();
-                            MainCamera.GetComponent<MouseOnGrid>().PlaceBuilding(grid[x,y].worldPosition.x, grid[x,y].worldPosition.z);
-                            grid[x,y].clickedOn = true;
+                            MainCamera.GetComponent<MouseOnGrid>().PlaceBuilding(n.worldPosition.x, n.worldPosition.z);
+                            n.clickedOn = true;
                         }
                     } else {
-                        grid[x,y].walkable = true;
+                        n.walkable = true;
                     }
-                }
             }
         }
     }
@@ -96,8 +96,6 @@ public class BetterCustomGrid : MonoBehaviour
                     Gizmos.color = Color.blue;
                 }
 
-                
-
                 if(n.isCloseToWater){
                     Gizmos.color = Color.yellow;
                 }
@@ -110,13 +108,19 @@ public class BetterCustomGrid : MonoBehaviour
                     Gizmos.color = Color.green;
                 }
 
+                if(n.theresBuilding){
+                    Gizmos.color = Color.black;
+                }
+
+                if(n.theresGhost){
+                    Gizmos.color = Color.magenta;
+                }
+
                 if(!n.walkable){
                     Gizmos.color = Color.red;
                 }
 
-                if(n.theresBuilding){
-                    Gizmos.color = Color.black;
-                }
+                
                 
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-0.1f));
             }
@@ -136,7 +140,7 @@ public class BetterCustomGrid : MonoBehaviour
             
 
             foreach(Node n in grid){
-                if(n.isCloseToWater && !n.theresBuilding){
+                if(n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
                     GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
                     newObj.transform.parent = previeuwsParent.transform;
                     previeuwObjects.Add(newObj);
@@ -146,12 +150,60 @@ public class BetterCustomGrid : MonoBehaviour
             
             //Farm
             case 2:
+            if(previeuwObjects.Count >= 1){
+                foreach(GameObject g in previeuwObjects){
+                    Destroy(g);
+                }
+                previeuwObjects.Clear();
+            }
+            
 
+            foreach(Node n in grid){
+                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
+                    newObj.transform.parent = previeuwsParent.transform;
+                    previeuwObjects.Add(newObj);
+                }
+            }
             break;
 
             //Pod
             case 3:
+            if(previeuwObjects.Count >= 1){
+                foreach(GameObject g in previeuwObjects){
+                    Destroy(g);
+                }
+                previeuwObjects.Clear();
+            }
             
+
+            foreach(Node n in grid){
+                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
+                    newObj.transform.parent = previeuwsParent.transform;
+                    previeuwObjects.Add(newObj);
+                }
+            }
+            break;
+
+            //Mine
+            case 4:
+            if(previeuwObjects.Count >= 1){
+                foreach(GameObject g in previeuwObjects){
+                    Destroy(g);
+                }
+                previeuwObjects.Clear();
+            }
+            
+
+            foreach(Node n in grid){
+                if(!n.theresBuilding && n.hasMineral){
+                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
+                    newObj.transform.localScale = new Vector3(newObj.transform.localScale.x , newObj.transform.localScale.y * 3 , newObj.transform.localScale.z);
+                    newObj.transform.parent = previeuwsParent.transform;
+                    previeuwObjects.Add(newObj);
+                }
+            }
             break;
         }
     }
