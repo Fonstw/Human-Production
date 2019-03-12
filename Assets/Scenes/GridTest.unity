@@ -1347,10 +1347,6 @@ MonoBehaviour:
   mouseTarget: {fileID: 419736065}
   holdingBuilding: 0
   ghostMat: {fileID: 2100000, guid: b64397c5fbc72cd45b461a10136e39c9, type: 2}
-  Building: {fileID: 0}
-  BuildingGhost: {fileID: 0}
-  BuildingType: 4
-  HeldBuilding: {fileID: 0}
 --- !u!1 &1253871064
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,10 +28,10 @@ public class MouseOnGrid : MonoBehaviour
     public Material ghostMat;
 
 
-    public GameObject Building;
-    public GameObject BuildingGhost;
-    public BuildType BuildingType = BuildType.Null;
-    public GameObject HeldBuilding;
+    private GameObject Building;
+    private GameObject BuildingGhost;
+    private BuildType BuildingType = BuildType.Null;
+    private GameObject HeldBuilding;
     //private int current = -1;
     //private int currentHolder = 0;
     void Update()
@@ -46,12 +46,20 @@ public class MouseOnGrid : MonoBehaviour
             mouseTarget.transform.position = new Vector3(1000, mouseTarget.transform.position.y, 1000);
         }
 
+        RaycastHit hit2;
+        if (Physics.Raycast(mouseTarget.transform.position, -Vector3.up, out hit2, Mathf.Infinity, groundLayer)){      
+            Vector3 newOof = hit.normal + mouseTarget.transform.position;
+            mouseTarget.transform.LookAt(newOof, mouseTarget.transform.up);
+            Debug.DrawRay(mouseTarget.transform.position, hit.normal, Color.blue);
+        }
+
         if(holdingBuilding){
             if(HeldBuilding == null){
                 if(Building == null){
                     Debug.Log("no building given");
                 } else {
                     HeldBuilding = Instantiate(BuildingGhost, mouseTarget.transform);
+                    HeldBuilding.transform.localRotation = Quaternion.Euler(90,0,0);
                 }
             } else {
                 HeldBuilding.transform.position = mouseTarget.transform.position;
