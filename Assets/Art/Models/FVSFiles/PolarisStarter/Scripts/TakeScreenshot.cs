@@ -75,7 +75,7 @@ namespace Pinwheel.PolarisStarter
             File.WriteAllBytes(filePath, bytes);
 
             // Added by Karl. - Tell unity to delete the texture, by default it seems to keep hold of it and memory crashes will occur after too many screenshots.
-            DestroyObject(texture);
+            Destroy(texture);
             Debug.Log("Screenshot saved at: " + filePath);
         }
     }

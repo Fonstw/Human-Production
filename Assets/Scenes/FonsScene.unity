@@ -3192,7 +3192,7 @@ MonoBehaviour:
   overlay: {fileID: 1388510086}
   tooltipText: Power Generator (next to water)
   time: 3 sec
-  power: 700
+  power: 500
   food: 0
   computing: 0
   args: []

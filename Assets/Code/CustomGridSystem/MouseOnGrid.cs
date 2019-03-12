@@ -29,8 +29,8 @@ public class MouseOnGrid : MonoBehaviour
     private GameObject BuildingGhost;
     private BuildType BuildingType = BuildType.Null;
     private GameObject HeldBuilding;
-    private int current = -1;
-    private int currentHolder = 0;
+    //private int current = -1;
+    //private int currentHolder = 0;
     void Update()
     {
         RaycastHit hit;
@@ -125,7 +125,6 @@ public class MouseOnGrid : MonoBehaviour
                     Debug.Log("Test2");
                     return false;
                 }
-            break;
         }
 
         return true;
