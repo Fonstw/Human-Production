@@ -57,6 +57,10 @@ public class MouseOverlay : MonoBehaviour
 
         SetPivotOffset();
     }
+    public void ResetPosition()
+    {
+        transform.position = new Vector3(0, 0);
+    }
 
     public void FollowMouse()
     {

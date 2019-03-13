@@ -8,27 +8,18 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     public GameObject overlay;
 
-    public string tooltipText;
-    [SerializeField] protected string time;
-    [SerializeField] protected int power;
-    [SerializeField] protected int food;
-    [SerializeField] protected int computing;
-
-    private List<Color> initialColours;
-
-    //public bool topHalfOfTheScreen;
-
+    public string titleText;
+    public Sprite[] icons;
+    public string[] values;
+    public string bodyText;
     public float[] args;
+
+    private int valueCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        initialColours = new List<Color>();
-
-        Image[] images = overlay.GetComponentsInChildren<Image>();
-
-        foreach (Image image in images)
-            initialColours.Add(image.color);
+        valueCount = Mathf.Max(icons.Length, values.Length);
     }
 
     // Update is called once per frame
@@ -39,62 +30,56 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     virtual public void OnPointerEnter(PointerEventData pointerEventData)
     {
+        // turn the overlay on
         overlay.SetActive(true);
-        //overlay.GetComponent<MouseOverlay>().SetNegative(topHalfOfTheScreen);
-        overlay.GetComponent<MouseOverlay>().FollowMouse();
+        overlay.GetComponent<WindowBehaviour>().OpenWindow();
+        // avoid button bug
+        overlay.GetComponent<MouseOverlay>().ResetPosition();
 
-        string displayText = tooltipText.Replace("<br>", "\n");
+        // parse <br> into actual working linebreaks (no, typing "\n" in the editor does not add a working linebreak)
+        bodyText = bodyText.Replace("<br>", "\n");
 
+        // parse all {x} arguments to updated values
         for (int r = 0; r < args.Length; r++)
-            displayText = displayText.Replace("{"+r+"}", args[r].ToString());
+            bodyText = bodyText.Replace("{"+r+"}", args[r].ToString());
 
-        Text[] texts = overlay.GetComponentsInChildren<Text>();
-        Image[] images = overlay.GetComponentsInChildren<Image>();
+        Image[] images = overlay.GetComponentsInChildren<Image>(true);
+        Text[] texts = overlay.GetComponentsInChildren<Text>(true);
 
-        texts[0].text = displayText;
+        texts[0].text = titleText;
+        texts[1].text = bodyText;
 
-        if (time != "-1")
+        for (int i = 1; i < 5; i++)
+            images[i].gameObject.SetActive(false);
+        for (int t = 2; t < 6; t++)
+            texts[t].gameObject.SetActive(false);
+
+        int id = 1;
+        foreach (Sprite i in icons)
         {
-            foreach (Text text in texts)
-                text.color = Color.white;
+            images[id].gameObject.SetActive(true);
+            images[id].sprite = i;
 
-            for (int i=0; i<images.Length; i++)
-                images[i].color = initialColours[i];
-
-            texts[1].text = time;
-            texts[2].text = power.ToString();
-            texts[3].text = food.ToString();
-            texts[4].text = computing.ToString();
-
-            if (power >= 0)
-                texts[2].color = new Color(.5f, 1, .5f);
-            else
-                texts[2].color = new Color(1, .5f, .5f);
-
-            if (food >= 0)
-                texts[3].color = new Color(.5f, 1, .5f, 0);
-            else
-                texts[3].color = new Color(1, .5f, .5f, 0);
-
-            if (computing >= 0)
-                texts[4].color = new Color(.5f, 1, .5f);
-            else
-                texts[4].color = new Color(1, .5f, .5f);
+            id++;
         }
-        else   // time == "-1"
+
+        id = 2;
+        foreach (string v in values)
         {
-            foreach (Text text in texts)
-                text.color = new Color(0, 0, 0, 0);
-            texts[0].color = Color.white;
+            texts[id].gameObject.SetActive(true);
+            texts[id].text = v;
 
-            foreach (Image image in images)
-                image.color = new Color(0, 0, 0, 0);
-            images[0].color = initialColours[0];
+            id++;
         }
+        
+        // scale body text to available area
+        texts[1].rectTransform.sizeDelta = new Vector2(texts[1].rectTransform.sizeDelta.x, 20 + 40 * (4 - valueCount));
     }
 
+    // when not hovering this thing
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        overlay.SetActive(false);
+        // hide overlay
+        overlay.GetComponent<WindowBehaviour>().HideWindow();
     }
 }

@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
     // UI.Texts to display resources in
     public Text powerText;
-    public Text foodText;
-    public Text[] currentComputingText;
+    //public Text foodText;
+    //public Text[] currentComputingText;
     //public Text computingTresholdText;
     //public RectTransform timerBar;
     //public OverlayInfo computingInfo;
@@ -18,14 +19,14 @@ public class ResourceManager : MonoBehaviour
 
     // OverInfo components (.cs scripts) to show a verbose info overlay on mouse hover
     public OverlayInfo powerInfo;
-    public OverlayInfo foodInfo;
+    //public OverlayInfo foodInfo;
     // gameobject to show things like "Not enough Power!" around the mouse when that's the case
     public GameObject errorMessage;
 
     //public bool running = false;
 
     // resources
-    private float currentPower, powerTreshold, currentFood, foodTreshold/*, round=1*/;
+    private float currentPower, powerTreshold/*, currentFood, foodTreshold, round=1*/;
     // how much of each can be researched per minute
     public float[] researches;
     // multiplier of how much each type researches
@@ -71,12 +72,12 @@ public class ResourceManager : MonoBehaviour
     public bool CanPay(float ptAmount, float ftAmount)
     {
         // if the current power is lower than the treshold+power pay amount
-        if (currentPower < powerTreshold + ptAmount)
+        if (currentPower < powerTreshold + ptAmount && !EventSystem.current.IsPointerOverGameObject())
         {
             //timerBar.GetComponent<AudioSource>().Play();
 
             // error overlay close to mouse displays text
-            errorMessage.GetComponent<Text>().text = "Need more Power!";
+            errorMessage.GetComponentInChildren<Text>().text = "Need more Power!";
             // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
@@ -86,48 +87,54 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, it can't be paid...
             return false;
         }
-        else if (currentFood < foodTreshold + ftAmount)
-        {
-            //timerBar.GetComponent<AudioSource>().Play();
+        //else if (currentFood < foodTreshold + ftAmount && !EventSystem.current.IsPointerOverGameObject())
+        //{
+        //    //timerBar.GetComponent<AudioSource>().Play();
 
-            // error overlay close to mouse displays text
-            errorMessage.GetComponent<Text>().text = "Need more Food!";
-            // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
-            errorMessage.GetComponent<FadeOut>().FadeNow();
+        //    // error overlay close to mouse displays text
+        //    errorMessage.GetComponentInChildren<Text>().text = "Need more Food!";
+        //    // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
+        //    errorMessage.GetComponent<FadeOut>().FadeNow();
 
-            // play the notification-sound to notify the player of the error
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
+        //    // play the notification-sound to notify the player of the error
+        //    FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
 
-            // tell whoever called the function that no, it can't be paid...
-            return false;
-        }
+        //    // tell whoever called the function that no, it can't be paid...
+        //    return false;
+        //}
         else   // not short on power nor food?
+        {
+            errorMessage.GetComponent<FadeOut>().StopFading();
+
             // tell whoever called the function that yes, it can be paid!
             return true;
+        }
     }
 
     public bool CanPlaceGenerator(bool waterClose)
     {
-        if (!waterClose)
+        if (!waterClose && !EventSystem.current.IsPointerOverGameObject())
         {
-            errorMessage.GetComponent<Text>().text = "Place close to water";
+            errorMessage.GetComponentInChildren<Text>().text = "Place close to water";
             errorMessage.GetComponent<FadeOut>().FadeNow();
             return false;
         }
         else
         {
+            errorMessage.GetComponent<FadeOut>().StopFading();
             return true;
         }
     }
     public bool CanPlaceMine(bool mineralClose)
     {
-        if (!mineralClose)
+        if (!mineralClose && !EventSystem.current.IsPointerOverGameObject())
         {
-            errorMessage.GetComponent<Text>().text = "Place only on minerals";
+            errorMessage.GetComponentInChildren<Text>().text = "Place only on minerals";
             errorMessage.GetComponent<FadeOut>().FadeNow();
             return false;
         } else
         {
+            errorMessage.GetComponent<FadeOut>().StopFading();
             return true;
         }
     }
@@ -200,91 +207,91 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    public bool AdjustCurrentFood(float amount)
-    {
-        // in case the treshold goes up; it shouldn't "underfeed"
-        if (currentFood + amount > foodTreshold)
-        {
-            // adjust food
-            currentFood += amount;
-            // overlay info's second argument now displays the correct amount of food
-            foodInfo.args[1] = currentFood;
+    //public bool AdjustCurrentFood(float amount)
+    //{
+    //    // in case the treshold goes up; it shouldn't "underfeed"
+    //    if (currentFood + amount > foodTreshold)
+    //    {
+    //        // adjust food
+    //        currentFood += amount;
+    //        // overlay info's second argument now displays the correct amount of food
+    //        foodInfo.args[1] = currentFood;
 
-            // UI.Text now displays the correct amount of 'food left'
-            UpdateFoodText();
+    //        // UI.Text now displays the correct amount of 'food left'
+    //        UpdateFoodText();
 
-            // tell whoever called the function that yes, the food has been updated!
-            return true;
-        }
-        else
-            // tell whoever called the function that no, the food couldn't go down that much...
-            return false;
-    }
-    public bool AdjustFoodTreshold(float amount)
-    {
-        // in case the treshold goes up; it shouldn't "underfeed"
-        if (currentFood >= foodTreshold + amount)
-        {
-            // adjust the treshold
-            foodTreshold += amount;
-            // overlay info's first argument now displays the correct treshold
-            foodInfo.args[0] = foodTreshold;
+    //        // tell whoever called the function that yes, the food has been updated!
+    //        return true;
+    //    }
+    //    else
+    //        // tell whoever called the function that no, the food couldn't go down that much...
+    //        return false;
+    //}
+    //public bool AdjustFoodTreshold(float amount)
+    //{
+    //    // in case the treshold goes up; it shouldn't "underfeed"
+    //    if (currentFood >= foodTreshold + amount)
+    //    {
+    //        // adjust the treshold
+    //        foodTreshold += amount;
+    //        // overlay info's first argument now displays the correct treshold
+    //        foodInfo.args[0] = foodTreshold;
 
-            // UI.Text now displays the correct amount of 'food left'
-            UpdateFoodText();
+    //        // UI.Text now displays the correct amount of 'food left'
+    //        UpdateFoodText();
 
-            // tell whoever called the function that yes, the treshold has been updated!
-            return true;
-        }
-        else
-            // tell whoever called the function that no, the treshold couldn't go up that much...
-            return false;
-    }
-    private void UpdateFoodText()
-    {
-        // UI.Text.text = 'how much food left'
-        foodText.text = (currentFood - foodTreshold).ToString();
-    }
+    //        // tell whoever called the function that yes, the treshold has been updated!
+    //        return true;
+    //    }
+    //    else
+    //        // tell whoever called the function that no, the treshold couldn't go up that much...
+    //        return false;
+    //}
+    //private void UpdateFoodText()
+    //{
+    //    // UI.Text.text = 'how much food left'
+    //    foodText.text = (currentFood - foodTreshold).ToString();
+    //}
 
-    public bool ChangeCurrentComputing(int type, float amount)
-    {
-        // never go full retard
-        if (researches[type] + amount >= 0)
-        {
-            // adjust research per minute
-            researches[type] += amount;
-            //computingInfo.args[1] = currentComputing;
+    //public bool ChangeCurrentComputing(int type, float amount)
+    //{
+    //    // never go full retard
+    //    if (researches[type] + amount >= 0)
+    //    {
+    //        // adjust research per minute
+    //        researches[type] += amount;
+    //        //computingInfo.args[1] = currentComputing;
 
-            // update text
-            currentComputingText[type].text = (researches[type] * researchMod[type]).ToString();
+    //        // update text
+    //        currentComputingText[type].text = (researches[type] * researchMod[type]).ToString();
 
-            //UpdateTextColour();
+    //        //UpdateTextColour();
 
-            // tell whoever called the function that yes, the research per minute has been updated!
-            return true;
-        }
-        else
-            // tell whoever called the function that no, the research per minute couldn't go down that much...
-            return false;
-    }
-    public void ChangeMod(int id, float amount)
-    {
-        researchMod[id] += amount;
-        UpdateComputingText(id);
-    }
-    public void ChangeAllMods(float amount)
-    {
-        for (int m = 0; m < researchMod.Length; m++)
-        {
-            researchMod[m] += amount;
-            UpdateComputingText(m);
-        }
-    }
-    private void UpdateComputingText(int id)
-    {
-        // UI.Text.text = how much research per minute, effectively
-        currentComputingText[id].text = (researches[id] * researchMod[id]).ToString();
-    }
+    //        // tell whoever called the function that yes, the research per minute has been updated!
+    //        return true;
+    //    }
+    //    else
+    //        // tell whoever called the function that no, the research per minute couldn't go down that much...
+    //        return false;
+    //}
+    //public void ChangeMod(int id, float amount)
+    //{
+    //    researchMod[id] += amount;
+    //    UpdateComputingText(id);
+    //}
+    //public void ChangeAllMods(float amount)
+    //{
+    //    for (int m = 0; m < researchMod.Length; m++)
+    //    {
+    //        researchMod[m] += amount;
+    //        UpdateComputingText(m);
+    //    }
+    //}
+    //private void UpdateComputingText(int id)
+    //{
+    //    // UI.Text.text = how much research per minute, effectively
+    //    currentComputingText[id].text = (researches[id] * researchMod[id]).ToString();
+    //}
 
     //public void SetComputingNeed(float amount)
     //{
