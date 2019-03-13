@@ -9,7 +9,7 @@ public class PlaceBuildings : MonoBehaviour {
     public GameObject[] testSpawns;
     public GameObject[] toSpawn;
     public float[] powerCosts;
-    public float[] foodCosts;
+    // public float[] foodCosts;
     public float[] spawnOffsets;
     public Transform mouseTarget;
     public CustomGrid gridSystem;
@@ -84,7 +84,7 @@ public class PlaceBuildings : MonoBehaviour {
                 tempCurrent = current;
 
             // pay up
-            if (resourceManager.CanPay(powerCosts[tempCurrent], foodCosts[tempCurrent]))
+            if (resourceManager.CanPay(powerCosts[tempCurrent], /*foodCosts[tempCurrent]*/0))
             {
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
