@@ -27,3 +27,6 @@ sysinfo.txt
 /FM[Oo][Dd]/*/*.user
 fmod_editor.log
 Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset
+*/FMODStudioCache.asset
+/*/FMODStudioCache.asset
