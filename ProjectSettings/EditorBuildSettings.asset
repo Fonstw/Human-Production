@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroAnimation.unity
     guid: 1b791a83d0cd32a4386bdde09eed737a
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Scenes/MainSceneOld.unity
     guid: 333f9497e7ff378459bde82bf1f9f759
   - enabled: 1
     path: Assets/Scenes/SceneWon.unity
