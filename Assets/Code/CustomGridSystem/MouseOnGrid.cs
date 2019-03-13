@@ -65,7 +65,7 @@ public class MouseOnGrid : MonoBehaviour
                 HeldBuilding.transform.position = mouseTarget.transform.position;
                 Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
                 foreach(Renderer r in bGhost){
-                    if(Physics.CheckSphere(mouseTarget.transform.position, 1, previeuwLayer)){
+                    if(Physics.CheckSphere(mouseTarget.transform.position, 5, previeuwLayer)){
                         r.sharedMaterial.color = ghostMat.color;
                     } else {
                         r.sharedMaterial.color = Color.red;
@@ -147,7 +147,7 @@ public class MouseOnGrid : MonoBehaviour
                     }  
                 }
 
-        if(Physics.CheckSphere(worldPoint, nodeRadius, previeuwLayer)){
+        if(Physics.CheckSphere(mouseTarget.transform.position, 5, previeuwLayer)){
             Debug.Log("test");
             return true;
         } else {

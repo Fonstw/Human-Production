@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BetterCustomGrid : MonoBehaviour
 {
+    public int checkHeight = 80;
     public GameObject MainCamera;
     [Range(2,100)]
     public int spawnMineralsOneIn = 2;
@@ -12,6 +13,7 @@ public class BetterCustomGrid : MonoBehaviour
     public GameObject[] mineralPrefabs;
     public LayerMask mouseMask;
     public LayerMask groundMask;
+    public LayerMask waterMask;
     public LayerMask closeToWaterMask;
     public LayerMask buildingMask;
     public LayerMask ghostBuildingMask;
@@ -38,9 +40,12 @@ public class BetterCustomGrid : MonoBehaviour
         for(int x = 0; x < gridSizeX; x++){
             for(int y = 0; y < gridSizeY; y++){
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, mouseMask));
-                bool isWater = !(Physics.CheckSphere(worldPoint, nodeRadius, groundMask));
-                bool isCloseToWater = (Physics.CheckSphere(worldPoint, nodeRadius, closeToWaterMask));
+                Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
+
+
+                bool walkable = !(Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  waterMask));
+                bool isWater = (Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  waterMask));
+                bool isCloseToWater = (Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity, closeToWaterMask));
                 bool theresBuilding = (Physics.CheckSphere(worldPoint, nodeRadius, buildingMask));
                 
                 grid[x,y] = new Node(walkable, worldPoint);
@@ -49,9 +54,13 @@ public class BetterCustomGrid : MonoBehaviour
                 grid[x,y].theresBuilding = theresBuilding;
                 if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
                     grid[x,y].hasMineral = true;
-                    GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], worldPoint, this.transform.rotation);
-                    mineral.transform.parent = mineralsParent.transform;
+                    RaycastHit hit;
+                    if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
+                        GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
+                        mineral.transform.parent = mineralsParent.transform;
+                    }
                 }
+                
             }
         }
     }
@@ -59,13 +68,14 @@ public class BetterCustomGrid : MonoBehaviour
     void Update(){
         if(grid != null){
             foreach(Node n in grid){
-                    bool theresGhost = (Physics.CheckSphere(n.worldPosition, nodeRadius, ghostBuildingMask));
+                    Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
+                    bool theresGhost = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  ghostBuildingMask));
                     n.theresGhost = theresGhost;
 
-                    bool theresBuilding = (Physics.CheckSphere(n.worldPosition, nodeRadius, buildingMask));
+                    bool theresBuilding = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  buildingMask));
                     n.theresBuilding = theresBuilding;
 
-                    if((Physics.CheckSphere(n.worldPosition, nodeRadius, mouseMask))){
+                    if((Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mouseMask))){
                         n.walkable = false;
                         if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(n.worldPosition, nodeRadius) && !n.isWater && !n.theresBuilding){
                             if(previeuwObjects.Count >= 1){
@@ -122,7 +132,7 @@ public class BetterCustomGrid : MonoBehaviour
 
                 
                 
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-0.1f));
+                Gizmos.DrawCube(n.worldPosition, new Vector3(nodeRadius, checkHeight, nodeRadius));
             }
         }
     }
@@ -141,9 +151,13 @@ public class BetterCustomGrid : MonoBehaviour
 
             foreach(Node n in grid){
                 if(n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
-                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
-                    newObj.transform.parent = previeuwsParent.transform;
-                    previeuwObjects.Add(newObj);
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    } 
                 }
             }
             break;
@@ -160,9 +174,13 @@ public class BetterCustomGrid : MonoBehaviour
 
             foreach(Node n in grid){
                 if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
-                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
-                    newObj.transform.parent = previeuwsParent.transform;
-                    previeuwObjects.Add(newObj);
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    } 
                 }
             }
             break;
@@ -179,9 +197,13 @@ public class BetterCustomGrid : MonoBehaviour
 
             foreach(Node n in grid){
                 if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
-                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
-                    newObj.transform.parent = previeuwsParent.transform;
-                    previeuwObjects.Add(newObj);
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    } 
                 }
             }
             break;
@@ -198,10 +220,13 @@ public class BetterCustomGrid : MonoBehaviour
 
             foreach(Node n in grid){
                 if(!n.theresBuilding && n.hasMineral){
-                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
-                    newObj.transform.localScale = new Vector3(newObj.transform.localScale.x , newObj.transform.localScale.y * 3 , newObj.transform.localScale.z);
-                    newObj.transform.parent = previeuwsParent.transform;
-                    previeuwObjects.Add(newObj);
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    } 
                 }
             }
             break;
