@@ -8,45 +8,26 @@ public class ResourceManager : MonoBehaviour
 {
     // UI.Texts to display resources in
     public Text powerText;
-    //public Text foodText;
-    //public Text[] currentComputingText;
-    //public Text computingTresholdText;
-    //public RectTransform timerBar;
-    //public OverlayInfo computingInfo;
-    //public OverlayInfo timeInfo;
-    // needed for the tech "Toxium Carbonate Power Plants"
+    public Text mineralText;
+    // needed for the tech "Carbonate Power Plants"
     public float powerMod = 1f;
 
     // OverInfo components (.cs scripts) to show a verbose info overlay on mouse hover
     public OverlayInfo powerInfo;
-    //public OverlayInfo foodInfo;
+    public OverlayInfo mineralInfo;
     // gameobject to show things like "Not enough Power!" around the mouse when that's the case
     public GameObject errorMessage;
 
-    //public bool running = false;
-
     // resources
-    private float currentPower, powerTreshold/*, currentFood, foodTreshold, round=1*/;
+    private float currentPower, powerTreshold, currentMineral, mineralTreshold;
     // how much of each can be researched per minute
     public float[] researches;
     // multiplier of how much each type researches
     public float[] researchMod;
-    //private Vector2 timerSize;
-    //private AudioSource progress;
-
-    //private float needTimer=60, currentTime, timeAdd;
 
     // Start is called before the first frame update
     void Start()
     {
-        //timerSize = timerBar.sizeDelta;
-
-        //SetComputingNeed(NextRequirement());
-
-        //computingInfo.args[0] = computingNeed;
-
-        //computingTresholdText.text = computingNeed.ToString();
-
         // we're going to have a Modifier for each research type
         researchMod = new float[researches.Length];
         // and they're going to be ×1 by default
@@ -54,31 +35,17 @@ public class ResourceManager : MonoBehaviour
             researchMod[m] = 1;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (running)
-        //    HandleTime();
-    }
-
-    //private float NextRequirement()
-    //{
-    //    // triangle formula in steps of 50; e.g.: 50, 150, 300, 500...
-    //    return (Mathf.Pow(round, 2) + round) * 25f;
-    //}
 
     // public function that only ASKS wether there's enough resources
     // (this is because of the pay-but-don't-place bug from earlier)
-    public bool CanPay(float ptAmount, float ftAmount)
+    public bool CanPay(float ptAmount, float mtAmount)
     {
-        // if the current power is lower than the treshold+power pay amount
+        // if the current power is lower than the treshold+power pay amount and not clicking the UI
         if (currentPower < powerTreshold + ptAmount && !EventSystem.current.IsPointerOverGameObject())
         {
-            //timerBar.GetComponent<AudioSource>().Play();
-
             // error overlay close to mouse displays text
             errorMessage.GetComponentInChildren<Text>().text = "Need more Power!";
-            // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
+            // and does its job
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
             // play the notification-sound to notify the player of the error
@@ -87,23 +54,22 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, it can't be paid...
             return false;
         }
-        //else if (currentFood < foodTreshold + ftAmount && !EventSystem.current.IsPointerOverGameObject())
-        //{
-        //    //timerBar.GetComponent<AudioSource>().Play();
-
-        //    // error overlay close to mouse displays text
-        //    errorMessage.GetComponentInChildren<Text>().text = "Need more Food!";
-        //    // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
-        //    errorMessage.GetComponent<FadeOut>().FadeNow();
-
-        //    // play the notification-sound to notify the player of the error
-        //    FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
-
-        //    // tell whoever called the function that no, it can't be paid...
-        //    return false;
-        //}
-        else   // not short on power nor food?
+        else if (currentMineral < mineralTreshold + mtAmount && !EventSystem.current.IsPointerOverGameObject())   // same but for mineral
         {
+            // error overlay close to mouse displays text
+            errorMessage.GetComponentInChildren<Text>().text = "Need more Mineral!";
+            // and does its job
+            errorMessage.GetComponent<FadeOut>().FadeNow();
+
+            // play the notification-sound to notify the player of the error
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
+
+            // tell whoever called the function that no, it can't be paid...
+            return false;
+        }
+        else   // not short on power nor mineral?
+        {
+            // hide error message (no longer relevant)
             errorMessage.GetComponent<FadeOut>().StopFading();
 
             // tell whoever called the function that yes, it can be paid!
