@@ -9,31 +9,28 @@ public class SkillClass : MonoBehaviour
     public string skillName = "Henk";   // name to show in-game
     public float[] requirement = { 0, 2000 };   // [0]=type of research, [1]=amount of research, [2]=max amount
     public string functionalDescription = "This is a dummy skill, which means that the devs haven't set the skill properly";   // tells what it does in human-language
-    public string flavourText = "Is a private being saved!";   // tells how it's done // helps un-imaginative humans out
     public int state = 1;   // 0=locked / cannot be done, 1=unlocked / can be done, 2=researched / done
     public int[] unlocks;   // which techs it unlocks in the tech tree
 
     public Image stateIcon;
     public Sprite[] stateSources;
-    public Image progressBarFront;
 
     // function to call to properly set a Skill
-    public void Create(string newName, int researchType, float researchAmount, string newFunctionalDescription, string newFlavourText, int lockState)
+    public void Create(string newName, int researchType, float researchAmount, string newFunctionalDescription, int lockState)
     {
         skillName = newName;
         requirement[0] = researchType;
         requirement[1] = researchAmount;
         requirement[2] = requirement[1];
         functionalDescription = newFunctionalDescription;
-        flavourText = newFlavourText;
         state = lockState;
     }
 
     public bool Unlock()
     {
         // show icon we're unlocked
-        stateIcon.sprite = stateSources[1];
-        stateIcon.color = Color.red;
+        stateIcon.sprite = stateSources[0];
+        stateIcon.color = Color.yellow;
 
         // if not unlocked yet...
         if (state < 1)
@@ -51,7 +48,7 @@ public class SkillClass : MonoBehaviour
     public bool Finish()
     {
         // show icon we're finished
-        stateIcon.sprite = stateSources[3];
+        stateIcon.sprite = stateSources[2];
         stateIcon.color = Color.green;
 
         // if not finished yet...
@@ -103,7 +100,7 @@ public class SkillClass : MonoBehaviour
             return false;
     }
 
-    public bool Research(float amount)
+    public float Research(float amount)
     {
         // if still not done with it...
         if (requirement[1] > amount)
@@ -112,20 +109,17 @@ public class SkillClass : MonoBehaviour
             requirement[1] -= amount;
 
             // make sure icon stays "on research"
-            if (stateIcon.sprite != stateSources[2] || stateIcon.color != Color.blue)
+            if (stateIcon.sprite != stateSources[1] || stateIcon.color != Color.cyan)
             {
-                stateIcon.sprite = stateSources[2];
-                stateIcon.color = Color.blue;
+                stateIcon.sprite = stateSources[1];
+                stateIcon.color = Color.cyan;
             }
 
-            // show progress on bar
-            progressBarFront.rectTransform.sizeDelta = new Vector2(280 * (requirement[2]-requirement[1]) / requirement[2], 10);
-
-            // tell whoever called this function that no, this skill is not done yet...
-            return false;
+            // tell whoever called this function how much % has been researched...
+            return (requirement[2] - requirement[1]) / requirement[2];
         }
         else   // so it's done with it...
-            // tell whoever called this function that yes, this skill is done!
-            return true;
+            // tell whoever called this function that 100% has been researched!
+            return 1;
     }
 }
