@@ -9,12 +9,14 @@ public class ResourceManager : MonoBehaviour
     // UI.Texts to display resources in
     public Text powerText;
     public Text mineralText;
+    public Text[] researchTexts;
     // needed for the tech "Carbonate Power Plants"
     public float powerMod = 1f;
 
     // OverInfo components (.cs scripts) to show a verbose info overlay on mouse hover
     public OverlayInfo powerInfo;
     public OverlayInfo mineralInfo;
+    public OverlayInfo[] researchInfos;
     // gameobject to show things like "Not enough Power!" around the mouse when that's the case
     public GameObject errorMessage;
 
@@ -173,147 +175,81 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    //public bool AdjustCurrentFood(float amount)
-    //{
-    //    // in case the treshold goes up; it shouldn't "underfeed"
-    //    if (currentFood + amount > foodTreshold)
+    public bool ChangeResearch(int type, float amount)
+    {
+        // never go full retard
+        if (researches[type] + amount >= 0)
+        {
+            // adjust research per minute
+            researches[type] += amount;
+
+            // show the updated info to the player
+            UpdateResearchText(type);
+
+            // tell whoever called the function that yes, the research per minute has been updated!
+            return true;
+        }
+        else
+            // tell whoever called the function that no, the research per minute couldn't go down that much...
+            return false;
+    }
+    public void ChangeMod(int id, float add)
+    {
+        researchMod[id] += add;
+        UpdateResearchText(id);
+    }
+    public void ChangeAllMods(float add)
+    {
+        for (int m = 0; m < researchMod.Length; m++)
+        {
+            researchMod[m] += add;
+            UpdateResearchText(m);
+        }
+    }
+    private void UpdateResearchText(int id)
+    {
+        // change verbose info to show correct amount of research gained from both sources
+        researchInfos[id].args[0] = researches[id];
+        researchInfos[id].args[1] = researches[id] * (1 - researchMod[id]);
+
+        // update text to show total research
+        researchTexts[id].text = (researches[id] * researchMod[id]).ToString();
+    }
+
+    //    private void HandleTime()
     //    {
-    //        // adjust food
-    //        currentFood += amount;
-    //        // overlay info's second argument now displays the correct amount of food
-    //        foodInfo.args[1] = currentFood;
+    //        currentTime += Time.deltaTime;
+    //        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
 
-    //        // UI.Text now displays the correct amount of 'food left'
-    //        UpdateFoodText();
+    //        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
 
-    //        // tell whoever called the function that yes, the food has been updated!
-    //        return true;
+    //        if (currentTime >= needTimer)
+    //        {
+    //            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
+    //            PerformRequirement();
+
+    //            currentTime = 0;
+    //            //timeAdd += 3;
+    //            //needTimer += timeAdd;
+
+    //            // 'next round'
+    //            round++;
+    //            SetComputingNeed(NextRequirement());
+
+    //            //progress.Play();
+    //            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
+    //        }
     //    }
-    //    else
-    //        // tell whoever called the function that no, the food couldn't go down that much...
-    //        return false;
-    //}
-    //public bool AdjustFoodTreshold(float amount)
-    //{
-    //    // in case the treshold goes up; it shouldn't "underfeed"
-    //    if (currentFood >= foodTreshold + amount)
+
+    //    private void PerformRequirement()
     //    {
-    //        // adjust the treshold
-    //        foodTreshold += amount;
-    //        // overlay info's first argument now displays the correct treshold
-    //        foodInfo.args[0] = foodTreshold;
-
-    //        // UI.Text now displays the correct amount of 'food left'
-    //        UpdateFoodText();
-
-    //        // tell whoever called the function that yes, the treshold has been updated!
-    //        return true;
+    //        if (currentComputing < computingNeed)
+    //        {
+    //#if UNITY_EDITOR
+    //            UnityEditor.EditorApplication.isPlaying = false;
+    //#else
+    //            Application.Quit();
+    //#endif
+    //        }
     //    }
-    //    else
-    //        // tell whoever called the function that no, the treshold couldn't go up that much...
-    //        return false;
-    //}
-    //private void UpdateFoodText()
-    //{
-    //    // UI.Text.text = 'how much food left'
-    //    foodText.text = (currentFood - foodTreshold).ToString();
-    //}
-
-    //public bool ChangeCurrentComputing(int type, float amount)
-    //{
-    //    // never go full retard
-    //    if (researches[type] + amount >= 0)
-    //    {
-    //        // adjust research per minute
-    //        researches[type] += amount;
-    //        //computingInfo.args[1] = currentComputing;
-
-    //        // update text
-    //        currentComputingText[type].text = (researches[type] * researchMod[type]).ToString();
-
-    //        //UpdateTextColour();
-
-    //        // tell whoever called the function that yes, the research per minute has been updated!
-    //        return true;
-    //    }
-    //    else
-    //        // tell whoever called the function that no, the research per minute couldn't go down that much...
-    //        return false;
-    //}
-    //public void ChangeMod(int id, float amount)
-    //{
-    //    researchMod[id] += amount;
-    //    UpdateComputingText(id);
-    //}
-    //public void ChangeAllMods(float amount)
-    //{
-    //    for (int m = 0; m < researchMod.Length; m++)
-    //    {
-    //        researchMod[m] += amount;
-    //        UpdateComputingText(m);
-    //    }
-    //}
-    //private void UpdateComputingText(int id)
-    //{
-    //    // UI.Text.text = how much research per minute, effectively
-    //    currentComputingText[id].text = (researches[id] * researchMod[id]).ToString();
-    //}
-
-    //public void SetComputingNeed(float amount)
-    //{
-    //    computingNeed = amount;
-    //    computingInfo.args[0] = computingNeed;
-
-    //    // update text
-    //    computingTresholdText.text = computingNeed.ToString();
-
-    //    UpdateTextColour();
-    //}
-    //private void UpdateTextColour()
-    //{
-    //    // if under treshold
-    //    if (currentComputing < computingNeed)
-    //        // make red
-    //        computingTresholdText.color = new Color(1, .5f, .5f);
-    //    else   // if same as or above treshold
-    //        // make green
-    //        computingTresholdText.color = new Color(.5f, 1, .5f);
-    //}
-
-//    private void HandleTime()
-//    {
-//        currentTime += Time.deltaTime;
-//        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
-
-//        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
-
-//        if (currentTime >= needTimer)
-//        {
-//            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
-//            PerformRequirement();
-
-//            currentTime = 0;
-//            //timeAdd += 3;
-//            //needTimer += timeAdd;
-
-//            // 'next round'
-//            round++;
-//            SetComputingNeed(NextRequirement());
-
-//            //progress.Play();
-//            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
-//        }
-//    }
-
-//    private void PerformRequirement()
-//    {
-//        if (currentComputing < computingNeed)
-//        {
-//#if UNITY_EDITOR
-//            UnityEditor.EditorApplication.isPlaying = false;
-//#else
-//            Application.Quit();
-//#endif
-//        }
-//    }
 }

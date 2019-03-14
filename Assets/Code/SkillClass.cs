@@ -57,13 +57,13 @@ public class SkillClass : MonoBehaviour
             // play out effects
             switch (skillID)
             {
-                //case 0:   // Un-Human intervetion
-                //    FindObjectOfType<ResourceManager>().ChangeAllMods(.25f);
-                //    break;
+                case 0:   // Un-Human intervetion
+                    FindObjectOfType<ResourceManager>().ChangeAllMods(.25f);
+                    break;
 
-                //case 1:   // What The People Want
-                //    FindObjectOfType<ResourceManager>().ChangeAllMods(.1f);
-                //    break;
+                case 1:   // What The People Want
+                    FindObjectOfType<ResourceManager>().ChangeAllMods(.1f);
+                    break;
 
                 case 2:   // Some Are More Equal Than Others
                     FindObjectOfType<ResourceManager>().researchMod[1] += .5f;
