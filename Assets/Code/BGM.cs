@@ -23,13 +23,6 @@ public class BGM : MonoBehaviour
         audioMusic.start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.mouseScrollDelta.y != 0)
-            ChangeMusicTech(Input.mouseScrollDelta.y);
-    }
-
     public bool ChangeMusicTech(float addedValue)
     {
         // get current tech
@@ -41,10 +34,7 @@ public class BGM : MonoBehaviour
         if (currentValue > 100 || currentValue < 0)
             return false;
         else   // if it IS possible..!
-        {
-            print("Changing Techside to: " + (currentValue));
             musicTech.setValue(currentValue);
-        }
 
         // Haven't died on me yet? Good, let it be heard!
         return true;

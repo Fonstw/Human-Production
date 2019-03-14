@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +25,8 @@ public class SkillManager : MonoBehaviour
     public BarBehaviour winProgressBar;
     public BarBehaviour researchBar;
 
+    private BGM musicPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,9 @@ public class SkillManager : MonoBehaviour
 
         // find the fist instatiated object's ResourceManager component (.cs script)
         gameManager = FindObjectOfType<ResourceManager>();
+
+        // find the fist instatiated object's ResourceManager component (.cs script)
+        musicPlayer = FindObjectOfType<BGM>();
     }
 
     // Update is called once per frame
@@ -65,6 +70,9 @@ public class SkillManager : MonoBehaviour
             // if 100% progressed (or more 'cos floats)
             if (researchProgress >= 1)
             {   // you only get here if the skill's done!
+
+                // Make the music one step techier
+                musicPlayer.ChangeMusicTech(-(100f / (skills.Length - 1)));
 
                 // play out skill effects
                 if (skills[researching].Finish())
@@ -104,6 +112,9 @@ public class SkillManager : MonoBehaviour
 
         if (winProgress >= winPoint)
         {
+            // stop music from playing; if someone replays the music would be played twice
+            musicPlayer.StopMusic();
+
             yield return new WaitForSeconds(2.6f);
             SceneManager.LoadScene(winScene);
         }
