@@ -66,9 +66,6 @@ public class SkillManager : MonoBehaviour
             if (researchProgress >= 1)
             {   // you only get here if the skill's done!
 
-                // stop researching this thing
-                researching = -1;
-
                 // play out skill effects
                 if (skills[researching].Finish())
                     // if it actually happened; progress 1 towards winning
@@ -86,6 +83,9 @@ public class SkillManager : MonoBehaviour
                     // make its button clickable again!
                     skillButtons[u].interactable = true;
                 }
+                
+                // stop researching this thing
+                researching = -1;
             }
         }
     }
