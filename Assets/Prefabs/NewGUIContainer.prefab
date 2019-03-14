@@ -3713,8 +3713,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 7303302601612729453}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7303302601590133482}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3724,7 +3724,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3743,10 +3743,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillID: 5
+  skillID: 4
   skillName: Carbonate Power Plants
   requirement:
   - 1
+  - 6250
   - 6250
   functionalDescription: Produce 15% more Power.
   state: 0
@@ -3903,7 +3904,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3922,14 +3923,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillID: 1
+  skillID: 0
   skillName: Un-human Intervention
   requirement:
   - 0
   - 1000
+  - 1000
   functionalDescription: All research goes 25% faster
   state: 1
-  unlocks: 0200000003000000
+  unlocks: 0100000002000000
   stateIcon: {fileID: 1956812021}
   stateSources:
   - {fileID: 21300000, guid: 2dd8c3ce5809a81479b233dee54d60f7, type: 3}
@@ -4071,8 +4073,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 7303302601612729453}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7303302601734824227}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4082,7 +4084,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4101,10 +4103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillID: 6
+  skillID: 5
   skillName: Ground
   requirement:
   - 1
+  - 12500
   - 12500
   functionalDescription: Dolor Sit Amet
   state: 0
@@ -4465,7 +4468,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7303302601612729453}
+  m_TargetGraphic: {fileID: 7303302601906220502}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4475,7 +4478,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4494,14 +4497,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillID: 4
+  skillID: 3
   skillName: Toxium Combustion Plants
   requirement:
   - 1
   - 830
+  - 830
   functionalDescription: Lorem Ipsum
   state: 1
-  unlocks: 0500000006000000
+  unlocks: 0400000005000000
   stateIcon: {fileID: 996181781}
   stateSources:
   - {fileID: 21300000, guid: 2dd8c3ce5809a81479b233dee54d60f7, type: 3}
@@ -4643,8 +4647,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 7303302601612729453}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7303302602527672158}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4654,7 +4658,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4673,15 +4677,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillID: 2
+  skillID: 1
   skillName: What The People Want
   requirement:
   - 0
   - 7500
+  - 7500
   functionalDescription: All research goes another 10% faster
   state: 0
   unlocks: 
-  stateIcon: {fileID: 1956812021}
+  stateIcon: {fileID: 1682585476}
   stateSources:
   - {fileID: 21300000, guid: 2dd8c3ce5809a81479b233dee54d60f7, type: 3}
   - {fileID: 21300000, guid: 8dd60758c0076ce41b113c6394e1556e, type: 3}
@@ -5124,7 +5129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7303302603043965188
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5302,8 +5307,8 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
-  m_TargetGraphic: {fileID: 7303302601612729453}
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7303302603353080934}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5313,7 +5318,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5332,10 +5337,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51d24558a25de9d4a8d817996fc1b6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillID: 3
+  skillID: 2
   skillName: Ductape & WD-40
   requirement:
   - 0
+  - 10000
   - 10000
   functionalDescription: Engineers research another 50% faster
   state: 0

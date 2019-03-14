@@ -66,7 +66,7 @@ public class SkillClass : MonoBehaviour
                     break;
 
                 case 2:   // Some Are More Equal Than Others
-                    FindObjectOfType<ResourceManager>().researchMod[1] += .5f;
+                    FindObjectOfType<ResourceManager>().ChangeMod(1, .5f);
                     break;
 
                 case 3:   // Toxium Mineral Combustion Plants

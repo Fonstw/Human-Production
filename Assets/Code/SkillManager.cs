@@ -16,9 +16,9 @@ public class SkillManager : MonoBehaviour
     private ResourceManager gameManager;   // to get the research-amounts from
 
     // amount of researched skills counting towards the progress
-    private int winProgress = 0;
+    private float winProgress = 0;
     // the amount of aforementioned skills needed to win
-    public int winPoint = 6;
+    public float winPoint = 6;
     // the scene name that tells the player they won
     public string winScene = "SceneWon";
 

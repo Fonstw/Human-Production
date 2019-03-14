@@ -37,6 +37,12 @@ public class ResourceManager : MonoBehaviour
             researchMod[m] = 1;
     }
 
+    void Update()
+    {
+        UpdatePowerText();
+        UpdateResearchText(0);
+        UpdateResearchText(1);
+    }
 
     // public function that only ASKS wether there's enough resources
     // (this is because of the pay-but-don't-place bug from earlier)
@@ -210,7 +216,7 @@ public class ResourceManager : MonoBehaviour
     {
         // change verbose info to show correct amount of research gained from both sources
         researchInfos[id].args[0] = researches[id];
-        researchInfos[id].args[1] = researches[id] * (1 - researchMod[id]);
+        researchInfos[id].args[1] = researches[id] * (researchMod[id] - 1);
 
         // update text to show total research
         researchTexts[id].text = (researches[id] * researchMod[id]).ToString();
