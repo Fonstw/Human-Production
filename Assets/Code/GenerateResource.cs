@@ -59,9 +59,10 @@ public class GenerateResource : MonoBehaviour
         //        gameManager.AdjustCurrentFood(generatesAmount);
         //    }
         //}
-        //else if (resourceType > 2){   // research
-        //gameManager.ChangeCurrentComputing(resourceType - 3, generatesAmount);   //3=type[0], 4=type[1], 5=type[2] etc.
-        //}
+        else if (resourceType > 2)
+        {   // research
+            gameManager.ChangeResearch(resourceType - 3, generatesAmount);   //3=type[0], 4=type[1], 5=type[2] etc.
+        }
 
         // tell yourself to stop building yourself
         workDone = true;
