@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Mouse
+  - CloseToWater
+  - Mortal
   layers:
   - Default
   - TransparentFX
@@ -21,10 +24,10 @@ TagManager:
   - Mineral
   - Water
   - GroundType
-  - 
-  - 
-  - 
-  - 
+  - Mouse
+  - CloseToWater
+  - Previeuw
+  - GhostBuilding
   - 
   - 
   - 

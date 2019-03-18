@@ -5,22 +5,16 @@ using UnityEngine.UI;
 
 public class FadeOut : MonoBehaviour
 {
-    public float targetY;
-    public Color targetColour;
     public float inSeconds;
 
     private bool fadeNow = false;
-    private float initialY;
-    private Color initialColour;
     private float currentTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        initialY = GetComponent<RectTransform>().pivot.y;
-        initialColour = GetComponent<Text>().color;
-
-        GetComponent<Text>().color = new Color(0, 0, 0, 0);
+        GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        GetComponentInChildren<Text>().color = new Color(0, 0, 0, 0);
     }
 
     // Update is called once per frame
@@ -30,51 +24,44 @@ public class FadeOut : MonoBehaviour
         {
             if (currentTime > 0)
             {
-                currentTime -= Time.deltaTime;
-            }
-            else
-            {
-                fadeNow = false;
+                transform.position = Input.mousePosition;
 
-                GetComponent<Text>().color = new Color(0, 0, 0, 0);
+                currentTime -= Time.deltaTime;
+                if (currentTime < 0)
+                    currentTime = 0;
+
+                float cur = currentTime / inSeconds;
+
+                GetComponent<Image>().color = new Color(0, 0, 0, cur/2);
+                GetComponentInChildren<Text>().color = new Color(1, 0, 0, cur);
+
+                if (currentTime == 0)
+                    fadeNow = false;
             }
         }
-
-        //if (fadeNow)
-        //{
-        //    float curY = GetComponent<RectTransform>().pivot.y;
-        //    float curRed = GetComponent<Text>().color.r;
-        //    float curGrn = GetComponent<Text>().color.g;
-        //    float curBlu = GetComponent<Text>().color.b;
-        //    float curAlp = GetComponent<Text>().color.a;
-
-        //    if (curY != targetY)
-        //    {
-        //        curY = Mathf.Lerp(curY, targetY, inSeconds);
-        //        GetComponent<RectTransform>().pivot = new Vector2(.5f, curY);
-
-        //        curRed = Mathf.Lerp(curRed, targetColour.r, inSeconds);
-        //        curGrn = Mathf.Lerp(curGrn, targetColour.g, inSeconds);
-        //        curBlu = Mathf.Lerp(curBlu, targetColour.b, inSeconds);
-        //        curAlp = Mathf.Lerp(curAlp, targetColour.a, inSeconds);
-        //        GetComponent<Text>().color = new Color(curRed, curGrn, curBlu, curAlp);
-        //    }
-        //    else
-        //    {
-        //        fadeNow = false;
-
-        //        GetComponent<RectTransform>().pivot = new Vector2(.5f, initialY);
-        //        GetComponent<Text>().color = new Color(initialColour.r, initialColour.g, initialColour.b, 0);
-        //    }
-        //}
     }
 
     public void FadeNow()
     {
         fadeNow = true;
         currentTime = Time.deltaTime + inSeconds;
+        
+        GetComponent<Image>().color = new Color(0, 0, 0, .5f);
+        GetComponentInChildren<Text>().color = new Color(1, 0, 0, 1);
+    }
 
-        GetComponent<RectTransform>().pivot = new Vector2(.5f, initialY);
-        GetComponent<Text>().color = initialColour;
+    public void StopFading()
+    {
+        currentTime = 0;
+
+        GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        GetComponentInChildren<Text>().color = new Color(0, 0, 0, 0);
+
+        fadeNow = false;
+    }
+
+    public bool IsFading()
+    {
+        return fadeNow;
     }
 }

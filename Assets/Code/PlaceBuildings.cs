@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlaceBuildings : MonoBehaviour {
     [HideInInspector]
@@ -8,7 +9,7 @@ public class PlaceBuildings : MonoBehaviour {
     public GameObject[] testSpawns;
     public GameObject[] toSpawn;
     public float[] powerCosts;
-    public float[] foodCosts;
+    // public float[] foodCosts;
     public float[] spawnOffsets;
     public Transform mouseTarget;
     public CustomGrid gridSystem;
@@ -51,10 +52,13 @@ public class PlaceBuildings : MonoBehaviour {
                     {
                         test.GetComponent<Collider>().enabled = false;
                     }
-                    if (test.GetComponentInChildren<Collider>())
-                    {
-                        test.GetComponentInChildren<Collider>().enabled = false;
-                    }
+                    foreach (Collider kiddo in test.GetComponentsInChildren<Collider>())
+                        kiddo.enabled = false;
+
+                    //if (test.GetComponentInChildren<Collider>())
+                    //{
+                    //    test.GetComponentInChildren<Collider>().enabled = false;
+                    //}
                     test.transform.parent = mouseTarget;
                     gridSystem.structure = test;
                 }
@@ -69,7 +73,7 @@ public class PlaceBuildings : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0)
+        if (Input.GetMouseButtonDown(0) && current >= 0 && inTheWay.Length <= 0 && ShouldClick() && !EventSystem.current.IsPointerOverGameObject())
         {
             int tempCurrent;
 
@@ -80,7 +84,7 @@ public class PlaceBuildings : MonoBehaviour {
                 tempCurrent = current;
 
             // pay up
-            if (resourceManager.CanPay(powerCosts[tempCurrent], foodCosts[tempCurrent]))
+            if (resourceManager.CanPay(powerCosts[tempCurrent], /*foodCosts[tempCurrent]*/0))
             {
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
@@ -90,15 +94,14 @@ public class PlaceBuildings : MonoBehaviour {
                 {
                     if(hit.transform.tag == "Ground"){
                         resourceManager.AdjustPowerTreshold(powerCosts[tempCurrent]);
-                        resourceManager.AdjustFoodTreshold(foodCosts[tempCurrent]);
+                        //resourceManager.AdjustFoodTreshold(foodCosts[tempCurrent]);
 
                         toSpawn[current] = Instantiate(toSpawn[current], transform.position, toSpawn[current].transform.rotation);
 
                         //Add building to list for easy check
                         placedBuildings.Add(toSpawn[current].gameObject);
-
-                        yPos = -toSpawn[current].transform.localScale.y*2 - spawnOffsets[tempCurrent];
-                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, yPos, test.transform.position.z);
+                        
+                        toSpawn[current].transform.position = new Vector3(test.transform.position.x, spawnOffsets[tempCurrent], test.transform.position.z);
                         StartCoroutine(BuildBuidling(toSpawn[current]));
                         building = true;
                         
@@ -148,33 +151,32 @@ public class PlaceBuildings : MonoBehaviour {
                 return resourceManager.CanPlaceMine(true);
             }
         }
-        // reference size for scalable UI is 768 pixels
-        // in which case the button bar will be 150 pixels
-        // now scale along with actual screen height
+
         if (building) {
             return false;
         }
 
-        float tresholdX = Screen.width - Screen.width / 1366f * 240f;
-        float tresholdY = Screen.height / 768f * 340f;
-        
-        return Input.mousePosition.x < tresholdX || Input.mousePosition.y > tresholdY; ;
-
+        // still here, not blocked off? Then everything is alright!
+        return true;
     }
 
     IEnumerator BuildBuidling(GameObject Building)
     {
-        yield return new WaitForSeconds(0.1f);
-        yPos += 0.1f;
-        Building.transform.position = new Vector3(Building.transform.position.x, yPos, Building.transform.position.z);
-        if(yPos >= Building.transform.localScale.y / 2)
+        // wait 1/30th of a second for smoothness
+        yield return new WaitForSeconds(1f/30f);
+        // go up by 1/30th of a Unity unit
+        Building.transform.Translate(0, 1f/30f, 0);
+        // if pretty much on the ground by now
+        if(Building.transform.position.y >= 0)
         {
-            //Debug.Log("Done");
+            // clip y position to the ground to ease my programmer-induced OCD's
+            Building.transform.position = new Vector3(Building.transform.position.x, 0, Building.transform.position.z);
+            // stop buidling yourself
             building = false;
-        } else
+        } else   // not yet on the ground?
         {
+            // well, keep at it, then!
             StartCoroutine(BuildBuidling(Building));
-            building = true;
         }
     }
     

@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -446,6 +446,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArtPrefab_Mineral_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4478375631770999836, guid: 46846d737bb21df4d81362f2f41bd471,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4478375631771287612, guid: 46846d737bb21df4d81362f2f41bd471,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -514,6 +519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArtPrefab_Powerplant_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1551197662643136, guid: af1f444074400714da0047eb9c2004cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4257909612084740, guid: af1f444074400714da0047eb9c2004cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -570,6 +579,10 @@ PrefabInstance:
     - target: {fileID: 479578560, guid: 68b441c93374e7148b50ae104b706970, type: 3}
       propertyPath: m_Name
       value: ArtPrefab_Miner_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 479578560, guid: 68b441c93374e7148b50ae104b706970, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 479578562, guid: 68b441c93374e7148b50ae104b706970, type: 3}
       propertyPath: m_LocalPosition.x
@@ -628,6 +641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArtPrefab_Mineral_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895807559246199917, guid: 4b808f633bb446a47b3522f81e9e2cd7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4895807559246356557, guid: 4b808f633bb446a47b3522f81e9e2cd7,
         type: 3}
@@ -697,6 +715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArtPrefab_Mineral_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574766365046879758, guid: 71649dd884161e243a1194556bc60508,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4574766365046581870, guid: 71649dd884161e243a1194556bc60508,
         type: 3}
@@ -776,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497568221, guid: f84123d35484f1a43833c49111776f9e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.54
+      value: -28.8
       objectReference: {fileID: 0}
     - target: {fileID: 497568221, guid: f84123d35484f1a43833c49111776f9e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -796,7 +819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 497568221, guid: f84123d35484f1a43833c49111776f9e, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 497568221, guid: f84123d35484f1a43833c49111776f9e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -823,6 +846,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArtPrefab_Farm
+      objectReference: {fileID: 0}
+    - target: {fileID: 226547754830944328, guid: fed6e2ea99965ad459ff329100866724,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4108431104764624237, guid: fed6e2ea99965ad459ff329100866724,
         type: 3}
@@ -892,6 +920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArtPrefab_Pod_2
       objectReference: {fileID: 0}
+    - target: {fileID: 284955352, guid: b94387c7de4e58245b36adbabe2a87f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 284955354, guid: b94387c7de4e58245b36adbabe2a87f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.95
@@ -922,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 284955354, guid: b94387c7de4e58245b36adbabe2a87f8, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 284955354, guid: b94387c7de4e58245b36adbabe2a87f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

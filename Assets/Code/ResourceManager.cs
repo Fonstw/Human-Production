@@ -1,51 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour
 {
     // UI.Texts to display resources in
     public Text powerText;
-    public Text foodText;
-    public Text[] currentComputingText;
-    //public Text computingTresholdText;
-    //public RectTransform timerBar;
-    //public OverlayInfo computingInfo;
-    //public OverlayInfo timeInfo;
-    // needed for the tech "Toxium Carbonate Power Plants"
+    public Text mineralText;
+    public Text[] researchTexts;
+    // needed for the tech "Carbonate Power Plants"
     public float powerMod = 1f;
 
     // OverInfo components (.cs scripts) to show a verbose info overlay on mouse hover
     public OverlayInfo powerInfo;
-    public OverlayInfo foodInfo;
+    public OverlayInfo mineralInfo;
+    public OverlayInfo[] researchInfos;
     // gameobject to show things like "Not enough Power!" around the mouse when that's the case
     public GameObject errorMessage;
 
-    //public bool running = false;
-
     // resources
-    private float currentPower, powerTreshold, currentFood, foodTreshold/*, round=1*/;
+    private float currentPower, powerTreshold, currentMineral, mineralTreshold;
     // how much of each can be researched per minute
     public float[] researches;
     // multiplier of how much each type researches
     public float[] researchMod;
-    //private Vector2 timerSize;
-    //private AudioSource progress;
-
-    //private float needTimer=60, currentTime, timeAdd;
 
     // Start is called before the first frame update
     void Start()
     {
-        //timerSize = timerBar.sizeDelta;
-
-        //SetComputingNeed(NextRequirement());
-
-        //computingInfo.args[0] = computingNeed;
-
-        //computingTresholdText.text = computingNeed.ToString();
-
         // we're going to have a Modifier for each research type
         researchMod = new float[researches.Length];
         // and they're going to be ×1 by default
@@ -53,31 +37,20 @@ public class ResourceManager : MonoBehaviour
             researchMod[m] = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //if (running)
-        //    HandleTime();
     }
-
-    //private float NextRequirement()
-    //{
-    //    // triangle formula in steps of 50; e.g.: 50, 150, 300, 500...
-    //    return (Mathf.Pow(round, 2) + round) * 25f;
-    //}
 
     // public function that only ASKS wether there's enough resources
     // (this is because of the pay-but-don't-place bug from earlier)
-    public bool CanPay(float ptAmount, float ftAmount)
+    public bool CanPay(float ptAmount, float mtAmount)
     {
-        // if the current power is lower than the treshold+power pay amount
-        if (currentPower < powerTreshold + ptAmount)
+        // if the current power is lower than the treshold+power pay amount and not clicking the UI
+        if (currentPower < powerTreshold + ptAmount && !EventSystem.current.IsPointerOverGameObject())
         {
-            //timerBar.GetComponent<AudioSource>().Play();
-
             // error overlay close to mouse displays text
-            errorMessage.GetComponent<Text>().text = "Need more Power!";
-            // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
+            errorMessage.GetComponentInChildren<Text>().text = "Need more Power!";
+            // and does its job
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
             // play the notification-sound to notify the player of the error
@@ -86,13 +59,11 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, it can't be paid...
             return false;
         }
-        else if (currentFood < foodTreshold + ftAmount)
+        else if (currentMineral < mineralTreshold + mtAmount && !EventSystem.current.IsPointerOverGameObject())   // same but for mineral
         {
-            //timerBar.GetComponent<AudioSource>().Play();
-
             // error overlay close to mouse displays text
-            errorMessage.GetComponent<Text>().text = "Need more Food!";
-            // and does its job (becomes visible, I originally wanted a fade-out transition hence the function name)
+            errorMessage.GetComponentInChildren<Text>().text = "Need more Mineral!";
+            // and does its job
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
             // play the notification-sound to notify the player of the error
@@ -101,33 +72,40 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, it can't be paid...
             return false;
         }
-        else   // not short on power nor food?
+        else   // not short on power nor mineral?
+        {
+            // hide error message (no longer relevant)
+            errorMessage.GetComponent<FadeOut>().StopFading();
+
             // tell whoever called the function that yes, it can be paid!
             return true;
+        }
     }
 
     public bool CanPlaceGenerator(bool waterClose)
     {
-        if (!waterClose)
+        if (!waterClose && !EventSystem.current.IsPointerOverGameObject())
         {
-            errorMessage.GetComponent<Text>().text = "Place close to water";
+            errorMessage.GetComponentInChildren<Text>().text = "Place close to water";
             errorMessage.GetComponent<FadeOut>().FadeNow();
             return false;
         }
         else
         {
+            errorMessage.GetComponent<FadeOut>().StopFading();
             return true;
         }
     }
     public bool CanPlaceMine(bool mineralClose)
     {
-        if (!mineralClose)
+        if (!mineralClose && !EventSystem.current.IsPointerOverGameObject())
         {
-            errorMessage.GetComponent<Text>().text = "Place only on minerals";
+            errorMessage.GetComponentInChildren<Text>().text = "Place only on minerals";
             errorMessage.GetComponent<FadeOut>().FadeNow();
             return false;
         } else
         {
+            errorMessage.GetComponent<FadeOut>().StopFading();
             return true;
         }
     }
@@ -200,65 +178,78 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
-    public bool AdjustCurrentFood(float amount)
+    public bool AdjustCurrentMineral(float amount)
     {
-        // in case the treshold goes up; it shouldn't "underfeed"
-        if (currentFood + amount > foodTreshold)
+        // to return
+        bool nobodyDied = true;
+
+        // adjust mineral
+        currentMineral += amount;
+        // overlay info's second argument now displays the correct amount
+        mineralInfo.args[1] = mineralTreshold;
+
+        // PodHeads could've died if mineral went down
+        if (amount < 0)
         {
-            // adjust food
-            currentFood += amount;
-            // overlay info's second argument now displays the correct amount of food
-            foodInfo.args[1] = currentFood;
+            // in case some are left without mineral now...
+            if (currentMineral < mineralTreshold)
+                nobodyDied = false;   // some are going to die, let that be known
 
-            // UI.Text now displays the correct amount of 'food left'
-            UpdateFoodText();
+            while (currentMineral < mineralTreshold)
+            {
+                // find the oldest
+                GameObject eldest = GameObject.FindGameObjectsWithTag("Mortal")[0];
 
-            // tell whoever called the function that yes, the food has been updated!
-            return true;
+                // remove their research contribution
+                ChangeResearch(eldest.GetComponent<GenerateResource>().resourceType - 2, eldest.GetComponent<GenerateResource>().generatesAmount);
+
+                // remove them
+                Destroy(eldest.gameObject);
+            }   // reverb, resound, and repeat
         }
-        else
-            // tell whoever called the function that no, the food couldn't go down that much...
-            return false;
+
+        // UI.Text now displays the correct amount of 'mineral left'
+        UpdateMineralText();
+
+        // tell whoever called the function wether PodHeads were harmed in the process
+        return nobodyDied;
     }
-    public bool AdjustFoodTreshold(float amount)
+    public bool AdjustMineralTreshold(float amount)
     {
-        // in case the treshold goes up; it shouldn't "underfeed"
-        if (currentFood >= foodTreshold + amount)
+        // in case the treshold goes down; no Pod should spawn without minerals
+        if (currentMineral <= mineralTreshold + amount)
         {
             // adjust the treshold
-            foodTreshold += amount;
+            mineralTreshold += amount;
             // overlay info's first argument now displays the correct treshold
-            foodInfo.args[0] = foodTreshold;
+            mineralInfo.args[0] = mineralTreshold;
 
-            // UI.Text now displays the correct amount of 'food left'
-            UpdateFoodText();
+            // UI.Text now displays the correct amount of 'mineral left'
+            UpdateMineralText();
 
             // tell whoever called the function that yes, the treshold has been updated!
             return true;
         }
         else
-            // tell whoever called the function that no, the treshold couldn't go up that much...
+            // tell whoever called the function that no, the treshold couldn't go down that much...
             return false;
     }
-    private void UpdateFoodText()
+    private void UpdateMineralText()
     {
-        // UI.Text.text = 'how much food left'
-        foodText.text = (currentFood - foodTreshold).ToString();
+        // UI.Text.text = 'how much power left'
+        mineralText.text = (currentMineral - mineralTreshold).ToString();
     }
 
-    public bool ChangeCurrentComputing(int type, float amount)
+    public bool ChangeResearch(int type, float amount)
     {
         // never go full retard
         if (researches[type] + amount >= 0)
         {
             // adjust research per minute
             researches[type] += amount;
-            //computingInfo.args[1] = currentComputing;
 
-            // update text
-            currentComputingText[type].text = (researches[type] * researchMod[type]).ToString();
-
-            //UpdateTextColour();
+            // show the updated info to the player
+            UpdateResearchTexts();
 
             // tell whoever called the function that yes, the research per minute has been updated!
             return true;
@@ -267,72 +258,30 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, the research per minute couldn't go down that much...
             return false;
     }
-
-    public void ChangeMod(int id, float amount)
+    public void ChangeMod(int id, float add)
     {
-        researchMod[id] += amount;
+        researchMod[id] += add;
+        UpdateResearchTexts();
     }
-    public void ChangeAllMods(float amount)
+    public void ChangeAllMods(float add)
     {
         for (int m = 0; m < researchMod.Length; m++)
-            researchMod[m] += amount;
+        {
+            researchMod[m] += add;
+        }
+
+        UpdateResearchTexts();
     }
+    private void UpdateResearchTexts()
+    {
+        for (int r = 0; r < researches.Length; r++)
+        {
+            // change verbose info to show correct amount of research gained from both sources
+            researchInfos[r].args[0] = researches[r];
+            researchInfos[r].args[1] = researches[r] * (researchMod[r] - 1);
 
-    //public void SetComputingNeed(float amount)
-    //{
-    //    computingNeed = amount;
-    //    computingInfo.args[0] = computingNeed;
-
-    //    // update text
-    //    computingTresholdText.text = computingNeed.ToString();
-
-    //    UpdateTextColour();
-    //}
-    //private void UpdateTextColour()
-    //{
-    //    // if under treshold
-    //    if (currentComputing < computingNeed)
-    //        // make red
-    //        computingTresholdText.color = new Color(1, .5f, .5f);
-    //    else   // if same as or above treshold
-    //        // make green
-    //        computingTresholdText.color = new Color(.5f, 1, .5f);
-    //}
-
-//    private void HandleTime()
-//    {
-//        currentTime += Time.deltaTime;
-//        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
-
-//        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
-
-//        if (currentTime >= needTimer)
-//        {
-//            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
-//            PerformRequirement();
-
-//            currentTime = 0;
-//            //timeAdd += 3;
-//            //needTimer += timeAdd;
-
-//            // 'next round'
-//            round++;
-//            SetComputingNeed(NextRequirement());
-
-//            //progress.Play();
-//            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
-//        }
-//    }
-
-//    private void PerformRequirement()
-//    {
-//        if (currentComputing < computingNeed)
-//        {
-//#if UNITY_EDITOR
-//            UnityEditor.EditorApplication.isPlaying = false;
-//#else
-//            Application.Quit();
-//#endif
-//        }
-//    }
+            // update text to show total research
+            researchTexts[r].text = (researches[r] * researchMod[r]).ToString();
+        }
+    }
 }
