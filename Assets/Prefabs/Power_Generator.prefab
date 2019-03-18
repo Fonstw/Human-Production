@@ -95,10 +95,12 @@ MonoBehaviour:
   resourceType: 1
   generatesAmount: 500
   buildingTime: 3
-  finishSound: event:/Power_ready
+  finishSound: event:/Builds/Power_ready
   groundTypes:
     serializedVersion: 2
     m_Bits: 16384
+  mineralDecreases: 050000000300000002000000
+  minutesToDecreaseMineral: 1
 --- !u!114 &337731990599634987
 MonoBehaviour:
   m_ObjectHideFlags: 0

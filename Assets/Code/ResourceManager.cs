@@ -54,7 +54,7 @@ public class ResourceManager : MonoBehaviour
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
             // play the notification-sound to notify the player of the error
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Interaction/Notification");
 
             // tell whoever called the function that no, it can't be paid...
             return false;
@@ -67,7 +67,7 @@ public class ResourceManager : MonoBehaviour
             errorMessage.GetComponent<FadeOut>().FadeNow();
 
             // play the notification-sound to notify the player of the error
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Notification");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Interaction/Notification");
 
             // tell whoever called the function that no, it can't be paid...
             return false;

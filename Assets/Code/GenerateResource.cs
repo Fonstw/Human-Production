@@ -13,7 +13,7 @@ public class GenerateResource : MonoBehaviour
     public float minutesToDecreaseMineral = 1f;
 
     private ResourceManager gameManager;   // who to give resources to
-    private string placeSound = "event:/object_build";   // sound to play when placed onto the ground
+    private string placeSound = "event:/Builds/object_build";   // sound to play when placed onto the ground
     private GroundTypes groundUnderneath;
     private float ownTimer;
     private bool workDone = false;   // wether built and in effect or not

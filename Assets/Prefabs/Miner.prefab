@@ -92,7 +92,7 @@ MonoBehaviour:
   resourceType: 0
   generatesAmount: 10
   buildingTime: 3
-  finishSound: event:/Food_ready
+  finishSound: event:/Builds/Food_ready
   groundTypes:
     serializedVersion: 2
     m_Bits: 16384

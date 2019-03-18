@@ -90,7 +90,7 @@ public class SkillClass : MonoBehaviour
             state = 2;
 
             // play the sound
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Interaction/Progression");
 
             // and tell whoever called this function that yes, this skill has now been finished!
             return true;
