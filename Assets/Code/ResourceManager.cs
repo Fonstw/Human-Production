@@ -39,9 +39,6 @@ public class ResourceManager : MonoBehaviour
 
     void Update()
     {
-        UpdatePowerText();
-        UpdateResearchText(0);
-        UpdateResearchText(1);
     }
 
     // public function that only ASKS wether there's enough resources
@@ -181,6 +178,68 @@ public class ResourceManager : MonoBehaviour
             return false;
     }
 
+    public bool AdjustCurrentMineral(float amount)
+    {
+        // to return
+        bool nobodyDied = true;
+
+        // adjust mineral
+        currentMineral += amount;
+        // overlay info's second argument now displays the correct amount
+        mineralInfo.args[1] = mineralTreshold;
+
+        // PodHeads could've died if mineral went down
+        if (amount < 0)
+        {
+            // in case some are left without mineral now...
+            if (currentMineral < mineralTreshold)
+                nobodyDied = false;   // some are going to die, let that be known
+
+            while (currentMineral < mineralTreshold)
+            {
+                // find the oldest
+                GameObject eldest = GameObject.FindGameObjectsWithTag("Mortal")[0];
+
+                // remove their research contribution
+                ChangeResearch(eldest.GetComponent<GenerateResource>().resourceType - 2, eldest.GetComponent<GenerateResource>().generatesAmount);
+
+                // remove them
+                Destroy(eldest.gameObject);
+            }   // reverb, resound, and repeat
+        }
+
+        // UI.Text now displays the correct amount of 'mineral left'
+        UpdateMineralText();
+
+        // tell whoever called the function wether PodHeads were harmed in the process
+        return nobodyDied;
+    }
+    public bool AdjustMineralTreshold(float amount)
+    {
+        // in case the treshold goes down; no Pod should spawn without minerals
+        if (currentMineral <= mineralTreshold + amount)
+        {
+            // adjust the treshold
+            mineralTreshold += amount;
+            // overlay info's first argument now displays the correct treshold
+            mineralInfo.args[0] = mineralTreshold;
+
+            // UI.Text now displays the correct amount of 'mineral left'
+            UpdateMineralText();
+
+            // tell whoever called the function that yes, the treshold has been updated!
+            return true;
+        }
+        else
+            // tell whoever called the function that no, the treshold couldn't go down that much...
+            return false;
+    }
+    private void UpdateMineralText()
+    {
+        // UI.Text.text = 'how much power left'
+        mineralText.text = (currentMineral - mineralTreshold).ToString();
+    }
+
     public bool ChangeResearch(int type, float amount)
     {
         // never go full retard
@@ -190,7 +249,7 @@ public class ResourceManager : MonoBehaviour
             researches[type] += amount;
 
             // show the updated info to the player
-            UpdateResearchText(type);
+            UpdateResearchTexts();
 
             // tell whoever called the function that yes, the research per minute has been updated!
             return true;
@@ -202,60 +261,27 @@ public class ResourceManager : MonoBehaviour
     public void ChangeMod(int id, float add)
     {
         researchMod[id] += add;
-        UpdateResearchText(id);
+        UpdateResearchTexts();
     }
     public void ChangeAllMods(float add)
     {
         for (int m = 0; m < researchMod.Length; m++)
         {
             researchMod[m] += add;
-            UpdateResearchText(m);
+        }
+
+        UpdateResearchTexts();
+    }
+    private void UpdateResearchTexts()
+    {
+        for (int r = 0; r < researches.Length; r++)
+        {
+            // change verbose info to show correct amount of research gained from both sources
+            researchInfos[r].args[0] = researches[r];
+            researchInfos[r].args[1] = researches[r] * (researchMod[r] - 1);
+
+            // update text to show total research
+            researchTexts[r].text = (researches[r] * researchMod[r]).ToString();
         }
     }
-    private void UpdateResearchText(int id)
-    {
-        // change verbose info to show correct amount of research gained from both sources
-        researchInfos[id].args[0] = researches[id];
-        researchInfos[id].args[1] = researches[id] * (researchMod[id] - 1);
-
-        // update text to show total research
-        researchTexts[id].text = (researches[id] * researchMod[id]).ToString();
-    }
-
-    //    private void HandleTime()
-    //    {
-    //        currentTime += Time.deltaTime;
-    //        timeInfo.args[1] = Mathf.Round(needTimer - currentTime);
-
-    //        timerBar.sizeDelta = new Vector2(timerSize.x * (needTimer - currentTime) / needTimer, timerSize.y);
-
-    //        if (currentTime >= needTimer)
-    //        {
-    //            // kill if the player doesn't meet the CURRENT/PREVIOUS requirement
-    //            PerformRequirement();
-
-    //            currentTime = 0;
-    //            //timeAdd += 3;
-    //            //needTimer += timeAdd;
-
-    //            // 'next round'
-    //            round++;
-    //            SetComputingNeed(NextRequirement());
-
-    //            //progress.Play();
-    //            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
-    //        }
-    //    }
-
-    //    private void PerformRequirement()
-    //    {
-    //        if (currentComputing < computingNeed)
-    //        {
-    //#if UNITY_EDITOR
-    //            UnityEditor.EditorApplication.isPlaying = false;
-    //#else
-    //            Application.Quit();
-    //#endif
-    //        }
-    //    }
 }

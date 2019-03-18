@@ -9,12 +9,16 @@ public class GenerateResource : MonoBehaviour
     public float buildingTime;   // how long to wait until built
     public string finishSound = "event:/FILEPATH";   // sound to play when done building
     public LayerMask groundTypes;
+    public int[] mineralDecreases = { 5, 3, 2 };
+    public float minutesToDecreaseMineral = 1f;
 
     private ResourceManager gameManager;   // who to give resources to
     private string placeSound = "event:/object_build";   // sound to play when placed onto the ground
     private GroundTypes groundUnderneath;
     private float ownTimer;
     private bool workDone = false;   // wether built and in effect or not
+    private int currentDecrease = 0;
+    private float mineralTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -44,21 +48,49 @@ public class GenerateResource : MonoBehaviour
         // if not built yet and passed the building time...
         if (!workDone && Time.time > ownTimer)
             WorkIt();
+
+        // if Mineral and "producing"
+        if (resourceType == 0 && workDone)
+        {
+            // if out of time
+            if (mineralTimer <= 0)
+            {
+                // lessen amount (for own knowledge)
+                generatesAmount -= mineralDecreases[currentDecrease];
+                // also adjust actual resourceManager
+                gameManager.AdjustCurrentMineral(-mineralDecreases[currentDecrease]);
+
+                // if still functional...
+                if (generatesAmount > 0)
+                {
+                    // set the timer
+                    mineralTimer = minutesToDecreaseMineral * 1;   // ×60 because minutes
+
+                    // next time, decrease next amount
+                    currentDecrease++;
+                }
+                else   // if no longer functional...
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot(finishSound);   // cry out somehow
+                    Destroy(gameObject);   // and remove yourself
+                }
+            }
+            else   // if not out of time
+                mineralTimer -= Time.deltaTime;   // let the flow of time pass on
+        }
     }
 
     // function to call when done building; this function gives resource to the game manager
     private void WorkIt()
     {
-        if (resourceType == 1){   // power
+        if (resourceType == 0)
+        {
+            gameManager.AdjustCurrentMineral(generatesAmount);
+            mineralTimer = minutesToDecreaseMineral * 1;   // make sure mineral decreases after 1 minute and not 1 frame already >.<"
+        }
+        else if (resourceType == 1){   // power
             gameManager.AdjustCurrentPower(generatesAmount);
         }
-        //else if (resourceType == 2) {// food
-        //    if(groundUnderneath != GroundTypes.Grass) { 
-        //        gameManager.AdjustCurrentFood(generatesAmount/2);
-        //    } else {
-        //        gameManager.AdjustCurrentFood(generatesAmount);
-        //    }
-        //}
         else if (resourceType > 2)
         {   // research
             gameManager.ChangeResearch(resourceType - 3, generatesAmount);   //3=type[0], 4=type[1], 5=type[2] etc.

@@ -89,13 +89,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03200dea8cd2b484aa140d7c0643f1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceType: 1
-  generatesAmount: 200
+  resourceType: 0
+  generatesAmount: 10
   buildingTime: 3
-  finishSound: event:/Notification
+  finishSound: event:/Food_ready
   groundTypes:
     serializedVersion: 2
     m_Bits: 16384
+  mineralDecreases: 050000000300000002000000
+  minutesToDecreaseMineral: 1
 --- !u!1001 &1049750187007797967
 PrefabInstance:
   m_ObjectHideFlags: 0
