@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum BuildType {PodBio, PodEng, Energy, Mine, Null}
@@ -153,6 +154,11 @@ public class MouseOnGrid : MonoBehaviour
         // if cost cannot be paid
         if (!gameManager.CanPay(powerCosts[current], mineralCosts[current]))
             // stop and tell it couldn't be done
+            return false;
+
+        // if on UI
+        if (EventSystem.current.IsPointerOverGameObject())
+            // stop and tell we're not placing things through the UI!
             return false;
 
         if(holdingBuilding == false){
