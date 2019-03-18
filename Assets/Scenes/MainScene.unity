@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 615572375}
   - component: {fileID: 615572376}
   - component: {fileID: 615572372}
+  - component: {fileID: 615572377}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -809,6 +810,19 @@ MonoBehaviour:
   mouseTarget: {fileID: 1320321075}
   holdingBuilding: 0
   ghostMat: {fileID: 2100000, guid: b64397c5fbc72cd45b461a10136e39c9, type: 2}
+--- !u!114 &615572377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615572371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9f73eec9df19347904490ac5e030aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickPath: event:/Interaction/Mouseclick
 --- !u!114 &640758399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 640758399, guid: bffdd3625875763468d5c6f82fef92e8,
