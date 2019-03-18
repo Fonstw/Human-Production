@@ -43,7 +43,7 @@ public class ResourceManager : MonoBehaviour
 
     // public function that only ASKS wether there's enough resources
     // (this is because of the pay-but-don't-place bug from earlier)
-    public bool CanPay(float ptAmount, float mtAmount)
+    public bool CanPay(int ptAmount, int mtAmount)
     {
         // if the current power is lower than the treshold+power pay amount and not clicking the UI
         if (currentPower < powerTreshold + ptAmount && !EventSystem.current.IsPointerOverGameObject())

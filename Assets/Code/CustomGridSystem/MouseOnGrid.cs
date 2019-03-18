@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public enum BuildType {Farm, Pod, Energy, Mine, Null}
+public enum BuildType {PodBio, PodEng, Energy, Mine, Null}
 public class MouseOnGrid : MonoBehaviour
 {
+    [Header("Resource Costs")]
+    public int[] powerCosts = { 0, 0, 200, 200, 0 };
+    public int[] mineralCosts = { 0, 0, 1, 1, 0 };
+    private ResourceManager gameManager;
+    private int current = 0;
+
     [Header("Buildings")]
+    //Pods
+    public GameObject PodBio;
+    public GameObject PodEng;
+    public GameObject PodGhost;
     //Energy
     public GameObject Energy;
     public GameObject EnergyGhost;
-    //Farm
-    public GameObject Farm;
-    public GameObject FarmGhost;
-    //Pod
-    public GameObject Pod;
-    public GameObject PodGhost;
     //Mine
     public GameObject Mine;
     public GameObject MineGhost;
@@ -34,6 +39,13 @@ public class MouseOnGrid : MonoBehaviour
     private GameObject HeldBuilding;
     //private int current = -1;
     //private int currentHolder = 0;
+
+    void Start()
+    {
+        // grab resource manager for paying purposes
+        gameManager = FindObjectOfType<ResourceManager>();
+    }
+
     void Update()
     {
         RaycastHit hit;
@@ -88,6 +100,8 @@ public class MouseOnGrid : MonoBehaviour
     }
 
     public void SetBuilding(int Buildingu){
+        current = Buildingu;
+
         switch (Buildingu){
             //Energy
             case 1:
@@ -100,29 +114,29 @@ public class MouseOnGrid : MonoBehaviour
             HeldBuilding = null;
             break;
             
-            //Farm
+            //PodBio
             case 2:
-            BuildingType = BuildType.Farm;
+            BuildingType = BuildType.PodBio;
             customGrid.WhereToPlace(Buildingu);
-            Building = Farm;
-            BuildingGhost = FarmGhost;
-            holdingBuilding = true;
-            Destroy(HeldBuilding);
-            HeldBuilding = null;
-            break;
-
-            //Pod
-            case 3:
-            BuildingType = BuildType.Pod;
-            customGrid.WhereToPlace(Buildingu);
-            Building = Pod;
+            Building = PodBio;
             BuildingGhost = PodGhost;
             holdingBuilding = true;
             Destroy(HeldBuilding);
             HeldBuilding = null;
             break;
 
-            //Pod
+            //PodEng
+            case 3:
+            BuildingType = BuildType.PodEng;
+            customGrid.WhereToPlace(Buildingu);
+            Building = PodEng;
+            BuildingGhost = PodGhost;
+            holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
+            break;
+
+            //Mine
             case 4:
             BuildingType = BuildType.Mine;
             customGrid.WhereToPlace(Buildingu);
@@ -136,6 +150,11 @@ public class MouseOnGrid : MonoBehaviour
     }
 
     public bool CanPlace(Vector3 worldPoint, float nodeRadius){
+        // if cost cannot be paid
+        if (!gameManager.CanPay(powerCosts[current], mineralCosts[current]))
+            // stop and tell it couldn't be done
+            return false;
+
         if(holdingBuilding == false){
             return false;
         }
@@ -154,6 +173,5 @@ public class MouseOnGrid : MonoBehaviour
             Debug.Log("Test2");
             return false;
         }
-        return true;
     }
 }

@@ -84,7 +84,7 @@ public class PlaceBuildings : MonoBehaviour {
                 tempCurrent = current;
 
             // pay up
-            if (resourceManager.CanPay(powerCosts[tempCurrent], /*foodCosts[tempCurrent]*/0))
+            if (resourceManager.CanPay(0, 0))
             {
                 RaycastHit hit;
                 Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);

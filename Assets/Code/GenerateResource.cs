@@ -64,7 +64,7 @@ public class GenerateResource : MonoBehaviour
                 if (generatesAmount > 0)
                 {
                     // set the timer
-                    mineralTimer = minutesToDecreaseMineral * 1;   // ×60 because minutes
+                    mineralTimer = minutesToDecreaseMineral * 60f;   // ×60 because minutes
 
                     // next time, decrease next amount
                     currentDecrease++;
@@ -86,7 +86,7 @@ public class GenerateResource : MonoBehaviour
         if (resourceType == 0)
         {
             gameManager.AdjustCurrentMineral(generatesAmount);
-            mineralTimer = minutesToDecreaseMineral * 1;   // make sure mineral decreases after 1 minute and not 1 frame already >.<"
+            mineralTimer = minutesToDecreaseMineral * 60f;   // make sure mineral decreases after 1 minute and not 1 frame already >.<"
         }
         else if (resourceType == 1){   // power
             gameManager.AdjustCurrentPower(generatesAmount);
