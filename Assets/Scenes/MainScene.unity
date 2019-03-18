@@ -633,23 +633,58 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 615572376}
-    - target: {fileID: 497998306, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
-      propertyPath: m_TagString
-      value: Warning
-      objectReference: {fileID: 0}
-    - target: {fileID: 7303302602858257553, guid: bffdd3625875763468d5c6f82fef92e8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1552907371, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
-      propertyPath: m_Name
-      value: Eng Text
-      objectReference: {fileID: 0}
     - target: {fileID: 294165652, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 615572376}
+    - target: {fileID: 233705367, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705367, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705356, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705356, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705366, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705366, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705357, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705357, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705358, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705358, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705360, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[1]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 233705360, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: requirement.Array.data[2]
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
 --- !u!224 &447828703 stripped

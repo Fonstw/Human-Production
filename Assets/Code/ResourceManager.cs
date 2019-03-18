@@ -185,8 +185,8 @@ public class ResourceManager : MonoBehaviour
 
         // adjust mineral
         currentMineral += amount;
-        // overlay info's second argument now displays the correct amount
-        mineralInfo.args[1] = mineralTreshold;
+        // overlay info's first argument now displays the correct amount
+        mineralInfo.args[0] = currentMineral;
 
         // PodHeads could've died if mineral went down
         if (amount < 0)
@@ -216,13 +216,13 @@ public class ResourceManager : MonoBehaviour
     }
     public bool AdjustMineralTreshold(float amount)
     {
-        // in case the treshold goes down; no Pod should spawn without minerals
-        if (currentMineral <= mineralTreshold + amount)
+        // in case the treshold goes up; no Pod should spawn without minerals
+        if (mineralTreshold + amount <= currentMineral)
         {
             // adjust the treshold
             mineralTreshold += amount;
-            // overlay info's first argument now displays the correct treshold
-            mineralInfo.args[0] = mineralTreshold;
+            // overlay info's second argument now displays the correct treshold
+            mineralInfo.args[1] = mineralTreshold;
 
             // UI.Text now displays the correct amount of 'mineral left'
             UpdateMineralText();

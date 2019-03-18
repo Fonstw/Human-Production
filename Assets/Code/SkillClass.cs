@@ -69,16 +69,8 @@ public class SkillClass : MonoBehaviour
                     FindObjectOfType<ResourceManager>().ChangeMod(1, .5f);
                     break;
 
-                case 3:   // Toxium Mineral Combustion Plants
-                    FindObjectOfType<PlaceBuildings>().toxiumMineralCombustionPlants = true;
-                    break;
-
                 case 4:   // Toxium Carbonate Plants
                     FindObjectOfType<ResourceManager>().AdjustPowerMod(.15f);
-                    break;
-
-                case 5:   // Ground
-                    print("We now know where to connect the ground, guys! The Future Is Here®");
                     break;
 
                 default:

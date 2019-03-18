@@ -47,7 +47,7 @@ public class BetterCustomGrid : MonoBehaviour
                 bool isWater = (Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  waterMask));
                 bool isCloseToWater = (Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity, closeToWaterMask));
                 bool theresBuilding = (Physics.CheckSphere(worldPoint, nodeRadius, buildingMask));
-                
+
                 grid[x,y] = new Node(walkable, worldPoint);
                 grid[x,y].isWater = isWater;
                 grid[x,y].isCloseToWater = isCloseToWater;
@@ -60,7 +60,7 @@ public class BetterCustomGrid : MonoBehaviour
                         mineral.transform.parent = mineralsParent.transform;
                     }
                 }
-                
+
             }
         }
     }
@@ -68,29 +68,29 @@ public class BetterCustomGrid : MonoBehaviour
     void Update(){
         if(grid != null){
             foreach(Node n in grid){
-                    Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
-                    bool theresGhost = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  ghostBuildingMask));
-                    n.theresGhost = theresGhost;
+                Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
+                bool theresGhost = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  ghostBuildingMask));
+                n.theresGhost = theresGhost;
 
-                    bool theresBuilding = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  buildingMask));
-                    n.theresBuilding = theresBuilding;
+                bool theresBuilding = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  buildingMask));
+                n.theresBuilding = theresBuilding;
 
-                    if((Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mouseMask))){
-                        n.walkable = false;
-                        if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(n.worldPosition, nodeRadius) && !n.isWater && !n.theresBuilding){
-                            if(previeuwObjects.Count >= 1){
-                                foreach(GameObject g in previeuwObjects){
-                                    Destroy(g);
-                                }
-                                previeuwObjects.Clear();
+                if((Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mouseMask))){
+                    n.walkable = false;
+                    if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(n.worldPosition, nodeRadius) && !n.isWater && !n.theresBuilding){
+                        if(previeuwObjects.Count >= 1){
+                            foreach(GameObject g in previeuwObjects){
+                                Destroy(g);
                             }
                             previeuwObjects.Clear();
-                            MainCamera.GetComponent<MouseOnGrid>().PlaceBuilding(n.worldPosition.x, n.worldPosition.z);
-                            n.clickedOn = true;
                         }
-                    } else {
-                        n.walkable = true;
+                        previeuwObjects.Clear();
+                        MainCamera.GetComponent<MouseOnGrid>().PlaceBuilding(n.worldPosition.x, n.worldPosition.z);
+                        n.clickedOn = true;
                     }
+                } else {
+                    n.walkable = true;
+                }
             }
         }
     }
@@ -130,8 +130,8 @@ public class BetterCustomGrid : MonoBehaviour
                     Gizmos.color = Color.red;
                 }
 
-                
-                
+
+
                 Gizmos.DrawCube(n.worldPosition, new Vector3(nodeRadius, checkHeight, nodeRadius));
             }
         }
@@ -147,7 +147,7 @@ public class BetterCustomGrid : MonoBehaviour
                 }
                 previeuwObjects.Clear();
             }
-            
+
 
             foreach(Node n in grid){
                 if(n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
@@ -157,11 +157,11 @@ public class BetterCustomGrid : MonoBehaviour
                         newObj.transform.LookAt(hit.normal + newObj.transform.position);
                         newObj.transform.parent = previeuwsParent.transform;
                         previeuwObjects.Add(newObj);
-                    } 
+                    }
                 }
             }
             break;
-            
+
             //Farm
             case 2:
             if(previeuwObjects.Count >= 1){
@@ -170,7 +170,7 @@ public class BetterCustomGrid : MonoBehaviour
                 }
                 previeuwObjects.Clear();
             }
-            
+
 
             foreach(Node n in grid){
                 if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
@@ -180,7 +180,7 @@ public class BetterCustomGrid : MonoBehaviour
                         newObj.transform.LookAt(hit.normal + newObj.transform.position);
                         newObj.transform.parent = previeuwsParent.transform;
                         previeuwObjects.Add(newObj);
-                    } 
+                    }
                 }
             }
             break;
@@ -193,7 +193,7 @@ public class BetterCustomGrid : MonoBehaviour
                 }
                 previeuwObjects.Clear();
             }
-            
+
 
             foreach(Node n in grid){
                 if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
@@ -203,7 +203,7 @@ public class BetterCustomGrid : MonoBehaviour
                         newObj.transform.LookAt(hit.normal + newObj.transform.position);
                         newObj.transform.parent = previeuwsParent.transform;
                         previeuwObjects.Add(newObj);
-                    } 
+                    }
                 }
             }
             break;
@@ -216,7 +216,7 @@ public class BetterCustomGrid : MonoBehaviour
                 }
                 previeuwObjects.Clear();
             }
-            
+
 
             foreach(Node n in grid){
                 if(!n.theresBuilding && n.hasMineral){
@@ -226,7 +226,7 @@ public class BetterCustomGrid : MonoBehaviour
                         newObj.transform.LookAt(hit.normal + newObj.transform.position);
                         newObj.transform.parent = previeuwsParent.transform;
                         previeuwObjects.Add(newObj);
-                    } 
+                    }
                 }
             }
             break;

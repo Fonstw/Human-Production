@@ -60,7 +60,7 @@ public class MouseOnGrid : MonoBehaviour
         }
 
         RaycastHit hit2;
-        if (Physics.Raycast(mouseTarget.transform.position, -Vector3.up, out hit2, Mathf.Infinity, groundLayer)){      
+        if (Physics.Raycast(mouseTarget.transform.position, -Vector3.up, out hit2, Mathf.Infinity, groundLayer)){
             Vector3 newOof = hit.normal + mouseTarget.transform.position;
             mouseTarget.transform.LookAt(newOof, mouseTarget.transform.up);
             Debug.DrawRay(mouseTarget.transform.position, hit.normal, Color.blue);
@@ -82,7 +82,7 @@ public class MouseOnGrid : MonoBehaviour
                         r.sharedMaterial.color = ghostMat.color;
                     } else {
                         r.sharedMaterial.color = Color.red;
-                    }   
+                    }
                 }
             }
         }
@@ -114,7 +114,7 @@ public class MouseOnGrid : MonoBehaviour
             Destroy(HeldBuilding);
             HeldBuilding = null;
             break;
-            
+
             //PodBio
             case 2:
             BuildingType = BuildType.PodBio;
@@ -161,23 +161,18 @@ public class MouseOnGrid : MonoBehaviour
             // stop and tell we're not placing things through the UI!
             return false;
 
-        if(holdingBuilding == false){
+        if(holdingBuilding == false)
             return false;
-        }
 
         Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
-                foreach(Renderer r in bGhost){
-                    if(r.sharedMaterial.color != ghostMat.color){
-                        return false;
-                    }  
-                }
-
-        if(Physics.CheckSphere(mouseTarget.transform.position, 5, previeuwLayer)){
-            Debug.Log("test");
-            return true;
-        } else {
-            Debug.Log("Test2");
-            return false;
+        foreach(Renderer r in bGhost){
+            if(r.sharedMaterial.color != ghostMat.color)
+                return false;
         }
+
+        if (Physics.CheckSphere(mouseTarget.transform.position, 5, previeuwLayer))
+            return gameManager.AdjustPowerTreshold(powerCosts[current]) && gameManager.AdjustMineralTreshold(mineralCosts[current]);
+        else
+            return false;
     }
 }
