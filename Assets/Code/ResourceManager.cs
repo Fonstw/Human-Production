@@ -125,8 +125,8 @@ public class ResourceManager : MonoBehaviour
         {
             // adjust power
             currentPower += amount;
-            // overlay info's second argument now displays the correct amount of power
-            powerInfo.args[1] = currentPower;
+            // overlay info's first argument now displays the correct amount of power
+            powerInfo.args[0] = currentPower;
 
             // UI.Text now displays the correct amount of 'power left'
             UpdatePowerText();
@@ -145,8 +145,8 @@ public class ResourceManager : MonoBehaviour
         {
             // adjust the treshold
             powerTreshold += amount;
-            // overlay info's first argument now displays the correct treshold
-            powerInfo.args[0] = powerTreshold;
+            // overlay info's second argument now displays the correct treshold
+            powerInfo.args[1] = powerTreshold;
 
             // UI.Text now displays the correct amount of 'power left'
             UpdatePowerText();

@@ -37,17 +37,17 @@ public class OverlayInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         overlay.GetComponent<MouseOverlay>().ResetPosition();
 
         // parse <br> into actual working linebreaks (no, typing "\n" in the editor does not add a working linebreak)
-        bodyText = bodyText.Replace("<br>", "\n");
+            string displayText = bodyText.Replace("<br>", "\n");
 
         // parse all {x} arguments to updated values
         for (int r = 0; r < args.Length; r++)
-            bodyText = bodyText.Replace("{"+r+"}", args[r].ToString());
+            displayText = displayText.Replace("{"+r+"}", args[r].ToString());
 
         Image[] images = overlay.GetComponentsInChildren<Image>(true);
         Text[] texts = overlay.GetComponentsInChildren<Text>(true);
 
         texts[0].text = titleText;
-        texts[1].text = bodyText;
+        texts[1].text = displayText;
 
         for (int i = 1; i < 5; i++)
             images[i].gameObject.SetActive(false);
