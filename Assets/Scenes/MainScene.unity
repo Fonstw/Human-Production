@@ -679,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: event:/Music
+  clickPath: event:/Interaction/Mouseclick
 --- !u!20 &615572373
 Camera:
   m_ObjectHideFlags: 0
@@ -759,9 +760,7 @@ MonoBehaviour:
   - {fileID: 1542177222}
   - {fileID: 1508182476}
   errorMessage: {fileID: 1102615638}
-  researches:
-  - 0
-  - 0
+  researches: 0000000000000000
   researchMod: []
 --- !u!114 &615572376
 MonoBehaviour:
@@ -806,10 +805,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 615572371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b9f73eec9df19347904490ac5e030aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cc0d0c9a835cb545b38cf3d6b99028e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickPath: event:/Interaction/Mouseclick
 --- !u!114 &640758399 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 640758399, guid: bffdd3625875763468d5c6f82fef92e8,

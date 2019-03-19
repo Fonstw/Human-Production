@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626b8fbdf653fba4580d2d56727de1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setOffset: {x: 10, y: -10}
+  setOffset: {x: 12, y: -12}
 --- !u!1 &497998306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4051,12 +4051,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 4
-  skillName: Carbonate Power Plants
   requirement:
   - 1
   - 3125
   - 3125
-  functionalDescription: Produce 15% more Power.
   state: 0
   unlocks: 
   stateIcon: {fileID: 986719474}
@@ -4231,12 +4229,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 0
-  skillName: Un-human Intervention
   requirement:
   - 0
   - 1000
   - 1000
-  functionalDescription: All research goes 25% faster
   state: 1
   unlocks: 0100000002000000
   stateIcon: {fileID: 1956812021}
@@ -4411,12 +4407,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 5
-  skillName: Ground
   requirement:
   - 1
   - 12500
   - 12500
-  functionalDescription: Dolor Sit Amet
   state: 0
   unlocks: 
   stateIcon: {fileID: 1714412333}
@@ -4805,12 +4799,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 3
-  skillName: Toxium Combustion Plants
   requirement:
   - 1
   - 830
   - 830
-  functionalDescription: Lorem Ipsum
   state: 1
   unlocks: 0400000005000000
   stateIcon: {fileID: 996181781}
@@ -4985,12 +4977,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 1
-  skillName: What The People Want
   requirement:
   - 0
   - 5000
   - 5000
-  functionalDescription: All research goes another 10% faster
   state: 0
   unlocks: 
   stateIcon: {fileID: 1682585476}
@@ -5186,8 +5176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4596b225139a3364d827030658305d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPercentage: 0
-  maxSize: {x: 0, y: 0}
 --- !u!1 &7303302602858257553
 GameObject:
   m_ObjectHideFlags: 0
@@ -5419,8 +5407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4596b225139a3364d827030658305d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPercentage: 0
-  maxSize: {x: 0, y: 0}
 --- !u!1 &7303302603043965189
 GameObject:
   m_ObjectHideFlags: 0
@@ -5647,12 +5633,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillID: 2
-  skillName: Ductape & WD-40
   requirement:
   - 0
   - 6500
   - 6500
-  functionalDescription: Engineers research another 50% faster
   state: 0
   unlocks: 
   stateIcon: {fileID: 511206211}

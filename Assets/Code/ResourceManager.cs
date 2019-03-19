@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,9 +19,9 @@ public class ResourceManager : MonoBehaviour
     public GameObject errorMessage;
 
     // resources
-    private float currentPower, powerTreshold, currentMineral, mineralTreshold;
+    private int currentPower, powerTreshold, currentMineral, mineralTreshold;
     // how much of each can be researched per minute
-    public float[] researches;
+    public int[] researches;
     // multiplier of how much each type researches
     public float[] researchMod;
 
@@ -35,10 +33,6 @@ public class ResourceManager : MonoBehaviour
         // and they're going to be ×1 by default
         for (int m = 0; m < researches.Length; m++)
             researchMod[m] = 1;
-    }
-
-    void Update()
-    {
     }
 
     // public function that only ASKS wether there's enough resources
@@ -81,50 +75,21 @@ public class ResourceManager : MonoBehaviour
             return true;
         }
     }
-
-    public bool CanPlaceGenerator(bool waterClose)
-    {
-        if (!waterClose && !EventSystem.current.IsPointerOverGameObject())
-        {
-            errorMessage.GetComponentInChildren<Text>().text = "Place close to water";
-            errorMessage.GetComponent<FadeOut>().FadeNow();
-            return false;
-        }
-        else
-        {
-            errorMessage.GetComponent<FadeOut>().StopFading();
-            return true;
-        }
-    }
-    public bool CanPlaceMine(bool mineralClose)
-    {
-        if (!mineralClose && !EventSystem.current.IsPointerOverGameObject())
-        {
-            errorMessage.GetComponentInChildren<Text>().text = "Place only on minerals";
-            errorMessage.GetComponent<FadeOut>().FadeNow();
-            return false;
-        } else
-        {
-            errorMessage.GetComponent<FadeOut>().StopFading();
-            return true;
-        }
-    }
-
-
+    
 
     // =============== CHANGE PARAMETERS =================== \\
-    public bool AdjustCurrentPower(float amount)
+    public bool AdjustCurrentPower(int add)
     {
         // if the amount is a positive value
-        if (amount >= 1)
+        if (add > 0)
             // multiply it my the powerModifier
-            amount *= powerMod;
+            add = Mathf.RoundToInt(add * powerMod);
 
         // in case power goes down; it shouldn't "cause a blackout"
-        if (currentPower + amount > powerTreshold)
+        if (currentPower + add > powerTreshold)
         {
             // adjust power
-            currentPower += amount;
+            currentPower += add;
             // overlay info's first argument now displays the correct amount of power
             powerInfo.args[0] = currentPower;
 
@@ -138,13 +103,13 @@ public class ResourceManager : MonoBehaviour
             // tell whoever called the function that no, the power couldn't go down that much...
             return false;
     }
-    public bool AdjustPowerTreshold(float amount)
+    public bool AdjustPowerTreshold(int add)
     {
         // in case the treshold goes up; it shouldn't "cause a blackout"
-        if (currentPower >= powerTreshold + amount)
+        if (powerTreshold + add <= currentPower)
         {
             // adjust the treshold
-            powerTreshold += amount;
+            powerTreshold += add;
             // overlay info's second argument now displays the correct treshold
             powerInfo.args[1] = powerTreshold;
 
@@ -166,30 +131,30 @@ public class ResourceManager : MonoBehaviour
     public bool AdjustPowerMod(float change)
     {
         // adjust all power so far
-        if (AdjustCurrentPower(currentPower * change))
+        if (AdjustCurrentPower(Mathf.RoundToInt(currentPower * change)))
         {
-            // if that succeeds, actually change the Modifier
+            // if that succeeds, actually change the Modifier for further reference
             powerMod += change;
             // and tell whoever called this function that yes, the change has been made!
             return true;
         }
-        else   // if that couldn't be possible
+        else   // if that couldn't be possible (would be lower than the treshold)
             // tell whoever called this function that no, the change hasn't been made!
             return false;
     }
 
-    public bool AdjustCurrentMineral(float amount)
+    public bool AdjustCurrentMineral(int add)
     {
         // to return
         bool nobodyDied = true;
 
         // adjust mineral
-        currentMineral += amount;
+        currentMineral += add;
         // overlay info's first argument now displays the correct amount
         mineralInfo.args[0] = currentMineral;
 
         // PodHeads could've died if mineral went down
-        if (amount < 0)
+        if (add < 0)
         {
             // in case some are left without mineral now...
             if (currentMineral < mineralTreshold)
@@ -220,13 +185,13 @@ public class ResourceManager : MonoBehaviour
         // tell whoever called the function wether PodHeads were harmed in the process
         return nobodyDied;
     }
-    public bool AdjustMineralTreshold(float amount)
+    public bool AdjustMineralTreshold(int add)
     {
         // in case the treshold goes up; no Pod should spawn without minerals
-        if (amount <= 0 || mineralTreshold + amount <= currentMineral)
+        if (add < 0 || mineralTreshold + add <= currentMineral)
         {
             // adjust the treshold
-            mineralTreshold += amount;
+            mineralTreshold += add;
             // overlay info's second argument now displays the correct treshold
             mineralInfo.args[1] = mineralTreshold;
 
@@ -246,13 +211,13 @@ public class ResourceManager : MonoBehaviour
         mineralText.text = (currentMineral - mineralTreshold).ToString();
     }
 
-    public bool ChangeResearch(int type, float amount)
+    public bool ChangeResearch(int type, int add)
     {
         // never go full retard
-        if (researches[type] + amount >= 0)
+        if (researches[type] + add >= 0)
         {
             // adjust research per minute
-            researches[type] += amount;
+            researches[type] += add;
 
             // show the updated info to the player
             UpdateResearchTexts();

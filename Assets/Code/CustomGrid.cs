@@ -14,10 +14,10 @@ public class CustomGrid : MonoBehaviour {
         {
             truePos.x = (Mathf.Floor(target.transform.position.x / gridSize) * gridSize) + gridSize/2;
             truePos.z = (Mathf.Floor(target.transform.position.z / gridSize) * gridSize) + gridSize/2;
-        
-        
+
+
             structure.transform.position = new Vector3(truePos.x, structure.transform.position.y, truePos.z);
         }
-		
+
 	}
 }

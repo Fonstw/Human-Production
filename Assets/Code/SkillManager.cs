@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,7 +7,7 @@ public class SkillManager : MonoBehaviour
 {
     // buttons from the skill tree
     public Button[] skillButtons;
-    
+
     private SkillClass[] skills;   // the SkillClass component (.cs script) on each button
     // serialized so it can be set from the editor
     [SerializeField] private int researching;   // Skill-ID of the skill being researched
@@ -25,7 +24,7 @@ public class SkillManager : MonoBehaviour
     public BarBehaviour winProgressBar;
     public BarBehaviour researchBar;
 
-    private BGM musicPlayer;
+    private MainSoundManagement musicPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +47,7 @@ public class SkillManager : MonoBehaviour
         gameManager = FindObjectOfType<ResourceManager>();
 
         // find the fist instatiated object's ResourceManager component (.cs script)
-        musicPlayer = FindObjectOfType<BGM>();
+        musicPlayer = FindObjectOfType<MainSoundManagement>();
     }
 
     // Update is called once per frame
@@ -91,7 +90,7 @@ public class SkillManager : MonoBehaviour
                     // make its button clickable again!
                     skillButtons[u].interactable = true;
                 }
-                
+
                 // stop researching this thing
                 researching = -1;
             }
