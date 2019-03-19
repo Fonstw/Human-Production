@@ -6,7 +6,7 @@ public class BetterCustomGrid : MonoBehaviour
 {
     public int checkHeight = 80;
     public GameObject MainCamera;
-    [Range(2,100)]
+    [Range(2,10000)]
     public int spawnMineralsOneIn = 2;
     public GameObject mineralsParent;
     public GameObject previeuwsParent;

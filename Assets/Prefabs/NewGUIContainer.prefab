@@ -4050,8 +4050,8 @@ MonoBehaviour:
   skillName: Carbonate Power Plants
   requirement:
   - 1
-  - 6250
-  - 6250
+  - 3125
+  - 3125
   functionalDescription: Produce 15% more Power.
   state: 0
   unlocks: 
@@ -4079,7 +4079,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
-  - "\u221E"
+  - Medium
   bodyText: Produce 15% more Power.
   args: []
 --- !u!1 &7303302601612729442
@@ -4259,7 +4259,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Biologist
-  - "\u221E"
+  - Short
   bodyText: All research goes 25% faster
   args: []
 --- !u!1 &7303302601734824230
@@ -4439,7 +4439,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
-  - "\u221E"
+  - Extreme
   bodyText: Dolor Sit Amet
   args: []
 --- !u!1 &7303302601841304966
@@ -4833,7 +4833,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
-  - "\u221E"
+  - Short
   bodyText: Lorem Ipsum
   args: []
 --- !u!1 &7303302602527672157
@@ -4984,8 +4984,8 @@ MonoBehaviour:
   skillName: What The People Want
   requirement:
   - 0
-  - 7500
-  - 7500
+  - 5000
+  - 5000
   functionalDescription: All research goes another 10% faster
   state: 0
   unlocks: 
@@ -5013,7 +5013,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Biologist
-  - "\u221E"
+  - Long
   bodyText: All research goes another 10% faster
   args: []
 --- !u!1 &7303302602768392286
@@ -5646,8 +5646,8 @@ MonoBehaviour:
   skillName: Ductape & WD-40
   requirement:
   - 0
-  - 10000
-  - 10000
+  - 6500
+  - 6500
   functionalDescription: Engineers research another 50% faster
   state: 0
   unlocks: 
@@ -5675,7 +5675,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Biologist
-  - "\u221E"
+  - Long
   bodyText: Engineers research another 50% faster
   args: []
 --- !u!1 &7303302603559470556
