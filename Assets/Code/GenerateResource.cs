@@ -1,5 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GenerateResource : MonoBehaviour
@@ -18,7 +19,8 @@ public class GenerateResource : MonoBehaviour
     private float ownTimer;
     private bool workDone = false;   // wether built and in effect or not
     private int currentDecrease = 0;
-    private float mineralTimer = 0f;
+    private float mineralTimer = 0;
+    private TextMeshPro mineralCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class GenerateResource : MonoBehaviour
 
         // grab the first-instatiated object's ResourceManager compontent (.cs script)
         gameManager = FindObjectOfType<ResourceManager>();
+        if (resourceType == 0) mineralCounter = FindObjectOfType<TextMeshPro>();
         // play sound when placed onto the ground
         FMODUnity.RuntimeManager.PlayOneShot(placeSound);
     }
@@ -49,18 +52,27 @@ public class GenerateResource : MonoBehaviour
         if (!workDone && Time.time > ownTimer)
             WorkIt();
 
+        // if miner...
+        if (resourceType == 0)
+            // make sure the camera sees your generated amount
+            mineralCounter.transform.LookAt(gameManager.transform.position);
+
         // if Mineral and "producing"
         if (resourceType == 0 && workDone)
         {
             // if out of time
             if (mineralTimer <= 0)
             {
+                // let the player hear
+                FMODUnity.RuntimeManager.PlayOneShot(finishSound);
                 // lessen amount (for own knowledge)
                 generatesAmount -= mineralDecreases[currentDecrease];
                 // also adjust actual resourceManager
                 gameManager.AdjustCurrentMineral(-mineralDecreases[currentDecrease]);
+                // show it on your floating counter
+                mineralCounter.text = generatesAmount.ToString();
 
-                // if still functional...
+                // if still functional...   
                 if (generatesAmount > 0)
                 {
                     // set the timer
@@ -70,10 +82,7 @@ public class GenerateResource : MonoBehaviour
                     currentDecrease++;
                 }
                 else   // if no longer functional...
-                {
-                    FMODUnity.RuntimeManager.PlayOneShot(finishSound);   // cry out somehow
-                    Destroy(gameObject);   // and remove yourself
-                }
+                    Destroy(gameObject);   // remove yourself
             }
             else   // if not out of time
                 mineralTimer -= Time.deltaTime;   // let the flow of time pass on
@@ -86,9 +95,11 @@ public class GenerateResource : MonoBehaviour
         if (resourceType == 0)
         {
             gameManager.AdjustCurrentMineral(generatesAmount);
+            mineralCounter.text = generatesAmount.ToString();   // show generated amount
             mineralTimer = minutesToDecreaseMineral * 60f;   // make sure mineral decreases after 1 minute and not 1 frame already >.<"
         }
-        else if (resourceType == 1){   // power
+        else if (resourceType == 1)
+        {   // power
             gameManager.AdjustCurrentPower(generatesAmount);
         }
         else if (resourceType > 2)
