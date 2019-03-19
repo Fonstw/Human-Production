@@ -195,16 +195,22 @@ public class ResourceManager : MonoBehaviour
             if (currentMineral < mineralTreshold)
                 nobodyDied = false;   // some are going to die, let that be known
 
+            int killCount = 0;
+
             while (currentMineral < mineralTreshold)
             {
                 // find the oldest
-                GameObject eldest = GameObject.FindGameObjectsWithTag("Mortal")[0];
+                GameObject eldest = GameObject.FindGameObjectsWithTag("Mortal")[killCount];
 
                 // remove their research contribution
-                ChangeResearch(eldest.GetComponent<GenerateResource>().resourceType - 2, eldest.GetComponent<GenerateResource>().generatesAmount);
+                ChangeResearch(eldest.GetComponent<GenerateResource>().resourceType - 3, -eldest.GetComponent<GenerateResource>().generatesAmount);
+
+                // remove their need for power
+                AdjustMineralTreshold(-1);
 
                 // remove them
                 Destroy(eldest.gameObject);
+                killCount++;
             }   // reverb, resound, and repeat
         }
 
@@ -217,7 +223,7 @@ public class ResourceManager : MonoBehaviour
     public bool AdjustMineralTreshold(float amount)
     {
         // in case the treshold goes up; no Pod should spawn without minerals
-        if (mineralTreshold + amount <= currentMineral)
+        if (amount <= 0 || mineralTreshold + amount <= currentMineral)
         {
             // adjust the treshold
             mineralTreshold += amount;

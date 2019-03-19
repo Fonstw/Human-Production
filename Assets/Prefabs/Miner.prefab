@@ -97,7 +97,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   mineralDecreases: 050000000300000002000000
-  minutesToDecreaseMineral: 1
+  minutesToDecreaseMineral: 0.1
 --- !u!1001 &1049750187007797967
 PrefabInstance:
   m_ObjectHideFlags: 0
