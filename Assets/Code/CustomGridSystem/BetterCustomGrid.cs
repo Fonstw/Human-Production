@@ -6,9 +6,17 @@ public class BetterCustomGrid : MonoBehaviour
 {
     public int checkHeight = 80;
     public GameObject MainCamera;
-    [Range(2,10000)]
+    
+
+    [Header("mineralPlacement")]
+    public int amountOfMinerals = 20;
+    private int amountOfMineralsPlaced = 0;
+    public bool randomOn = false;
+    [Range(2,100)]
     public int spawnMineralsOneIn = 2;
     public GameObject mineralsParent;
+
+    [Header("Rest")]
     public GameObject previeuwsParent;
     public GameObject[] mineralPrefabs;
     public LayerMask mouseMask;
@@ -52,14 +60,30 @@ public class BetterCustomGrid : MonoBehaviour
                 grid[x,y].isWater = isWater;
                 grid[x,y].isCloseToWater = isCloseToWater;
                 grid[x,y].theresBuilding = theresBuilding;
-                if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
-                    grid[x,y].hasMineral = true;
-                    RaycastHit hit;
-                    if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
-                        GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
-                        mineral.transform.parent = mineralsParent.transform;
+
+                if(randomOn){
+                    if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
+                        grid[x,y].hasMineral = true;
+                        RaycastHit hit;
+                        if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
+                            GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
+                            mineral.transform.parent = mineralsParent.transform;
+                        }
                     }
+                } else {
+                    //Not Done yeat
+                    if(amountOfMineralsPlaced <= amountOfMinerals && Random.Range(x,gridSizeX) == amountOfMineralsPlaced && !grid[x,y].isWater){
+                        grid[x,y].hasMineral = true;
+                        RaycastHit hit;
+                        if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
+                            GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
+                            mineral.transform.parent = mineralsParent.transform;
+                            amountOfMineralsPlaced++;
+                        }
+                    }
+                    //Goota fix boi,, yeet
                 }
+                
 
             }
         }
