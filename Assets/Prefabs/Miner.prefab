@@ -99,6 +99,9 @@ MonoBehaviour:
     m_Bits: 16384
   mineralDecreases: 050000000300000002000000
   minutesToDecreaseMineral: 0.33333334
+  mineralMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!1 &5344323206636770927
 GameObject:
   m_ObjectHideFlags: 0

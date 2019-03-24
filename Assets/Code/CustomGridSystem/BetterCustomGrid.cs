@@ -9,8 +9,6 @@ public class BetterCustomGrid : MonoBehaviour
     
 
     [Header("mineralPlacement")]
-    public int amountOfMinerals = 20;
-    private int amountOfMineralsPlaced = 0;
     public bool randomOn = false;
     [Range(2,100)]
     public int spawnMineralsOneIn = 2;
@@ -20,6 +18,7 @@ public class BetterCustomGrid : MonoBehaviour
     public GameObject previeuwsParent;
     public GameObject[] mineralPrefabs;
     public LayerMask mouseMask;
+    public LayerMask mineralMask;
     public LayerMask groundMask;
     public LayerMask waterMask;
     public LayerMask closeToWaterMask;
@@ -71,17 +70,25 @@ public class BetterCustomGrid : MonoBehaviour
                         }
                     }
                 } else {
-                    //Not Done yeat
-                    if(amountOfMineralsPlaced <= amountOfMinerals && Random.Range(x,gridSizeX) == amountOfMineralsPlaced && !grid[x,y].isWater){
-                        grid[x,y].hasMineral = true;
-                        RaycastHit hit;
-                        if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
-                            GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
-                            mineral.transform.parent = mineralsParent.transform;
-                            amountOfMineralsPlaced++;
-                        }
+                    bool hasMineral = Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  mineralMask);
+                    grid[x,y].hasMineral = hasMineral;
+                    Collider[] minerals = Physics.OverlapBox(worldPoint, checkBoxes, Quaternion.identity, mineralMask);
+                    if(minerals.Length >= 1){
+                        minerals[0].transform.parent = mineralsParent.transform;
                     }
-                    //Goota fix boi,, yeet
+                    
+
+                    // //Not Done yeat
+                    // if(amountOfMineralsPlaced <= amountOfMinerals && Random.Range(x,gridSizeX) == amountOfMineralsPlaced && !grid[x,y].isWater){
+                    //     grid[x,y].hasMineral = true;
+                    //     RaycastHit hit;
+                    //     if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
+                    //         GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
+                    //         mineral.transform.parent = mineralsParent.transform;
+                    //         amountOfMineralsPlaced++;
+                    //     }
+                    // }
+                    // //Goota fix boi,, yeet
                 }
                 
 
@@ -98,6 +105,9 @@ public class BetterCustomGrid : MonoBehaviour
 
                 bool theresBuilding = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  buildingMask));
                 n.theresBuilding = theresBuilding;
+
+                bool hasMineral = Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mineralMask);
+                n.hasMineral = hasMineral;
 
                 if((Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mouseMask))){
                     n.walkable = false;
@@ -144,6 +154,10 @@ public class BetterCustomGrid : MonoBehaviour
 
                 if(n.theresBuilding){
                     Gizmos.color = Color.black;
+                }
+
+                if(n.hasMineral){
+                    Gizmos.color = Color.blue;
                 }
 
                 if(n.theresGhost){

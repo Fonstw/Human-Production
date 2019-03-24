@@ -12,6 +12,7 @@ public class GenerateResource : MonoBehaviour
     public LayerMask groundTypes;
     public int[] mineralDecreases = { 5, 3, 2 };
     public float minutesToDecreaseMineral = 1f;
+    public LayerMask mineralMask; //for tha mineral destruction
 
     private ResourceManager gameManager;   // who to give resources to
     private string placeSound = "event:/Builds/object_build";   // sound to play when placed onto the ground
@@ -31,7 +32,9 @@ public class GenerateResource : MonoBehaviour
 
         // grab the first-instatiated object's ResourceManager compontent (.cs script)
         gameManager = FindObjectOfType<ResourceManager>();
-        if (resourceType == 0) mineralCounter = FindObjectOfType<TextMeshPro>();
+        if (resourceType == 0) {
+            mineralCounter = FindObjectOfType<TextMeshPro>();
+        }
         // play sound when placed onto the ground
         FMODUnity.RuntimeManager.PlayOneShot(placeSound);
     }
@@ -81,8 +84,15 @@ public class GenerateResource : MonoBehaviour
                     // next time, decrease next amount
                     currentDecrease++;
                 }
-                else   // if no longer functional...
+                else {  // if no longer functional...
                     Destroy(gameObject);   // remove yourself
+                    Collider[] minerals = Physics.OverlapBox(transform.position, new Vector3(transform.localScale.x * 10, transform.localScale.y * 10, transform.localScale.z * 10) , Quaternion.identity, mineralMask);
+                    Debug.Log(minerals);
+                    if(minerals.Length >= 1){
+                        Debug.Log(minerals[0]);
+                        Destroy(minerals[0].transform.gameObject); //destroy the mineral
+                    }
+                }
             }
             else   // if not out of time
                 mineralTimer -= Time.deltaTime;   // let the flow of time pass on
