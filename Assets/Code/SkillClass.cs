@@ -60,13 +60,13 @@ public class SkillClass : MonoBehaviour
             // play out effects
             switch (skillID)
             {
-                case 0:   // Un-Human intervetion
-                    FindObjectOfType<ResourceManager>().ChangeAllMods(.25f);
-                    break;
+                //case 0:   // Un-Human intervetion
+                //    FindObjectOfType<ResourceManager>().ChangeAllMods(.25f);
+                //    break;
 
-                case 1:   // What The People Want
-                    FindObjectOfType<ResourceManager>().ChangeAllMods(.1f);
-                    break;
+                //case 1:   // What The People Want
+                //    FindObjectOfType<ResourceManager>().ChangeAllMods(.1f);
+                //    break;
 
                 case 2:   // Some Are More Equal Than Others
                     FindObjectOfType<ResourceManager>().researchMod[1] += .5f;
@@ -77,7 +77,7 @@ public class SkillClass : MonoBehaviour
                     break;
 
                 case 4:   // Toxium Carbonate Plants
-                    FindObjectOfType<ResourceManager>().AdjustPowerMod(.35f);
+                    FindObjectOfType<ResourceManager>().AdjustPowerMod(.15f);
                     break;
 
                 case 5:   // Ground
@@ -119,7 +119,7 @@ public class SkillClass : MonoBehaviour
             }
 
             // show progress on bar
-            progressBarFront.rectTransform.sizeDelta = new Vector2(250 * (requirement[2]-requirement[1]) / requirement[2], 10);
+            progressBarFront.rectTransform.sizeDelta = new Vector2(280 * (requirement[2]-requirement[1]) / requirement[2], 10);
 
             // tell whoever called this function that no, this skill is not done yet...
             return false;

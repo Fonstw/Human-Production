@@ -736,7 +736,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999267, y: 0.99999267, z: 0.99999267}
   m_Children: []
   m_Father: {fileID: 5321344855079039410}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -962,7 +962,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999267, y: 0.99999267, z: 0.99999267}
   m_Children: []
   m_Father: {fileID: 5321344855079039410}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1036,7 +1036,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999267, y: 0.99999267, z: 0.99999267}
   m_Children: []
   m_Father: {fileID: 5321344856081731222}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1337,7 +1337,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999267, y: 0.99999267, z: 0.99999267}
   m_Children: []
   m_Father: {fileID: 5321344855079039410}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1393,7 +1393,7 @@ GameObject:
   - component: {fileID: 5321344854208904919}
   - component: {fileID: 5321344854208904904}
   m_Layer: 5
-  m_Name: Image
+  m_Name: bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1406,16 +1406,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5321344854208904906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5321344855079039410}
-  m_RootOrder: 1
+  m_Father: {fileID: 5321344855237013713}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: 152}
+  m_AnchoredPosition: {x: -96.99963, y: 44.000732}
   m_SizeDelta: {x: 22.6, y: 208.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5321344854208904919
@@ -2170,7 +2170,7 @@ MonoBehaviour:
   - 1
   - 6250
   - 6250
-  functionalDescription: Toxium Power Plants produce 35% more power per Toxium mineral
+  functionalDescription: Toxium Power Plants produce 15% more power per Toxium mineral
   flavourText: Not only have you found a way to make use of Toxium, but putting all
     those engineer brains to work, you made it even more efficient!
   state: 0
@@ -2465,12 +2465,11 @@ RectTransform:
   m_LocalScale: {x: 1.0000048, y: 1.0000048, z: 1.0000048}
   m_Children:
   - {fileID: 5321344855547672621}
-  - {fileID: 5321344854208904905}
   - {fileID: 8569210605189301664}
   - {fileID: 6410922196349728155}
   - {fileID: 2433637721058731036}
   m_Father: {fileID: 5321344855237013713}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2628,7 +2627,7 @@ GameObject:
   - component: {fileID: 5321344855095374011}
   - component: {fileID: 5321344855095374012}
   m_Layer: 5
-  m_Name: Image
+  m_Name: bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2645,12 +2644,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5321344856081731222}
+  m_Father: {fileID: 5321344855237013713}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66, y: 152.00002}
+  m_AnchoredPosition: {x: 105.999695, y: 44.000748}
   m_SizeDelta: {x: 22.6, y: 208.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5321344855095374011
@@ -2798,6 +2797,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5321344854208904905}
+  - {fileID: 5321344855095374013}
   - {fileID: 5321344855387419588}
   - {fileID: 5321344855079039410}
   - {fileID: 5321344856081731222}
@@ -3346,12 +3347,11 @@ RectTransform:
   m_LocalScale: {x: 1.0000048, y: 1.0000048, z: 1.0000048}
   m_Children:
   - {fileID: 5321344856117882369}
-  - {fileID: 5321344855095374013}
   - {fileID: 7135298257530215404}
   - {fileID: 566223802698893594}
   - {fileID: 1869002131908641359}
   m_Father: {fileID: 5321344855237013713}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3902,7 +3902,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999267, y: 0.99999267, z: 0.99999267}
   m_Children: []
   m_Father: {fileID: 5321344856081731222}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3976,7 +3976,7 @@ RectTransform:
   m_LocalScale: {x: 0.99999267, y: 0.99999267, z: 0.99999267}
   m_Children: []
   m_Father: {fileID: 5321344856081731222}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -4371,7 +4371,7 @@ PrefabInstance:
     - target: {fileID: 1846842161693355655, guid: ac2e16060ab36e841ad340330579f6d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1846842161693355655, guid: ac2e16060ab36e841ad340330579f6d9,
         type: 3}
