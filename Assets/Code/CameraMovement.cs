@@ -29,6 +29,10 @@ public class CameraMovement : MonoBehaviour
     public float heightAboveGround;
 
 
+    //zoom
+    public float zoomSpeed = 3;
+
+
 
     void Start()
     {
@@ -92,6 +96,24 @@ public class CameraMovement : MonoBehaviour
         }
 
         //ZOOM IN/OUT
+        //Debug.Log("Mouse Scroll Y: " + Input.mouseScrollDelta.y);
+        heightAboveGround -= Input.mouseScrollDelta.y * zoomSpeed;
+        if(heightAboveGround < 1){
+            heightAboveGround = 1;
+        }
+        if(heightAboveGround > 50){
+            heightAboveGround = 50;
+        }
+
+        if(transform.localRotation.x < -0.22){
+            transform.RotateAround(transform.position, Vector3.right, zoomSpeed*2);
+        } else if(transform.localRotation.x > 0.42){
+            transform.RotateAround(transform.position, Vector3.right, -zoomSpeed*2);
+        } else {
+            transform.RotateAround(transform.position, Vector3.right, -Input.mouseScrollDelta.y * (zoomSpeed*2));
+        }
+
+        transform.position = new Vector3(transform.position.x ,transform.position.y,transform.position.z + Input.mouseScrollDelta.y);
 
         //CurrentZoom -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 1000 * ZoomZpeed;
 
@@ -101,6 +123,8 @@ public class CameraMovement : MonoBehaviour
         //transform.eulerAngles = new Vector3(transform.eulerAngles.x - (transform.eulerAngles.x - (InitRotation.x + CurrentZoom * ZoomRotation)) * .1f, transform.eulerAngles.y, transform.eulerAngles.z);
 
         // Turn camera, added by me
+
+
         if (Input.GetMouseButton(1))
         {
             float difference = Input.mousePosition.x - oldMousePosition;
