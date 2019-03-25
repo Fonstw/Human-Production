@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8794310385098213106}
-  m_Layer: 0
+  - component: {fileID: 2612623966987460224}
+  m_Layer: 12
   m_Name: Mineral1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2612623966987460224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4862716116612668992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2337810906014972088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38,6 +52,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8794310385098213106}
     m_Modifications:
+    - target: {fileID: 100160, guid: 7fec6c752a9430549aa7bfc24e2e394e, type: 3}
+      propertyPath: m_Name
+      value: Obj_Mineral_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100160, guid: 7fec6c752a9430549aa7bfc24e2e394e, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 400160, guid: 7fec6c752a9430549aa7bfc24e2e394e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -89,10 +111,6 @@ PrefabInstance:
     - target: {fileID: 400160, guid: 7fec6c752a9430549aa7bfc24e2e394e, type: 3}
       propertyPath: m_LocalScale.z
       value: 99.99997
-      objectReference: {fileID: 0}
-    - target: {fileID: 100160, guid: 7fec6c752a9430549aa7bfc24e2e394e, type: 3}
-      propertyPath: m_Name
-      value: Obj_Mineral_1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fec6c752a9430549aa7bfc24e2e394e, type: 3}

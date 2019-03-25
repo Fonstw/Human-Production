@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,19 +7,24 @@ public class SkillManager : MonoBehaviour
 {
     // buttons from the skill tree
     public Button[] skillButtons;
-    
+
     private SkillClass[] skills;   // the SkillClass component (.cs script) on each button
     // serialized so it can be set from the editor
-    [SerializeField] private int[] researching;   // [0]=biologist, [1]=engineer, etc. Means which skill-ID is being researched by each type
+    [SerializeField] private int researching;   // Skill-ID of the skill being researched
 
     private ResourceManager gameManager;   // to get the research-amounts from
 
     // amount of researched skills counting towards the progress
-    private int winProgress = 0;
+    private float winProgress = 0;
     // the amount of aforementioned skills needed to win
-    public int winPoint = 6;
+    public float winPoint = 6;
     // the scene name that tells the player they won
     public string winScene = "SceneWon";
+
+    public BarBehaviour winProgressBar;
+    public BarBehaviour researchBar;
+
+    private MainSoundManagement musicPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -41,45 +45,54 @@ public class SkillManager : MonoBehaviour
 
         // find the fist instatiated object's ResourceManager component (.cs script)
         gameManager = FindObjectOfType<ResourceManager>();
+
+        // find the fist instatiated object's ResourceManager component (.cs script)
+        musicPlayer = FindObjectOfType<MainSoundManagement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (int r in researching)
+        // if researching AT ALL (-1 = not researching)
+        if (researching >= 0)
         {
-            // if researching AT ALL (-1 = not researching)
-            if (r >= 0)
-            {
-                // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
-                int i = (int)skills[r].requirement[0];
+            // (int) tries to shove the float in as if it's an int... 'cos I'm stupid.
+            int i = (int)skills[researching].requirement[0];
 
-                // put the proper amount of research into the skill, multiplied and all
-                // "/60f" because it's on minute-basis
-                if (skills[r].Research(gameManager.researches[i] * gameManager.researchMod[i] / 60f * Time.deltaTime))
-                {   // you only get here if the skill's done!
+            // put the proper amount of research into the skill, multiplied and all
+            // "/60f" because it's on minute-basis
+            float researchProgress = skills[researching].Research(gameManager.researches[i] * gameManager.researchMod[i] / 60f * Time.deltaTime);
 
-                    // stop researching this thing
-                    researching[i] = -1;
+            // scale the research bar to the % research done
+            researchBar.Scale(researchProgress);
 
-                    // play out skill effects
-                    if (skills[r].Finish())
-                        // if it actually happened; progress 1 towards winning
-                        StartCoroutine(WinProgress(1));
+            // if 100% progressed (or more 'cos floats)
+            if (researchProgress >= 1)
+            {   // you only get here if the skill's done!
 
-                    // make the button of the just-researched skill un-clickable again...
-                    skillButtons[r].interactable = false;
+                // Make the music one step techier
+                musicPlayer.ChangeMusicTech(-(100f / (skills.Length - 1)));
 
-                    // foreach locked skill the researched one should unlock
-                    foreach (int u in skills[r].unlocks)
-                    {
-                        // tell their classes they've been unlocked
-                        skills[u].Unlock();
+                // play out skill effects
+                if (skills[researching].Finish())
+                    // if it actually happened; progress 1 towards winning
+                    StartCoroutine(WinProgress(1));
 
-                        // make its button clickable again!
-                        skillButtons[u].interactable = true;
-                    }
+                // make the button of the just-researched skill un-clickable again...
+                skillButtons[researching].interactable = false;
+
+                // foreach locked skill the researched one should unlock
+                foreach (int u in skills[researching].unlocks)
+                {
+                    // tell their classes they've been unlocked
+                    skills[u].Unlock();
+
+                    // make its button clickable again!
+                    skillButtons[u].interactable = true;
                 }
+
+                // stop researching this thing
+                researching = -1;
             }
         }
     }
@@ -87,16 +100,20 @@ public class SkillManager : MonoBehaviour
     public void ResearchSkill(int i)
     {
         // put the right PodHeads into this skill (by ID)
-        // again, (int) 'cos I'm stupid
-        researching[(int)skills[i].requirement[0]] = i;
+        researching = i;
     }
 
     IEnumerator WinProgress(int add)
     {
         winProgress += add;
 
+        winProgressBar.Scale(winProgress / winPoint);
+
         if (winProgress >= winPoint)
         {
+            // stop music from playing; if someone replays the music would be played twice
+            musicPlayer.StopMusic();
+
             yield return new WaitForSeconds(2.6f);
             SceneManager.LoadScene(winScene);
         }

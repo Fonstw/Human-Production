@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class BetterCustomGrid : MonoBehaviour
 {
+    public int checkHeight = 80;
     public GameObject MainCamera;
+    
+
+    [Header("mineralPlacement")]
+    public bool randomOn = false;
     [Range(2,100)]
     public int spawnMineralsOneIn = 2;
     public GameObject mineralsParent;
+
+    [Header("Rest")]
     public GameObject previeuwsParent;
     public GameObject[] mineralPrefabs;
     public LayerMask mouseMask;
+    public LayerMask mineralMask;
     public LayerMask groundMask;
+    public LayerMask waterMask;
     public LayerMask closeToWaterMask;
     public LayerMask buildingMask;
+    public LayerMask ghostBuildingMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
     public GameObject previeuwObject;
@@ -37,49 +47,83 @@ public class BetterCustomGrid : MonoBehaviour
         for(int x = 0; x < gridSizeX; x++){
             for(int y = 0; y < gridSizeY; y++){
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-                bool walkable = !(Physics.CheckSphere(worldPoint, nodeRadius, mouseMask));
-                bool isWater = !(Physics.CheckSphere(worldPoint, nodeRadius, groundMask));
-                bool isCloseToWater = (Physics.CheckSphere(worldPoint, nodeRadius, closeToWaterMask));
+                Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
+
+
+                bool walkable = !(Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  waterMask));
+                bool isWater = (Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  waterMask));
+                bool isCloseToWater = (Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity, closeToWaterMask));
                 bool theresBuilding = (Physics.CheckSphere(worldPoint, nodeRadius, buildingMask));
-                
+
                 grid[x,y] = new Node(walkable, worldPoint);
                 grid[x,y].isWater = isWater;
                 grid[x,y].isCloseToWater = isCloseToWater;
                 grid[x,y].theresBuilding = theresBuilding;
-                if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
-                    grid[x,y].hasMineral = true;
-                    GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], worldPoint, this.transform.rotation);
-                    mineral.transform.parent = mineralsParent.transform;
+
+                if(randomOn){
+                    if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
+                        grid[x,y].hasMineral = true;
+                        RaycastHit hit;
+                        if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
+                            GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
+                            mineral.transform.parent = mineralsParent.transform;
+                        }
+                    }
+                } else {
+                    bool hasMineral = Physics.CheckBox(worldPoint, checkBoxes, Quaternion.identity,  mineralMask);
+                    grid[x,y].hasMineral = hasMineral;
+                    Collider[] minerals = Physics.OverlapBox(worldPoint, checkBoxes, Quaternion.identity, mineralMask);
+                    if(minerals.Length >= 1){
+                        minerals[0].transform.parent = mineralsParent.transform;
+                    }
+                    
+
+                    // //Not Done yeat
+                    // if(amountOfMineralsPlaced <= amountOfMinerals && Random.Range(x,gridSizeX) == amountOfMineralsPlaced && !grid[x,y].isWater){
+                    //     grid[x,y].hasMineral = true;
+                    //     RaycastHit hit;
+                    //     if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
+                    //         GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
+                    //         mineral.transform.parent = mineralsParent.transform;
+                    //         amountOfMineralsPlaced++;
+                    //     }
+                    // }
+                    // //Goota fix boi,, yeet
                 }
+                
+
             }
         }
     }
 
     void Update(){
         if(grid != null){
-            for(int x = 0; x < gridSizeX; x++){
-                for(int y = 0; y < gridSizeY; y++){
-                    Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.forward * gridWorldSize.y/2;
-                    Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
-                    bool theresBuilding = (Physics.CheckSphere(worldPoint, nodeRadius, buildingMask));
-                    grid[x,y].theresBuilding = theresBuilding;
+            foreach(Node n in grid){
+                Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
+                bool theresGhost = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  ghostBuildingMask));
+                n.theresGhost = theresGhost;
 
-                    if((Physics.CheckSphere(grid[x,y].worldPosition, nodeRadius, mouseMask))){
-                        grid[x,y].walkable = false;
-                        if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(worldPoint, nodeRadius) && !grid[x,y].isWater && !grid[x,y].theresBuilding){
-                            if(previeuwObjects.Count >= 1){
-                                foreach(GameObject g in previeuwObjects){
-                                    Destroy(g);
-                                }
-                                previeuwObjects.Clear();
+                bool theresBuilding = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  buildingMask));
+                n.theresBuilding = theresBuilding;
+
+                bool hasMineral = Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mineralMask);
+                n.hasMineral = hasMineral;
+
+                if((Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  mouseMask))){
+                    n.walkable = false;
+                    if(Input.GetMouseButtonDown(0) && MainCamera.GetComponent<MouseOnGrid>().CanPlace(n.worldPosition, nodeRadius) && !n.isWater && !n.theresBuilding){
+                        if(previeuwObjects.Count >= 1){
+                            foreach(GameObject g in previeuwObjects){
+                                Destroy(g);
                             }
                             previeuwObjects.Clear();
-                            MainCamera.GetComponent<MouseOnGrid>().PlaceBuilding(grid[x,y].worldPosition.x, grid[x,y].worldPosition.z);
-                            grid[x,y].clickedOn = true;
                         }
-                    } else {
-                        grid[x,y].walkable = true;
+                        previeuwObjects.Clear();
+                        MainCamera.GetComponent<MouseOnGrid>().PlaceBuilding(n.worldPosition.x, n.worldPosition.z);
+                        n.clickedOn = true;
                     }
+                } else {
+                    n.walkable = true;
                 }
             }
         }
@@ -96,8 +140,6 @@ public class BetterCustomGrid : MonoBehaviour
                     Gizmos.color = Color.blue;
                 }
 
-                
-
                 if(n.isCloseToWater){
                     Gizmos.color = Color.yellow;
                 }
@@ -110,15 +152,25 @@ public class BetterCustomGrid : MonoBehaviour
                     Gizmos.color = Color.green;
                 }
 
+                if(n.theresBuilding){
+                    Gizmos.color = Color.black;
+                }
+
+                if(n.hasMineral){
+                    Gizmos.color = Color.blue;
+                }
+
+                if(n.theresGhost){
+                    Gizmos.color = Color.magenta;
+                }
+
                 if(!n.walkable){
                     Gizmos.color = Color.red;
                 }
 
-                if(n.theresBuilding){
-                    Gizmos.color = Color.black;
-                }
-                
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-0.1f));
+
+
+                Gizmos.DrawCube(n.worldPosition, new Vector3(nodeRadius, checkHeight, nodeRadius));
             }
         }
     }
@@ -133,25 +185,88 @@ public class BetterCustomGrid : MonoBehaviour
                 }
                 previeuwObjects.Clear();
             }
-            
+
 
             foreach(Node n in grid){
-                if(n.isCloseToWater && !n.theresBuilding){
-                    GameObject newObj = Instantiate(previeuwObject, new Vector3(n.worldPosition.x, transform.position.y, n.worldPosition.z), transform.rotation);
-                    newObj.transform.parent = previeuwsParent.transform;
-                    previeuwObjects.Add(newObj);
+                if(n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    }
                 }
             }
             break;
-            
+
             //Farm
             case 2:
+            if(previeuwObjects.Count >= 1){
+                foreach(GameObject g in previeuwObjects){
+                    Destroy(g);
+                }
+                previeuwObjects.Clear();
+            }
 
+
+            foreach(Node n in grid){
+                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    }
+                }
+            }
             break;
 
             //Pod
             case 3:
-            
+            if(previeuwObjects.Count >= 1){
+                foreach(GameObject g in previeuwObjects){
+                    Destroy(g);
+                }
+                previeuwObjects.Clear();
+            }
+
+
+            foreach(Node n in grid){
+                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    }
+                }
+            }
+            break;
+
+            //Mine
+            case 4:
+            if(previeuwObjects.Count >= 1){
+                foreach(GameObject g in previeuwObjects){
+                    Destroy(g);
+                }
+                previeuwObjects.Clear();
+            }
+
+
+            foreach(Node n in grid){
+                if(!n.theresBuilding && n.hasMineral){
+                    RaycastHit hit;
+                    if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
+                        GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
+                        newObj.transform.LookAt(hit.normal + newObj.transform.position);
+                        newObj.transform.parent = previeuwsParent.transform;
+                        previeuwObjects.Add(newObj);
+                    }
+                }
+            }
             break;
         }
     }

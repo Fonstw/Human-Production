@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 922806526183297565}
   m_Layer: 10
   m_Name: PodBio
-  m_TagString: Untagged
+  m_TagString: Mortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,10 +47,12 @@ MonoBehaviour:
   resourceType: 3
   generatesAmount: 1000
   buildingTime: 2
-  finishSound: event:/Pod_ready
+  finishSound: event:/Builds/Pod_ready
   groundTypes:
     serializedVersion: 2
     m_Bits: 16384
+  mineralDecreases: 050000000300000002000000
+  minutesToDecreaseMineral: 1
 --- !u!1 &3003602979577311041
 GameObject:
   m_ObjectHideFlags: 0

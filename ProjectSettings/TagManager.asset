@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Mouse
   - CloseToWater
+  - Mortal
+  - Warning
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - Mouse
   - CloseToWater
   - Previeuw
-  - 
+  - GhostBuilding
   - 
   - 
   - 

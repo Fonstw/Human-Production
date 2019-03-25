@@ -10,6 +10,7 @@ public class Node
     public bool walkable;
     public bool isCloseToWater;
     public bool theresBuilding;
+    public bool theresGhost;
     public Vector3 worldPosition;
 
     public Node(bool _walkable, Vector3 _worldPos){

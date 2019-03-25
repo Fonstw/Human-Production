@@ -45,7 +45,7 @@ public class FadeOut : MonoBehaviour
     {
         fadeNow = true;
         currentTime = Time.deltaTime + inSeconds;
-        
+
         GetComponent<Image>().color = new Color(0, 0, 0, .5f);
         GetComponentInChildren<Text>().color = new Color(1, 0, 0, 1);
     }

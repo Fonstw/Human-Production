@@ -1,20 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public enum BuildType {Farm, Pod, Energy, Mine, Null}
+public enum BuildType {PodBio, PodEng, Energy, Mine, Null}
 public class MouseOnGrid : MonoBehaviour
 {
+    [Header("Resource Costs")]
+    public int[] powerCosts = { 0, 0, 200, 200, 0 };
+    public int[] mineralCosts = { 0, 0, 1, 1, 0 };
+    private ResourceManager gameManager;
+    private int current = 0;
+
     [Header("Buildings")]
+    //Pods
+    public GameObject PodBio;
+    public GameObject PodEng;
+    public GameObject PodGhost;
     //Energy
     public GameObject Energy;
     public GameObject EnergyGhost;
-    //Farm
-    public GameObject Farm;
-    public GameObject FarmGhost;
-    //Pod
-    public GameObject Pod;
-    public GameObject PodGhost;
+    //Mine
+    public GameObject Mine;
+    public GameObject MineGhost;
 
     [Header("Extra")]
     public BetterCustomGrid customGrid;
@@ -31,16 +40,30 @@ public class MouseOnGrid : MonoBehaviour
     private GameObject HeldBuilding;
     //private int current = -1;
     //private int currentHolder = 0;
+
+    void Start()
+    {
+        // grab resource manager for paying purposes
+        gameManager = FindObjectOfType<ResourceManager>();
+    }
+
     void Update()
     {
         RaycastHit hit;
         Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer)){
             if(hit.transform.tag == "Ground" || hit.transform.tag == "CloseToWater"){
-                mouseTarget.transform.position = new Vector3(hit.point.x, mouseTarget.transform.position.y, hit.point.z);
+                mouseTarget.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
         } else {
             mouseTarget.transform.position = new Vector3(1000, mouseTarget.transform.position.y, 1000);
+        }
+
+        RaycastHit hit2;
+        if (Physics.Raycast(mouseTarget.transform.position, -Vector3.up, out hit2, Mathf.Infinity, groundLayer)){
+            Vector3 newOof = hit.normal + mouseTarget.transform.position;
+            mouseTarget.transform.LookAt(newOof, mouseTarget.transform.up);
+            Debug.DrawRay(mouseTarget.transform.position, hit.normal, Color.blue);
         }
 
         if(holdingBuilding){
@@ -49,21 +72,17 @@ public class MouseOnGrid : MonoBehaviour
                     Debug.Log("no building given");
                 } else {
                     HeldBuilding = Instantiate(BuildingGhost, mouseTarget.transform);
+                    HeldBuilding.transform.localRotation = Quaternion.Euler(90,0,0);
                 }
             } else {
                 HeldBuilding.transform.position = mouseTarget.transform.position;
-                switch(BuildingType){
-                    case BuildType.Energy:
-                        Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
-                        foreach(Renderer r in bGhost){
-                            if(Physics.CheckSphere(mouseTarget.transform.position, 1, previeuwLayer)){
-                                r.sharedMaterial.color = ghostMat.color;
-                            } else {
-                                r.sharedMaterial.color = Color.red;
-                            }
-                        }   
-                        
-                    break;
+                Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
+                foreach(Renderer r in bGhost){
+                    if(Physics.CheckSphere(mouseTarget.transform.position, 5, previeuwLayer)){
+                        r.sharedMaterial.color = ghostMat.color;
+                    } else {
+                        r.sharedMaterial.color = Color.red;
+                    }
                 }
             }
         }
@@ -82,6 +101,8 @@ public class MouseOnGrid : MonoBehaviour
     }
 
     public void SetBuilding(int Buildingu){
+        current = Buildingu;
+
         switch (Buildingu){
             //Energy
             case 1:
@@ -90,43 +111,68 @@ public class MouseOnGrid : MonoBehaviour
             Building = Energy;
             BuildingGhost = EnergyGhost;
             holdingBuilding = true;
-            break;
-            
-            //Farm
-            case 2:
-            BuildingType = BuildType.Farm;
-            customGrid.WhereToPlace(Buildingu);
-            Building = Farm;
-            BuildingGhost = FarmGhost;
-            holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
             break;
 
-            //Pod
-            case 3:
-            BuildingType = BuildType.Pod;
+            //PodBio
+            case 2:
+            BuildingType = BuildType.PodBio;
             customGrid.WhereToPlace(Buildingu);
-            Building = Pod;
+            Building = PodBio;
             BuildingGhost = PodGhost;
             holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
+            break;
+
+            //PodEng
+            case 3:
+            BuildingType = BuildType.PodEng;
+            customGrid.WhereToPlace(Buildingu);
+            Building = PodEng;
+            BuildingGhost = PodGhost;
+            holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
+            break;
+
+            //Mine
+            case 4:
+            BuildingType = BuildType.Mine;
+            customGrid.WhereToPlace(Buildingu);
+            Building = Mine;
+            BuildingGhost = MineGhost;
+            holdingBuilding = true;
+            Destroy(HeldBuilding);
+            HeldBuilding = null;
             break;
         }
     }
 
     public bool CanPlace(Vector3 worldPoint, float nodeRadius){
-        if(holdingBuilding == false){
+        // if cost cannot be paid
+        if (!gameManager.CanPay(powerCosts[current], mineralCosts[current]))
+            // stop and tell it couldn't be done
             return false;
-        }
-        switch(BuildingType){
-            case BuildType.Energy:
-                if(Physics.CheckSphere(worldPoint, nodeRadius, previeuwLayer)){
-                    Debug.Log("test");
-                    return true;
-                } else {
-                    Debug.Log("Test2");
-                    return false;
-                }
+
+        // if on UI
+        if (EventSystem.current.IsPointerOverGameObject())
+            // stop and tell we're not placing things through the UI!
+            return false;
+
+        if(holdingBuilding == false)
+            return false;
+
+        Renderer[] bGhost = BuildingGhost.GetComponentsInChildren<Renderer>();
+        foreach(Renderer r in bGhost){
+            if(r.sharedMaterial.color != ghostMat.color)
+                return false;
         }
 
-        return true;
+        if (Physics.CheckSphere(mouseTarget.transform.position, 5, previeuwLayer))
+            return gameManager.AdjustPowerTreshold(powerCosts[current]) && gameManager.AdjustMineralTreshold(mineralCosts[current]);
+        else
+            return false;
     }
 }
