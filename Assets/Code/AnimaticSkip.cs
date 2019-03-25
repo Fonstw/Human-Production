@@ -19,7 +19,7 @@ public class AnimaticSkip : MonoBehaviour
     void Update()
     {
         //als spatie ingdrukt wordt, of de met de muis wordt geklikt/scherm getikt, skipt de player naar volgende clip in de animatic
-        if(Input.GetKeyDown("Fire1")){
+        if(Input.GetButtonDown("Fire1")){
             Debug.Log(playableDirector.time);
             playableDirector.time += clipTime - (playableDirector.time % clipTime);
         }

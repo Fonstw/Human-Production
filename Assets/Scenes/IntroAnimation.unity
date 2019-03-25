@@ -461,5 +461,10 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 7374608640122858619, guid: 7a57cff689a124c4c98163182355557f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a57cff689a124c4c98163182355557f, type: 3}
