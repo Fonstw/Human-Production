@@ -3,8 +3,6 @@
  * Source: https://forum.unity.com/threads/rts-camera-script.72045/
  * ==================================== */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -19,8 +17,8 @@ public class CameraMovement : MonoBehaviour
     // public float ZoomZpeed = 1;
     // public float ZoomRotation = 1;
 
-    private Vector3 InitPos;
-    private Vector3 InitRotation;
+    //private Vector3 InitPos;
+    //private Vector3 InitRotation;
 
     public float cameraTurnSpeed = .1f;
     private float oldMousePosition;
@@ -32,8 +30,8 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        InitPos = transform.position;
-        InitRotation = transform.eulerAngles;
+        //InitPos = transform.position;
+        //InitRotation = transform.eulerAngles;
 
         oldMousePosition = Input.mousePosition.x;
     }

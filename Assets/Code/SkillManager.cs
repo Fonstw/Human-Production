@@ -22,6 +22,7 @@ public class SkillManager : MonoBehaviour
     public string winScene = "SceneWon";
 
     public BarBehaviour winProgressBar;
+    public Text winProgressText;
     public BarBehaviour researchBar;
 
     private MainSoundManagement musicPlayer;
@@ -108,6 +109,7 @@ public class SkillManager : MonoBehaviour
         winProgress += add;
 
         winProgressBar.Scale(winProgress / winPoint);
+        winProgressText.text = "Win Progress: " + winProgress + "/" + winPoint;
 
         if (winProgress >= winPoint)
         {

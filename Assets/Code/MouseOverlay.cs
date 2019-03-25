@@ -8,9 +8,8 @@ public class MouseOverlay : MonoBehaviour
 {
     // 'default offset'
     public Vector2 setOffset;
-    //public bool infoNotError;
-
-    //private bool negative = false;
+    
+    // for easy access
     private RectTransform rt;
     private Image[] icons;
     private Text[] texts;
@@ -21,13 +20,10 @@ public class MouseOverlay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (infoNotError)
-        //{
-            icons = GetComponentsInChildren<Image>();
-            texts = GetComponentsInChildren<Text>();
-        //}
-
+        // for easy access
         rt = GetComponent<RectTransform>();
+        icons = GetComponentsInChildren<Image>();
+        texts = GetComponentsInChildren<Text>();
     }
 
     // Update is called once per frame
@@ -35,28 +31,12 @@ public class MouseOverlay : MonoBehaviour
     {
         FollowMouse();
 
-        //if (infoNotError)
-        //{
-        //    for (int i=1; i<icons.Length; i++)
-        //    {
-        //        if (texts[i].text == "-1")
-        //        {
-        //            icons[i].color = new Color(icons[i].color.r, icons[i].color.g, icons[i].color.b, 0);
-        //            texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, 0);
-        //        }
-        //        else
-        //        {
-        //            icons[i].color = new Color(icons[i].color.r, icons[i].color.g, icons[i].color.b, 1);
-        //            texts[i].color = new Color(texts[i].color.r, texts[i].color.g, texts[i].color.b, 1);
-        //        }
-        //    }
-        //}
-
         w = transform.position.x / Screen.width >= .5f;
         h = transform.position.y / Screen.height >= .5f;
 
         SetPivotOffset();
     }
+
     public void ResetPosition()
     {
         transform.position = new Vector3(0, 0);
@@ -73,19 +53,4 @@ public class MouseOverlay : MonoBehaviour
 
         realOffset = new Vector2(w?-setOffset.x:setOffset.x, h?setOffset.y:-setOffset.y);
     }
-
-    //public void SetNegative(bool setting)
-    //{
-    //    if (negative != setting)
-    //    {
-    //        negative = setting;
-
-    //        offset = new Vector3(-offset.x, -offset.y, offset.z);
-
-    //        if (negative)
-    //            GetComponent<RectTransform>().pivot = new Vector2(0, 1);
-    //        else
-    //            GetComponent<RectTransform>().pivot = new Vector2(1, 0);
-    //    }
-    //}
 }

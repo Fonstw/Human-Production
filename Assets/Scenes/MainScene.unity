@@ -1074,11 +1074,11 @@ MonoBehaviour:
   ScrollSpeed: 50
   ScrollEdge: 0.01
   PanSpeed: 50
-  cameraTurnSpeed: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 2048
   heightAboveGround: 25
+  cameraTurnSpeed: 0.18
 --- !u!4 &1328398539
 Transform:
   m_ObjectHideFlags: 0
