@@ -68,7 +68,7 @@ public class GenerateResource : MonoBehaviour
                 // lessen amount (for own knowledge)
                 generatesAmount -= mineralDecreases[currentDecrease];
                 // also adjust actual resourceManager
-                gameManager.AdjustCurrentMineral(-mineralDecreases[currentDecrease]);
+                bool tomAndJerry = gameManager.AdjustCurrentMineral(-mineralDecreases[currentDecrease]);
                 // show it on your floating counter
                 mineralCounter.text = generatesAmount.ToString();
 
