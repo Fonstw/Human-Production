@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Script_DestroyTrees : MonoBehaviour
 {
-    [SerializeField] float f_Radius = 5;
-    private void Start()
-    {
-
-    }
-
+    public float f_Radius = 5;
     private void Update()
     {
         Function_DestroyTrees(transform.position, f_Radius);
@@ -17,7 +12,7 @@ public class Script_DestroyTrees : MonoBehaviour
 
     void Function_DestroyTrees(Vector3 center, float radius)
     {
-        Collider[] hitColliders = hitColliders = Physics.OverlapSphere(center, radius);
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
 
         if (hitColliders.Length > 0)
         {

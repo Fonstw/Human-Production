@@ -10,6 +10,7 @@ TagManager:
   - Mortal
   - Warning
   - Floating text
+  - DestructableEnvironment
   layers:
   - Default
   - TransparentFX

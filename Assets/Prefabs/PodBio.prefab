@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4040116105811368762}
   - component: {fileID: 922806526183297565}
+  - component: {fileID: 6530345439158223258}
   m_Layer: 10
   m_Name: PodBio
   m_TagString: Mortal
@@ -58,6 +59,19 @@ MonoBehaviour:
     m_Bits: 0
   deadText: {fileID: 7210260013329215732, guid: b3018c55a6cfcc6408f6a995d4a13f49,
     type: 3}
+--- !u!114 &6530345439158223258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916144813056286659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ced2a2638af8b4981aa1b66b7b6191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Radius: 5
 --- !u!1 &3003602979577311041
 GameObject:
   m_ObjectHideFlags: 0

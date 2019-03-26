@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BetterCustomGrid : MonoBehaviour
 {
+    public bool displayGizmos = false;
     public int checkHeight = 80;
     public GameObject MainCamera;
     
@@ -57,8 +58,14 @@ public class BetterCustomGrid : MonoBehaviour
 
                 grid[x,y] = new Node(walkable, worldPoint);
                 grid[x,y].isWater = isWater;
-                grid[x,y].isCloseToWater = isCloseToWater;
-                grid[x,y].theresBuilding = theresBuilding;
+                if(isWater){
+                    grid[x,y].isCloseToWater = false;
+                    grid[x,y].theresBuilding = false;
+                } else {
+                    grid[x,y].isCloseToWater = isCloseToWater;
+                    grid[x,y].theresBuilding = theresBuilding;
+                }
+                
 
                 if(randomOn){
                     if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
@@ -130,47 +137,49 @@ public class BetterCustomGrid : MonoBehaviour
     }
 
     void OnDrawGizmos(){
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
+        if(displayGizmos){
+            Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
-        if(grid != null){
-            foreach(Node n in grid){
-                Gizmos.color = Color.white;
+            if(grid != null){
+                foreach(Node n in grid){
+                    Gizmos.color = Color.white;
 
-                if(n.hasMineral){
-                    Gizmos.color = Color.blue;
+                    if(n.hasMineral){
+                        Gizmos.color = Color.blue;
+                    }
+
+                    if(n.isWater){
+                        Gizmos.color = Color.cyan;
+                    }
+
+                    if(n.isCloseToWater){
+                        Gizmos.color = Color.yellow;
+                    }
+
+                    if(n.clickedOn){
+                        Gizmos.color = Color.green;
+                    }
+
+                    if(n.theresBuilding){
+                        Gizmos.color = Color.black;
+                    }
+
+                    if(n.hasMineral){
+                        Gizmos.color = Color.blue;
+                    }
+
+                    if(n.theresGhost){
+                        Gizmos.color = Color.magenta;
+                    }
+
+                    if(!n.walkable){
+                        Gizmos.color = Color.red;
+                    }
+
+
+
+                    Gizmos.DrawCube(n.worldPosition, new Vector3(nodeRadius, checkHeight, nodeRadius));
                 }
-
-                if(n.isCloseToWater){
-                    Gizmos.color = Color.yellow;
-                }
-
-                if(n.isWater){
-                    Gizmos.color = Color.cyan;
-                }
-
-                if(n.clickedOn){
-                    Gizmos.color = Color.green;
-                }
-
-                if(n.theresBuilding){
-                    Gizmos.color = Color.black;
-                }
-
-                if(n.hasMineral){
-                    Gizmos.color = Color.blue;
-                }
-
-                if(n.theresGhost){
-                    Gizmos.color = Color.magenta;
-                }
-
-                if(!n.walkable){
-                    Gizmos.color = Color.red;
-                }
-
-
-
-                Gizmos.DrawCube(n.worldPosition, new Vector3(nodeRadius, checkHeight, nodeRadius));
             }
         }
     }
