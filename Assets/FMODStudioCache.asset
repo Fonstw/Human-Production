@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114235956870281178}
-  - {fileID: 114904217609313100}
-  - {fileID: 114535560804976084}
+  - {fileID: 114859557516451446}
+  - {fileID: 114001956346496794}
   EditorEvents:
   - {fileID: 114151302546625286}
   - {fileID: 114785727539524674}
@@ -41,8 +41,27 @@ MonoBehaviour:
   - {fileID: 114870155948623064}
   StringsBanks:
   - {fileID: 114235956870281178}
-  stringsBankWriteTime: 636891475051431151
+  stringsBankWriteTime: 636891511937661832
   cacheVersion: 3
+--- !u!114 &114001956346496794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Atlas\Desktop\HKU School\Year2\GitHubFiles\Human-Production\FMOD\lifestock\Build\Desktop\SFX.bank
+  lastModified: 636891511937781819
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 730720
+  Exists: 1
 --- !u!114 &114004260331098826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,6 +75,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: distance_pod
+  Min: 0
+  Max: 20
+  Default: 0
+--- !u!114 &114009516765729590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_water
   Min: 0
   Max: 20
   Default: 0
@@ -182,7 +217,7 @@ MonoBehaviour:
   Path: event:/Voice Over/Slide 4
   guid: ef87ba81f95b0949bdad1357efa12033
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -205,7 +240,7 @@ MonoBehaviour:
   Path: event:/Builds/Food_ready
   guid: 8d855a554e0f874787a1478916e8e9a3
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -277,6 +312,22 @@ MonoBehaviour:
   Min: 0
   Max: 20
   Default: 0
+--- !u!114 &114108730452008826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Techside
+  Min: 0
+  Max: 100
+  Default: 100
 --- !u!114 &114111397249814034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,13 +343,13 @@ MonoBehaviour:
   Path: event:/Music
   guid: f9c92029c95dfd4c93947553348d02fe
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114418257127306106}
-  - {fileID: 114012573098163602}
+  - {fileID: 114326859295931054}
+  - {fileID: 114108730452008826}
   MinDistance: 0
   MaxDistance: 0
   Length: 248727
@@ -392,6 +443,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5047
+--- !u!114 &114141946070272628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_pod
+  Min: 0
+  Max: 20
+  Default: 0
 --- !u!114 &114151302546625286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +474,7 @@ MonoBehaviour:
   Path: event:/Voice Over/Slide 6
   guid: 388e31d86f97e742957c624dd3f2f276
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -596,7 +663,7 @@ MonoBehaviour:
   Path: event:/Builds/Pod_ready
   guid: fc8b5755d5c25249865103edd6cf04ff
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -604,6 +671,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5047
+--- !u!114 &114205223935984952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_power
+  Min: 0
+  Max: 20
+  Default: 0
 --- !u!114 &114207102821281152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,7 +748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\lifestock\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636891475051431151
+  lastModified: 636891511937661832
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -686,7 +769,7 @@ MonoBehaviour:
   Path: event:/Builds/Pod Fail
   guid: 10a937d5666aec41a3bf6b2b6ed6471b
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -709,7 +792,7 @@ MonoBehaviour:
   Path: event:/Voice Over/Slide 3
   guid: f942579b5e22fa40b3d7cce2ad205cda
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -932,6 +1015,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4812
+--- !u!114 &114326859295931054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: start
+  Min: 0
+  Max: 100
+  Default: 0
 --- !u!114 &114354894914952358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1106,12 +1205,12 @@ MonoBehaviour:
   Path: event:/Ambient sounds/Powerplant Ambient
   guid: d995bfb1739c974bb8e32e5bd07d239e
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114824778868748024}
+  - {fileID: 114205223935984952}
   MinDistance: 0
   MaxDistance: 0
   Length: 6000
@@ -1165,12 +1264,12 @@ MonoBehaviour:
   Path: event:/Ambient sounds/Pod Ambient
   guid: 52b9dbb76340a846b71ee0a08315e73e
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114229431428760216}
+  - {fileID: 114141946070272628}
   MinDistance: 0
   MaxDistance: 0
   Length: 3833
@@ -1325,7 +1424,7 @@ MonoBehaviour:
   Path: event:/Builds/object_build
   guid: 41ba7266dcbbe14c97691258555274dc
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1412,7 +1511,7 @@ MonoBehaviour:
   Path: event:/Voice Over/Slide 2
   guid: 9df1ad021376c14e85cf716c1c724cc1
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1648,7 +1747,7 @@ MonoBehaviour:
   Path: event:/Interaction/Mouseclick
   guid: a898a01c9cf6a7489c444ce4c31deadd
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1895,7 +1994,7 @@ MonoBehaviour:
   Path: event:/Interaction/Warning
   guid: a086dc0aae2b074ab6e825a902711292
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1918,7 +2017,7 @@ MonoBehaviour:
   Path: event:/Interaction/Notification
   guid: acb0ade7ea592d4fa1fecbf9f4a41160
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1960,7 +2059,7 @@ MonoBehaviour:
   Path: event:/Builds/Power_ready
   guid: 53d164bf0cfaba458d2c6d9073e7accd
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2072,7 +2171,7 @@ MonoBehaviour:
   Path: event:/Interaction/Progression
   guid: ef390e56aca9034197b689df09bd135b
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2162,7 +2261,7 @@ MonoBehaviour:
   Path: event:/Voice Over/Slide 5
   guid: 5417a1e0ead0fc4d85c06e1223831807
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2204,12 +2303,12 @@ MonoBehaviour:
   Path: event:/Ambient sounds/River Ambient
   guid: 8563a1efb0920e48b156a7bb7c9cd7ec
   Banks:
-  - {fileID: 114535560804976084}
+  - {fileID: 114001956346496794}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114505040396246742}
+  - {fileID: 114009516765729590}
   MinDistance: 0
   MaxDistance: 0
   Length: 13500
@@ -2473,6 +2572,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 567
+--- !u!114 &114859557516451446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Atlas\Desktop\HKU School\Year2\GitHubFiles\Human-Production\FMOD\lifestock\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636891511942267901
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 24970720
+  Exists: 1
 --- !u!114 &114860933777620300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2684,7 +2803,7 @@ MonoBehaviour:
   Path: event:/Voice Over/Slide 1
   guid: e164dffe25e8d846b2501e289bfb6ab1
   Banks:
-  - {fileID: 114904217609313100}
+  - {fileID: 114859557516451446}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

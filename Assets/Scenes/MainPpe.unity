@@ -730,6 +730,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 768832326640128998}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &615572372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615572371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730475ee64f9a894bbac0d9e6f22e813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  sensitivityDepth: 3
+  sensitivityNormals: 0.5
+  lumThreshold: 0.2
+  edgeExp: 1
+  sampleDist: 1
+  edgesOnly: 0
+  edgesOnlyBgColor: {r: 1, g: 1, b: 1, a: 1}
+  edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
 --- !u!114 &615572376 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 768832326175567998, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
@@ -1312,6 +1333,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 83ad4cc1eb7b0d94f8ea5a11fbad61c6, type: 2}
+      objectReference: {fileID: 2100000, guid: 394bf213bccf5d6409d0c86cb7aa1d70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a22a0b814d244ec42bef91139ea04d57, type: 3}
