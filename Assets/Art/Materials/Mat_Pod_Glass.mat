@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Powerplant_Orb
+  m_Name: Mat_Pod_Glass
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -73,10 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< HEAD
-    - _Color: {r: 0.49052152, g: 0.58167404, b: 0.6886792, a: 0.5019608}
-    - _EmissionColor: {r: 0.5442093, g: 0.50462794, b: 0.7924528, a: 0}
-=======
-    - _Color: {r: 1, g: 0.95084643, b: 0, a: 0.34901962}
-    - _EmissionColor: {r: 0.89073944, g: 0.61558956, b: 0.36842102, a: 0}
->>>>>>> master
+    - _Color: {r: 0.6901961, g: 0.61818, b: 0.49019608, a: 0.5019608}
+    - _EmissionColor: {r: 0.7921569, g: 0.68577844, b: 0.5058824, a: 0}
