@@ -88,7 +88,7 @@ MonoBehaviour:
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.88
+    value: 0.65
   contrast:
     overrideState: 1
     value: 28
@@ -1368,7 +1368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -1377,19 +1377,19 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+    value: {r: 0.3773585, g: 0.36845854, b: 0.36845854, a: 1}
   center:
     overrideState: 1
     value: {x: 0.5, y: 0.5}
   intensity:
     overrideState: 1
-    value: 0.604
+    value: 0.501
   smoothness:
     overrideState: 1
-    value: 0.211
+    value: 0.46
   roundness:
     overrideState: 1
-    value: 0.85
+    value: 0.713
   rounded:
     overrideState: 1
     value: 0
