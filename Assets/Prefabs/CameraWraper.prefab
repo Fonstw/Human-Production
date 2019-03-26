@@ -53,6 +53,8 @@ MonoBehaviour:
     m_Bits: 2048
   heightAboveGround: 25
   zoomSpeed: 0.5
+  maxHeight: 60
+  minHeight: 1
 --- !u!1 &768832326175567989
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,6 +69,7 @@ GameObject:
   - component: {fileID: 768832326175567998}
   - component: {fileID: 768832326175567986}
   - component: {fileID: 768832326175567999}
+  - component: {fileID: 3348755641218704340}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -216,3 +219,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc0d0c9a835cb545b38cf3d6b99028e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3348755641218704340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768832326175567989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730475ee64f9a894bbac0d9e6f22e813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  sensitivityDepth: 3
+  sensitivityNormals: 0.5
+  lumThreshold: 0.2
+  edgeExp: 1
+  sampleDist: 1
+  edgesOnly: 0
+  edgesOnlyBgColor: {r: 1, g: 1, b: 1, a: 1}
+  edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
