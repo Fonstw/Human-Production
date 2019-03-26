@@ -41,7 +41,7 @@ MonoBehaviour:
   - {fileID: 114870155948623064}
   StringsBanks:
   - {fileID: 114235956870281178}
-  stringsBankWriteTime: 636891208135741300
+  stringsBankWriteTime: 636891475051431151
   cacheVersion: 3
 --- !u!114 &114001956346496794
 MonoBehaviour:
@@ -216,6 +216,22 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 7500
+--- !u!114 &114083694299028412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: start
+  Min: 0
+  Max: 100
+  Default: 0
 --- !u!114 &114090608148689540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,11 +332,27 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114527908630820608}
-  - {fileID: 114138501950237574}
+  - {fileID: 114083694299028412}
+  - {fileID: 114114713475465408}
   MinDistance: 0
   MaxDistance: 0
   Length: 248727
+--- !u!114 &114114713475465408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Techside
+  Min: 0
+  Max: 100
+  Default: 100
 --- !u!114 &114114810433158178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +529,38 @@ MonoBehaviour:
   Name: start
   Min: 0
   Max: 100
+  Default: 0
+--- !u!114 &114162818255705114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_power
+  Min: 0
+  Max: 20
+  Default: 0
+--- !u!114 &114163807755269806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_water
+  Min: 0
+  Max: 20
   Default: 0
 --- !u!114 &114165553527868778
 MonoBehaviour:
@@ -732,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: FMOD\lifestock\Build\Desktop\Master Bank.strings.bank
-  lastModified: 636891208135741300
+  lastModified: 636891475051431151
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1210,7 +1274,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114992220042623886}
+  - {fileID: 114162818255705114}
   MinDistance: 0
   MaxDistance: 0
   Length: 6000
@@ -1253,7 +1317,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114794688840274614}
+  - {fileID: 114603908771508918}
   MinDistance: 0
   MaxDistance: 0
   Length: 3833
@@ -1816,6 +1880,22 @@ MonoBehaviour:
   Min: 0
   Max: 20
   Default: 0
+--- !u!114 &114603908771508918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: distance_pod
+  Min: 0
+  Max: 20
+  Default: 0
 --- !u!114 &114612706082093638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,7 +2401,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114594473421462396}
+  - {fileID: 114163807755269806}
   MinDistance: 0
   MaxDistance: 0
   Length: 13500
@@ -2338,7 +2418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Git\Human-Production\FMOD\lifestock\Build\Desktop\Master Bank.bank
-  lastModified: 636891208135701403
+  lastModified: 636891475051391083
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -2927,7 +3007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: D:\Git\Human-Production\FMOD\lifestock\Build\Desktop\SFX.bank
-  lastModified: 636891208151091124
+  lastModified: 636891475051490811
   LoadResult: 0
   FileSizes:
   - Name: Desktop
