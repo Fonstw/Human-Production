@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialBehaviour : MonoBehaviour
 {
     public GameObject[] popUps;
+    public bool demoMode = false;
     //public MultiDimensionalInspectorArray[] cR;
     float[,] cR;
     int cur = 0;
@@ -12,7 +13,7 @@ public class TutorialBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PlayerPrefs.HasKey("tutorial"))
+        if (!PlayerPrefs.HasKey("tutorial") || demoMode)
         {
             popUps[cur].SetActive(true);
 
@@ -49,7 +50,7 @@ public class TutorialBehaviour : MonoBehaviour
         // print("X: " + System.Math.Round(Input.mousePosition.x / Screen.width, 3));
         // print("Y: " + System.Math.Round(Input.mousePosition.y / Screen.height, 3));
 
-        if (!PlayerPrefs.HasKey("tutorial"))
+        if (!PlayerPrefs.HasKey("tutorial") || demoMode)
         {
             if (Input.GetMouseButtonDown(0))
             {
