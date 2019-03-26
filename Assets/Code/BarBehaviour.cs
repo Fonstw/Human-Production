@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class BarBehaviour : MonoBehaviour
 {
-    public float initialPercentage = 0;
-
     // to use as reference size when scaling the bar
-    [SerializeField] private Vector2 maxSize;
+    private Vector2 maxSize;
     // to make my typing work easier (oh the irony)
     private RectTransform rt;
 
@@ -21,8 +19,8 @@ public class BarBehaviour : MonoBehaviour
         if (maxSize == null || maxSize == new Vector2(0, 0))
             maxSize = rt.sizeDelta;
 
-        // set bar to initial percentage set from the editor
-        rt.sizeDelta = new Vector2(maxSize.x * initialPercentage, maxSize.y);
+        // set bar to 0 in any case
+        rt.sizeDelta = new Vector2(0, maxSize.y);
     }
 
     public void Scale(float percentage)

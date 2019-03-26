@@ -8,7 +8,7 @@
             <value>1</value>
         </property>
         <relationship name="folder">
-            <destination>{f2a865a7-6190-4616-9ac8-65be4234b319}</destination>
+            <destination>{78220904-5766-49bf-a368-24c985625965}</destination>
         </relationship>
         <relationship name="mixer">
             <destination>{3eff54f1-7176-4452-b8d1-322b64352a4b}</destination>
@@ -60,7 +60,7 @@
     <object class="MarkerTrack" id="{3070a87a-53bd-4a49-a37f-8bdd6d7f018f}"/>
     <object class="GroupTrack" id="{240f2efb-961d-4c76-a57f-a45a28dc9576}">
         <relationship name="modules">
-            <destination>{68674185-08b2-4ae0-bd03-ab1b8d344002}</destination>
+            <destination>{092cb37c-0cdf-4016-a498-d8da55cc8648}</destination>
         </relationship>
         <relationship name="mixerGroup">
             <destination>{e68f3a41-d269-4a36-8c2f-6c80b159444c}</destination>
@@ -68,7 +68,7 @@
     </object>
     <object class="Timeline" id="{16c71192-7e5d-45da-acc2-1e7133efb89c}">
         <relationship name="modules">
-            <destination>{68674185-08b2-4ae0-bd03-ab1b8d344002}</destination>
+            <destination>{092cb37c-0cdf-4016-a498-d8da55cc8648}</destination>
         </relationship>
     </object>
     <object class="EventMixerMaster" id="{fe71a9ac-e954-4aff-ac45-9bbe519ab3f6}">
@@ -88,12 +88,12 @@
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{fd4edf63-c6c5-4156-9abf-52f1693614b6}"/>
-    <object class="SingleSound" id="{68674185-08b2-4ae0-bd03-ab1b8d344002}">
+    <object class="SingleSound" id="{092cb37c-0cdf-4016-a498-d8da55cc8648}">
         <property name="length">
             <value>7.5</value>
         </property>
         <relationship name="audioFile">
-            <destination>{d021ef38-3dfb-4508-9de2-1447b3218d0f}</destination>
+            <destination>{faa24771-2ffb-4d64-84e7-a420f1e025bb}</destination>
         </relationship>
     </object>
     <object class="EventMixerGroup" id="{e68f3a41-d269-4a36-8c2f-6c80b159444c}">

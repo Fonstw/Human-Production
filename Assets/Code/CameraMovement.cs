@@ -3,8 +3,6 @@
  * Source: https://forum.unity.com/threads/rts-camera-script.72045/
  * ==================================== */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
@@ -14,29 +12,70 @@ public class CameraMovement : MonoBehaviour
 
     public float PanSpeed = 50;
 
-    public Vector2 ZoomRange = new Vector2(-5, 5);
-    public float CurrentZoom = 0;
-    public float ZoomZpeed = 1;
-    public float ZoomRotation = 1;
+    // public Vector2 ZoomRange = new Vector2(-5, 5);
+    // public float CurrentZoom = 0;
+    // public float ZoomZpeed = 1;
+    // public float ZoomRotation = 1;
 
-    private Vector3 InitPos;
-    private Vector3 InitRotation;
+    //private Vector3 InitPos;
+    //private Vector3 InitRotation;
 
     public float cameraTurnSpeed = .1f;
     private float oldMousePosition;
+
+    public LayerMask groundLayer;
+    public float heightAboveGround;
+
+
+    //zoom
+    public float zoomSpeed = 3;
+    public int maxHeight = 60;
+    public int minHeight = 1;
 
 
 
     void Start()
     {
-        InitPos = transform.position;
-        InitRotation = transform.eulerAngles;
+        //InitPos = transform.position;
+        //InitRotation = transform.eulerAngles;
 
         oldMousePosition = Input.mousePosition.x;
     }
 
     void Update()
     {
+        //SpecificAmountAboveGround
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer)){
+            transform.position = new Vector3(transform.position.x, hit.point.y + heightAboveGround, transform.position.z);
+        } else {
+            int rayOffset = 5;
+            Debug.DrawRay(new Vector3(transform.position.x+rayOffset, transform.position.y, transform.position.z), Vector3.down*100);
+            Debug.DrawRay(new Vector3(transform.position.x-rayOffset, transform.position.y, transform.position.z), Vector3.down*100);
+            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z+rayOffset), Vector3.down*100);
+            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z-rayOffset), Vector3.down*100);
+
+            if(Physics.Raycast(new Vector3(transform.position.x+rayOffset, transform.position.y, transform.position.z), Vector3.down*100, Mathf.Infinity, groundLayer)){
+                //Debug.Log("Right");
+                if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge)) { transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed); }
+            }
+            if(Physics.Raycast(new Vector3(transform.position.x-rayOffset, transform.position.y, transform.position.z), Vector3.down*100, Mathf.Infinity, groundLayer)){
+                //Debug.Log("Left");
+                if (Input.GetKey("a") || Input.mousePosition.x <= Screen.width * ScrollEdge) { transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed); }
+            }
+            if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z+rayOffset), Vector3.down*100, Mathf.Infinity, groundLayer)){
+                //Debug.Log("Forward");
+                if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge)) { transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed); }
+            }
+            if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z-rayOffset), Vector3.down*100, Mathf.Infinity, groundLayer)){
+                //Debug.Log("Back");
+                if (Input.GetKey("s") || Input.mousePosition.y <= Screen.height * ScrollEdge) { transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed); }
+            }
+            return;
+        }
+        //End van code (PS: als je precies in een hoek komt... you're fucked)
+
+
         //PAN
         if (Input.GetKey("mouse 2"))
         {
@@ -57,6 +96,25 @@ public class CameraMovement : MonoBehaviour
         }
 
         //ZOOM IN/OUT
+        //Debug.Log("Mouse Scroll Y: " + Input.mouseScrollDelta.y);
+        if(Input.GetKey(KeyCode.E) && transform.localRotation.x >= -0.22){
+            heightAboveGround -= zoomSpeed * Time.deltaTime;
+            transform.RotateAround(transform.position, transform.right, -(zoomSpeed*1.3f)*Time.deltaTime);
+        } else if(Input.GetKey(KeyCode.Q) && transform.localRotation.x <= 0.42){
+            heightAboveGround += zoomSpeed * Time.deltaTime;
+            transform.RotateAround(transform.position, transform.right, (zoomSpeed*1.3f)*Time.deltaTime);
+        }
+
+        if(heightAboveGround < minHeight){
+            heightAboveGround = minHeight;
+        }
+        if(heightAboveGround > maxHeight){
+            heightAboveGround = maxHeight;
+        }
+
+
+        //transform.position = new Vector3(transform.position.x ,transform.position.y,transform.position.z + Input.mouseScrollDelta.y);
+
 
         //CurrentZoom -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * 1000 * ZoomZpeed;
 
@@ -66,6 +124,8 @@ public class CameraMovement : MonoBehaviour
         //transform.eulerAngles = new Vector3(transform.eulerAngles.x - (transform.eulerAngles.x - (InitRotation.x + CurrentZoom * ZoomRotation)) * .1f, transform.eulerAngles.y, transform.eulerAngles.z);
 
         // Turn camera, added by me
+
+
         if (Input.GetMouseButton(1))
         {
             float difference = Input.mousePosition.x - oldMousePosition;

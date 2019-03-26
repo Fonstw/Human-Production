@@ -13,6 +13,8 @@ TextureImporter:
     21300016: UIResearchProgressFill
     21300018: UIInfoHover
     21300020: UIReseachWindowHorizontal
+    21300022: UIPijlPunt
+    21300024: UIPijlBreed
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -310,6 +312,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 23f96a0090a1e8a41ad591008944da3c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIPijlPunt
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 381
+        width: 129
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 61, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 926a373d2784dbd4591c3e0a196e6b0c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIPijlBreed
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 375
+        width: 154
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 65, y: 59, z: 65, w: 20}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6b9037df4bc57418d25c73c2bcbdf6
       vertices: []
       indices: 
       edges: []

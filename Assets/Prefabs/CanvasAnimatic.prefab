@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6886304664683774360}
   - component: {fileID: 9072857121246240721}
   - component: {fileID: 435584430259915683}
+  - component: {fileID: 577680429567586230}
   m_Layer: 5
   m_Name: img4-1
   m_TagString: Untagged
@@ -94,6 +95,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &577680429567586230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312694088719330122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Voice Over/Slide 4
+  PlayEvent: 11
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &574748521704856594
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +130,7 @@ GameObject:
   - component: {fileID: 2516936119235701459}
   - component: {fileID: 4190877327359376108}
   - component: {fileID: 6340594144725310105}
+  - component: {fileID: 6213913347666089892}
   m_Layer: 5
   m_Name: img2
   m_TagString: Untagged
@@ -188,6 +213,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6213913347666089892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574748521704856594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Voice Over/Slide 2
+  PlayEvent: 11
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &2214540837402895901
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +328,7 @@ GameObject:
   - component: {fileID: 1598954465716015472}
   - component: {fileID: 6587780763767405334}
   - component: {fileID: 7612922386072967238}
+  - component: {fileID: 697568757716730050}
   m_Layer: 5
   m_Name: img3
   m_TagString: Untagged
@@ -362,6 +411,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &697568757716730050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2339330544039776068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Voice Over/Slide 3
+  PlayEvent: 11
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &2624111465891307202
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.44, y: -0.7}
+  m_AnchoredPosition: {x: 10.440002, y: -0.70000076}
   m_SizeDelta: {x: 260, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &893869255821706822
@@ -768,6 +840,7 @@ GameObject:
   - component: {fileID: 4755665909823740582}
   - component: {fileID: 4536958594560901707}
   - component: {fileID: 8075120172855368717}
+  - component: {fileID: 2522288072271899158}
   m_Layer: 5
   m_Name: img5
   m_TagString: Untagged
@@ -850,6 +923,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2522288072271899158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5778003883533441904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Voice Over/Slide 5
+  PlayEvent: 11
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &6112723085627677107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1197,7 @@ GameObject:
   - component: {fileID: 7967082737918956718}
   - component: {fileID: 8927723123899520745}
   - component: {fileID: 2735470897418081149}
+  - component: {fileID: 3924282450437430930}
   m_Layer: 5
   m_Name: img6
   m_TagString: Untagged
@@ -1183,6 +1280,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3924282450437430930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440107796017767206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Voice Over/Slide 6
+  PlayEvent: 11
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &7972247954800827008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,6 +1315,7 @@ GameObject:
   - component: {fileID: 3233740750701312466}
   - component: {fileID: 7447926901050396928}
   - component: {fileID: 7680862222191447254}
+  - component: {fileID: 5481848056271858774}
   m_Layer: 5
   m_Name: img1
   m_TagString: Untagged
@@ -1277,6 +1398,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5481848056271858774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7972247954800827008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Voice Over/Slide 1
+  PlayEvent: 11
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &8038160915105090132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1435,7 @@ GameObject:
   - component: {fileID: 745749663167718534}
   - component: {fileID: 3939571088203293823}
   - component: {fileID: 2487839539316712070}
+  - component: {fileID: 2803481371931581357}
   m_Layer: 5
   m_Name: CanvasAnimatic
   m_TagString: Untagged
@@ -1457,6 +1602,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playableDirector: {fileID: 3939571088203293823}
   clipTime: 10
+--- !u!114 &2803481371931581357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038160915105090132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Music
+  PlayEvent: 1
+  StopEvent: 12
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: start
+    Value: 4.1
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &8363230866552708269
 GameObject:
   m_ObjectHideFlags: 0

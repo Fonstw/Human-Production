@@ -1,30 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillClass : MonoBehaviour
 {
     public int skillID = -1;   // which skill it is, for resolving later on
-    public string skillName = "Henk";   // name to show in-game
-    public float[] requirement = { 0, 2000 };   // [0]=type of research, [1]=amount of research, [2]=max amount
-    public string functionalDescription = "This is a dummy skill, which means that the devs haven't set the skill properly";   // tells what it does in human-language
+    public float[] requirement = { 0, 2000, 2000 };   // [0]=type of research, [1]=amount of research, [2]=max amount
     public int state = 1;   // 0=locked / cannot be done, 1=unlocked / can be done, 2=researched / done
     public int[] unlocks;   // which techs it unlocks in the tech tree
 
     public Image stateIcon;
     public Sprite[] stateSources;
-
-    // function to call to properly set a Skill
-    public void Create(string newName, int researchType, float researchAmount, string newFunctionalDescription, int lockState)
-    {
-        skillName = newName;
-        requirement[0] = researchType;
-        requirement[1] = researchAmount;
-        requirement[2] = requirement[1];
-        functionalDescription = newFunctionalDescription;
-        state = lockState;
-    }
 
     public bool Unlock()
     {
@@ -69,16 +54,8 @@ public class SkillClass : MonoBehaviour
                     FindObjectOfType<ResourceManager>().ChangeMod(1, .5f);
                     break;
 
-                case 3:   // Toxium Mineral Combustion Plants
-                    FindObjectOfType<PlaceBuildings>().toxiumMineralCombustionPlants = true;
-                    break;
-
                 case 4:   // Toxium Carbonate Plants
                     FindObjectOfType<ResourceManager>().AdjustPowerMod(.15f);
-                    break;
-
-                case 5:   // Ground
-                    print("We now know where to connect the ground, guys! The Future Is Here®");
                     break;
 
                 default:
@@ -90,7 +67,7 @@ public class SkillClass : MonoBehaviour
             state = 2;
 
             // play the sound
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Progression");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Interaction/Progression");
 
             // and tell whoever called this function that yes, this skill has now been finished!
             return true;
