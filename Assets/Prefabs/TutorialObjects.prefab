@@ -75,24 +75,7 @@ MonoBehaviour:
   - {fileID: 5972220925549065565}
   - {fileID: 5972220925922891594}
   - {fileID: 5972220925798393322}
-  cR:
-  - ar:
-    - 0.809
-    - 0.993
-    - 0.013
-    - 0.321
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
-  - ar: []
+  demoMode: 0
 --- !u!1 &5972220925022925922
 GameObject:
   m_ObjectHideFlags: 0

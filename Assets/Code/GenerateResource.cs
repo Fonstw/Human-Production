@@ -23,6 +23,8 @@ public class GenerateResource : MonoBehaviour
     private float mineralTimer = 0;
     private TextMeshPro mineralCounter;
 
+    public GameObject deadText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,11 +57,6 @@ public class GenerateResource : MonoBehaviour
         if (!workDone && Time.time > ownTimer)
             WorkIt();
 
-        // if miner...
-        if (resourceType == 0)
-            // make sure the camera sees your generated amount
-            mineralCounter.transform.LookAt(gameManager.transform.position);
-
         // if Mineral and "producing"
         if (resourceType == 0 && workDone)
         {
@@ -85,11 +82,12 @@ public class GenerateResource : MonoBehaviour
                     currentDecrease++;
                 }
                 else {  // if no longer functional...
+                    deadText.GetComponent<FloatUpward>().SetText("Depleted", new Color(.8235294f, .5882353f, .9254902f));
+                    Instantiate(deadText, transform.position, new Quaternion());
+
                     Destroy(gameObject);   // remove yourself
                     Collider[] minerals = Physics.OverlapBox(transform.position, new Vector3(transform.localScale.x * 10, transform.localScale.y * 10, transform.localScale.z * 10) , Quaternion.identity, mineralMask);
-                    Debug.Log(minerals);
                     if(minerals.Length >= 1){
-                        Debug.Log(minerals[0]);
                         Destroy(minerals[0].transform.gameObject); //destroy the mineral
                     }
                 }

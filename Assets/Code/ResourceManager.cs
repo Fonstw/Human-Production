@@ -17,6 +17,8 @@ public class ResourceManager : MonoBehaviour
     public OverlayInfo[] researchInfos;
     // gameobject to show things like "Not enough Power!" around the mouse when that's the case
     public GameObject errorMessage;
+    // prefab to spawn to indicate pods died
+    public GameObject deadText;
 
     // resources
     private int currentPower, powerTreshold, currentMineral, mineralTreshold;
@@ -173,7 +175,11 @@ public class ResourceManager : MonoBehaviour
                 // remove their need for power
                 AdjustMineralTreshold(-1);
 
-                // remove them
+                // spawn a floating text at the victim's position telling they died
+                deadText.GetComponent<FloatUpward>().SetText("Died", new Color(.7843137f, .7960784f, .9137255f));
+                Instantiate(deadText, eldest.transform.position, new Quaternion());
+
+                // actually remove the victim
                 Destroy(eldest.gameObject);
                 killCount++;
             }   // reverb, resound, and repeat

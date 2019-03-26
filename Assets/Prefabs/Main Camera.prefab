@@ -101,6 +101,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   errorMessage: {fileID: 0}
+  deadText: {fileID: 7210260013329215732, guid: b3018c55a6cfcc6408f6a995d4a13f49,
+    type: 3}
   researches: 0000000000000000
   researchMod: []
 --- !u!114 &1005183927650737585

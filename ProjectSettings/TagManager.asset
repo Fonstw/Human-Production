@@ -9,6 +9,7 @@ TagManager:
   - CloseToWater
   - Mortal
   - Warning
+  - Floating text
   layers:
   - Default
   - TransparentFX
