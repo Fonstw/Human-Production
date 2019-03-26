@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.78431374, g: 0.79607844, b: 0.9137255, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3835,7 +3835,7 @@ MonoBehaviour:
   overlay: {fileID: 368163142}
   titleText: Carbonate Power Plants
   icons:
-  - {fileID: 21300000, guid: 0712f813bd4679146acd93a80e2ccbb5, type: 3}
+  - {fileID: 21300000, guid: c2276871649c47f4a9d3d18b47ef013a, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
@@ -3941,12 +3941,12 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.28378373, g: 0.29324308, b: 0.7, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0
+    m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -4013,7 +4013,7 @@ MonoBehaviour:
   overlay: {fileID: 368163142}
   titleText: Un-human Intervention
   icons:
-  - {fileID: 21300000, guid: 0712f813bd4679146acd93a80e2ccbb5, type: 3}
+  - {fileID: 21300000, guid: bdb94778173a17241a5fa3a7a242253f, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Biologist
@@ -4191,7 +4191,7 @@ MonoBehaviour:
   overlay: {fileID: 368163142}
   titleText: Ground
   icons:
-  - {fileID: 21300000, guid: 0712f813bd4679146acd93a80e2ccbb5, type: 3}
+  - {fileID: 21300000, guid: c2276871649c47f4a9d3d18b47ef013a, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
@@ -4445,7 +4445,7 @@ MonoBehaviour:
   overlay: {fileID: 368163142}
   titleText: Toxium Combustion Plants
   icons:
-  - {fileID: 21300000, guid: 0712f813bd4679146acd93a80e2ccbb5, type: 3}
+  - {fileID: 21300000, guid: c2276871649c47f4a9d3d18b47ef013a, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
@@ -4623,7 +4623,7 @@ MonoBehaviour:
   overlay: {fileID: 368163142}
   titleText: What The People Want
   icons:
-  - {fileID: 21300000, guid: 0712f813bd4679146acd93a80e2ccbb5, type: 3}
+  - {fileID: 21300000, guid: bdb94778173a17241a5fa3a7a242253f, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Biologist
@@ -5214,7 +5214,7 @@ MonoBehaviour:
   overlay: {fileID: 368163142}
   titleText: Ductape & WD-40
   icons:
-  - {fileID: 21300000, guid: 0712f813bd4679146acd93a80e2ccbb5, type: 3}
+  - {fileID: 21300000, guid: bdb94778173a17241a5fa3a7a242253f, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Biologist
