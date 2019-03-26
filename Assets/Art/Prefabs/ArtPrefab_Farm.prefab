@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4108431104764624237}
+  - component: {fileID: 6911482934844183034}
   m_Layer: 0
-  m_Name: Obj_Farm
+  m_Name: ArtPrefab_Farm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6911482934844183034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226547754830944328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ced2a2638af8b4981aa1b66b7b6191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Radius: 5
 --- !u!1 &4066910074911361226
 GameObject:
   m_ObjectHideFlags: 0

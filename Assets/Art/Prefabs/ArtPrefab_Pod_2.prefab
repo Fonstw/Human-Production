@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284955354}
+  - component: {fileID: 358303071327458784}
   m_Layer: 0
   m_Name: ArtPrefab_Pod_2
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358303071327458784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284955352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ced2a2638af8b4981aa1b66b7b6191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Radius: 5
 --- !u!95 &1674567429
 Animator:
   serializedVersion: 3
@@ -105,8 +119,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9500000, guid: 8dd9fee3c17e33146bb67c45e8639f92, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dd9fee3c17e33146bb67c45e8639f92, type: 3}
 --- !u!1 &5549127102926559882 stripped
 GameObject:

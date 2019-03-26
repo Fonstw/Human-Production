@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4895807559246356557}
+  - component: {fileID: 867974806163766731}
   m_Layer: 0
   m_Name: ArtPrefab_Mineral_3
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &867974806163766731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895807559246199917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ced2a2638af8b4981aa1b66b7b6191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_Radius: 5
 --- !u!1001 &3485863061137248085
 PrefabInstance:
   m_ObjectHideFlags: 0
