@@ -3523,6 +3523,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4240744975828731559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &667493900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2732715794696265673, guid: 8771d4549651d084f988ec6c3d04f0cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2089364912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e15be51eb4d8d3428946e8cc2d7c2be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &668536077 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100634, guid: aec3bcb70e83e5d489d85eab06f07a1e,
@@ -10746,12 +10758,57 @@ PrefabInstance:
     - target: {fileID: 2732715794696265673, guid: 8771d4549651d084f988ec6c3d04f0cf,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5972220926637924047, guid: 8771d4549651d084f988ec6c3d04f0cf,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921396, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.749
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.749
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.749
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.5566038
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 667493900}
+    - target: {fileID: 5972220926010921355, guid: 8771d4549651d084f988ec6c3d04f0cf,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickedOK
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8771d4549651d084f988ec6c3d04f0cf, type: 3}
@@ -11151,7 +11208,7 @@ PrefabInstance:
         type: 3}
       propertyPath: notification
       value: 
-      objectReference: {fileID: 139813646}
+      objectReference: {fileID: 0}
     - target: {fileID: 1005183927650737596, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
         type: 3}
       propertyPath: m_ForceIntoRT

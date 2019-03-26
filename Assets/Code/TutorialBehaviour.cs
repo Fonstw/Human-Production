@@ -75,4 +75,18 @@ public class TutorialBehaviour : MonoBehaviour
             }
         }
     }
+
+    public void ClickedOK(){
+        popUps[cur].SetActive(false);
+
+        cur++;
+
+        if (cur < popUps.Length)
+            popUps[cur].SetActive(true);
+        else
+        {
+            PlayerPrefs.SetInt("tutorial", 1);
+            Destroy(gameObject);
+        }
+    }
 }
