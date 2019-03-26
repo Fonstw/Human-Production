@@ -4,28 +4,32 @@ using UnityEngine;
 
 public class Script_DestroyTrees : MonoBehaviour
 {
-    [SerializeField] float f_Radius = 5f;
-    void Start()
+    [SerializeField] float f_Radius = 5;
+    private void Start()
     {
-        Function_CheckForTrees();
+
     }
 
-    void Function_CheckForTrees()
+    private void Update()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, f_Radius);
-        int i = 0;
-        while (i < hitColliders.Length)
-        {
-            Destroy(hitColliders[i].gameObject);
-        }
+        Function_DestroyTrees(transform.position, f_Radius);
     }
 
-    //Check for destructible environment objects and destroy them.
-    private void OnCollisionEnter(Collision collision)
+    void Function_DestroyTrees(Vector3 center, float radius)
     {
-        if (collision.gameObject.tag == "DestructibleEnvironment")
+        Collider[] hitColliders = hitColliders = Physics.OverlapSphere(center, radius);
+
+        if (hitColliders.Length > 0)
         {
-            Destroy(collision.gameObject);
+            //destroy some obj
+            for (int i = 0; i < hitColliders.Length; i++)
+            {
+                if(hitColliders[i].gameObject.tag == "DestructableEnvironment")
+                {
+                    Debug.Log("Destroyed: " + hitColliders[i].name);
+                    Destroy(hitColliders[i].gameObject);
+                }
+            }
         }
     }
 }
