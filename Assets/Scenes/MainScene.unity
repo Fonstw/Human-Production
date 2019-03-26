@@ -11147,6 +11147,11 @@ PrefabInstance:
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 1102615638}
+    - target: {fileID: 1005183927650737598, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
+        type: 3}
+      propertyPath: notification
+      value: 
+      objectReference: {fileID: 139813646}
     - target: {fileID: 1005183927650737596, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
         type: 3}
       propertyPath: m_ForceIntoRT
