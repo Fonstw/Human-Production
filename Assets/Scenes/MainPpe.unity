@@ -218,7 +218,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.9481132, g: 0.9864824, b: 1, a: 1}
-  m_Intensity: 2.97
+  m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1064,6 +1064,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraWraper
       objectReference: {fileID: 0}
+    - target: {fileID: 768832326175567998, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
+        type: 3}
+      propertyPath: customGrid
+      value: 
+      objectReference: {fileID: 159167775}
+    - target: {fileID: 768832326175567998, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
+        type: 3}
+      propertyPath: mouseTarget
+      value: 
+      objectReference: {fileID: 1320321075}
     - target: {fileID: 768832325513712429, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1164,16 +1174,21 @@ PrefabInstance:
       propertyPath: errorMessage
       value: 
       objectReference: {fileID: 1102615638}
-    - target: {fileID: 768832326175567998, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
+    - target: {fileID: 768832325513712428, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
         type: 3}
-      propertyPath: customGrid
-      value: 
-      objectReference: {fileID: 159167775}
-    - target: {fileID: 768832326175567998, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
+      propertyPath: zoomSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 768832325513712428, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
         type: 3}
-      propertyPath: mouseTarget
-      value: 
-      objectReference: {fileID: 1320321075}
+      propertyPath: minHeight
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 768832325513712428, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1,
+        type: 3}
+      propertyPath: ScrollEdge
+      value: -50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c6ed0ea24ceab4e99be0b1f51a63e1, type: 3}
 --- !u!1001 &8506479823195031002
