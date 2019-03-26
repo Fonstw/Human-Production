@@ -40,6 +40,10 @@ public class MouseOnGrid : MonoBehaviour
     private GameObject HeldBuilding;
     //private int current = -1;
     //private int currentHolder = 0;
+    private List<GameObject> buildingBuildings = new List<GameObject>();
+    private float initialBuildingHeight;
+    private List<float> buildingHeights = new List<float>();
+    public float buildingBuildSpeed = 2;
 
     void Start()
     {
@@ -86,11 +90,26 @@ public class MouseOnGrid : MonoBehaviour
                 }
             }
         }
+        
+        if(buildingBuildings.Count >= 1){
+            for(int i = 0; i < buildingBuildings.Count; i++){
+                buildingBuildings[i].transform.position = new Vector3(buildingBuildings[i].transform.position.x, buildingBuildings[i].transform.position.y + (buildingBuildSpeed * Time.deltaTime), buildingBuildings[i].transform.position.z);
+                if(buildingBuildings[i].transform.position.y >= buildingHeights[i]){
+                    buildingBuildings[i].transform.position = new Vector3(buildingBuildings[i].transform.position.x, buildingHeights[i], buildingBuildings[i].transform.position.z);
+                    buildingBuildings.Remove(buildingBuildings[i]);
+                    buildingHeights.Remove(buildingHeights[i]);
+                }
+            }
+            // foreach(GameObject building in buildingBuildings){
+            //     building.transform.position = new Vector3(building.transform.position.x, building.transform.position.y + (buildingBuildSpeed * Time.deltaTime), building.transform.position.z);
+            // }
+        }
     }
 
     public void PlaceBuilding(float x, float y){
         holdingBuilding = false;
-        Instantiate(Building, new Vector3(x, mouseTarget.transform.position.y, y), HeldBuilding.transform.rotation);
+        buildingBuildings.Add(Instantiate(Building, new Vector3(x, mouseTarget.transform.position.y - 5, y), HeldBuilding.transform.rotation));
+        buildingHeights.Add(mouseTarget.transform.position.y);
         Destroy(HeldBuilding);
         // HeldBuilding.transform.position = new Vector3(x, mouseTarget.transform.position.y, y);
         // HeldBuilding.transform.parent = null;
