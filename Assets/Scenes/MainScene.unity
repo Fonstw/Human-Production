@@ -7580,6 +7580,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4240744975828731559}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1487358169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5799881565346354980, guid: bffdd3625875763468d5c6f82fef92e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 233705339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be06b9fc38e6e024396a346ba7c53f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1487912904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100874, guid: aec3bcb70e83e5d489d85eab06f07a1e,
@@ -11208,7 +11220,7 @@ PrefabInstance:
         type: 3}
       propertyPath: notification
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1487358169}
     - target: {fileID: 1005183927650737596, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
         type: 3}
       propertyPath: m_ForceIntoRT

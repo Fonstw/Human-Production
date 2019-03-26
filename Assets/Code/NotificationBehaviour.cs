@@ -13,6 +13,7 @@ public class NotificationBehaviour : MonoBehaviour
 
     Text body;
     Color textColour;
+    Color transparentWhite = new Color(255,255,255,0);
     Image warningIcon;
 
     // Start is called before the first frame update
@@ -23,9 +24,9 @@ public class NotificationBehaviour : MonoBehaviour
 
         textColour = body.color;
 
-        GetComponent<Image>().color = Color.clear;
-        body.color = Color.clear;
-        warningIcon.color = Color.clear;
+        GetComponent<Image>().color = transparentWhite;
+        body.color = transparentWhite;
+        warningIcon.color = transparentWhite;
     }
 
     // Update is called once per frame
@@ -89,7 +90,7 @@ public class NotificationBehaviour : MonoBehaviour
         newColor.a -= Time.deltaTime / fadeOutTime;
         newTextColor.a -= Time.deltaTime / fadeOutTime;
 
-        if (newColor.a < 1)
+        if (newColor.a < 0)
         {
             newColor.a = 0;
             newTextColor.a = 0;
