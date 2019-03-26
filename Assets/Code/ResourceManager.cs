@@ -19,6 +19,8 @@ public class ResourceManager : MonoBehaviour
     public GameObject errorMessage;
     // prefab to spawn to indicate pods died
     public GameObject deadText;
+    // gameobject to display # of deaths on, wether the player is looking or not
+    public NotificationBehaviour notification;
 
     // resources
     private int currentPower, powerTreshold, currentMineral, mineralTreshold;
@@ -183,6 +185,9 @@ public class ResourceManager : MonoBehaviour
                 Destroy(eldest.gameObject);
                 killCount++;
             }   // reverb, resound, and repeat
+
+            // now show this in the notification
+            notification.Notify(killCount + " PodHeads have been unplugged and killed due to a mineral shortage.\nPlease keep your miners in check!");
         }
 
         // UI.Text now displays the correct amount of 'mineral left'
