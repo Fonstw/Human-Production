@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1005183927650737598}
   - component: {fileID: 1005183927650737585}
   - component: {fileID: 1005183927650737597}
-  - component: {fileID: 1005183927650737584}
+  - component: {fileID: 7353236548853434496}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -62,7 +62,7 @@ Camera:
   field of view: 80
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -73,7 +73,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -103,8 +103,10 @@ MonoBehaviour:
   errorMessage: {fileID: 0}
   deadText: {fileID: 7210260013329215732, guid: b3018c55a6cfcc6408f6a995d4a13f49,
     type: 3}
+  notification: {fileID: 0}
   researches: 0000000000000000
   researchMod: []
+  mineTimeMod: 1
 --- !u!114 &1005183927650737585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +141,7 @@ MonoBehaviour:
   mouseTarget: {fileID: 0}
   holdingBuilding: 0
   ghostMat: {fileID: 2100000, guid: b64397c5fbc72cd45b461a10136e39c9, type: 2}
+  buildingBuildSpeed: 2
 --- !u!114 &1005183927650737597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusic: event:/Music
   clickPath: event:/Interaction/Mouseclick
---- !u!114 &1005183927650737584
+--- !u!114 &7353236548853434496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,6 +165,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 1005183927650737594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc0d0c9a835cb545b38cf3d6b99028e, type: 3}
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 1005183927650737599}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 1
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []

@@ -54,6 +54,10 @@ public class SkillClass : MonoBehaviour
                     FindObjectOfType<ResourceManager>().ChangeMod(1, .5f);
                     break;
 
+                case 3:   // Twenty-Four Karats
+                    FindObjectOfType<ResourceManager>().mineTimeMod += .5f;
+                    break;
+
                 case 4:   // Toxium Carbonate Plants
                     FindObjectOfType<ResourceManager>().AdjustPowerMod(.15f);
                     break;

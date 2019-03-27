@@ -28,6 +28,8 @@ public class ResourceManager : MonoBehaviour
     public int[] researches;
     // multiplier of how much each type researches
     public float[] researchMod;
+    // multiplier for how long miners stay
+    public float mineTimeMod;
 
     // Start is called before the first frame update
     void Start()

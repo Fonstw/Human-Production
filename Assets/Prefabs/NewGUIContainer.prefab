@@ -1440,9 +1440,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Toxium
-
-    Combustion Plants'
+  m_Text: Twenty-Four Karat
 --- !u!1 &986719472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,7 +1938,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ground
+  m_Text: Perfect Hive-Mind
 --- !u!1 &1542177218
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,7 +4186,7 @@ GameObject:
   - component: {fileID: 233705366}
   - component: {fileID: 233705363}
   m_Layer: 5
-  m_Name: G
+  m_Name: PHM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4343,14 +4341,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 368163142}
-  titleText: Ground
+  titleText: Perfect Hive-Mind
   icons:
   - {fileID: 21300000, guid: c2276871649c47f4a9d3d18b47ef013a, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
   - Extreme
-  bodyText: Dolor Sit Amet
+  bodyText: Combining this tech with every other wins the game!
   args: []
 --- !u!1 &7303302601841304966
 GameObject:
@@ -4443,7 +4441,7 @@ GameObject:
   - component: {fileID: 233705357}
   - component: {fileID: 233705354}
   m_Layer: 5
-  m_Name: TCP
+  m_Name: 24K
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4598,14 +4596,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overlay: {fileID: 368163142}
-  titleText: Toxium Combustion Plants
+  titleText: Twenty-Four Karats
   icons:
   - {fileID: 21300000, guid: c2276871649c47f4a9d3d18b47ef013a, type: 3}
   - {fileID: 21300000, guid: 2641cb2e49dc40a40b4f102e82e06265, type: 3}
   values:
   - Engineer
   - Short
-  bodyText: Lorem Ipsum
+  bodyText: Miners take 50% longer to degrade.
   args: []
 --- !u!1 &7303302602527672157
 GameObject:
