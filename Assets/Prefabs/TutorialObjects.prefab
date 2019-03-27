@@ -75,7 +75,7 @@ MonoBehaviour:
   - {fileID: 5972220925549065565}
   - {fileID: 5972220925922891594}
   - {fileID: 5972220925798393322}
-  demoMode: 0
+  demoMode: 1
 --- !u!1 &5972220925022925922
 GameObject:
   m_ObjectHideFlags: 0
