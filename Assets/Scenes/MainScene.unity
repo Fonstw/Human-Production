@@ -48,11 +48,11 @@ LightmapSettings:
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
-    m_IndirectOutputScale: 1
+    m_IndirectOutputScale: 0.05
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -3227,18 +3227,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1005183928115215913}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &615572373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615572371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730475ee64f9a894bbac0d9e6f22e813, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &615572374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1005183927650737599, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
@@ -8920,7 +8908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1747579323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11058,11 +11046,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 1005183927650737594, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1005183927650737599, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11178,6 +11161,11 @@ PrefabInstance:
       propertyPath: notification
       value: 
       objectReference: {fileID: 1487358169}
+    - target: {fileID: 1863963954907325386, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
+        type: 3}
+      propertyPath: postProcessingVolume
+      value: 
+      objectReference: {fileID: 1747579322}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c, type: 3}
 --- !u!64 &1242610167874794560
