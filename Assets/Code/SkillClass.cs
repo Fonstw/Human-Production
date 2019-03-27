@@ -33,7 +33,7 @@ public class SkillClass : MonoBehaviour
     public bool Finish()
     {
         // show icon we're finished
-        stateIcon.sprite = stateSources[2];
+        stateIcon.sprite = stateSources[3];
         stateIcon.color = Color.green;
 
         // if not finished yet...
@@ -75,6 +75,15 @@ public class SkillClass : MonoBehaviour
         else   // so it's already finished...
             // tell tell whoever called this function that no changes were made, the skill has already been finished...
             return false;
+    }
+
+    public void Hold()
+    {
+        if (state == 1)   // if unlocked (but not finished)
+        {
+            stateIcon.sprite = stateSources[2];
+            stateIcon.color = Color.blue;
+        }
     }
 
     public float Research(float amount)
