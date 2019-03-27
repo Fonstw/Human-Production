@@ -11111,6 +11111,11 @@ PrefabInstance:
       propertyPath: mouseTarget
       value: 
       objectReference: {fileID: 1320321075}
+    - target: {fileID: 1005183927650737585, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
+        type: 3}
+      propertyPath: buildingBuildSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1005183927650737598, guid: 4f91c6ed83dc1014d8aeeec7b58a0e2c,
         type: 3}
       propertyPath: powerText
