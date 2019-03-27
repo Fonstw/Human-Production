@@ -5542,6 +5542,7 @@ MonoBehaviour:
   winProgressBar: {fileID: 1370222480}
   winProgressText: {fileID: 3890494543634176874}
   researchBar: {fileID: 1141823563}
+  notification: {fileID: 5799881565346354980}
 --- !u!1 &7790888631918071834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5634,6 +5635,8 @@ MonoBehaviour:
   fadeInTime: 0.5
   stayTime: 2.6
   fadeOutTime: 1.8
+  warningSprite: {fileID: 21300000, guid: 66351feb713902c478a6240de9d5077d, type: 3}
+  doneSprite: {fileID: 21300000, guid: 5edf2558376e6204b9ae8bc5b6957ca1, type: 3}
 --- !u!1 &7920800366770317041
 GameObject:
   m_ObjectHideFlags: 0

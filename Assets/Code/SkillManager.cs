@@ -24,6 +24,7 @@ public class SkillManager : MonoBehaviour
     public BarBehaviour winProgressBar;
     public Text winProgressText;
     public BarBehaviour researchBar;
+    public NotificationBehaviour notification;
 
     private MainSoundManagement musicPlayer;
 
@@ -70,6 +71,9 @@ public class SkillManager : MonoBehaviour
             // if 100% progressed (or more 'cos floats)
             if (researchProgress >= 1)
             {   // you only get here if the skill's done!
+
+                // show mid-screen notification about it
+                notification.Notify("Tech \"" + skills[researching].GetComponentInChildren<Text>().text + "\" is fully researched!", false);
 
                 // Make the music one step techier
                 musicPlayer.ChangeMusicTech(-(100f / (skills.Length - 1)));

@@ -11,22 +11,24 @@ public class NotificationBehaviour : MonoBehaviour
     int state = 0;   // 0=out; 1=fadeIn; 2=stay; 3=fadeOut
     float stayTimer = 0;
 
+    public Sprite warningSprite;
+    public Sprite doneSprite;
     Text body;
     Color textColour;
     Color transparentWhite = new Color(255,255,255,0);
-    Image warningIcon;
+    Image icon;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponentInChildren<Text>();
-        warningIcon = GetComponentsInChildren<Image>()[1];
+        icon = GetComponentsInChildren<Image>()[1];
 
         textColour = body.color;
 
         GetComponent<Image>().color = transparentWhite;
         body.color = transparentWhite;
-        warningIcon.color = transparentWhite;
+        icon.color = transparentWhite;
     }
 
     // Update is called once per frame
@@ -58,15 +60,20 @@ public class NotificationBehaviour : MonoBehaviour
         }
     }
 
-    public void Notify(string text)
+    public void Notify(string text, bool warning)
     {
         body.text = text;
         state = 1;
+
+        if (warning)
+            icon.sprite = warningSprite;
+        else
+            icon.sprite = doneSprite;
     }
 
     void FadeIn()
     {
-        Color newColor = warningIcon.color;
+        Color newColor = icon.color;
         Color newTextColor = body.color;
 
         newColor.a += Time.deltaTime / fadeInTime;
@@ -80,11 +87,11 @@ public class NotificationBehaviour : MonoBehaviour
 
         GetComponent<Image>().color = newColor;
         body.color = newTextColor;
-        warningIcon.color = newColor;
+        icon.color = newColor;
     }
     void FadeOut()
     {
-        Color newColor = warningIcon.color;
+        Color newColor = icon.color;
         Color newTextColor = body.color;
 
         newColor.a -= Time.deltaTime / fadeOutTime;
@@ -98,6 +105,6 @@ public class NotificationBehaviour : MonoBehaviour
 
         GetComponent<Image>().color = newColor;
         body.color = newTextColor;
-        warningIcon.color = newColor;
+        icon.color = newColor;
     }
 }

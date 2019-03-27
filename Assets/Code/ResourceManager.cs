@@ -188,7 +188,7 @@ public class ResourceManager : MonoBehaviour
 
             // now show this in the notification
             if (!nobodyDied)
-                notification.Notify(killCount + " PodHeads have been unplugged and killed due to a mineral shortage.\nPlease keep your miners in check!");
+                notification.Notify(killCount + " PodHeads have been unplugged and killed due to a mineral shortage.\nPlease keep your miners in check!", true);
         }
 
         // UI.Text now displays the correct amount of 'mineral left'
