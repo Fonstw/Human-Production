@@ -3,6 +3,13 @@
 public class SwitchButton : MonoBehaviour
 {
     public GameObject thingToSwitch;
+    public string optionalHotKey = "Open Tech Tree";
+
+    void Update()
+    {
+        if (Input.GetButtonDown(optionalHotKey))
+            SwitchTheThing();
+    }
 
     public void SwitchTheThing()
     {

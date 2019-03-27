@@ -142,10 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: pls not touch
+  m_VerticalAxis: pls not touch
+  m_SubmitButton: pls not touch
+  m_CancelButton: pls not touch
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 1685709887}
   - component: {fileID: 1685709890}
   - component: {fileID: 1685709889}
+  - component: {fileID: 1685709891}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -492,6 +493,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bc8bf4b721783f49a7995e3e281602a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1685709891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685709885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc0d0c9a835cb545b38cf3d6b99028e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1983061336
