@@ -6880,7 +6880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee08f655774a0d409c060c881295e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFont: {fileID: 12800000, guid: 5f2aab042a938d143a50861f4f4bf902, type: 3}
+  myFont: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
 --- !u!1 &1329259016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 102214, guid: aec3bcb70e83e5d489d85eab06f07a1e,
