@@ -1227,6 +1227,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewGUIContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 153614798, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 153614798, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 153614798, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 474175102828941164, guid: bffdd3625875763468d5c6f82fef92e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1348,6 +1360,75 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 615572376}
+    - target: {fileID: 368163146, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 368163145, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8466893248258439650, guid: bffdd3625875763468d5c6f82fef92e8,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116030603336185074, guid: bffdd3625875763468d5c6f82fef92e8,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 236
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116030603336185074, guid: bffdd3625875763468d5c6f82fef92e8,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116030603336185074, guid: bffdd3625875763468d5c6f82fef92e8,
+        type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116030603336185074, guid: bffdd3625875763468d5c6f82fef92e8,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640758399, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 640758399, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 640758399, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307799101, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307799101, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307799101, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552907373, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552907373, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552907373, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
 --- !u!1 &234501007 stripped
@@ -6741,6 +6822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1328398539}
   - component: {fileID: 1328398538}
+  - component: {fileID: 1328398540}
   m_Layer: 0
   m_Name: CameraWraper
   m_TagString: Untagged
@@ -6786,6 +6868,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1328398540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328398537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee08f655774a0d409c060c881295e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myFont: {fileID: 12800000, guid: 5f2aab042a938d143a50861f4f4bf902, type: 3}
 --- !u!1 &1329259016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 102214, guid: aec3bcb70e83e5d489d85eab06f07a1e,
