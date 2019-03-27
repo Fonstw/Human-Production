@@ -104,6 +104,18 @@ public class MouseOnGrid : MonoBehaviour
             //     building.transform.position = new Vector3(building.transform.position.x, building.transform.position.y + (buildingBuildSpeed * Time.deltaTime), building.transform.position.z);
             // }
         }
+
+
+        // hotkeys
+
+        if (Input.GetButtonDown("Select Biologist"))
+            SetBuilding(2);
+        else if (Input.GetButtonDown("Select Engineer"))
+            SetBuilding(3);
+        else if (Input.GetButtonDown("Select Power Plant"))
+            SetBuilding(1);
+        else if (Input.GetButtonDown("Select Miner"))
+            SetBuilding(4);
     }
 
     public void PlaceBuilding(float x, float y){

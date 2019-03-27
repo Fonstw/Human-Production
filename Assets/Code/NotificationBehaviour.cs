@@ -26,9 +26,7 @@ public class NotificationBehaviour : MonoBehaviour
 
         textColour = body.color;
 
-        GetComponent<Image>().color = transparentWhite;
-        body.color = transparentWhite;
-        icon.color = transparentWhite;
+        Invisible();
     }
 
     // Update is called once per frame
@@ -41,13 +39,13 @@ public class NotificationBehaviour : MonoBehaviour
                     FadeIn();
                 else
                 {
-                    stayTime = Time.time + stayTime;
+                    stayTimer = Time.time + stayTime;
                     state = 2;
                 }
                 break;
 
             case 2:   // stay
-                if (Time.time >= stayTime)
+                if (Time.time >= stayTimer)
                     state = 3;
                 break;
 
@@ -65,12 +63,20 @@ public class NotificationBehaviour : MonoBehaviour
         body.text = text;
         state = 1;
 
+        Invisible();
+
         if (warning)
             icon.sprite = warningSprite;
         else
             icon.sprite = doneSprite;
     }
 
+    void Invisible()
+    {
+        GetComponent<Image>().color = transparentWhite;
+        body.color = transparentWhite;
+        icon.color = transparentWhite;
+    }
     void FadeIn()
     {
         Color newColor = icon.color;

@@ -4,7 +4,7 @@ public class CloseGame : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Quit"))
         {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
