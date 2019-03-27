@@ -59,6 +59,7 @@ public class BetterCustomGrid : MonoBehaviour
                 grid[x,y] = new Node(walkable, worldPoint);
                 grid[x,y].isWater = isWater;
                 if(isWater){
+                    grid[x,y].walkable = false;
                     grid[x,y].isCloseToWater = false;
                     grid[x,y].theresBuilding = false;
                 } else {
@@ -220,7 +221,7 @@ public class BetterCustomGrid : MonoBehaviour
 
 
             foreach(Node n in grid){
-                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral && !n.isWater){
                     RaycastHit hit;
                     if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
                         GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
@@ -243,7 +244,7 @@ public class BetterCustomGrid : MonoBehaviour
 
 
             foreach(Node n in grid){
-                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral){
+                if(!n.isCloseToWater && !n.theresBuilding && !n.hasMineral && !n.isWater){
                     RaycastHit hit;
                     if(Physics.Raycast(n.worldPosition, Vector3.down, out hit, 100, groundMask)){
                         GameObject newObj = Instantiate(previeuwObject, hit.point, transform.rotation);
