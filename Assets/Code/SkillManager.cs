@@ -104,7 +104,11 @@ public class SkillManager : MonoBehaviour
 
     public void ResearchSkill(int i)
     {
-        // put the right PodHeads into this skill (by ID)
+        // set the other on hold
+        if (researching >= 0 && researching <= skills.Length)
+            skills[researching].Hold();
+
+        // change the skill being research from now
         researching = i;
     }
 
