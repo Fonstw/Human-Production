@@ -23,6 +23,13 @@ public class CameraMovement : MonoBehaviour
     public int maxHeight = 60;
     public int minHeight = 1;
 
+    public int edgeOffset = 5;
+
+    private bool rightFucked = true;
+    private bool leftFucked = true;
+    private bool backFucked = true;
+    private bool frontFucked = true;
+
     void Start()
     {
         oldMousePosition = Input.mousePosition.x;
@@ -35,53 +42,83 @@ public class CameraMovement : MonoBehaviour
         if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity, groundLayer)){
             transform.position = new Vector3(transform.position.x, hit.point.y + heightAboveGround, transform.position.z);
         } else {
-            int rayOffset = 5;
-            Debug.DrawRay(new Vector3(transform.position.x+rayOffset, transform.position.y, transform.position.z), Vector3.down*100);
-            Debug.DrawRay(new Vector3(transform.position.x-rayOffset, transform.position.y, transform.position.z), Vector3.down*100);
-            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z+rayOffset), Vector3.down*100);
-            Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z-rayOffset), Vector3.down*100);
-
-            if(Physics.Raycast(new Vector3(transform.position.x+rayOffset, transform.position.y, transform.position.z), Vector3.down*100, Mathf.Infinity, groundLayer)){
-                //Debug.Log("Right");
-                if (Input.GetAxis("Horizontal") > 0 || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge)) { transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed); }
+            if(!rightFucked){
+                transform.position = new Vector3(transform.position.x + (ScrollSpeed * Time.deltaTime), transform.position.y, transform.position.z);
             }
-            if(Physics.Raycast(new Vector3(transform.position.x-rayOffset, transform.position.y, transform.position.z), Vector3.down*100, Mathf.Infinity, groundLayer)){
-                //Debug.Log("Left");
-                if (Input.GetAxis("Horizontal") < 0 || Input.mousePosition.x <= Screen.width * ScrollEdge) { transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed); }
+            if(!leftFucked){
+                transform.position = new Vector3(transform.position.x - (ScrollSpeed * Time.deltaTime), transform.position.y, transform.position.z);
             }
-            if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z+rayOffset), Vector3.down*100, Mathf.Infinity, groundLayer)){
-                //Debug.Log("Forward");
-                if (Input.GetAxis("Vertical") > 0 || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge)) { transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed); }
+            if(!frontFucked){
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (ScrollSpeed * Time.deltaTime));
             }
-            if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z-rayOffset), Vector3.down*100, Mathf.Infinity, groundLayer)){
-                //Debug.Log("Back");
-                if (Input.GetAxis("Vertical") < 0 || Input.mousePosition.y <= Screen.height * ScrollEdge) { transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed); }
+            if(!backFucked){
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - (ScrollSpeed * Time.deltaTime));
             }
-            return;
+            //transform.position = new Vector3(0,-20,0);
         }
+        Debug.DrawRay(new Vector3(transform.position.x+edgeOffset, transform.position.y, transform.position.z), Vector3.down*100);
+        Debug.DrawRay(new Vector3(transform.position.x-edgeOffset, transform.position.y, transform.position.z), Vector3.down*100);
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z+edgeOffset), Vector3.down*100);
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z-edgeOffset), Vector3.down*100);
+
+        if(Physics.Raycast(new Vector3(transform.position.x+edgeOffset, transform.position.y, transform.position.z), Vector3.down*100, Mathf.Infinity, groundLayer)){
+            leftFucked = true;
+        } else {
+            Debug.Log("rigt fucked");
+            leftFucked = false;
+        }
+        if(Physics.Raycast(new Vector3(transform.position.x-edgeOffset, transform.position.y, transform.position.z), Vector3.down*100, Mathf.Infinity, groundLayer)){
+            rightFucked = true;
+        }else {
+            Debug.Log("left fucked");
+            rightFucked = false;
+        }
+        if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z+edgeOffset), Vector3.down*100, Mathf.Infinity, groundLayer)){
+            backFucked = true;
+        }else {
+            Debug.Log("front fucked");
+            backFucked = false;
+        }
+        if(Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z-edgeOffset), Vector3.down*100, Mathf.Infinity, groundLayer)){
+            frontFucked = true;
+        }else {
+            Debug.Log("back fucked");
+            frontFucked = false;
+        }
+        
+        if ((Input.GetAxis("Horizontal") < 0 || Input.mousePosition.x <= Screen.width * ScrollEdge) && rightFucked) { transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed); }
+        if ((Input.GetAxis("Horizontal") > 0 || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge)) && leftFucked) { transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed); }
+        if ((Input.GetAxis("Vertical") > 0 || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge)) && backFucked) { transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed); }
+        if ((Input.GetAxis("Vertical") < 0 || Input.mousePosition.y <= Screen.height * ScrollEdge) && frontFucked) { transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed); }
         //End van code (PS: als je precies in een hoek komt... you're fucked)
 
 
         //PAN
-        if (Input.GetAxis("Horizontal") > 0 || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge))
-            transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed);
-        else if (Input.GetAxis("Horizontal") < 0 || Input.mousePosition.x <= Screen.width * ScrollEdge)
-            transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed);
+        // if (Input.GetAxis("Horizontal") > 0 || Input.mousePosition.x >= Screen.width * (1 - ScrollEdge))
+        //     transform.Translate(Vector3.right * Time.deltaTime * ScrollSpeed);
+        // else if (Input.GetAxis("Horizontal") < 0 || Input.mousePosition.x <= Screen.width * ScrollEdge)
+        //     transform.Translate(Vector3.right * Time.deltaTime * -ScrollSpeed);
 
-        if (Input.GetAxis("Vertical") > 0 || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge))
-            transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed);
-        else if (Input.GetAxis("Vertical") < 0 || Input.mousePosition.y <= Screen.height * ScrollEdge)
-            transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed);
+        // if (Input.GetAxis("Vertical") > 0 || Input.mousePosition.y >= Screen.height * (1 - ScrollEdge))
+        //     transform.Translate(Vector3.forward * Time.deltaTime * ScrollSpeed);
+        // else if (Input.GetAxis("Vertical") < 0 || Input.mousePosition.y <= Screen.height * ScrollEdge)
+        //     transform.Translate(Vector3.forward * Time.deltaTime * -ScrollSpeed);
 
         //ZOOM IN/OUT
         //Debug.Log("Mouse Scroll Y: " + Input.mouseScrollDelta.y);
-        if(Input.GetAxis("Zoom") < 0 && transform.localRotation.x >= -0.22){
+        Vector3 rot = transform.rotation.eulerAngles;
+        if(Input.GetAxis("Zoom") < 0){
             heightAboveGround -= zoomSpeed * Time.deltaTime;
-            transform.RotateAround(transform.position, transform.right, -(zoomSpeed*1.3f)*Time.deltaTime);
-        } else if(Input.GetAxis("Zoom") > 0 && transform.localRotation.x <= 0.42){
+            //transform.RotateAround(transform.position, transform.right, -(zoomSpeed*1.3f)*Time.deltaTime);
+            rot -= new Vector3((zoomSpeed*1.3f)*Time.deltaTime, 0f, 0f);
+        } else if(Input.GetAxis("Zoom") > 0){
             heightAboveGround += zoomSpeed * Time.deltaTime;
-            transform.RotateAround(transform.position, transform.right, (zoomSpeed*1.3f)*Time.deltaTime);
+            //transform.RotateAround(transform.position, transform.right, (zoomSpeed*1.3f)*Time.deltaTime);
+            rot += new Vector3((zoomSpeed*1.3f)*Time.deltaTime, 0f, 0f);
         }
+        rot.x = ClampAngle(rot.x, -25f, 45f);
+        transform.eulerAngles = rot;
+        //transform.eulerAngles = new Vector3(Mathf.Clamp(transform.localRotation.x, -25, 45), transform.eulerAngles.y, transform.eulerAngles.z);
 
         if(heightAboveGround < minHeight){
             heightAboveGround = minHeight;
@@ -102,4 +139,12 @@ public class CameraMovement : MonoBehaviour
         else
             oldMousePosition = Input.mousePosition.x;
     }
+
+    float ClampAngle(float angle, float from, float to)
+     {
+         // accepts e.g. -80, 80
+         if (angle < 0f) angle = 360 + angle;
+         if (angle > 180f) return Mathf.Max(angle, 360+from);
+         return Mathf.Min(angle, to);
+     }
 }

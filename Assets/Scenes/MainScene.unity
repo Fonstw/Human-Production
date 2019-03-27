@@ -1429,6 +1429,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 368163142, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bffdd3625875763468d5c6f82fef92e8, type: 3}
 --- !u!1 &234501007 stripped
@@ -6657,7 +6661,8 @@ MonoBehaviour:
   heightAboveGround: 25
   zoomSpeed: 25
   maxHeight: 60
-  minHeight: 1
+  minHeight: 4
+  edgeOffset: 10
 --- !u!4 &1328398539
 Transform:
   m_ObjectHideFlags: 0
