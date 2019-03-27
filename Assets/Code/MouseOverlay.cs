@@ -30,9 +30,18 @@ public class MouseOverlay : MonoBehaviour
     void Update()
     {
         FollowMouse();
+        
+        // wether to be right or left from the mouse (also take offset into consideration)
+        if (transform.position.x >= .5f * Screen.width + setOffset.x)
+            w = true;
+        else if (transform.position.x <= .5f * Screen.width - setOffset.x)
+            w = false;
 
-        w = transform.position.x / Screen.width >= .5f;
-        h = transform.position.y / Screen.height >= .5f;
+        // wether to be under or above the mouse (also take offset into consideration)
+        if (transform.position.y >= .5f * Screen.height - setOffset.y)
+            h = true;
+        else if (transform.position.y <= .5f * Screen.height + setOffset.y)
+            h = false;
 
         SetPivotOffset();
     }
@@ -49,8 +58,8 @@ public class MouseOverlay : MonoBehaviour
 
     private void SetPivotOffset()
     {
-        rt.pivot = new Vector2(w?1:0, h?1:0);
+        rt.pivot = new Vector2(w ? 1 : 0, h ? 1 : 0);
 
-        realOffset = new Vector2(w?-setOffset.x:setOffset.x, h?setOffset.y:-setOffset.y);
+        realOffset = new Vector2(w ? -setOffset.x : setOffset.x, h ? setOffset.y : -setOffset.y);
     }
 }
