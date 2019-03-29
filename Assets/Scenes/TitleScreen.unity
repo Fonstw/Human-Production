@@ -573,7 +573,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 600}
+  m_SizeDelta: {x: 600, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291099798
 MonoBehaviour:
@@ -764,9 +764,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Team leader:\n    Trapman, Peter\n\nConcept artist, modelling & texturing\n
-    \   Hurk, Torben van der\n    Swam, Frans van\n    Trapman, Peter\n\nSound design\n
-    \   Middelkoop, Yannick\n\nProgramming\n    Kok, Pepijn\n    Winkel, Fons te"
+  m_Text: "Narrative & World concept\n    Trapman, Peter\n\nSystems design & UX design\n
+    \   Winkel, Fons te\n\nConcept artist, Modelling & Texturing\n    Hurk, Torben
+    van der\n    Swam, Frans van\n    Trapman, Peter\n\nSound design\n    Middelkoop,
+    Yannick\n\nProgramming\n    Kok, Pepijn\n    Winkel, Fons te"
 --- !u!222 &385220615
 CanvasRenderer:
   m_ObjectHideFlags: 0
