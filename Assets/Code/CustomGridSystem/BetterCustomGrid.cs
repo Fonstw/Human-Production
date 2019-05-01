@@ -42,9 +42,11 @@ public class BetterCustomGrid : MonoBehaviour
     }
 
     void CreateGrid(){
+        //Create grid and start at the bottom left.
         grid = new Node[gridSizeX,gridSizeY];
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x/2 - Vector3.forward * gridWorldSize.y/2;
-
+    
+        //Make each node on the correct location, and check it's status.
         for(int x = 0; x < gridSizeX; x++){
             for(int y = 0; y < gridSizeY; y++){
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
@@ -67,7 +69,7 @@ public class BetterCustomGrid : MonoBehaviour
                     grid[x,y].theresBuilding = theresBuilding;
                 }
                 
-
+                //Create Random minerals, or make grid check for already placed minerals
                 if(randomOn){
                     if(Random.Range(0,spawnMineralsOneIn) == 1 && !grid[x,y].isWater){
                         grid[x,y].hasMineral = true;
@@ -93,6 +95,7 @@ public class BetterCustomGrid : MonoBehaviour
 
     void Update(){
         if(grid != null){
+            //Live change nodes for placement of buildings and destruction of minerals.
             foreach(Node n in grid){
                 Vector3 checkBoxes = new Vector3(nodeRadius, checkHeight, nodeRadius);
                 bool theresGhost = (Physics.CheckBox(n.worldPosition, checkBoxes, Quaternion.identity,  ghostBuildingMask));
@@ -123,7 +126,8 @@ public class BetterCustomGrid : MonoBehaviour
             }
         }
     }
-
+    
+    //Draw each node and a correct color for it's status.
     void OnDrawGizmos(){
         if(displayGizmos){
             Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
@@ -171,7 +175,8 @@ public class BetterCustomGrid : MonoBehaviour
             }
         }
     }
-
+       
+    //Create previeuw objects for the player to show where they can place their buildings.
     public void WhereToPlace(int bType){
         switch (bType){
             //Energy
