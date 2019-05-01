@@ -84,19 +84,6 @@ public class BetterCustomGrid : MonoBehaviour
                     if(minerals.Length >= 1){
                         minerals[0].transform.parent = mineralsParent.transform;
                     }
-                    
-
-                    // //Not Done yeat
-                    // if(amountOfMineralsPlaced <= amountOfMinerals && Random.Range(x,gridSizeX) == amountOfMineralsPlaced && !grid[x,y].isWater){
-                    //     grid[x,y].hasMineral = true;
-                    //     RaycastHit hit;
-                    //     if(Physics.Raycast(worldPoint, Vector3.down, out hit, 100, groundMask)){
-                    //         GameObject mineral = Instantiate(mineralPrefabs[Random.Range(0,mineralPrefabs.Length)], hit.point, this.transform.rotation);
-                    //         mineral.transform.parent = mineralsParent.transform;
-                    //         amountOfMineralsPlaced++;
-                    //     }
-                    // }
-                    // //Goota fix boi,, yeet
                 }
                 
 
@@ -281,17 +268,3 @@ public class BetterCustomGrid : MonoBehaviour
         }
     }
 }
-
-//Shitty extra Code------------------------------------------------------------
-//for(int x = 0; x < gridSizeX; x++){
-//     for(int y = 0; y < gridSizeY; y++){
-//         if((Physics.CheckSphere(grid[x,y].worldPosition, nodeRadius, mouseMask))){
-//             grid[x,y].walkable = false;
-//             if(Input.GetMouseButtonDown(0) && !grid[x,y].isWater){
-//                 grid[x,y].clickedOn = true;
-//             }
-//         } else {
-//             grid[x,y].walkable = true;
-//         }
-//     }
-// }
